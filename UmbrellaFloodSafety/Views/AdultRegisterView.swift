@@ -8,8 +8,133 @@
 import SwiftUI
 
 struct AdultRegisterView: View {
+    
+    @StateObject var viewModel = AdultRegisterViewViewModel()
+    @State private var isSecure: Bool = true
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            
+            Text("Create Your \nAccount")
+                .font(.custom("Nunito", size: 40))
+                .scaledToFill()
+                .fontWeight(.black)
+                .foregroundStyle(Color(.mainBlue))
+                .padding(.top)
+                .multilineTextAlignment(.center)
+            
+            Spacer()
+            Image(.umbrellaLogo)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 220)
+            
+            
+            NavigationStack {
+                
+                Spacer()
+                
+                Text("Thank you for choosing Umbrella!")
+                    .font(.custom("Nunito", size: 18))
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color(.black))
+                
+                Spacer()
+                
+                TextField("", text: $viewModel.name, prompt: Text("First Name")
+                    .foregroundStyle(Color(.darkGray)))
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
+                .foregroundColor(.black)
+                .font(.custom("Nunito", size: 18))
+                .frame(width: 300, height: 60)
+                .padding(.bottom)
+                
+                TextField("", text: $viewModel.username, prompt: Text("Username")
+                    .foregroundStyle(Color(.darkGray)))
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
+                .foregroundColor(.black)
+                .font(.custom("Nunito", size: 18))
+                .frame(width: 300, height: 60)
+                .padding(.bottom)
+                
+                HStack {
+                    ZStack {
+                        if isSecure {
+                            SecureField("", text: $viewModel.password, prompt: Text("Password")
+                                .foregroundStyle(Color(.darkGray))
+                            )
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(8)
+                            .font(.custom("Nunito", size: 18))
+                        } else {
+                            TextField("", text: $viewModel.password, prompt: Text("Password")
+                                .foregroundStyle(Color(.darkGray)))
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(8)
+                            .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 18))
+                        }
+                        HStack {
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                isSecure.toggle()
+                            }) {
+                                Image(systemName: isSecure ? "eye.slash" : "eye")
+                                    .foregroundColor(Color(.darkGray))
+                                    .alignmentGuide(.trailing) { d in d[.leading] }
+                            }
+                            .alignmentGuide(.trailing) { d in d[.leading] }
+                            .padding(.trailing, 18)
+                        }
+                    }
+                }
+                .padding(.top)
+                .padding(.bottom)
+                .frame(width: 300, height: 60)
+                
+                
+                NavigationLink(destination: RegisterFirstView()) {
+                    UMButton(title: "Create Account", background: .mainBlue) {
+                        viewModel.register()
+                    }
+                    .foregroundStyle(Color(.white))
+                    .fontWeight(.bold)
+                    .font(.custom("Nunito", size: 18))
+                }
+                .frame(width: 300, height: 60)
+                .padding(.top)
+                
+                Spacer()
+            }
+        }
+        .navigationTitle("Detail View")
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Label {
+                         Text("Back")
+                    } icon: {
+                        Image(.backArrow)
+                                    }
+                }
+                .padding()
+            }
+            ToolbarItemGroup(placement: .principal) {
+                Image(.twoThirdsProgress)
+            }
+        }
     }
 }
 

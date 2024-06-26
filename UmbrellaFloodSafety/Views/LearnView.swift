@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct LearnView: View {
+    @StateObject var viewModel: LearnViewViewModel
+    
+    init(userId: String) {
+        self._viewModel = StateObject(wrappedValue: LearnViewViewModel(userId: userId))
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    LearnView()
+    LearnView(userId: "vZAFWKrRyFh0oNfXBr3adVTUNQD3")
 }

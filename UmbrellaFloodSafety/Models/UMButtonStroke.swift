@@ -7,12 +7,31 @@
 
 import SwiftUI
 
-struct UMButtonStroke: View {
+struct UMButtonStoke: View {
+    
+    let title: String
+    let background: Color
+    let action: () -> Void
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            action()
+        } label: {
+            ZStack {
+                RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                    .stroke(Color(background), lineWidth: 4)
+                Text(title)
+                    .font(.custom("Nunito", size: 18))
+                    .bold()
+                    .foregroundColor(background)
+            }
+        }
+        
     }
 }
 
 #Preview {
-    UMButtonStroke()
+    UMButton(title: "Sign Up", background: .mainBlue) {
+        //Action
+    }
 }

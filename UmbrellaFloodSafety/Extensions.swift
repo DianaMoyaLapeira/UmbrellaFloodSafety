@@ -8,27 +8,21 @@
 import Foundation
 import SwiftUI
 
-// Colors
+// JSON to dictionary encoder tool
 
-extension UIColor {
-    class var MainBlue: UIColor {
-        guard let color = UIColor(named: "mainBlue") else { return .blue }
-        return color
-    }
-    
-    class var AccentYellow: UIColor {
-        guard let color = UIColor(named: "accentYellow") else { return .yellow }
-        return color
-    }
-    
-    class var AccentGreen: UIColor {
-        guard let color = UIColor(named: "accentGreen") else { return .green }
-        return color
-    }
-    
-    class var SkyBlue: UIColor {
-        guard let color = UIColor(named: "skyBlue") else { return .blue}
-        return color
+extension Encodable {
+    func encodeJSONToDictionary() -> [String: Any] {
+        guard let data = try? JSONEncoder().encode(self) else {
+            return [:]
+        }
+        
+        do {
+            let json = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+            return json ?? [:]
+            // ?? means otherwise
+        } catch {
+            return [:]
+        }
     }
 }
 

@@ -8,8 +8,41 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @StateObject var viewModel = MainViewViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
+            // signed in
+            accountView
+        } else {
+            StartView()
+        }
+    }
+    
+    @ViewBuilder
+    var accountView: some View {
+        TabView{
+            MapView(userId: viewModel.currentUserId)
+                .tabItem {
+                    Label("", systemImage: "map")
+                }
+            
+            MessagingView(userId: viewModel.currentUserId)
+                .tabItem {
+                    Label("", systemImage: "message")
+                }
+            
+            LearnView(userId: viewModel.currentUserId)
+                .tabItem {
+                    Label("", systemImage: "book")
+                }
+            
+            ProfileView(userId: viewModel.currentUserId)
+                .tabItem {
+                    Label("", systemImage: "person")
+                }
+        }
     }
 }
 

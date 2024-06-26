@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import FirebaseCore
+import FirebaseAuth
+
+class MessagingViewViewModel: ObservableObject {
+    
+    private let userId: String
+    
+    init(userId: String) {
+        self.userId = userId
+    }
+}

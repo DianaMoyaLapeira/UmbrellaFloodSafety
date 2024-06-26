@@ -5,30 +5,28 @@
 //  Created by Diana Moya Lapeira on 22/6/24.
 //
 
-import SwiftUI
 import FirebaseCore
-
+import FirebaseFirestore
+import FirebaseAuth
+import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    print("Umbrella application is starting up. ApplicationDelegate didFinishLaunchingWithOptions.")
     FirebaseApp.configure()
-
     return true
   }
 }
 
 @main
-struct YourApp: App {
-  // register app delegate for Firebase setup
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
-
-  var body: some Scene {
-    WindowGroup {
-      NavigationView {
-        ContentView()
-      }
+struct UmbrellaFloodSafetyApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    var body: some Scene {
+        WindowGroup {
+            StartView()
+        }
     }
-  }
 }
