@@ -37,8 +37,8 @@ struct AdultRegisterView: View {
                 
                 Text("Thank you for choosing Umbrella!")
                     .font(.custom("Nunito", size: 18))
-                    .fontWeight(.medium)
-                    .foregroundStyle(Color(.black))
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.mainBlue)
                 
                 Spacer()
                 
@@ -49,7 +49,7 @@ struct AdultRegisterView: View {
                 .cornerRadius(8)
                 .foregroundColor(.black)
                 .font(.custom("Nunito", size: 18))
-                .frame(width: 300, height: 60)
+                .frame(width: 300)
                 .padding(.bottom)
                 
                 TextField("", text: $viewModel.username, prompt: Text("Username")
@@ -59,7 +59,7 @@ struct AdultRegisterView: View {
                 .cornerRadius(8)
                 .foregroundColor(.black)
                 .font(.custom("Nunito", size: 18))
-                .frame(width: 300, height: 60)
+                .frame(width: 300)
                 .padding(.bottom)
                 
                 HStack {
@@ -97,12 +97,11 @@ struct AdultRegisterView: View {
                         }
                     }
                 }
-                .padding(.top)
                 .padding(.bottom)
-                .frame(width: 300, height: 60)
+                .frame(width: 300)
                 
                 
-                NavigationLink(destination: RegisterFirstView()) {
+                NavigationLink(destination: MainView()) {
                     UMButton(title: "Create Account", background: .mainBlue) {
                         viewModel.register()
                     }

@@ -10,7 +10,7 @@ import MapKit
 
 struct MapView: View {
     
-    @State private var mainsheet: Bool = true
+    @State private var showSheet: Bool = true
     @StateObject var viewModel: MapViewViewModel
     
     init(userId: String) {
@@ -35,33 +35,38 @@ struct MapView: View {
                     .frame(width: 40)
             }
             .padding()
-            Map()
-        }.sheet(isPresented: $mainsheet) {
-            SheetView()
-                .presentationDetents([.fraction(0.20), .large])
-                .presentationDragIndicator(.visible)
+            ZStack {
+                Map()
+                VStack {
+                    
+                    HStack {
+                        Text("GroupName")
+                            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                            .padding()
+                            .frame(width: 250, height: 40, alignment: .leading)
+                        .background(RoundedRectangle(cornerRadius: 25).fill(Color.white))
+                        
+                        Spacer()
+                    }.padding(.top)
+                        .padding(.leading)
+                                        
+                    Spacer()
+                }
+            }
         }
-        .onAppear {
-                    mainsheet = true
-        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .overlay(alignment: .bottom) {
+                    if showSheet {
+                        MapViewSheet()
+                            .transition(.move(edge: .bottom))
+                    }
+                }
+                .animation(.easeInOut, value: showSheet)
     }
 }
 
-struct SheetView: View {
-    var body: some View {
-        VStack {
-            Text("This is the sheet view")
-                .font(.largeTitle)
-                .padding()
-            Button(action: {
-                // Add any action you want here
-            }) {
-                Text("Action Button")
-            }
-        }
-        .padding()
-    }
-}
+
 
 #Preview {
     MapView(userId: "vZAFWKrRyFh0oNfXBr3adVTUNQD3")

@@ -11,9 +11,9 @@ import FirebaseAuth
 
 class LearnViewViewModel: ObservableObject {
     
-    private let userId: String
+    private let username: String
     
-    init(userId: String) {
-        self.userId = userId
+    init(username: String) {
+        self.username = username
     }
 }

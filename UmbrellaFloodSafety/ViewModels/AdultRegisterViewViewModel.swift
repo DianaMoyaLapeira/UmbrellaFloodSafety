@@ -32,15 +32,16 @@ class AdultRegisterViewViewModel: ObservableObject {
     }
     
     private func insertUserRecord(id: String) {
-        let newUser = User(id: id,
+        let newUser = UserModel(id: id,
                            username: username,
                            name: name,
                            joined: Date().timeIntervalSince1970,
-                           isChild: false)
+                           isChild: false,
+                           umbrellas: [])
         let db = Firestore.firestore()
         
         db.collection("users")
-            .document(id)
+            .document(username.lowercased())
             .setData(newUser.encodeJSONToDictionary())
     }
     

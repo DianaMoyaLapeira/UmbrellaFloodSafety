@@ -18,22 +18,24 @@ struct KidRegisterView: View {
         ScrollView {
             VStack {
                 
-                Text("Create Your \nAccount")
-                    .font(.custom("Nunito", size: 40))
-                    .scaledToFill()
-                    .fontWeight(.black)
-                    .foregroundStyle(Color(.mainBlue))
-                    .padding(.top)
-                    .multilineTextAlignment(.center)
-                
                 Spacer()
                 
-                Image(.children)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 300)
+                VStack(spacing: -60) {
+                    Text("Create Your \nAccount")
+                        .font(.custom("Nunito", size: 40))
+                        .scaledToFill()
+                        .fontWeight(.black)
+                        .foregroundStyle(Color(.mainBlue))
+                        .padding(.top)
+                        .multilineTextAlignment(.center)
+                    
+                    
+                    Image(.children)
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                }
                 
-                Spacer()
                 
                 TextField("", text: $viewModel.name, prompt: Text("First Name")
                     .foregroundStyle(Color(.darkGray)))
@@ -42,7 +44,7 @@ struct KidRegisterView: View {
                     .cornerRadius(8)
                     .foregroundColor(.black)
                     .font(.custom("Nunito", size: 18))
-                    .frame(width: 300, height: 60)
+                    .frame(width: 300)
                 
                 Spacer()
                 
@@ -53,43 +55,51 @@ struct KidRegisterView: View {
                     .cornerRadius(8)
                     .foregroundColor(.black)
                     .font(.custom("Nunito", size: 18))
-                    .frame(width: 300, height: 60)
+                    .frame(width: 300)
                 
                 Spacer()
                 
                 HStack {
-                    if isSecure {
-                        SecureField("", text: $viewModel.password, prompt: Text("Password")
-                            .foregroundStyle(Color(.darkGray))
-                        )
+                    ZStack {
+                        if isSecure {
+                            SecureField("", text: $viewModel.password, prompt: Text("Password")
+                                .foregroundStyle(Color(.darkGray))
+                            )
                             .padding()
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
                             .font(.custom("Nunito", size: 18))
-                    } else {
-                        TextField("", text: $viewModel.password, prompt: Text("Password")
-                            .foregroundStyle(Color(.darkGray)))
+                        } else {
+                            TextField("", text: $viewModel.password, prompt: Text("Password")
+                                .foregroundStyle(Color(.darkGray)))
                             .padding()
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
                             .foregroundColor(.black)
                             .font(.custom("Nunito", size: 18))
+                        }
+                        HStack {
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                isSecure.toggle()
+                            }) {
+                                Image(systemName: isSecure ? "eye.slash" : "eye")
+                                    .foregroundColor(Color(.darkGray))
+                                    .alignmentGuide(.trailing) { d in d[.leading] }
+                            }
+                            .alignmentGuide(.trailing) { d in d[.leading] }
+                            .padding(.trailing, 18)
+                        }
                     }
-                    Button(action: {
-                        isSecure.toggle()
-                    }) {
-                        Image(systemName: isSecure ? "eye.slash" : "eye")
-                            .foregroundColor(Color(.darkGray))
-                    }
-                    .padding(.trailing, 1)
                 }
-                .padding(.top)
                 .padding(.bottom)
-                .frame(width: 300, height: 60)
+                .frame(width: 300)
                 
                 Spacer()
                 
-                NavigationLink(destination: RegisterFirstView()) {
+                NavigationLink(destination: MainView()) {
                     UMButton(title: "Create Account", background: .mainBlue) {
                         viewModel.register()
                     }
@@ -98,7 +108,6 @@ struct KidRegisterView: View {
                     .font(.custom("Nunito", size: 18))
                 }
                 .frame(width: 300, height: 60)
-                .padding(.top)
                 
                 Spacer()
             }

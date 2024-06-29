@@ -33,12 +33,12 @@ struct MainView: View {
                     Label("", systemImage: "message")
                 }
             
-            LearnView(userId: viewModel.currentUserId)
+            LearnView(username: viewModel.currentUserUsername)
                 .tabItem {
                     Label("", systemImage: "book")
                 }
             
-            ProfileView(userId: viewModel.currentUserId)
+            ProfileView(username: viewModel.currentUserUsername)
                 .tabItem {
                     Label("", systemImage: "person")
                 }

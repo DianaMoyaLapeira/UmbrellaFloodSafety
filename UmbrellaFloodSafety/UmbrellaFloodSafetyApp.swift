@@ -26,7 +26,7 @@ struct UmbrellaFloodSafetyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            StartView()
+            MainView()
         }
     }
 }

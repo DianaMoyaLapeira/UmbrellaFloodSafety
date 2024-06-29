@@ -10,15 +10,84 @@ import SwiftUI
 struct LearnView: View {
     @StateObject var viewModel: LearnViewViewModel
     
-    init(userId: String) {
-        self._viewModel = StateObject(wrappedValue: LearnViewViewModel(userId: userId))
+    init(username: String) {
+        self._viewModel = StateObject(wrappedValue: LearnViewViewModel(username: username))
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Text("Learn")
+                    .font(.custom("Nunito", size: 34))
+                    .foregroundStyle(Color.mainBlue)
+                    .fontWeight(.black)
+                    .padding()
+                
+                Spacer()
+            }
+            
+            Divider()
+            
+            ScrollView {
+                Section() {
+                    
+                    
+                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        .frame(height: 150)
+                        .padding(.leading)
+                        .padding(.trailing)
+                        .foregroundStyle(Color.accentGreen)
+                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        .frame(height: 150)
+                        .padding()
+                        .foregroundStyle(Color.accentYellow)
+                    
+                    Divider()
+                } header: {
+                    HStack {
+                        Text("Emergencies")
+                            .font(.custom("Nunito", size: 24))
+                            .foregroundStyle(Color.red)
+                            .fontWeight(.black)
+                            .padding()
+                        
+                        Spacer()
+                    }
+                }
+                
+                Section() {
+                    
+                    
+                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        .frame(height: 150)
+                        .padding(.leading)
+                        .padding(.trailing)
+                        .foregroundStyle(Color.skyBlue)
+                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                        .frame(height: 150)
+                        .padding()
+                        .foregroundStyle(Color.orange)
+                    
+                    Divider()
+                } header: {
+                    HStack {
+                        Text("Prepare")
+                            .font(.custom("Nunito", size: 24))
+                            .foregroundStyle(Color.mainBlue)
+                            .fontWeight(.black)
+                            .padding()
+                        
+                        Spacer()
+                    }
+                }
+                
+            }
+            
+            Spacer()
+        }
     }
 }
 
 #Preview {
-    LearnView(userId: "vZAFWKrRyFh0oNfXBr3adVTUNQD3")
+    LearnView(username: "vZAFWKrRyFh0oNfXBr3adVTUNQD3")
 }

@@ -42,52 +42,61 @@ struct LoginView: View {
                     Text(viewModel.errorMessage)
                         .foregroundColor(Color.red)
                 }
-                TextField("Username", text: $viewModel.username, prompt: Text("Username"))
+                TextField("", text: $viewModel.username, prompt: Text("Username")
+                    .foregroundStyle(Color(UIColor.darkGray)))
                     .autocorrectionDisabled()
                     .autocapitalization(.none)
-                    .foregroundStyle(Color(.darkGray))
                     .padding()
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(8)
                     .foregroundColor(.black)
                     .font(.custom("Nunito", size: 18))
-                    .frame(width: 300, height: 60)
+                    .frame(width: 300)
                 
                 Spacer()
                 
                 HStack {
-                    if isSecure {
-                        SecureField("Password", text: $viewModel.password, prompt: Text("Password")
-                            .foregroundStyle(Color(.darkGray))
-                        )
+                    ZStack {
+                        if isSecure {
+                            SecureField("", text: $viewModel.password, prompt: Text("Password")
+                                .foregroundStyle(Color(.darkGray))
+                            )
                             .padding()
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
                             .font(.custom("Nunito", size: 18))
-                    } else {
-                        TextField("Password", text: $viewModel.password, prompt: Text("Password")
-                            .foregroundStyle(Color(.darkGray)))
+                        } else {
+                            TextField("", text: $viewModel.password, prompt: Text("Password")
+                                .foregroundStyle(Color(.darkGray)))
                             .padding()
                             .background(Color.gray.opacity(0.1))
                             .cornerRadius(8)
                             .foregroundColor(.black)
                             .font(.custom("Nunito", size: 18))
+                        }
+                        HStack {
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                isSecure.toggle()
+                            }) {
+                                Image(systemName: isSecure ? "eye.slash" : "eye")
+                                    .foregroundColor(Color(.darkGray))
+                                    .alignmentGuide(.trailing) { d in d[.leading] }
+                            }
+                            .alignmentGuide(.trailing) { d in d[.leading] }
+                            .padding(.trailing, 18)
+                        }
                     }
-                    Button(action: {
-                        isSecure.toggle()
-                    }) {
-                        Image(systemName: isSecure ? "eye.slash" : "eye")
-                            .foregroundColor(Color(.darkGray))
-                    }
-                    .padding(.trailing, 1)
                 }
-                .padding(.top)
-                .padding(.bottom)
-                .frame(width: 300, height: 60)
+                .padding([.top, .bottom])
+                .frame(width: 300)
                 
                 NavigationLink(destination: RegisterFirstView()) {
                     UMButton(title: "Log In", background: .mainBlue) {
                         viewModel.login()
+                        print("Logged in")
                     }
                     .foregroundStyle(Color(.white))
                     .fontWeight(.bold)
@@ -96,9 +105,9 @@ struct LoginView: View {
                 .frame(width: 300, height: 60)
                 .padding(.top)
                 
-                      
+                Spacer()
+                
                }
-               .navigationTitle("Detail View")
                .navigationBarBackButtonHidden(true)
                .toolbar {
                    ToolbarItem(placement: .topBarLeading) {
