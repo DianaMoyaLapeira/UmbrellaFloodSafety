@@ -17,10 +17,10 @@ class WeatherManager {
     private let weatherService = WeatherService()
     var weather: Weather?
     
-    func getWeather(lat: Double, long: Double) async {
+    func getWeather(coordinate: CLLocationCoordinate2D) async {
         do {
             weather = try await Task.detached(priority: .userInitiated) { [weak self] in
-                return try await self?.weatherService.weather(for: .init(latitude: lat, longitude: long))
+                return try await self?.weatherService.weather(for: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
             }.value
         } catch {
             print("Failed to get weather data. \(error)")
@@ -91,4 +91,17 @@ class WeatherManager {
         
     }
     
+    func getRiskLevel(coordinate: CLLocationCoordinate2D) async -> Int {
+        guard coordinate.latitude != 0 && coordinate.longitude != 0 else { return 3 }
+        
+        await getWeather(coordinate: coordinate)
+        
+        if floodWarnings != [] {
+            return 2
+        } else if (floodAdvisories != []) || (floodWatches != []) {
+            return 1
+        } else {
+            return 0
+        }
+    }
 }

@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 struct MainView: View {
     
+    @State var groupSelection = GroupSelection.shared
+    @State var bottomSheetPosition: BottomSheetPosition = .absolute(325)
     @StateObject var viewModel = MainViewViewModel()
+    @State var isSheetPresented = true
+    @StateObject var mapViewViewModel = MapViewViewModel.shared
+    
+    init() {
+    }
     
     var body: some View {
         if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
@@ -22,13 +30,27 @@ struct MainView: View {
     
     @ViewBuilder
     var accountView: some View {
-        TabView{
-            MapView(userId: viewModel.currentUserId)
+       
+        TabView() {
+            MapView(username: viewModel.currentUserUsername)
+                .bottomSheet(bottomSheetPosition: self.$bottomSheetPosition, switchablePositions: [
+                                                .relative(0.200),
+                                                .relative(0.4),
+                                                .relativeTop(0.90)
+                                            ] ) {
+                                                MapViewSheet()
+                                            }
+                                            .customBackground(
+                                                Color.white
+                                                                .cornerRadius(20)
+                                                                
+                                                        )
                 .tabItem {
                     Label("", systemImage: "map")
                 }
+                .toolbarBackground(.visible, for: .tabBar)
             
-            MessagingView(userId: viewModel.currentUserId)
+            MessagingView()
                 .tabItem {
                     Label("", systemImage: "message")
                 }

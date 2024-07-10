@@ -21,10 +21,14 @@ struct NewUmbrellaView: View {
         VStack {
             VStack {
                 HStack {
+                    Spacer()
+                    
                     Text("Create A New Group")
                         .font(.custom("Nunito", size: 34))
                         .fontWeight(.black)
                         .foregroundStyle(Color(.mainBlue))
+                    
+                    Spacer()
                 }
                 .padding()
                 
@@ -63,9 +67,9 @@ struct NewUmbrellaView: View {
                     .padding()
                 }
                 ToolbarItem(placement: .principal) {
-                    Image(.oneThirdProgress)
+                    Image(.halfProgress)
                 }
-        }
+            }
         }
     }
 }

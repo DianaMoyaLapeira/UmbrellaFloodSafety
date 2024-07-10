@@ -7,8 +7,11 @@
 import FirebaseFirestore
 import FirebaseAuth
 import Foundation
+import Combine
+import SwiftUI
 
 class MainViewViewModel: ObservableObject {
+    
     @Published var currentUserId: String = ""
     @Published var currentUserUsername: String = ""
     private var handler: AuthStateDidChangeListenerHandle?
@@ -17,7 +20,6 @@ class MainViewViewModel: ObservableObject {
         self.handler  = Auth.auth().addStateDidChangeListener { [weak self]_, user in
             DispatchQueue.main.async {
                 // Dispatches on main thread (Main view) since it should be displayed on main
-                let db = Firestore.firestore()
                 self?.currentUserId = user?.uid ?? ""
                 self?.currentUserUsername = user?.email?.replacingOccurrences(of: "@fakedomain.com", with: "") ?? ""
             }

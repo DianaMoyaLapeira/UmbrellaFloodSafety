@@ -11,9 +11,8 @@ import FirebaseAuth
 
 class MessagingViewViewModel: ObservableObject {
     
-    private let userId: String
+    static let shared = MessagingViewViewModel()
     
-    init(userId: String) {
-        self.userId = userId
+    init() {
     }
 }

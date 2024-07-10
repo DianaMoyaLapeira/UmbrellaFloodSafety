@@ -11,15 +11,15 @@ import WeatherKit
 
 struct WeatherTest: View {
     @State private var viewModel = WeatherManager()
-    let jakarta = CLLocation(latitude: 43.6208, longitude: -94.9851)
+    let jakarta = CLLocationCoordinate2D(latitude: 43.6208, longitude: -94.9851)
+    @State var riskLevel: Int = 0
     var body: some View {
         VStack {
-            Text("\(viewModel.floodWarnings)")
+            Text("\(riskLevel)")
         }
         .onAppear {
             Task {
-                await viewModel.getWeather(lat: jakarta.coordinate.latitude,
-                                           long: jakarta.coordinate.longitude)
+                riskLevel = await viewModel.getRiskLevel(coordinate: jakarta)
             }
         }
     }

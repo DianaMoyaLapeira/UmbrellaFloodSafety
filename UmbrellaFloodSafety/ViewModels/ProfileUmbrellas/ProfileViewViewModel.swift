@@ -8,22 +8,22 @@ import FirebaseFirestore
 import Foundation
 import FirebaseAuth
 import FirebaseCore
+import Combine
 
-@Observable
-class ProfileViewViewModel {
+class ProfileViewViewModel: ObservableObject {
+    
     
     let db = Firestore.firestore()
     
-    let username: String
+    @Published var username: String = ""
     
     var name: String
     
     init(username: String) {
         self.username = username
-        print(self.username)
         self.name = ""
-        getName()
     }
+    
     
     func getName() -> Void {
         

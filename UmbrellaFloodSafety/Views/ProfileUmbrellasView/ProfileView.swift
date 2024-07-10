@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @ObservedObject var manager = FirebaseManager.shared
     @State private var isSheetPresented = false
-    @State var viewModel: ProfileViewViewModel
-    private let listData = ["One", "Two", "Three", "Four", "Five"]
+    @StateObject var viewModel: ProfileViewViewModel
     @Environment(\.presentationMode) var presentationMode
     
     init(username: String) {
-        self._viewModel = State(wrappedValue: ProfileViewViewModel(username: username))
+        self._viewModel = StateObject(wrappedValue: ProfileViewViewModel(username: username))
         UITableView.appearance().backgroundColor = UIColor.clear
     }
     
@@ -42,7 +42,7 @@ struct ProfileView: View {
                 HStack {
                     VStack {
                         HStack {
-                            Text("Hello")
+                            Text("\(manager.currentUserUsername)")
                                 .font(.custom("Nunito", size: 24))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                             
@@ -50,7 +50,7 @@ struct ProfileView: View {
                             Spacer()
                         }
                         HStack {
-                            Text("Hello")
+                            Text("\(manager.currentUserName)")
                                 .font(.custom("Nunito", size: 18))
                             .foregroundStyle(Color(.darkGray))
                             
@@ -105,28 +105,17 @@ struct ProfileView: View {
                 
                     ScrollView {
                         
-                        ZStack {
-                            List {
-                                VStack() {
-                                    UmbrellaListView()
-                                    UmbrellaListView()
-                                }
-                                
-                            }.scrollContentBackground(.hidden)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
-                                .padding([.top, .bottom])
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .stroke(Color.mainBlue, lineWidth: 4)
-                                .padding()
-                        }
-                        .frame(height: 200)
-                        
-    
+                        VStack() {
+                            ForEach(manager.userGroups.keys.sorted(), id: \.self) { groupId in
+                                UmbrellaListView(groupId: groupId)
+                            }
+                        }.overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(Color.mainBlue))
+                            .padding()
+                           
                         ZStack {
                             RoundedRectangle(cornerRadius: 25)
                                 .foregroundStyle(Color(.mainBlue))
-                            NavigationLink("Join an Umbrella", destination: NewUmbrellaView(username: viewModel.username))
+                            NavigationLink("Join an Umbrella", destination: JoinAnUmbrella(username: viewModel.username))
                                 .foregroundStyle(Color(.white))
                                 .fontWeight(.bold)
                                 .font(.custom("Nunito", size: 18))
@@ -158,6 +147,9 @@ struct ProfileView: View {
             .sheet(isPresented: $isSheetPresented, content: {
                 EditProfileView(isPresented: $isSheetPresented, username: viewModel.username)
                     })
+            .onAppear{
+                StorageManager.shared.fetchProfileImageURL()
+            }
         }
     }
 }
