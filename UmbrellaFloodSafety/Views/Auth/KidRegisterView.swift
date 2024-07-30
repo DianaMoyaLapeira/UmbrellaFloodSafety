@@ -13,6 +13,9 @@ struct KidRegisterView: View {
     @StateObject var viewModel = KidRegisterViewViewModel()
     @State private var isSecure: Bool = true
     @Environment(\.dismiss) var dismiss
+    @State var presentAvatar = true
+    
+    // PresentAvatar does nothing in this context, it is just a placeholder for future use
     
     var body: some View {
         ScrollView {
@@ -99,19 +102,26 @@ struct KidRegisterView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: MainView()) {
-                    UMButton(title: "Create Account", background: .mainBlue) {
+                NavigationLink(destination: CreateAvatar(isPresented: $presentAvatar)
+                    .onAppear {
                         viewModel.register()
                     }
-                    .foregroundStyle(Color(.white))
-                    .fontWeight(.bold)
-                    .font(.custom("Nunito", size: 18))
+                
+                ) {
+                    ZStack {
+                        
+                        RoundedRectangle(cornerRadius: 25)
+                            .foregroundStyle(.mainBlue)
+                        
+                        Text("Create account")
+                            .font(.custom("Nunito", size: 18))
+                            .foregroundStyle(.white)
+                    }
+                    .frame(width: 300, height: 60)
                 }
-                .frame(width: 300, height: 60)
                 
                 Spacer()
             }
-            .navigationTitle("Detail View")
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -129,7 +139,7 @@ struct KidRegisterView: View {
                 ToolbarItemGroup(placement: .principal) {
                     Image(.twoThirdsProgress)
                 }
-        }
+            }
         }
     }
 }

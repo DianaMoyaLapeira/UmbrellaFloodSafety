@@ -8,28 +8,75 @@
 import SwiftUI
 
 struct MessagingListItem: View {
+    var participants: [String]
+    var actualparticipants: [String] {
+        participants.filter {
+            $0 != FirebaseManager.shared.currentUserUsername
+        }
+    }
+    var participantName: String {
+        
+        if actualparticipants.count != 0 {
+            return FirebaseManager.shared.usernameToName[actualparticipants[0]] ?? ""
+        } else {
+            return "Name"
+        }
+    }
+    var firstParticipant: String {
+        if actualparticipants.count != 0 {
+            return actualparticipants[0]
+        } else {
+            return "first participant"
+        }
+        
+    }
+    var timestamp: Double
+    var actualtimestamp: String {
+        guard timestamp != 0 else {
+            return ""
+        }
+        let dateFormatter = DateFormatter()
+        let date = Date(timeIntervalSince1970: timestamp)
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: date)
+    }
+    var lastMessage: String
+    @ObservedObject var firebaseManager = FirebaseManager.shared
+    
     var body: some View {
             VStack {
                 HStack {
-                    MapMarker(image: Image(.adultWoman), username: "testadult", frameWidth: 25, circleWidth: 70, lineWidth: 3)
+                    
+                    MapMarker(profileString: firebaseManager.groupMembersAvatars[firstParticipant] ?? "", username: firstParticipant, frameWidth: 25, circleWidth: 70, lineWidth: 4, paddingPic: 5)
                     
                     VStack {
                         Spacer()
                         HStack {
-                            Text("Adriana") // user for chat
-                                .font(.custom("Nunito", size: 24).bold())
-                                .foregroundStyle(.mainBlue)
+                            if participantName == "" {
+                                Text("\(actualparticipants.joined(separator: ", "))") // username if name is not available
+                                    .font(.custom("Nunito", size: 24).bold())
+                                    .foregroundStyle(.mainBlue)
+                            } else {
+                                Text("\(participantName)") // name if available
+                                    .font(.custom("Nunito", size: 24).bold())
+                                    .foregroundStyle(.mainBlue)
+                            }
                             Spacer()
-                            Text("3:45") // time stamp of last message
-                                .font(.custom("Nunito", size: 18))
-                                .foregroundStyle(Color(UIColor.darkGray))
+                            
+                            if lastMessage != "No messages yet" {
+                                Text("\(actualtimestamp)") // time stamp of last message
+                                    .font(.custom("Nunito", size: 18))
+                                    .foregroundStyle(Color(UIColor.darkGray))
+                                
+                            }
                             
                             Image(systemName: "chevron.right")
                                 .foregroundStyle(Color(UIColor.darkGray))
                                 .padding(.trailing)
                         }
+                        
                         HStack {
-                            Text("Last message") // Last message
+                            Text("\(lastMessage)") // Last message
                                 .font(.custom("Nunito", size: 18))
                                 .foregroundStyle(Color(UIColor.darkGray))
                             Spacer()
@@ -46,5 +93,5 @@ struct MessagingListItem: View {
 }
 
 #Preview {
-    MessagingListItem()
+    MessagingListItem(participants: ["testadult"], timestamp: 13434.3, lastMessage: "hello")
 }

@@ -10,9 +10,12 @@ import BottomSheet
 
 struct MainView: View {
     
+    @State var refreshtrigger: Bool = false
+    @StateObject private var tabController = TabController()
     @State var groupSelection = GroupSelection.shared
-    @State var bottomSheetPosition: BottomSheetPosition = .absolute(325)
+    @State var bottomSheetPosition: BottomSheetPosition = .relative(0.5)
     @StateObject var viewModel = MainViewViewModel()
+    @ObservedObject var firebaseManager = FirebaseManager.shared
     @State var isSheetPresented = true
     @StateObject var mapViewViewModel = MapViewViewModel.shared
     
@@ -20,7 +23,7 @@ struct MainView: View {
     }
     
     var body: some View {
-        if viewModel.isSignedIn, !viewModel.currentUserId.isEmpty {
+        if firebaseManager.currentUserAvatar != "" {
             // signed in
             accountView
         } else {
@@ -31,40 +34,43 @@ struct MainView: View {
     @ViewBuilder
     var accountView: some View {
        
-        TabView() {
+        TabView(selection: $tabController.activeTab) {
             MapView(username: viewModel.currentUserUsername)
                 .bottomSheet(bottomSheetPosition: self.$bottomSheetPosition, switchablePositions: [
-                                                .relative(0.200),
-                                                .relative(0.4),
-                                                .relativeTop(0.90)
-                                            ] ) {
-                                                MapViewSheet()
-                                            }
-                                            .customBackground(
-                                                Color.white
-                                                                .cornerRadius(20)
-                                                                
-                                                        )
+                        .relative(0.20),
+                        .relative(0.5),
+                        .relativeTop(0.80)
+                    ] ) {
+                        
+                        MapViewSheet()
+                    }
+                    .customBackground(
+                        Color.white.cornerRadius(20)
+                    )
                 .tabItem {
                     Label("", systemImage: "map")
                 }
-                .toolbarBackground(.visible, for: .tabBar)
+                .tag(Tab.map)
             
             MessagingView()
                 .tabItem {
                     Label("", systemImage: "message")
                 }
+                .tag(Tab.messages)
             
             LearnView(username: viewModel.currentUserUsername)
                 .tabItem {
                     Label("", systemImage: "book")
                 }
+                .tag(Tab.learn)
             
             ProfileView(username: viewModel.currentUserUsername)
                 .tabItem {
                     Label("", systemImage: "person")
                 }
+                .tag(Tab.profile)
         }
+        .environmentObject(tabController)
     }
 }
 

@@ -58,7 +58,6 @@ struct RegisterFirstView: View {
                }
                Spacer()
            }
-           .navigationTitle("Detail View")
            .navigationBarBackButtonHidden(true)
            .toolbar {
                ToolbarItem(placement: .topBarLeading) {

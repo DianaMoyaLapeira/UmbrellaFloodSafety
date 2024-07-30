@@ -32,8 +32,11 @@ struct NewUmbrellaView: View {
                 }
                 .padding()
                 
-                
-                Spacer()
+                Image(.umbrellaEmptyState)
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                    .frame(width: 300)
                 
                 TextField("Group Name", text: $viewModel.groupName, prompt: Text("Group Name")
                     .foregroundStyle(Color(.darkGray)))

@@ -1,0 +1,853 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "1. Remember your emergency plan (if you have one)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Recuerda tu plan de emergencia (si tienes uno)"
+          }
+        }
+      }
+    },
+    "2. Stay away from \nthe flood water" : {
+
+    },
+    "2. Stay away from the flood water" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Manténgase alejado del agua de la inundación"
+          }
+        }
+      }
+    },
+    "3. Find a trusted \nadult" : {
+
+    },
+    "3. Find a trusted adult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Encuentra un adulto de confianza"
+          }
+        }
+      }
+    },
+    "4. If you still feel unsafe or there are no adults nearby, call 911" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Si todavía te sientes en peligro o no hay adultos cerca, llama al 911"
+          }
+        }
+      }
+    },
+    "4. If you still feel unsafe or there are no adults, call 911" : {
+
+    },
+    "5. Call or text    trusted adults" : {
+
+    },
+    "5. Call or text trusted adults " : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Llame o envíe mensajes de texto a adultos de confianza."
+          }
+        }
+      }
+    },
+    "A gray circle means that Umbrella is trying to get the weather for a location." : {
+
+    },
+    "A green circle stands for no current flood warnings. This means that the National Weather Service has not given flood warnings for someone's location." : {
+
+    },
+    "A red circle stands for a flood warning. This means that flooding will happen or is happening in someone's area." : {
+
+    },
+    "A yellow circle stands for a flood advisory or watch in someone's area. A flood advisory means that a little flooding (not life-threatening) may happen. A flood watch means that flooding is more likely than normal." : {
+
+    },
+    "Accessories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accesorios "
+          }
+        }
+      }
+    },
+    "Back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regresar"
+          }
+        }
+      }
+    },
+    "Block" : {
+
+    },
+    "Block User" : {
+
+    },
+    "Block User?" : {
+
+    },
+    "Blocked Users" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuarios bloqueados"
+          }
+        }
+      }
+    },
+    "Blush" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rubor"
+          }
+        }
+      }
+    },
+    "Call" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llama al"
+          }
+        }
+      }
+    },
+    "Call 911" : {
+
+    },
+    "Call 911?" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Contact Umbrella Flood Safety through \ncontact@umbrellafloodsafety.com" : {
+
+    },
+    "Create A New Group" : {
+
+    },
+    "Create account" : {
+
+    },
+    "Create Account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea Cuenta"
+          }
+        }
+      }
+    },
+    "Create an Avatar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea un avatar"
+          }
+        }
+      }
+    },
+    "Create an Umbrella" : {
+
+    },
+    "Create Umbrella" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear Umbrella"
+          }
+        }
+      }
+    },
+    "Create Your \nAccount" : {
+
+    },
+    "Create Your \\nAccount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea su \\nCuenta"
+          }
+        }
+      }
+    },
+    "Delete Account" : {
+
+    },
+    "Delete Account?" : {
+
+    },
+    "Done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listo"
+          }
+        }
+      }
+    },
+    "Edit Avatar" : {
+
+    },
+    "Edit Name" : {
+
+    },
+    "Edit Password" : {
+
+    },
+    "Edit Profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar perfil"
+          }
+        }
+      }
+    },
+    "Emergency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emergencias"
+          }
+        }
+      }
+    },
+    "Emergency Help" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayuda de emergencia"
+          }
+        }
+      }
+    },
+    "Enter recovery email here: " : {
+
+    },
+    "Enter the six digit group code" : {
+
+    },
+    "Everything good!" : {
+
+    },
+    "First Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primer nombre"
+          }
+        }
+      }
+    },
+    "Flood Advisory or Watch" : {
+
+    },
+    "Flood Safety Sources" : {
+
+    },
+    "Flood Status" : {
+
+    },
+    "Flood Warning" : {
+
+    },
+    "For kids" : {
+
+    },
+    "For Kids" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para niños"
+          }
+        }
+      }
+    },
+    "Front" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frente"
+          }
+        }
+      }
+    },
+    "Get Started" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar"
+          }
+        }
+      }
+    },
+    "Glasses" : {
+
+    },
+    "Group Name" : {
+
+    },
+    "Hair" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cabello"
+          }
+        }
+      }
+    },
+    "Hair Color" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color de pelo"
+          }
+        }
+      }
+    },
+    "Hello" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hola"
+          }
+        }
+      }
+    },
+    "Hello %@!" : {
+
+    },
+    "Hello, World!" : {
+
+    },
+    "I Already Have an Account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya tengo una cuenta"
+          }
+        }
+      }
+    },
+    "I Already Have An Account" : {
+
+    },
+    "I'm A Kid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soy un niño"
+          }
+        }
+      }
+    },
+    "I'm An Adult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soy un adulto"
+          }
+        }
+      }
+    },
+    "Join an Umbrella" : {
+
+    },
+    "Join An Umbrella" : {
+
+    },
+    "Join Umbrella" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unirse a Umbrella"
+          }
+        }
+      }
+    },
+    "Learn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información"
+          }
+        }
+      }
+    },
+    "Log In" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iniciar sesión"
+          }
+        }
+      }
+    },
+    "Log Out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar sesión "
+          }
+        }
+      }
+    },
+    "Longer Styles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cabello largo"
+          }
+        }
+      }
+    },
+    "Members" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miembros"
+          }
+        }
+      }
+    },
+    "Members: %@" : {
+
+    },
+    "Message" : {
+
+    },
+    "Messages" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Messages"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensajes"
+          }
+        }
+      }
+    },
+    "MyUmbrellas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MisUmbrellas"
+          }
+        }
+      }
+    },
+    "National Water Prediction Service" : {
+
+    },
+    "National Weather Service Flood Safety Tips" : {
+
+    },
+    "Near" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Near"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca de"
+          }
+        }
+      }
+    },
+    "No Connection" : {
+
+    },
+    "No members yet. Add members on their device using the Umbrella Code!" : {
+
+    },
+    "No messages yet.\n Try joining an Umbrella in the profile tab!" : {
+
+    },
+    "No messages yet. Try sending some!" : {
+
+    },
+    "No Umbrellas Yet" : {
+
+    },
+    "No Umbrellas yet.\n Try adding some in the profile tab!" : {
+
+    },
+    "Notifications" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificaciones"
+          }
+        }
+      }
+    },
+    "Notifications will appear if any group member is in a flood hazard area." : {
+
+    },
+    "Password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contraseña"
+          }
+        }
+      }
+    },
+    "Prepare for Floods" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparación"
+          }
+        }
+      }
+    },
+    "Profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "Reason for reporting" : {
+
+    },
+    "Recovery Email" : {
+
+    },
+    "Remove" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        }
+      }
+    },
+    "Report A User" : {
+
+    },
+    "Report User" : {
+
+    },
+    "Select an Umbrella" : {
+
+    },
+    "Set Up Recovery Email" : {
+
+    },
+    "Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración"
+          }
+        }
+      }
+    },
+    "Shirt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camisa"
+          }
+        }
+      }
+    },
+    "Short Styles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cabello corto"
+          }
+        }
+      }
+    },
+    "Skin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piel"
+          }
+        }
+      }
+    },
+    "Skin Color" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tono de piel"
+          }
+        }
+      }
+    },
+    "Sources" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuentes"
+          }
+        }
+      }
+    },
+    "text input" : {
+
+    },
+    "Text through Umbrella" : {
+
+    },
+    "Thank you for choosing Umbrella!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gracias por usar Umbrella!"
+          }
+        }
+      }
+    },
+    "Type reason for reporting here" : {
+
+    },
+    "Umbrella" : {
+
+    },
+    "Umbrella Code" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Código de Umbrella"
+          }
+        }
+      }
+    },
+    "Umbrella Code: %@" : {
+
+    },
+    "Umbrellas In Common" : {
+
+    },
+    "Unblock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desbloquear"
+          }
+        }
+      }
+    },
+    "Unblock Users" : {
+
+    },
+    "Unicef Flood Safety Information" : {
+
+    },
+    "Username" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de usuario"
+          }
+        }
+      }
+    },
+    "We are sorry that you've had a bad experience with user %@. \n\nPlease let us know why so we can take appropriate measures." : {
+
+    },
+    "Welcome Back!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido!"
+          }
+        }
+      }
+    },
+    "What do I do in a Flood?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué hago en una inundación?"
+          }
+        }
+      }
+    },
+    "What do the green, yellow, or red circles mean?" : {
+
+    },
+    "You have no blocked users" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tiene usuarios bloqueados. "
+          }
+        }
+      }
+    },
+    "Your flood safety companion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Su compañero de seguridad contra inundaciones"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

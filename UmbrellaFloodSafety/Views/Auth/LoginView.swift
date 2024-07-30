@@ -122,8 +122,8 @@ struct LoginView: View {
                        }
                        .padding()
                    }
-           }
-        }
+               }
+            }
        }
 }
 

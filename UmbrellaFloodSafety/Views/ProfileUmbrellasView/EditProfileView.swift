@@ -10,9 +10,8 @@ import PhotosUI
 
 struct EditProfileView: View {
     
-    @State var selectedItem: PhotosPickerItem? = nil
-    @State var selectedImageData: Data? = nil
     @Binding var isPresented: Bool
+    @State var isPresentedAvatar: Bool = false
     @StateObject var viewModel: EditProfileViewViewModel
     @State private var isSecure: Bool = true
     
@@ -25,6 +24,7 @@ struct EditProfileView: View {
     var body: some View {
         ScrollView {
             VStack {
+                
                 HStack {
                     Text("Edit Profile")
                         .font(.custom("Nunito", size: 34))
@@ -47,49 +47,21 @@ struct EditProfileView: View {
                 HStack {
                     Spacer()
                     
-                    if StorageManager.shared.ProfileImageURL != "" {
-                        AsyncImage(url: URL(string: StorageManager.shared.ProfileImageURL)) { phase in
-                            if let image = phase.image {
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    .frame(width: 250)
-                            } else if phase.error != nil {
-                                Image(.umbrellaLogo)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipShape(Circle())
-                                    .frame(width: 250)
-                                Text("\(String(describing: phase.error?.localizedDescription))")
-                            } else {
-                                ProgressView()
-                            }
-                        }
-                    }
+                    ProfilePictureView(profileString: viewModel.firebaseManager.currentUserAvatar)
+                        .clipShape(Circle())
                     
                     Spacer()
                 }.frame(height: 250)
                 
                 
-                PhotosPicker(selection: $selectedItem, matching: .images) {
-                    Text("Edit Picture")
-                        .bold()
+                Button {
+                    isPresentedAvatar.toggle()
+                } label: {
+                    Text("Edit Avatar")
                         .font(.custom("Nunito", size: 24))
+                        .bold()
                 }
-                .onChange(of: selectedItem) { oldPhoto, newPhoto in
-                    if let newPhoto {
-                        Task {
-                            guard let data = try await newPhoto.loadTransferable(type: Data.self) else { print("error uploading image")
-                                                                                                    return }
-                                selectedImageData = data
-                                viewModel.uploadImageIntoStorage(data: data)
-                            }
-                        }
-                    }
-                if viewModel.uploadStatus != "" {
-                    Text("\(viewModel.uploadStatus)")
-                }
+                
                 
                 VStack {
                     HStack {
@@ -169,6 +141,10 @@ struct EditProfileView: View {
                 Spacer()
             }
         }
+        .sheet(isPresented: $isPresentedAvatar, content: {
+            CreateAvatar(isPresented: $isPresentedAvatar)
+                .padding(.top)
+        })
     }
 }
 

@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import Combine
 import CoreLocation
+import SwiftUI
 
 
 class FirebaseManager: ObservableObject {
@@ -18,10 +19,18 @@ class FirebaseManager: ObservableObject {
     
     @Published var currentUserUsername: String = ""
     @Published var currentUserName: String = ""
+    @Published var currentUserAvatar: String = ""
     @Published var userGroups: [String: String] = [:] // Group Id to group name
     @Published var groupMembers: [String: [String]] = [:] // Group Id to an @Published array of group members
     @Published var groupMembersLocations: [String: CLLocationCoordinate2D] = [:] // Username to user location
+    @Published var groupMembersAvatars: [String: String] = [:] // Username to avatar string
     @Published var conversations: [String: conversation] = [:] // Conversation Id to conversation type
+    @Published var messages: [String:[message]]=["":[]] // Conversation Id to an array of messages
+    @Published var isChild: Bool = false
+    @Published var usernameToName: [String: String] = [:] // Username to name
+    @Published var memberRiskLevels: [String: Int] = [:] // Username to risk level
+    @Published var memberRiskColors: [String: Color] = [:] // Username to color
+    @Published var blockedUsers: [String] = [] // Array of blocked users
     
     private let weatherManager = WeatherManager()
     private var handler: AuthStateDidChangeListenerHandle?
@@ -29,9 +38,51 @@ class FirebaseManager: ObservableObject {
     private var groupListeners: [ListenerRegistration] = []
     private var memberListeners: [ListenerRegistration] = []
     private var conversationListeners: [ListenerRegistration] = []
+    private var messagesListeners: [ListenerRegistration] = []
     
     init() {
         setupAuthListener()
+    }
+    
+    func updateLocation(newLocation: CLLocation) {
+        
+        let lastLoggedInUsername = UserDefaults.standard.string(forKey: "lastLoggedInUsername")
+        
+        guard lastLoggedInUsername != nil && lastLoggedInUsername != "" else {
+            print("no userdefaultlastloggedin")
+            return
+        }
+                                
+        let db = Firestore.firestore()
+        
+        let userCoords = [newLocation.coordinate.latitude, newLocation.coordinate.longitude]
+        
+        db.collection("users")
+            .document("\(lastLoggedInUsername ?? "")")
+            .updateData(["location": userCoords]) { error in
+                if let error = error {
+                    print("Error updating location: \(error)")
+                } else {
+                    print("Location successfully updated: \(userCoords)")
+                }
+        }
+        
+    }
+    
+    func updateDeviceToken(DeviceToken: String) {
+        
+        let db = Firestore.firestore()
+        
+        let lastLoggedInUsername = UserDefaults.standard.string(forKey: "lastLoggedInUsername")
+        
+        guard lastLoggedInUsername != nil && lastLoggedInUsername != "" else {
+            print("no userdefaultlastloggedin")
+            return
+        }
+        
+        db.collection("users")
+            .document("\(lastLoggedInUsername ?? "")")
+            .updateData(["deviceToken": DeviceToken])
     }
     
     private func setupAuthListener() {
@@ -46,16 +97,22 @@ class FirebaseManager: ObservableObject {
             
     }
     
+    
     var isSignedIn: Bool {
         return Auth.auth().currentUser != nil
     }
     
     private func setupUserListener(for username: String) {
-        guard isSignedIn else { print ("not signed in")
+        guard isSignedIn else { 
+            print ("not signed in")
             return
         }
         
+        messages.removeAll()
+        
         self.currentUserUsername = username
+        
+        UserDefaults.standard.set(username, forKey: "lastLoggedInUsername")
         
         let db = Firestore.firestore()
         
@@ -80,6 +137,18 @@ class FirebaseManager: ObservableObject {
                 self.currentUserName = name
             }
             
+            if let avatar = document.data()?["avatar"] as? String {
+                self.currentUserAvatar = avatar
+            }
+            
+            if let childStatus = document.data()?["isChild"] as? Bool {
+                self.isChild = childStatus
+            }
+            
+            if let blockedUsers = document.data()?["blockedUsers"] as? [String] {
+                self.blockedUsers = blockedUsers
+            }
+            
             if let groups = document.get("umbrellas") as? [String] {
                 self.setupGroupListeners(for: groups)
             } else {
@@ -96,13 +165,17 @@ class FirebaseManager: ObservableObject {
     
    private func setupConversationListener(for conversationIds: [String]) {
        clearConversationListeners()
+       
        let db = Firestore.firestore()
         
        for conversationId in conversationIds {
            
            let conversationListener = db.collection("conversations").document("\(conversationId)").addSnapshotListener { documentSnapshot, error in
                
-               var id = ""
+               var id: String = ""
+               var participants: [String] = []
+               var lastMessage: String = ""
+               var lastMessageTimeStamp: CGFloat = 0.0
                
                if let error = error {
                    print("\(error.localizedDescription)")
@@ -117,9 +190,98 @@ class FirebaseManager: ObservableObject {
                    id = conversationId
                }
                
+               if let convoparticipants = document.get("participants") as? [String] {
+                   participants = convoparticipants
+               }
+               
+               if let convoLastMessage = document.get("lastMessage") as? String {
+                   lastMessage = convoLastMessage
+               }
+               
+               if let convoLastMessageTimestamp = document.get("lastMessageTimestamp") as? CGFloat {
+                   lastMessageTimeStamp = convoLastMessageTimestamp
+               }
+               
+               guard id != "" && participants != [] && lastMessage != "" && lastMessageTimeStamp != 0.0  else {
+                   print("conversation fields invalid")
+                   return
+               }
+               
+               let convo = conversation(id: id, 
+                                        lastMessage: lastMessage,
+                                        lastMessageTimestamp: lastMessageTimeStamp,
+                                        participants: participants)
+               
+               self.conversations[conversationId] = convo
+               
+               self.getMessagesSubcollection(conversationId: conversationId)
                
            }
+           
+           self.conversationListeners.append(conversationListener)
         }
+    }
+    
+    private func getMessagesSubcollection(conversationId: String) {
+        
+        let db = Firestore.firestore()
+
+        
+        let messageListener = db.collection("conversations").document("\(conversationId)").collection("messages").addSnapshotListener { documentSnapshot, error in
+            
+            guard let snapshot = documentSnapshot else {
+                print("error fetching subcollection: \(String(describing: error))")
+                return
+            }
+            
+            for document in snapshot.documents {
+                
+                var messageId: String = ""
+                var timestamp: CGFloat = 0.0
+                var messageText: String = ""
+                var senderId: String = ""
+                
+                if let MessageId = document.get("id") as? String {
+                    messageId = MessageId
+                }
+                
+                guard !(self.messages[conversationId]?.contains(where: { $0.id == messageId }) ?? false) else {
+                    print("message with id already exists in conversation")
+                    continue
+                }
+                
+                if let Timestamp = document.get("timestamp") as? CGFloat {
+                    timestamp = Timestamp
+                }
+                
+                if let MessageText = document.get("content") as? String {
+                    messageText = MessageText
+                }
+                
+                if let SenderId = document.get("senderId") as? String {
+                    senderId = SenderId
+                }
+                
+                guard timestamp != 0.0 && messageText != "" && senderId != "" else {
+                    print("message information does not exist")
+                    return
+                }
+                
+                if self.messages[conversationId] == nil {
+                    self.messages[conversationId] = [message(id: messageId,
+                                                             timestamp: timestamp,
+                                                             content: messageText,
+                                                             senderId: senderId)]
+                } else {
+                    self.messages[conversationId]?.append(message(id: messageId,
+                                                                  timestamp: timestamp,
+                                                                  content: messageText,
+                                                                  senderId: senderId))
+                }
+            }
+        }
+        
+        self.messagesListeners.append(messageListener)
     }
     
     private func setupGroupListeners(for groupIds: [String]) {
@@ -155,14 +317,13 @@ class FirebaseManager: ObservableObject {
     
     private func setupMemberListeners(memberUsernames: [String], groupId: String) {
         
-        print(memberUsernames)
         
         for memberUsername in memberUsernames {
-            print("\(memberUsername) aaa")
-            getmemberlocation(memberUsername: memberUsername)
             
+            if !self.groupMembersLocations.keys.contains(memberUsername) {
+                getmemberlocation(memberUsername: memberUsername)
+            }
         }
-        print(memberListeners)
         
     }
     
@@ -170,7 +331,7 @@ class FirebaseManager: ObservableObject {
         
         let db = Firestore.firestore()
         
-        let memberListener = db.collection("users").document(memberUsername).addSnapshotListener { documentSnapshot, error in
+        let memberListener = db.collection("users").document(memberUsername).addSnapshotListener { [self] documentSnapshot, error in
             if let error = error {
                 print("Error fetching member document: \(error.localizedDescription)")
                 return
@@ -184,17 +345,27 @@ class FirebaseManager: ObservableObject {
             // member updates
             // activate the updates in mapview in the future
             
-            guard let location = document.get("location") as? GeoPoint else {
+            guard let location = document.get("location") as? [CGFloat] else {
                 print("Member document does not have all required fields sad")
                 return
             }
             
-            let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-            print("member coordinate: \(coordinate), \(memberUsername)")
+            guard let name = document.get("name") as? String else {
+                print("member document does not have name field")
+                return
+            }
+            
+            let coordinate = CLLocationCoordinate2D(latitude: location[0], longitude: location[1])
+            
+            self.usernameToName[memberUsername] = name
             
             self.groupMembersLocations[memberUsername] = coordinate
-            print(self.groupMembersLocations)
-                
+            
+            if let avatar = document.get("avatar") as? String {
+                self.groupMembersAvatars[memberUsername] = avatar
+            } else {
+                self.groupMembersAvatars[memberUsername] = ""
+            }
         }
         
         memberListeners.append(memberListener)
@@ -221,13 +392,28 @@ class FirebaseManager: ObservableObject {
         conversationListeners.removeAll()
     }
     
+    private func clearMessageListeners() {
+        for listener in messagesListeners {
+            listener.remove()
+        }
+        messagesListeners.removeAll()
+    }
+    
+    
     private func clearData() {
         currentUserName = ""
         userGroups.removeAll()
         groupMembers.removeAll()
         groupMembersLocations.removeAll()
+        messages.removeAll()
+        conversations.removeAll()
+        currentUserAvatar = ""
+        groupMembersAvatars.removeAll()
         clearGroupListeners()
         clearMemberListeners()
+        clearConversationListeners()
+        clearMessageListeners()
+        UserDefaults.standard.removeObject(forKey: "lastLoggedInUsername")
     }
     
     deinit {
@@ -237,5 +423,8 @@ class FirebaseManager: ObservableObject {
         userListener?.remove()
         clearGroupListeners()
         clearMemberListeners()
+        clearMessageListeners()
+        clearConversationListeners()
+        UserDefaults.standard.removeObject(forKey: "lastLoggedInUsername")
     }
 }

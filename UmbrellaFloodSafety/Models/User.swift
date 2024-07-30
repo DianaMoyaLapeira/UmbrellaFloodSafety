@@ -16,4 +16,5 @@ struct UserModel: Codable {
     let isChild: Bool
     let umbrellas: [String]
     let conversationsIds: [String]
+    let avatar: String
 }

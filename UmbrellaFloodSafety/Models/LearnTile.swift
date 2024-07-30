@@ -9,33 +9,39 @@ import SwiftUI
 
 struct LearnTile: View {
     var body: some View {
-        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-        .fill(
-            LinearGradient(
-                gradient: Gradient(stops: [
-                    Gradient.Stop(color: .accentGreen, location: 0.75),
-                    Gradient.Stop(color: .white, location: 0.25)
-                ]),
-                startPoint: .top,
-                endPoint: .bottom))
-        .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(.mainBlue))
-        .frame(height: 250)
-        .padding()
         
-        VStack {
-            Image(.umbrellaLogo)
+        ZStack(alignment: .top) {
+            RoundedRectangle(cornerRadius: 25)
+                .foregroundStyle(.mainBlue)
+            
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundStyle(.yellow)
+                .padding(.top)
+                .frame(width: 320, height: 170)
+            
+            Image(systemName: "exclamationmark.triangle")
                 .resizable()
                 .scaledToFit()
-                .padding()
-            Text("Lesson Name")
-                .font(.custom("Nunito", size: 24))
-                .fontWeight(.black)
-                .foregroundStyle(.mainBlue)
-                .padding(.bottom)
+                .foregroundStyle(Color.red)
+                .frame(width: 120)
+                .padding(.top, 35)
+            
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Text("Emergency Help")
+                        .foregroundStyle(.white)
+                        .font(.custom("Nunito", size: 32))
+                        .fontWeight(.black)
+                        .padding(.top, -65)
+                    
+                    Spacer()
+                }
+                .padding(.horizontal)
+            }
         }
         .frame(width: 350, height: 250)
-        .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(.mainBlue))
-        
             
     }
 }

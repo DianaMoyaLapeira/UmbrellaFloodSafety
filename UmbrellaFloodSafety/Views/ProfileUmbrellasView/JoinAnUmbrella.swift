@@ -111,7 +111,6 @@ struct JoinAnUmbrella: View {
             .frame(height: 70)
             .padding()
             
-            Spacer()
         }.navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

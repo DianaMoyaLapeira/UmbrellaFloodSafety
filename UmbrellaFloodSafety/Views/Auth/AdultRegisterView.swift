@@ -12,6 +12,7 @@ struct AdultRegisterView: View {
     @StateObject var viewModel = AdultRegisterViewViewModel()
     @State private var isSecure: Bool = true
     @Environment(\.dismiss) var dismiss
+    @State var isAvatarPresented = true
     
     var body: some View {
         VStack {
@@ -100,22 +101,27 @@ struct AdultRegisterView: View {
                 .padding(.bottom)
                 .frame(width: 300)
                 
-                
-                NavigationLink(destination: MainView()) {
-                    UMButton(title: "Create Account", background: .mainBlue) {
+                NavigationLink(destination: CreateAvatar(isPresented: $isAvatarPresented)
+                    .onAppear {
                         viewModel.register()
                     }
-                    .foregroundStyle(Color(.white))
-                    .fontWeight(.bold)
-                    .font(.custom("Nunito", size: 18))
+                
+                ) {
+                    ZStack {
+                        
+                        RoundedRectangle(cornerRadius: 25)
+                            .foregroundStyle(.mainBlue)
+                        
+                        Text("Create account")
+                            .font(.custom("Nunito", size: 18))
+                            .foregroundStyle(.white)
+                    }
+                    .frame(width: 300, height: 60)
                 }
-                .frame(width: 300, height: 60)
-                .padding(.top)
                 
                 Spacer()
             }
         }
-        .navigationTitle("Detail View")
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {

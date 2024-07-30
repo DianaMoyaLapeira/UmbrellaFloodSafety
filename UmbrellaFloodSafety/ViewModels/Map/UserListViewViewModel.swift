@@ -48,18 +48,41 @@ class UserListViewViewModel: ObservableObject {
     func lookUpAddress(location: CLLocationCoordinate2D) {
         
         let location = CLLocation(latitude: location.latitude, longitude: location.longitude)
+        print("Look up address function called")
         
         geocoder.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
+            
             if let error = error {
                 print("Reverse geocoding failed with error: \(error)")
                 DispatchQueue.main.async {
-                    self?.address = "Failed to retrieve address."
+                    self?.address = "Address unavailable :("
+                    return
                 }
-                return
             }
-            
+                
             if let placemark = placemarks?.first {
-                let address = "Near \(placemark.thoroughfare ?? ""), \(placemark.locality ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
+                var address = "Near "
+                
+                if placemark.subThoroughfare != nil {
+                    address.append("\(placemark.subThoroughfare ?? ""), ")
+                }
+                
+                if placemark.thoroughfare != nil {
+                    address.append("\(placemark.thoroughfare ?? ""), ")
+                }
+                
+                if placemark.locality != nil {
+                    address.append("\(placemark.locality ?? ""), ")
+                }
+                
+                if placemark.administrativeArea != nil {
+                    address.append("\(placemark.administrativeArea ?? ""), ")
+                }
+                
+                if placemark.country != nil {
+                    address.append("\(placemark.country ?? "")")
+                }
+                
                 DispatchQueue.main.async {
                     self?.address = address
                 }

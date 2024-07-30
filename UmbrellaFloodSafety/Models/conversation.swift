@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct message: Codable {
+struct message: Codable, Hashable, Identifiable {
     var id: String
     var timestamp: TimeInterval
     var content: String

@@ -25,10 +25,11 @@ struct UserListView: View {
             
             HStack {
                 
-                MapMarker(image: image, username: groupMember, frameWidth: 25, circleWidth: 80, lineWidth: 4)
-                    .frame(width: 80, height: 80)
+                if FirebaseManager.shared.groupMembersAvatars[groupMember] != "" || FirebaseManager.shared.groupMembersAvatars[groupMember] != nil {
+                    MapMarker(profileString: FirebaseManager.shared.groupMembersAvatars[groupMember] ?? "", username: groupMember, frameWidth: 25, circleWidth: 80, lineWidth: 4, paddingPic: 8, riskColor: .skinColor8)
+                        .frame(width: 80, height: 80)
                     .padding([.leading, .trailing])
-                    
+                }
                 
                 VStack {
                     HStack {

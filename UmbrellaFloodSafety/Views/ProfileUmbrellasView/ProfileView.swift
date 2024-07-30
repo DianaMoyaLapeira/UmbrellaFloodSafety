@@ -13,6 +13,7 @@ struct ProfileView: View {
     @State private var isSheetPresented = false
     @StateObject var viewModel: ProfileViewViewModel
     @Environment(\.presentationMode) var presentationMode
+    @State var showConfigurationSheet: Bool = false
     
     init(username: String) {
         self._viewModel = StateObject(wrappedValue: ProfileViewViewModel(username: username))
@@ -20,20 +21,27 @@ struct ProfileView: View {
     }
     
     var body: some View {
+        
+        
         NavigationStack {
-            VStack {
-                HStack {
-                    Spacer()
-                    Image(systemName: "bell")
-                }
-                .padding(.trailing)
                 
                 HStack {
                     Text("Profile")
                         .font(.custom("Nunito", size: 34))
                         .fontWeight(.black)
                         .foregroundStyle(Color(.mainBlue))
+                    
                     Spacer()
+                    
+                    Button {
+                        showConfigurationSheet.toggle()
+                    } label: {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.mainBlue)
+                    }
+                    
                 }
                 .padding()
                 
@@ -70,17 +78,21 @@ struct ProfileView: View {
                     Spacer()
                     
                     ZStack {
+                        
+                        Circle ()
+                            .frame(width: 120)
+                            .foregroundStyle(.white)
+                        
+                        if manager.currentUserAvatar != "" {
+                            ProfilePictureView(profileString: manager.currentUserAvatar)
+                                .clipShape(Circle())
+                                .frame(width: 120, height: 130, alignment: .bottom)
+                        }
+                       
                         Circle()
+                            .stroke(lineWidth: 6)
                             .frame(width: 130)
                             .foregroundStyle(Color.mainBlue)
-                        Circle()
-                            .frame(width: 120)
-                            .foregroundStyle(Color.white)
-                        Image(.adultWoman)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 120)
-                            .clipShape(Circle())
                     }
                     
                     Spacer()
@@ -105,12 +117,32 @@ struct ProfileView: View {
                 
                     ScrollView {
                         
-                        VStack() {
-                            ForEach(manager.userGroups.keys.sorted(), id: \.self) { groupId in
-                                UmbrellaListView(groupId: groupId)
+                        if manager.userGroups.count != 0 {
+                            VStack() {
+                                ForEach(manager.userGroups.keys.sorted(), id: \.self) { groupId in
+                                    NavigationLink(destination: UmbrellaView(groupId: groupId)) {
+                                        UmbrellaListView(groupId: groupId)
+                                    }
+                                }
+                            }.overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
+                                .padding()
+                        } else {
+                            VStack {
+                                Image(.mapEmptyState)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 350, height: 100)
+                                    .padding(.top)
+                                
+                                Text("No Umbrellas Yet")
+                                    .foregroundStyle(.mainBlue)
+                                    .font(.custom("Nunito", size: 18))
+                                    .bold()
+                                    .padding(.bottom)
                             }
-                        }.overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(Color.mainBlue))
-                            .padding()
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
+                                .padding()
+                        }
                            
                         ZStack {
                             RoundedRectangle(cornerRadius: 25)
@@ -144,15 +176,15 @@ struct ProfileView: View {
                     
                 Spacer()
             }
+            .sheet(isPresented: $showConfigurationSheet, content: {
+                Settings(isPresented: $showConfigurationSheet)
+            })
             .sheet(isPresented: $isSheetPresented, content: {
                 EditProfileView(isPresented: $isSheetPresented, username: viewModel.username)
                     })
-            .onAppear{
-                StorageManager.shared.fetchProfileImageURL()
-            }
+            
         }
     }
-}
 
 #Preview {
     ProfileView(username: "Testadult")

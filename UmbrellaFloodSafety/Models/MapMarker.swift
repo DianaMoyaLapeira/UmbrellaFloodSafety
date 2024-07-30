@@ -10,20 +10,26 @@ import CoreLocation
 
 struct MapMarker: View {
     
-    var image: Image
+    var profileString: String
+    @ObservedObject var firebaseManager = FirebaseManager.shared
     var username: String
     var frameWidth: CGFloat
     var circleWidth: CGFloat
     var lineWidth: CGFloat
-    @State var riskLevel: Int = 3
+    var paddingPic: CGFloat
     @State var riskColor: Color = .gray
+    
     var body: some View {
         
         ZStack() {
-            image
-                .resizable()
-                .scaledToFit()
+            
+            Circle()
+                .foregroundStyle(.mainBlue.opacity(0.1))
+            
+            ProfilePictureView(profileString: profileString)
                 .clipShape(Circle())
+                .padding(.top, paddingPic)
+                .frame(alignment: .bottom)
                 
             
             Circle()
@@ -41,32 +47,38 @@ struct MapMarker: View {
                         .padding([.top, .leading])
                         .onAppear {
                             Task {
-                                let risk = await WeatherManager().getRiskLevel(coordinate: FirebaseManager.shared.groupMembersLocations[username] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
-                                riskLevel = risk
-                                riskColor = getColor()
+                                riskColor = await getRiskColor()
                             }
-                    }
+                        }
+                        .onChange(of: firebaseManager.groupMembersLocations[username]) {
+                            Task {
+                                riskColor = await getRiskColor()
+                            }
+                        }
                 }
             }.frame(width: circleWidth)
         }.frame(height: circleWidth)
     }
     
-    private func getColor() -> Color {
-        switch self.riskLevel {
-        case 3:
-            return .gray
-        case 2:
-            return .red
-        case 1:
-            return Color.accentYellow
-        case 0:
-            return Color.accentGreen
+    func getRiskColor() async -> Color {
+        var riskLevel: Int = 0
+
+        riskLevel = await WeatherManager().getRiskLevel(coordinate: firebaseManager.groupMembersLocations[username] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+        
+        switch riskLevel {
+        case 0: return .accentGreen
+        case 1: return .accentYellow
+        case 2: return .red
         default:
             return .gray
         }
+
     }
 }
 
+
+
 #Preview {
-    MapMarker(image: Image(.children), username: "testadult", frameWidth: 100, circleWidth: 400, lineWidth: 8)
+    MapMarker(profileString: "skin3,shirt8,lightbrownback1;lightbrownfront1,mouth5,blush3,"
+              , username: "testadult", frameWidth: 100, circleWidth: 400, lineWidth: 8, paddingPic: 20)
 }

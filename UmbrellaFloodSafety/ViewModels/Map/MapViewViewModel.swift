@@ -21,14 +21,12 @@ class MapViewViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     var firebaseManager = FirebaseManager.shared
-    var username: String = ""
     
     @Published var selection: String = "No Umbrella yet"
     @Published var location = CLLocationManager().location
     @Published var userGroups: Dictionary<String, String> = ["111111":"TestGroup"]
     
     init() {
-        getUsername()
         setupSubscriptions()
     }
     
@@ -37,10 +35,6 @@ class MapViewViewModel: ObservableObject {
     }
     
     private let db = Firestore.firestore()
-    
-    private func getUsername() {
-        self.username = firebaseManager.currentUserUsername
-    }
     
     private func setupSubscriptions() {
             firebaseManager.$userGroups
@@ -59,11 +53,11 @@ class MapViewViewModel: ObservableObject {
     
     func updateLocationinDB() {
         
-        let userGeoPoint = GeoPoint(latitude: location?.coordinate.latitude ?? 888, longitude: location?.coordinate.longitude ?? 888)
+        let userCoordinates = [location?.coordinate.latitude ?? 888, location?.coordinate.longitude ?? 888]
         
         db.collection("users")
-            .document("\(username)")
-            .updateData(["location": userGeoPoint]) { error in
+            .document("\(firebaseManager.currentUserUsername)")
+            .updateData(["location": userCoordinates]) { error in
                 if let error = error {
                     print("Error updating location: \(error)")
                 } else {

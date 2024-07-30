@@ -24,7 +24,7 @@ struct memberLocationMap: Identifiable, Hashable {
 struct MapView: View {
     
     @State private var showSheet: Bool = true
-    @StateObject var viewModel = MapViewViewModel.shared
+    @ObservedObject var viewModel = MapViewViewModel.shared
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @State private var selection = "Red"
     let colors = ["Red", "Green", "Blue", "Black", "Tartan"]
@@ -57,39 +57,63 @@ struct MapView: View {
                 } label: {
                     Image(systemName: "bell")
                         .resizable()
-                        .frame(width: 34, height: 34)
+                        .frame(width: 30, height: 30)
                         .foregroundStyle(Color.mainBlue)
                 }
             }
             .padding()
             
             
-            ZStack(alignment: .topLeading) {
-                Map() {
-                    
-                        Annotation("", coordinate: CLLocationCoordinate2D(latitude: 9.940158, longitude: -84.144093), anchor: .bottom) {
-
-                                MapMarker(image: Image(.children), username: "testadult", frameWidth: 30, circleWidth: 100, lineWidth: 5)
+            ZStack(alignment: .topLeading)
+                {
+                    Map() {
+                        
+                        ForEach(firebaseManager.groupMembers[viewModel.selection] ?? [], id: \.self) { member in
+                            
+                            if firebaseManager.groupMembersAvatars[member] != "" || firebaseManager.groupMembers[member] != nil {
+                                Annotation("", coordinate: firebaseManager.groupMembersLocations[member] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) {
                                     
-                    }
-                }
-                if viewModel.selection != "No Umbrellas yet" {
-                    Picker("Select an Umbrella", selection: $viewModel.selection) {
-                    ForEach(firebaseManager.userGroups.keys.sorted(), id: \.self) { groupId in
-                        if let groupName = firebaseManager.userGroups[groupId] {
-                            Text("\(groupName)").tag(groupId as String?)
-                                .font(.custom("Nunito", size: 18))
+                                    MapMarker(profileString: firebaseManager.groupMembersAvatars[member] ?? "", username: member, frameWidth: 30, circleWidth: 100, lineWidth: 5, paddingPic: 5)
+                                }
+                            }
                         }
                     }
-                }
-                    .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.white))
-                    .pickerStyle(.menu)
-                    .padding()
+                    
+                    HStack {
+                        
+                        Call911Button()
+                            .padding()
+                        
+                        Spacer()
+                        
+                        if viewModel.selection != "No Umbrellas yet" {
+                            Picker("Select an Umbrella", selection: $viewModel.selection) {
+                            ForEach(firebaseManager.userGroups.keys.sorted(), id: \.self) { groupId in
+                                if let groupName = firebaseManager.userGroups[groupId] {
+                                    Text("\(groupName)").tag(groupId as String?)
+                                        .font(.custom("Nunito", size: 18))
+                                }
+                            }
+                        }
+                        .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.white))
+                        .pickerStyle(.menu)
+                        .padding()
+                    }
                 }
             }
-            
-            
         }
+        .onAppear(perform: {
+            NotificationViewViewModel.shared.getRiskNotifications()
+        })
+        .onChange(of: firebaseManager.groupMembersLocations, {
+            NotificationViewViewModel.shared.getRiskNotifications()
+        })
+        .sheet(isPresented: $showNotificationSheet, content: {
+            NotificationView(isPresented: $showNotificationSheet)
+                .frame(width: 400)
+            
+        })
+        .presentationDragIndicator(.visible)
     }
 }
 

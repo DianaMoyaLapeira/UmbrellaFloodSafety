@@ -16,18 +16,27 @@ class WeatherManager {
     
     private let weatherService = WeatherService()
     var weather: Weather?
+    var alerts: [WeatherAlert] = []
+    var floodWarnings: [WeatherAlert] = []
+    var floodAdvisories: [WeatherAlert] = []
+    var floodWatches: [WeatherAlert] = []
     
     func getWeather(coordinate: CLLocationCoordinate2D) async {
         do {
             weather = try await Task.detached(priority: .userInitiated) { [weak self] in
                 return try await self?.weatherService.weather(for: .init(latitude: coordinate.latitude, longitude: coordinate.longitude))
             }.value
+            
+            self.alerts = fetchWeatherAlerts()
+            
+            getFloodWarnings()
+            
         } catch {
             print("Failed to get weather data. \(error)")
         }
     }
     
-    var fetchWeatherAlerts: [WeatherAlert] {
+    func fetchWeatherAlerts() -> [WeatherAlert] {
         
         var floodAlerts: [WeatherAlert] = []
         
@@ -39,15 +48,14 @@ class WeatherManager {
                 }
             }
         }
-        
         return floodAlerts
     }
     
-    var floodWarnings: [WeatherAlert] {
+    func getFloodWarnings() {
         
         var warnings: [WeatherAlert] = []
         
-        var potentiallyWarningAlerts = self.fetchWeatherAlerts
+        let potentiallyWarningAlerts = self.alerts
         
         for alert in potentiallyWarningAlerts {
             if alert.summary.lowercased().contains("warning") {
@@ -55,15 +63,16 @@ class WeatherManager {
             }
         }
         
-        return warnings
+        floodWarnings = warnings
         
+        getFloodAdvisories()
     }
     
-    var floodAdvisories: [WeatherAlert] {
+    func getFloodAdvisories() {
         
         var warnings: [WeatherAlert] = []
         
-        var potentialFloodAdvisories = self.fetchWeatherAlerts
+        let potentialFloodAdvisories = self.alerts
         
         for alert in potentialFloodAdvisories {
             if alert.summary.lowercased().contains("advisory") {
@@ -71,23 +80,23 @@ class WeatherManager {
             }
         }
         
-        return warnings
-        
+        floodAdvisories = warnings
+        getFloodWatches()
     }
     
-    var floodWatches: [WeatherAlert] {
+    func getFloodWatches() {
         
         var warnings: [WeatherAlert] = []
         
-        var potentialFloodWatches = self.fetchWeatherAlerts
+        let potentialFloodWatches = self.alerts
         
         for alert in potentialFloodWatches {
-            if alert.summary.lowercased().contains("advisory") {
+            if alert.summary.lowercased().contains("watch") {
                 warnings.append(alert)
             }
         }
         
-        return warnings
+        floodWarnings = warnings
         
     }
     

@@ -26,7 +26,7 @@ struct UMButtonStoke: View {
                     .foregroundColor(background)
             }
         }
-        
+            
     }
 }
 

@@ -12,7 +12,7 @@ import FirebaseStorage
 
 class EditProfileViewViewModel: ObservableObject {
     
-    var storageManager = StorageManager.shared
+   
     var firebaseManager = FirebaseManager.shared
     @Published var uploadStatus: String = ""
     @Published var username: String = ""
@@ -64,30 +64,4 @@ class EditProfileViewViewModel: ObservableObject {
         }
     }
     
-    func uploadImageIntoStorage(data: Data) {
-        guard self.username != "" else {
-            print("Username is empty")
-            return
-        }
-        let storageRef = Storage.storage().reference().child("users/\(username).jpg")
-        storageRef.putData(data, metadata: nil) { metadata, error in
-            if let error = error {
-                self.uploadStatus = "Error uploading image: \(error.localizedDescription)"
-                return
-            }
-            self.uploadStatus = "Image uploaded successfully"
-            
-            storageRef.downloadURL { url, error in
-                if let error = error {
-                    print("Error retrieving download pfp URL: \(error.localizedDescription)")
-                } else if let url = url {
-                    DispatchQueue.main.async {
-                        self.storageManager.ProfileImageURL = url.absoluteString
-                        print("Successfully obtained pfp URL: \( String(describing: self.storageManager.ProfileImageURL))")
-                        
-                    }
-                }
-            }
-        }
     }
-}

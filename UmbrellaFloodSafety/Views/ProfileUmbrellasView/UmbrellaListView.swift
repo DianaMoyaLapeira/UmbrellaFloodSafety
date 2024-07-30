@@ -15,16 +15,16 @@ struct UmbrellaListView: View {
         if let members = firebaseManager.groupMembers[groupId] {
             return members.joined(separator: ", ")
         }
-        return ("No members yet. Use my code to add some!")
+        return ("No members yet. Use Umbrella code to add some!")
     }
     
     var body: some View {
-        NavigationLink(destination: NewUmbrellaView(username: "testadult")) {
+        NavigationLink(destination: UmbrellaView(groupId: groupId)) {
             VStack {
                 HStack {
                     VStack {
                         HStack {
-                            Text("\( firebaseManager.userGroups[groupId] ?? "Group has no name")")
+                            Text("\( firebaseManager.userGroups[groupId] ?? "Umbrella has no name")")
                                 .font(.custom("Nunito", size: 24))
                                 .foregroundStyle(.black)
                             .fontWeight(.bold)
@@ -36,13 +36,14 @@ struct UmbrellaListView: View {
                             Text("Members: \(membersOfGroup)")
                                 .font(.custom("Nunito", size: 18))
                                 .foregroundStyle(Color(.darkGray))
+                                .multilineTextAlignment(.leading)
                             
                             Spacer()
                             
                         }
                         HStack {
                             
-                            Text("Group Code: \(groupId)")
+                            Text("Umbrella Code: \(groupId)")
                                 .font(.custom("Nunito", size: 18))
                                 .foregroundStyle(Color(.darkGray))
                             

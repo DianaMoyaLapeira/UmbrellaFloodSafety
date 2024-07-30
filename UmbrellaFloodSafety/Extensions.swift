@@ -28,15 +28,15 @@ extension Encodable {
 }
 
 extension AppDelegate {
-    
-    func startSignificantLocationChanges() {
-        locationManager.startMonitoringSignificantLocationChanges()
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.list, .banner, .sound, .badge])
     }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        self.location = location
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        if let conversationId = userInfo["conversationId"] as? String, let senderId = userInfo["senderId"] as? String, let content = userInfo["content"] as? String {
+        }
+        completionHandler()
     }
 }
 
@@ -48,5 +48,30 @@ extension Int {
         self.init(Int(min + arc4random_uniform(max - min)) - delta)
     }
 }
+
+protocol OpenURLProtocol {
+    func open(_ url: URL)
+}
+
+extension UIApplication: OpenURLProtocol {
+    func open(_ url: URL) {
+        open(url, options: [:], completionHandler: nil)
+    }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
+
+extension Data {
+    var hexString: String {
+        let hexString = map { String(format: "%02.2hhx", $0) }.joined()
+        return hexString
+    }
+}
+
+
 
 

@@ -34,53 +34,29 @@ class AdultRegisterViewViewModel: ObservableObject {
     
     private func insertUserRecord(id: String) {
         let newUser = UserModel(id: id,
-                           username: username,
-                           name: name,
-                           joined: Date().timeIntervalSince1970,
-                           isChild: false,
+                            username: username,
+                            name: name,
+                            joined: Date().timeIntervalSince1970,
+                            isChild: false,
                             umbrellas: [],
-                            conversationsIds: [])
+                            conversationsIds: [],
+                            avatar: "skin11,shirt1,black,mouth1,,")
         let db = Firestore.firestore()
         
         db.collection("users")
             .document(username.lowercased())
             .setData(newUser.encodeJSONToDictionary())
         
-        let logoImageData = UIImage(resource: .umbrellaLogo).jpegData(compressionQuality: 0.7)
+        let logoImageData = UIImage(resource: .umbrellaLogo).jpegData(compressionQuality: 0.5)
         
         guard logoImageData != nil else {
             print("logo image data was nil")
             return
         }
         
-        uploadImageIntoStorage(data: logoImageData!)
     }
     
-    private func uploadImageIntoStorage(data: Data) {
-        guard self.username != "" else {
-            print("Username is empty")
-            return
-        }
-        let storageRef = Storage.storage().reference().child("users/\(username).jpg")
-        storageRef.putData(data, metadata: nil) { metadata, error in
-            if let error = error {
-                print("error while uploading image: \(error.localizedDescription)")
-                return
-            }
-            
-            storageRef.downloadURL { url, error in
-                if let error = error {
-                    print("Error retrieving download pfp URL: \(error.localizedDescription)")
-                } else if let url = url {
-                    DispatchQueue.main.async {
-                        StorageManager.shared.ProfileImageURL = url.absoluteString
-                        print("Successfully obtained pfp URL: \( String(describing: StorageManager.shared.ProfileImageURL))")
-                        
-                    }
-                }
-            }
-        }
-    }
+   
     
     private func validate() -> Bool {
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty,
