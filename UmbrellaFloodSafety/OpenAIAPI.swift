@@ -6,74 +6,37 @@
 //
 
 import Foundation
-
-struct ChatMessage: Codable {
-    let role: String
-    let content: String
-}
-
-struct OpenAiChatRequest: Codable {
-    let model: String
-    let messages: [ChatMessage]
-    let max_tokens: Int
-}
-
-struct OpenAIChatResponse: Codable {
-    let choices: [ChatChoice]
-}
-
-struct ChatChoice: Codable {
-    let message: ChatMessage
-}
+import FirebaseFunctions
 
 class OpenAIAPI {
-    private let apiKey = "sk-proj-GER0osw0yuWXTImyJsVHT3BlbkFJAcq4ojCZZddATdwiuWgY"
-    private let apiURL = "https://api.openai.com/v1/chat/completions"
     
-    func fetchResponse(messages: [ChatMessage], model: String, completion: @escaping(String?) -> Void) {
-        guard let url = URL(string: apiURL) else {
-            completion(nil)
+    func fetchResponse(with userMessage: String, completion: @escaping (Result<[String:Any], Error>) -> Void){
+        let functions = Functions.functions()
+        var model = ""
+        
+        if FirebaseManager.shared.isChild {
+            model = "callOpenAIChild"
+        } else {
+            model = "callOpenAIAdult"
+        }
+        
+        guard model != "" else {
+            print("Model not defined")
             return
         }
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        
-        let chatRequest = OpenAiChatRequest(model: model, messages: messages, max_tokens: 88)
-        
-        do {
-            let requestData = try JSONEncoder().encode(chatRequest)
-            request.httpBody = requestData
-        } catch {
-            print("Failed to encode request: \(error)")
-            completion(nil)
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Request error: \(error)")
-                completion(nil)
+        functions.httpsCallable(model).call(["message": userMessage]) { result, error in
+            if let error = error as? NSError {
+                completion(.failure(error))
                 return
             }
             
-            guard let data = data else {
-                completion(nil)
-                return
-            }
-            
-            do {
-                let chatResponse = try JSONDecoder().decode(OpenAIChatResponse.self, from: data)
-                let responseText = chatResponse.choices.first?.message.content
-                completion(responseText)
-            } catch {
-                print("Failed to decode response: \(error)")
-                completion(nil)
+            if let data = result?.data as? [String: Any] {
+                completion(.success(data))
+            } else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response format."])))
             }
         }
         
-        task.resume()
     }
 }

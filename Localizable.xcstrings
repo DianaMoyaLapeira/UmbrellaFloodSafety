@@ -21,8 +21,25 @@
         }
       }
     },
+    "1. The floods most likely to affect our home are: (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Las inundaciones con más probabilidades de afectar a nuestro hogar son: (opcional)"
+          }
+        }
+      }
+    },
     "2. Stay away from \nthe flood water" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Manténgase alejado del agua de indundación"
+          }
+        }
+      }
     },
     "2. Stay away from the flood water" : {
       "extractionState" : "manual",
@@ -35,8 +52,25 @@
         }
       }
     },
+    "2. What are the escape routes from our home? (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Cuáles son las rutas de escape desde nuestro hogar (opcional) "
+          }
+        }
+      }
+    },
     "3. Find a trusted \nadult" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Encuentra un adulto de confianza"
+          }
+        }
+      }
     },
     "3. Find a trusted adult" : {
       "extractionState" : "manual",
@@ -45,6 +79,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3. Encuentra un adulto de confianza"
+          }
+        }
+      }
+    },
+    "3. If separated during an emergency, what is our meeting place near our home? (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Si estamos separados durante una emergencia, cuál es nuestro lugar de encuentro cerca de nuestro hogar? (opcional)"
+          }
+        }
+      }
+    },
+    "4. If we cannot return home or are asked to evacuate, what is our meeting place outside of our neighborhood? (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Si no podemos regresar a casa o tenemos que evacuar, cuál es nuestro lugar de encuentro fuera de nuestro vecindario? (opcional)"
           }
         }
       }
@@ -61,10 +115,24 @@
       }
     },
     "4. If you still feel unsafe or there are no adults, call 911" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Si todavía te sientes en peligro o no hay adultos cerca, llama al 911"
+          }
+        }
+      }
     },
     "5. Call or text    trusted adults" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Llame o envíe mensajes de texto a adultos de confianza. "
+          }
+        }
+      }
     },
     "5. Call or text trusted adults " : {
       "extractionState" : "manual",
@@ -78,16 +146,44 @@
       }
     },
     "A gray circle means that Umbrella is trying to get the weather for a location." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un círculo gris significa que Umbrella está intentando obtener el clima de un lugar. "
+          }
+        }
+      }
     },
     "A green circle stands for no current flood warnings. This means that the National Weather Service has not given flood warnings for someone's location." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un círculo verde significa que no hay advertencias de inundaciones actuales. Esto significa que el Servicio Meteorológico Nacional no ha emitido advertencias de inundaciones para la ubicación de nadie."
+          }
+        }
+      }
     },
     "A red circle stands for a flood warning. This means that flooding will happen or is happening in someone's area." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un círculo rojo representa una advertencia de inundación. Esto significa que se producirán o se están produciendo inundaciones en el área de alguien."
+          }
+        }
+      }
     },
     "A yellow circle stands for a flood advisory or watch in someone's area. A flood advisory means that a little flooding (not life-threatening) may happen. A flood watch means that flooding is more likely than normal." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un círculo amarillo representa un aviso o vigilancia de inundación en el área de alguien. Un aviso de inundación significa que puede ocurrir una pequeña inundación (que no pone en peligro la vida). Una alerta de inundación significa que es más probable que se produzcan inundaciones de lo normal."
+          }
+        }
+      }
     },
     "Accessories" : {
       "extractionState" : "manual",
@@ -112,13 +208,34 @@
       }
     },
     "Block" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear "
+          }
+        }
+      }
     },
     "Block User" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear usuario"
+          }
+        }
+      }
     },
     "Block User?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bloquear usarlo?"
+          }
+        }
+      }
     },
     "Blocked Users" : {
       "extractionState" : "manual",
@@ -160,22 +277,124 @@
       }
     },
     "Call 911" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llama al 911"
+          }
+        }
+      }
     },
     "Call 911?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Llama al 911?"
+          }
+        }
+      }
     },
     "Cancel" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "Cell Phone Number (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de celular (opcional)"
+          }
+        }
+      }
+    },
+    "Cell Phone: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celular: %@"
+          }
+        }
+      }
+    },
+    "Cell Phone: None yet" : {
 
+    },
+    "Click to edit" : {
+
+    },
+    "Color: %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color: %@"
+          }
+        }
+      }
+    },
+    "Color: None yet" : {
+
+    },
+    "Contact info" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información de contacto"
+          }
+        }
+      }
+    },
+    "Contact Info (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información de contacto (opcional)"
+          }
+        }
+      }
     },
     "Contact Umbrella Flood Safety through \ncontact@umbrellafloodsafety.com" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comuníquese con Umbrella Flood Safety a través de \ncontacto@umbrellafloodsafety.com"
+          }
+        }
+      }
     },
     "Create A New Group" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear una Umbrella"
+          }
+        }
+      }
     },
     "Create account" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear cuenta"
+          }
+        }
+      }
     },
     "Create Account" : {
       "extractionState" : "manual",
@@ -183,7 +402,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Crea Cuenta"
+            "value" : "Crea cuenta"
           }
         }
       }
@@ -200,7 +419,14 @@
       }
     },
     "Create an Umbrella" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear una Umbrella"
+          }
+        }
+      }
     },
     "Create Umbrella" : {
       "extractionState" : "manual",
@@ -214,7 +440,14 @@
       }
     },
     "Create Your \nAccount" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crea tu cuenta"
+          }
+        }
+      }
     },
     "Create Your \\nAccount" : {
       "extractionState" : "manual",
@@ -228,10 +461,24 @@
       }
     },
     "Delete Account" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar cuenta"
+          }
+        }
+      }
     },
     "Delete Account?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar cuenta?"
+          }
+        }
+      }
     },
     "Done" : {
       "extractionState" : "manual",
@@ -245,13 +492,44 @@
       }
     },
     "Edit Avatar" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar avatar"
+          }
+        }
+      }
+    },
+    "Edit Emergency Plan" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar plan de emergencia"
+          }
+        }
+      }
     },
     "Edit Name" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar nombre"
+          }
+        }
+      }
     },
     "Edit Password" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar contraseña"
+          }
+        }
+      }
     },
     "Edit Profile" : {
       "extractionState" : "manual",
@@ -260,6 +538,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Editar perfil"
+          }
+        }
+      }
+    },
+    "Email address (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dirección de correo electrónico (opcional)"
+          }
+        }
+      }
+    },
+    "Email address: None yet" : {
+
+    },
+    "Email: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correo electrónico: %@"
           }
         }
       }
@@ -286,14 +588,208 @@
         }
       }
     },
+    "Enter cell phone number" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese el número de teléfono celular"
+          }
+        }
+      }
+    },
+    "Enter contact info" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese información de contacto"
+          }
+        }
+      }
+    },
+    "Enter email address" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese dirección de correo electrónico"
+          }
+        }
+      }
+    },
+    "Enter evacuation plan" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese plan de evacuación"
+          }
+        }
+      }
+    },
+    "Enter evacuation site" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese sitio de evacuación"
+          }
+        }
+      }
+    },
+    "Enter home phone number" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese el número de teléfono de casa"
+          }
+        }
+      }
+    },
+    "Enter name" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese el nombre"
+          }
+        }
+      }
+    },
     "Enter recovery email here: " : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese el correo electrónico de recuperación aquí"
+          }
+        }
+      }
+    },
+    "Enter registration #" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese numero de registro"
+          }
+        }
+      }
     },
     "Enter the six digit group code" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese el código de grupo de seis dígitos"
+          }
+        }
+      }
+    },
+    "Enter Title" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese el título"
+          }
+        }
+      }
+    },
+    "Enter type" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingrese el tipo de mascota"
+          }
+        }
+      }
+    },
+    "Escape route from home" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruta de escape desde casa"
+          }
+        }
+      }
+    },
+    "Evacuation Plan for Children" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan de evacuación para niños"
+          }
+        }
+      }
+    },
+    "Evacuation site" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sitio de evacuación"
+          }
+        }
+      }
+    },
+    "Evacuation Site" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sitio de evacuación "
+          }
+        }
+      }
     },
     "Everything good!" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo bien!"
+          }
+        }
+      }
+    },
+    "External Emergency Contacts" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactos de emergencia externos"
+          }
+        }
+      }
+    },
+    "Familia's Emergency Plan" : {
 
+    },
+    "Family Member Contact Info" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información de contacto de la familia"
+          }
+        }
+      }
+    },
+    "First choice route" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruta de primera elección"
+          }
+        }
+      }
     },
     "First Name" : {
       "extractionState" : "manual",
@@ -306,20 +802,65 @@
         }
       }
     },
+    "Flash floods, coastal floods, etc." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inundaciones repentinas, inundaciones costeras, etc."
+          }
+        }
+      }
+    },
     "Flood Advisory or Watch" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso o vigilancia de inundaciones"
+          }
+        }
+      }
     },
     "Flood Safety Sources" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuentes de información sobre la seguridad contra inundaciones"
+          }
+        }
+      }
     },
     "Flood Status" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estado de inundación"
+          }
+        }
+      }
     },
     "Flood Warning" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso de inundación"
+          }
+        }
+      }
     },
     "For kids" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para niños"
+          }
+        }
+      }
     },
     "For Kids" : {
       "extractionState" : "manual",
@@ -355,10 +896,24 @@
       }
     },
     "Glasses" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anteojos"
+          }
+        }
+      }
     },
     "Group Name" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de grupo"
+          }
+        }
+      }
     },
     "Hair" : {
       "extractionState" : "manual",
@@ -400,9 +955,46 @@
       }
     },
     "Hello %@!" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello %@"
+          }
+        }
+      }
     },
     "Hello, World!" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hola mundo!"
+          }
+        }
+      }
+    },
+    "Home Phone Number (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de teléfono residencial (opcional)"
+          }
+        }
+      }
+    },
+    "Home Phone: %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teléfono de la casa: %@"
+          }
+        }
+      }
+    },
+    "Home Phone: None yet" : {
 
     },
     "I Already Have an Account" : {
@@ -417,7 +1009,14 @@
       }
     },
     "I Already Have An Account" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya tengo una cuenta"
+          }
+        }
+      }
     },
     "I'm A Kid" : {
       "extractionState" : "manual",
@@ -442,10 +1041,24 @@
       }
     },
     "Join an Umbrella" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unirse a una Umbrella"
+          }
+        }
+      }
     },
     "Join An Umbrella" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unirse a una Umbrella"
+          }
+        }
+      }
     },
     "Join Umbrella" : {
       "extractionState" : "manual",
@@ -502,6 +1115,46 @@
         }
       }
     },
+    "Make an Emergency Plan" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear un plan de emergencia"
+          }
+        }
+      }
+    },
+    "Make New" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear nuevo"
+          }
+        }
+      }
+    },
+    "Meeting place near home" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lugar de encuentro cerca de casa"
+          }
+        }
+      }
+    },
+    "Meeting place outside neighborhood" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lugar de encuentro fuera del vecindario"
+          }
+        }
+      }
+    },
     "Members" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -514,10 +1167,24 @@
       }
     },
     "Members: %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miembros: %@"
+          }
+        }
+      }
     },
     "Message" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mensaje"
+          }
+        }
+      }
     },
     "Messages" : {
       "extractionState" : "manual",
@@ -536,6 +1203,16 @@
         }
       }
     },
+    "My Emergency Plans" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mis planes de emergencia"
+          }
+        }
+      }
+    },
     "MyUmbrellas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -547,11 +1224,45 @@
         }
       }
     },
+    "Name" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
+          }
+        }
+      }
+    },
+    "Name (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre (opcional)"
+          }
+        }
+      }
+    },
     "National Water Prediction Service" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El Servicio Nacional de Meteorología"
+          }
+        }
+      }
     },
     "National Weather Service Flood Safety Tips" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consejos de seguridad contra inundaciones del Servicio Meteorológico Nacional"
+          }
+        }
+      }
     },
     "Near" : {
       "extractionState" : "manual",
@@ -569,6 +1280,18 @@
           }
         }
       }
+    },
+    "New Child Evacuation Plan" : {
+
+    },
+    "New Family Emergency Contact" : {
+
+    },
+    "New Pet Emergency Info" : {
+
+    },
+    "New Special Needs/Disabilities Plan" : {
+
     },
     "No Connection" : {
 
@@ -613,6 +1336,30 @@
         }
       }
     },
+    "Pet Info" : {
+
+    },
+    "Plan" : {
+
+    },
+    "Plan Name" : {
+
+    },
+    "Plan of Action" : {
+
+    },
+    "Plan Title" : {
+
+    },
+    "Plan Title:" : {
+
+    },
+    "Plans for Special Needs/Disabilities" : {
+
+    },
+    "Prepare" : {
+
+    },
     "Prepare for Floods" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -641,6 +1388,15 @@
     "Recovery Email" : {
 
     },
+    "Registration # (optional)" : {
+
+    },
+    "Registration #: %@" : {
+
+    },
+    "Registration #: None yet" : {
+
+    },
     "Remove" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -656,6 +1412,15 @@
 
     },
     "Report User" : {
+
+    },
+    "Safe room" : {
+
+    },
+    "Safe Room" : {
+
+    },
+    "Second choice route" : {
 
     },
     "Select an Umbrella" : {
@@ -730,7 +1495,10 @@
         }
       }
     },
-    "text input" : {
+    "Tap here to go to plan" : {
+
+    },
+    "text message" : {
 
     },
     "Text through Umbrella" : {
@@ -747,7 +1515,19 @@
         }
       }
     },
+    "Title" : {
+
+    },
+    "Type (optional)" : {
+
+    },
     "Type reason for reporting here" : {
+
+    },
+    "Type: %@" : {
+
+    },
+    "Type: None yet" : {
 
     },
     "Umbrella" : {
@@ -799,7 +1579,14 @@
       }
     },
     "We are sorry that you've had a bad experience with user %@. \n\nPlease let us know why so we can take appropriate measures." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lamentamos que hayas tenido una mala experiencia con el usuario %@. \n\nPor favor, háganos saber por qué para que podamos tomar las medidas adecuadas."
+          }
+        }
+      }
     },
     "Welcome Back!" : {
       "extractionState" : "manual",
@@ -824,7 +1611,44 @@
       }
     },
     "What do the green, yellow, or red circles mean?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué significan los círculos verdes, amarillos, o rojos? "
+          }
+        }
+      }
+    },
+    "What is an accessible, safe room where we can go, seal windows, vents and doors and listen to emergency broadcasts for instructions?" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es una habitación accesible y segura donde podemos ir, sellar ventanas, rejillas de ventilación y puertas y escuchar transmisiones de emergencia para recibir instrucciones?"
+          }
+        }
+      }
+    },
+    "What is an alternate route to get there? (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cuál es una ruta alternativa para llegar allí? (opcional)"
+          }
+        }
+      }
+    },
+    "What is our route to get there? (optional)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cual es nuestra ruta para llegar allí? (opcional)"
+          }
+        }
+      }
     },
     "You have no blocked users" : {
       "extractionState" : "manual",

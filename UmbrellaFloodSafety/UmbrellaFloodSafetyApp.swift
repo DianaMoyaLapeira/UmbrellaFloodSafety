@@ -10,11 +10,10 @@ import FirebaseFirestore
 import FirebaseAuth
 import SwiftUI
 import CoreLocation
-import FirebaseMessaging
 
 
 @Observable
-class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
  
     var location: CLLocation = CLLocation(latitude: 37.3346, longitude: 122.0090)
     let locationManager = CLLocationManager()
@@ -42,10 +41,20 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, M
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-           guard let newLocation = locations.last else { return }
-            print("New Location for updating: \(newLocation)")
-           // Call your Firebase manager function
-           FirebaseManager.shared.updateLocation(newLocation: newLocation)
+        guard let newLocation = locations.last else { return }
+        
+        var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+        backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "LocationUpdate") {
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            backgroundTask = .invalid
+        }
+    
+        print("New Location for updating: \(newLocation)")
+        // Call Firebase manager function and end task when location updates
+        FirebaseManager.shared.updateLocation(newLocation: newLocation) { success in
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            backgroundTask = .invalid
+        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

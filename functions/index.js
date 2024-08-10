@@ -7,7 +7,6 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-const {initializeApp} = require("firebase-admin/app");
 const {OpenAI} = require("openai");
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
@@ -15,23 +14,10 @@ const apn = require("apn");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-const {SecretManagerServiceClient} = require("@google-cloud/secret-manager");
 
-initializeApp();
+admin.initializeApp();
+
 const db = admin.firestore();
-const secretClient = new SecretManagerServiceClient();
-
-
-/**
- *
- * @param {string} name the name of the secret or path toward it
- * @return {string} the secret content
- */
-async function getSecret(name) {
-  const [version] = await secretClient.accessSecretVersion({name});
-  const payload = version.payload.data.toString("utf8");
-  return payload;
-}
 
 
 const apnProvider = new apn.Provider({
@@ -50,6 +36,8 @@ const serverKeyPath = path.join(__dirname, "AuthKey_SN4RX6DW9J.p8");
 
 const privateKey = fs.readFileSync(serverKeyPath, "utf8");
 
+const openAIKey = functions.config().openai.apikey;
+
 /**
  * Generates a JWT for auth with Apple WeatherKit API.
  * @return {string} The generated JWT.
@@ -67,74 +55,77 @@ function generateJWT() {
 }
 
 exports.callOpenAIAdult = functions.https
-    .onCall(async (data, context) => {
-      try {
-        const userMessage = data.message;
-        if (!userMessage) {
-          throw new functions.https.HttpsError("invalid-argument",
-              "The function must be called with a \"message\" argument.");
-        }
+    .onCall(
+        async (data) => {
+          try {
+            const userMessage = data.message;
+            if (!userMessage) {
+              throw new functions.https.HttpsError("invalid-argument",
+                  "The function must be called with a \"message\" argument.");
+            }
 
-        const secretPath = "projects/158442795272/secrets/OPENAI_KEY";
-        const openAIKey = await getSecret(secretPath);
+            console.log("made up by openAIKEY");
 
-        const openai = new OpenAI({
-          apiKey: openAIKey,
+            const openai = new OpenAI({
+              apiKey: openAIKey,
+            });
+
+            const completion = await openai.chat.completions.create({
+              messages: [
+                {role: "system", content: `You are a helpful assistant
+        providing short and helpful reply suggestions to adults 
+        replying to children 
+        during flood emergencies and in day-to-day conversation.`},
+                {role: "user", content: userMessage},
+              ],
+              model: "ft:gpt-3.5-turbo-0125:personal::9jH4IGCI",
+            });
+            console.log("choice object", completion.choices[0]);
+            console.log("Logs", completion.choices[0].logprobs);
+            console.log("Message", completion.choices[0].message.content);
+            return {response: completion.choices[0]};
+          } catch (error) {
+            console.log(`oh no error ${error.message}`);
+            throw new functions
+                .https
+                .HttpsError("internal",
+                    "Unable to process the request.", error.message);
+          }
         });
 
-        const completion = await openai.chat.completions.create({
-          messages: [
-            {role: "system", content: `You are a helpful assistant providing 
-          short and helpful reply suggestions to adults replying to children 
+exports.callOpenAIChild = functions.https
+    .onCall(
+        async (data) => {
+          try {
+            const userMessage = data.message;
+            if (!userMessage) {
+              throw new functions.https.HttpsError("invalid-argument",
+                  "The function must be called with a \"message\" argument.");
+            }
+
+            const openai = new OpenAI({
+              apiKey: openAIKey,
+            });
+
+            const completion = await openai.chat.completions.create({
+              messages: [
+                {role: "system", content: `You are a helpful assistant
+          providing short and helpful reply suggestions to children 
+          replying to adults
           during flood emergencies and in day-to-day conversation.`},
-            {role: "user", content: userMessage},
-          ],
-          model: "ft:gpt-3.5-turbo-0125:personal::9jH4IGCI",
+                {role: "user", content: userMessage},
+              ],
+              model: "ft:gpt-3.5-turbo-0125:personal::9jdF6x9a",
+            });
+
+            return {response: completion.choices[0]};
+          } catch (error) {
+            throw new functions
+                .https
+                .HttpsError("internal",
+                    "Unable to process the request.", error.message);
+          }
         });
-
-        return {response: completion.choices[0]};
-      } catch (error) {
-        console.log(`oh no error ${error.message}`);
-        throw new functions
-            .https
-            .HttpsError("internal",
-                "Unable to process the request.", error.message);
-      }
-    });
-
-exports.callOpenAIChild = functions.https.onCall(async (data, context) => {
-  try {
-    const userMessage = data.message;
-    if (!userMessage) {
-      throw new functions.https.HttpsError("invalid-argument",
-          "The function must be called with a \"message\" argument.");
-    }
-
-    const secretPath = "projects/158442795272/secrets/OPENAI_KEY";
-    const openAIKey = await getSecret(secretPath);
-
-    const openai = new OpenAI({
-      apiKey: openAIKey,
-    });
-
-    const completion = await openai.chat.completions.create({
-      messages: [
-        {role: "system", content: `You are a helpful assistant providing short 
-          and helpful reply suggestions to children replying to adults during 
-          3flood emergencies and in day-to-day conversation.`},
-        {role: "user", content: userMessage},
-      ],
-      model: "ft:gpt-3.5-turbo-0125:personal::9jdF6x9a",
-    });
-
-    return {response: completion.choices[0]};
-  } catch (error) {
-    throw new functions
-        .https
-        .HttpsError("internal",
-            "Unable to process the request.", error.message);
-  }
-});
 
 /**
 Send message notification to conversation members when a message is sent out
@@ -345,57 +336,70 @@ async function sendAlertNotification(deviceToken, alertDescription, username) {
  * users and their group participants.
  */
 async function checkFloodAlertsForUsers() {
-  const usersSnapshot = await db.collection("users").get();
-  const users = [];
+  try {
+    const usersSnapshot = await db.collection("users").get();
+    if (usersSnapshot.empty) {
+      console.log("No users found");
+      return;
+    }
 
-  usersSnapshot.forEach((doc) => {
-    users.push({username: doc.id, ...doc.data()});
-  });
+    const users = [];
+    usersSnapshot.forEach((doc) => {
+      users.push({username: doc.id, ...doc.data()});
+    });
 
-  const language = "en-US";
-  // remember to change this later for spanish and foreign country support
-  const country = "US";
-  const timezone = "America/Los_Angeles";
-  const dataSets = "weatherAlerts";
+    const language = "en-US";
+    const country = "US";
+    const timezone = "America/Los_Angeles";
+    const dataSets = "weatherAlerts";
 
-  for (const user of users) {
-    const [latitude, longitude] = user.location;
-    const alerts = await getWeatherAlerts(
-        latitude,
-        longitude,
-        country,
-        dataSets,
-        timezone,
-        language,
-    );
+    for (const user of users) {
+      if (!user.location || !Array.isArray(user.location)) {
+        console.error(`Invalid location for user ${user.username}`);
+        continue;
+      }
 
-    if (alerts && alerts.weatherAlerts && alerts.weatherAlerts.detailsURL) {
-      const alertIds = getIdsFromURL(alerts.weatherAlerts.detailsURL);
+      const [latitude, longitude] = user.location;
+      const alerts = await getWeatherAlerts(
+          latitude,
+          longitude,
+          country,
+          dataSets,
+          timezone,
+          language,
+      );
 
-      if (alertIds) {
-        const detail = getAlertDetail(language, alertIds);
+      if (alerts && alerts.weatherAlerts && alerts.weatherAlerts.detailsURL) {
+        const alertIds = getIdsFromURL(alerts.weatherAlerts.detailsURL);
 
-        if (detail && detail.description.toLowerCase().includes("flood")) {
-          const groups = db.collection("groups")
-              .where("members", "array-contains", user.username).get();
+        if (alertIds) {
+          const detail = await getAlertDetail(language, alertIds);
 
-          for (const group of groups) {
-            const groupSnapshot = group.data();
+          if (detail && detail.description.toLowerCase().includes("flood")) {
+            const groupsSnapshot = await db.collection("groups")
+                .where("members", "array-contains", user.username).get();
 
-            for (const member of groupSnapshot.members) {
-              const memberDoc = db.collection("users").doc(member).get();
-              const memberDocData = memberDoc.data();
+            for (const groupDoc of groupsSnapshot.docs) {
+              const groupData = groupDoc.data();
 
-              if (memberDocData && memberDocData.deviceToken) {
-                await sendAlertNotification(
-                    memberDocData.deviceToken, detail.description, member,
-                );
+              for (const member of groupData.members) {
+                const memberDoc = await db.collection("users").doc(member)
+                    .get();
+                const memberDocData = memberDoc.data();
+
+                if (memberDocData && memberDocData.deviceToken) {
+                  await sendAlertNotification(
+                      memberDocData.deviceToken, detail.description, member,
+                  );
+                }
               }
             }
           }
         }
       }
     }
+  } catch (error) {
+    console.error("Error in checkFloodAlertsForUsers:", error);
   }
 }
 

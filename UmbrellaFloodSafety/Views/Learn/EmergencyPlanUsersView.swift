@@ -1,0 +1,107 @@
+//
+//  EmergencyPlanUsersView.swift
+//  UmbrellaFloodSafety
+//
+//  Created by Diana Moya Lapeira on 8/10/24.
+//
+
+import SwiftUI
+
+struct EmergencyPlanUsersView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    @State var isPresented: Bool = false
+    @Binding var usersInPlan: [String]
+    @ObservedObject var firebaseManager = FirebaseManager.shared
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Who's in This Plan?")
+                    .font(.custom("Nunito", size: 34))
+                    .foregroundStyle(.mainBlue)
+                    .fontWeight(.black)
+                
+                Spacer()
+            }
+            
+            Divider()
+            
+            ScrollView {
+                
+                VStack {
+                    ForEach(usersInPlan, id: \.self) { member in
+                        NavigationLink(destination: UserView(username: member)) {
+                            MessagingListItem(participants: [member], timestamp: 0, lastMessage: member)
+                        }
+                        
+                        Divider()
+                    }
+                    .padding(.horizontal)
+                }
+                .overlay(RoundedRectangle(cornerRadius: 25)
+                    .stroke(lineWidth: 4)
+                    .fill(.mainBlue))
+                .padding(2)
+                
+                UMButton(title: "Add Members From Umbrellas", background: .mainBlue) {
+                    isPresented.toggle()
+                }
+                .frame(height: 60)
+                .padding(.vertical)
+            }
+        }
+        .padding()
+        .sheet(isPresented: $isPresented, content: {
+            ScrollView {
+                HStack {
+                    Text("Add Members")
+                        .font(.custom("Nunito", size: 34))
+                        .foregroundStyle(.mainBlue)
+                        .fontWeight(.black)
+                    
+                    Spacer()
+                    
+                    Button {
+                        isPresented.toggle()
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.mainBlue)
+                            .frame(width: 34)
+                    }
+                }
+                
+                Divider()
+                
+                ForEach(firebaseManager.groupMembers.keys.sorted(), id: \.self) { group in
+                    
+                    HStack {
+                        Text(firebaseManager.userGroups[group] ?? "Umbrella \(group)")
+                            .font(.custom("Nunito", size: 24))
+                            .foregroundStyle(.mainBlue)
+                            .fontWeight(.black)
+                        
+                        Spacer()
+                    }
+                    
+                }
+            }
+            .padding()
+        })
+    }
+}
+
+#Preview {
+    struct EmergencyPlanUsersViewContainer: View {
+        @State private var exampleUsers = ["user1", "user2"]
+        
+        var body: some View {
+            EmergencyPlanUsersView(usersInPlan: $exampleUsers)
+        }
+    }
+    
+    return EmergencyPlanUsersViewContainer()
+}
+

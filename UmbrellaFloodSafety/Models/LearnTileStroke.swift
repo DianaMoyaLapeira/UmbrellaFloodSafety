@@ -37,7 +37,7 @@ struct LearnTileStroke: View {
                 Spacer()
                 
                 HStack {
-                    Text("Emergency Help")
+                    Text("Make an Emergency Plan")
                         .foregroundStyle(.mainBlue)
                         .font(.custom("Nunito", size: 32))
                         .fontWeight(.black)
@@ -45,10 +45,10 @@ struct LearnTileStroke: View {
                     
                     Spacer()
                 }
-                .padding(.horizontal)
+                .padding([.horizontal, .bottom])
             }
         }
-        .frame(width: 350, height: 250)
+        .frame(width: 350, height: 300)
             
     }
 }

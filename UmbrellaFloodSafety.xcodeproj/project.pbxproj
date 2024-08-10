@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DCC31482C67CA550031A173 /* EmergencyPlanUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */; };
+		2DF32F5D2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF32F5C2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift */; };
+		2DF32F5F2C67C161002C7ECF /* EmergencyPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF32F5E2C67C161002C7ECF /* EmergencyPlanModel.swift */; };
+		8409CEC52C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */; };
+		8409CEC72C643C7B002EEBDC /* ChildEvacuationPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409CEC62C643C7B002EEBDC /* ChildEvacuationPlanView.swift */; };
 		840C96DA2C3FA1A000EFAFA7 /* ConversationViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C96D92C3FA1A000EFAFA7 /* ConversationViewViewModel.swift */; };
 		840F28ED2C425C36001F02FF /* HairSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F28EC2C425C36001F02FF /* HairSelection.swift */; };
 		840F28EF2C4320BA001F02FF /* ShirtSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F28EE2C4320BA001F02FF /* ShirtSelection.swift */; };
 		840F28F12C4326EC001F02FF /* AccessoriesSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F28F02C4326EC001F02FF /* AccessoriesSelection.swift */; };
 		840F28F32C4356F3001F02FF /* LearnTileStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840F28F22C4356F3001F02FF /* LearnTileStroke.swift */; };
-		840F28F52C437235001F02FF /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 840F28F42C437235001F02FF /* FirebaseMessaging */; };
 		841B7BDE2C33545000BC5787 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B7BDD2C33545000BC5787 /* UserListView.swift */; };
 		841B7BE02C335D5900BC5787 /* UserListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B7BDF2C335D5900BC5787 /* UserListViewViewModel.swift */; };
+		84271DDB2C56093900CF8B91 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 84271DDA2C56093900CF8B91 /* FirebaseFunctions */; };
 		84309F282C4211E100E60040 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84309F272C4211E100E60040 /* ProfilePictureView.swift */; };
 		8433B8A12C4811AE002AEF51 /* Call911Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433B8A02C4811AE002AEF51 /* Call911Button.swift */; };
 		8438F31B2C2E22BF00F0EB3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8438F31A2C2E22BF00F0EB3E /* GoogleService-Info.plist */; };
@@ -88,6 +93,18 @@
 		84923A9E2C311BEA004EAECC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 84923A9D2C311BEA004EAECC /* FirebaseStorage */; };
 		84923AB12C3264A7004EAECC /* JoinAnUmbrella.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923AB02C3264A7004EAECC /* JoinAnUmbrella.swift */; };
 		84923AB52C326A7D004EAECC /* OtpModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923AB42C326A7D004EAECC /* OtpModifier.swift */; };
+		8494D56C2C5EC1860059B723 /* EmergencyPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494D56B2C5EC1860059B723 /* EmergencyPlans.swift */; };
+		8494D56E2C5EC3C30059B723 /* MakeEmergencyPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494D56D2C5EC3C30059B723 /* MakeEmergencyPlan.swift */; };
+		8494D5702C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494D56F2C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift */; };
+		8494D5722C631AF60059B723 /* EmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8494D5712C631AF60059B723 /* EmergencyContact.swift */; };
+		84969DCE2C63224F00719A6C /* PetEmergencyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DCD2C63224F00719A6C /* PetEmergencyInfo.swift */; };
+		84969DD02C6323F200719A6C /* childEvacuationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DCF2C6323F200719A6C /* childEvacuationPlan.swift */; };
+		84969DD22C6324AD00719A6C /* SpecialNeedsEvacuationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DD12C6324AD00719A6C /* SpecialNeedsEvacuationPlan.swift */; };
+		84969DD42C63256800719A6C /* FamilyResponsibilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DD32C63256800719A6C /* FamilyResponsibilities.swift */; };
+		84969DD82C63295900719A6C /* CreateEmergencyContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DD72C63295900719A6C /* CreateEmergencyContact.swift */; };
+		84969DDA2C6333E500719A6C /* EmergencyContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DD92C6333E500719A6C /* EmergencyContactListView.swift */; };
+		84969DDC2C64277F00719A6C /* PetInfoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DDB2C64277F00719A6C /* PetInfoListView.swift */; };
+		84969DDE2C6428C300719A6C /* CreatePetEmergencyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84969DDD2C6428C300719A6C /* CreatePetEmergencyInfo.swift */; };
 		849876C92C4CB63500C57B52 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849876C82C4CB63500C57B52 /* TabController.swift */; };
 		849876D52C4DD5B600C57B52 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849876D42C4DD5B600C57B52 /* UserView.swift */; };
 		849876D72C4F204200C57B52 /* UserViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849876D62C4F204200C57B52 /* UserViewViewModel.swift */; };
@@ -121,6 +138,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanUsersView.swift; sourceTree = "<group>"; };
+		2DF32F5C2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyPlanFirebaseManager.swift; sourceTree = "<group>"; };
+		2DF32F5E2C67C161002C7ECF /* EmergencyPlanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyPlanModel.swift; sourceTree = "<group>"; };
+		8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialNeedsEvacuationPlanView.swift; sourceTree = "<group>"; };
+		8409CEC62C643C7B002EEBDC /* ChildEvacuationPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildEvacuationPlanView.swift; sourceTree = "<group>"; };
 		840C96D92C3FA1A000EFAFA7 /* ConversationViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewViewModel.swift; sourceTree = "<group>"; };
 		840F28EC2C425C36001F02FF /* HairSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairSelection.swift; sourceTree = "<group>"; };
 		840F28EE2C4320BA001F02FF /* ShirtSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShirtSelection.swift; sourceTree = "<group>"; };
@@ -198,6 +220,18 @@
 		84923A962C2F82BF004EAECC /* WarningColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningColorManager.swift; sourceTree = "<group>"; };
 		84923AB02C3264A7004EAECC /* JoinAnUmbrella.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinAnUmbrella.swift; sourceTree = "<group>"; };
 		84923AB42C326A7D004EAECC /* OtpModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpModifier.swift; sourceTree = "<group>"; };
+		8494D56B2C5EC1860059B723 /* EmergencyPlans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlans.swift; sourceTree = "<group>"; };
+		8494D56D2C5EC3C30059B723 /* MakeEmergencyPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeEmergencyPlan.swift; sourceTree = "<group>"; };
+		8494D56F2C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeEmergencyPlanViewModel.swift; sourceTree = "<group>"; };
+		8494D5712C631AF60059B723 /* EmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyContact.swift; sourceTree = "<group>"; };
+		84969DCD2C63224F00719A6C /* PetEmergencyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetEmergencyInfo.swift; sourceTree = "<group>"; };
+		84969DCF2C6323F200719A6C /* childEvacuationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = childEvacuationPlan.swift; sourceTree = "<group>"; };
+		84969DD12C6324AD00719A6C /* SpecialNeedsEvacuationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialNeedsEvacuationPlan.swift; sourceTree = "<group>"; };
+		84969DD32C63256800719A6C /* FamilyResponsibilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyResponsibilities.swift; sourceTree = "<group>"; };
+		84969DD72C63295900719A6C /* CreateEmergencyContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmergencyContact.swift; sourceTree = "<group>"; };
+		84969DD92C6333E500719A6C /* EmergencyContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyContactListView.swift; sourceTree = "<group>"; };
+		84969DDB2C64277F00719A6C /* PetInfoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetInfoListView.swift; sourceTree = "<group>"; };
+		84969DDD2C6428C300719A6C /* CreatePetEmergencyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePetEmergencyInfo.swift; sourceTree = "<group>"; };
 		849876C82C4CB63500C57B52 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		849876D42C4DD5B600C57B52 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		849876D62C4F204200C57B52 /* UserViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewViewModel.swift; sourceTree = "<group>"; };
@@ -236,8 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				845F09B22C27680B00070E19 /* FirebaseAnalytics in Frameworks */,
+				84271DDB2C56093900CF8B91 /* FirebaseFunctions in Frameworks */,
 				84A742062C3702E4004858D8 /* BottomSheet in Frameworks */,
-				840F28F52C437235001F02FF /* FirebaseMessaging in Frameworks */,
 				845F09B42C27680B00070E19 /* FirebaseAuth in Frameworks */,
 				845F09B62C27680B00070E19 /* FirebaseFirestore in Frameworks */,
 				84923A9E2C311BEA004EAECC /* FirebaseStorage in Frameworks */,
@@ -352,6 +386,8 @@
 				84D814B72C40D2C00099B020 /* suggestionView.swift */,
 				84EF0D0A2C2B93DC0029A653 /* UMButtonStroke.swift */,
 				8475EA632C35AF5C00321D9D /* FirebaseManager.swift */,
+				2DF32F5C2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift */,
+				2DF32F5E2C67C161002C7ECF /* EmergencyPlanModel.swift */,
 				840F28F22C4356F3001F02FF /* LearnTileStroke.swift */,
 				84445D882C3641EC00A5EB6C /* LearnTile.swift */,
 				84B297E32C3B9AF3008E5F00 /* MapMarker.swift */,
@@ -359,6 +395,11 @@
 				8433B8A02C4811AE002AEF51 /* Call911Button.swift */,
 				848B3B1F2C4A353200B962FD /* Notification.swift */,
 				849876D82C4F2A8000C57B52 /* Report.swift */,
+				8494D5712C631AF60059B723 /* EmergencyContact.swift */,
+				84969DCD2C63224F00719A6C /* PetEmergencyInfo.swift */,
+				84969DCF2C6323F200719A6C /* childEvacuationPlan.swift */,
+				84969DD12C6324AD00719A6C /* SpecialNeedsEvacuationPlan.swift */,
+				84969DD32C63256800719A6C /* FamilyResponsibilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -468,6 +509,15 @@
 				844A80D92C2A9F17002A2D14 /* LearnView.swift */,
 				84C2FF812C48AB3200E87224 /* KidsEmergencyGuide.swift */,
 				84C2FF832C48AB3800E87224 /* AdultEmergencyGuide.swift */,
+				8494D56B2C5EC1860059B723 /* EmergencyPlans.swift */,
+				8494D56D2C5EC3C30059B723 /* MakeEmergencyPlan.swift */,
+				84969DD72C63295900719A6C /* CreateEmergencyContact.swift */,
+				84969DD92C6333E500719A6C /* EmergencyContactListView.swift */,
+				84969DDB2C64277F00719A6C /* PetInfoListView.swift */,
+				84969DDD2C6428C300719A6C /* CreatePetEmergencyInfo.swift */,
+				8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */,
+				8409CEC62C643C7B002EEBDC /* ChildEvacuationPlanView.swift */,
+				2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -525,6 +575,7 @@
 			isa = PBXGroup;
 			children = (
 				844A80DB2C2A9F20002A2D14 /* LearnViewViewModel.swift */,
+				8494D56F2C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -552,7 +603,7 @@
 				845F09B72C27680B00070E19 /* FirebaseFirestoreSwift */,
 				84923A9D2C311BEA004EAECC /* FirebaseStorage */,
 				84A742052C3702E4004858D8 /* BottomSheet */,
-				840F28F42C437235001F02FF /* FirebaseMessaging */,
+				84271DDA2C56093900CF8B91 /* FirebaseFunctions */,
 			);
 			productName = UmbrellaFloodSafety;
 			productReference = 845F099D2C2766DF00070E19 /* UmbrellaFloodSafety.app */;
@@ -644,6 +695,7 @@
 				844A80D82C2A9F11002A2D14 /* MessagingViewViewModel.swift in Sources */,
 				844A80DA2C2A9F17002A2D14 /* LearnView.swift in Sources */,
 				8475EA642C35AF5C00321D9D /* FirebaseManager.swift in Sources */,
+				84969DCE2C63224F00719A6C /* PetEmergencyInfo.swift in Sources */,
 				845BAF172C276D0D0054AAAA /* StartViewViewModel.swift in Sources */,
 				846F3C252C2BD7D300DACB0C /* WeatherManager.swift in Sources */,
 				845BAF212C2775580054AAAA /* MainView.swift in Sources */,
@@ -653,8 +705,12 @@
 				84EF0D0F2C2B965D0029A653 /* NewUmbrellaViewViewModel.swift in Sources */,
 				84923AB52C326A7D004EAECC /* OtpModifier.swift in Sources */,
 				84D814BC2C40D2F10099B020 /* CreateAvatar.swift in Sources */,
+				84969DD82C63295900719A6C /* CreateEmergencyContact.swift in Sources */,
+				2DF32F5D2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift in Sources */,
 				84ED817F2C4F5D2D00F58201 /* Settings.swift in Sources */,
 				844A80E02C2A9F34002A2D14 /* ProfileViewViewModel.swift in Sources */,
+				84969DDC2C64277F00719A6C /* PetInfoListView.swift in Sources */,
+				8494D5722C631AF60059B723 /* EmergencyContact.swift in Sources */,
 				840C96DA2C3FA1A000EFAFA7 /* ConversationViewViewModel.swift in Sources */,
 				84923A952C2F806B004EAECC /* ProfileWMarker.swift in Sources */,
 				84FABB862C2F312A00173E4D /* EditProfileViewViewModel.swift in Sources */,
@@ -663,8 +719,11 @@
 				845BAF1B2C276D200054AAAA /* KidRegisterViewViewModel.swift in Sources */,
 				840F28ED2C425C36001F02FF /* HairSelection.swift in Sources */,
 				84C7112B2C2D2C93000820C3 /* ProfileMapMarker.swift in Sources */,
+				84969DD02C6323F200719A6C /* childEvacuationPlan.swift in Sources */,
 				848B3B232C4A35C800B962FD /* NotificationViewViewModel.swift in Sources */,
 				848B3B202C4A353200B962FD /* Notification.swift in Sources */,
+				84969DD42C63256800719A6C /* FamilyResponsibilities.swift in Sources */,
+				84969DDA2C6333E500719A6C /* EmergencyContactListView.swift in Sources */,
 				845BAF0F2C276CD30054AAAA /* StartView.swift in Sources */,
 				845BAF192C276D150054AAAA /* RegisterFirstViewViewModel.swift in Sources */,
 				849876C92C4CB63500C57B52 /* TabController.swift in Sources */,
@@ -673,11 +732,14 @@
 				8491A15A2C3B5B1A004AE55C /* groupSelection.swift in Sources */,
 				845BAF272C277BCC0054AAAA /* UMButton.swift in Sources */,
 				845F09A12C2766DF00070E19 /* UmbrellaFloodSafetyApp.swift in Sources */,
+				2DF32F5F2C67C161002C7ECF /* EmergencyPlanModel.swift in Sources */,
 				84FABB842C2F30FF00173E4D /* EditProfileView.swift in Sources */,
 				84BEC9E52C48B8DB00119CCF /* FloodSafetyResources.swift in Sources */,
 				8433B8A12C4811AE002AEF51 /* Call911Button.swift in Sources */,
 				84ED81812C4F61D900F58201 /* SettingsViewModel.swift in Sources */,
+				8494D56E2C5EC3C30059B723 /* MakeEmergencyPlan.swift in Sources */,
 				840F28EF2C4320BA001F02FF /* ShirtSelection.swift in Sources */,
+				84969DDE2C6428C300719A6C /* CreatePetEmergencyInfo.swift in Sources */,
 				84FABB882C2F323100173E4D /* UmbrellaListView.swift in Sources */,
 				844A80E22C2AA3EE002A2D14 /* LoginView.swift in Sources */,
 				84ED81832C4F6A9F00F58201 /* UnblockUsers.swift in Sources */,
@@ -686,10 +748,13 @@
 				849876D52C4DD5B600C57B52 /* UserView.swift in Sources */,
 				844A80D22C2A9EE4002A2D14 /* MapView.swift in Sources */,
 				844A80D62C2A9F09002A2D14 /* MessagingView.swift in Sources */,
+				8494D56C2C5EC1860059B723 /* EmergencyPlans.swift in Sources */,
+				8494D5702C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift in Sources */,
 				845BAF1F2C276D880054AAAA /* AdultRegisterViewViewModel.swift in Sources */,
 				841B7BE02C335D5900BC5787 /* UserListViewViewModel.swift in Sources */,
 				845F09BD2C2768CA00070E19 /* User.swift in Sources */,
 				84923A972C2F82BF004EAECC /* WarningColorManager.swift in Sources */,
+				2DCC31482C67CA550031A173 /* EmergencyPlanUsersView.swift in Sources */,
 				844A80D42C2A9EEF002A2D14 /* MapViewViewModel.swift in Sources */,
 				84923AB12C3264A7004EAECC /* JoinAnUmbrella.swift in Sources */,
 				844A80E42C2AA3F8002A2D14 /* LoginViewViewModel.swift in Sources */,
@@ -710,11 +775,14 @@
 				84FABB8C2C2F332200173E4D /* UmbrellaListViewViewModel.swift in Sources */,
 				849876DB2C4F30CF00C57B52 /* ReportView.swift in Sources */,
 				84EF0D0D2C2B96210029A653 /* NewUmbrellaView.swift in Sources */,
+				84969DD22C6324AD00719A6C /* SpecialNeedsEvacuationPlan.swift in Sources */,
 				844E4E712C4A3265007A22BA /* SingleNotificationView.swift in Sources */,
 				845BAF132C276CF00054AAAA /* RegisterFirstView.swift in Sources */,
 				845BAF1D2C276D780054AAAA /* AdultRegisterView.swift in Sources */,
 				84309F282C4211E100E60040 /* ProfilePictureView.swift in Sources */,
+				8409CEC72C643C7B002EEBDC /* ChildEvacuationPlanView.swift in Sources */,
 				84ED76BE2C4242FA00F47875 /* SkinAvatarSelection.swift in Sources */,
+				8409CEC52C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,10 +1023,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		840F28F42C437235001F02FF /* FirebaseMessaging */ = {
+		84271DDA2C56093900CF8B91 /* FirebaseFunctions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 845F09B02C27680B00070E19 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
+			productName = FirebaseFunctions;
 		};
 		845F09B12C27680B00070E19 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -130,7 +130,8 @@ struct ConversationView: View {
                 }
             }
             
-            if !viewModel.isLoading {
+            
+            if viewModel.suggestionsFormatted.count != 0 {
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(viewModel.suggestionsFormatted, id: \.self) { suggestion in
@@ -139,16 +140,23 @@ struct ConversationView: View {
                                 viewModel.sendMessage(input: suggestion)
                             } label: {
                                 suggestionView(suggestion: suggestion)
+                                    .transition(.opacity)
                                 
                             }
                         }
                     }
+                    .scrollIndicators(.hidden)
                     .padding()
                 }
+                .transition(.opacity)
             }
             
             HStack {
-                TextField("text input", text: $viewModel.input, prompt: Text("Message").font(.custom("Nunito", size: 18)).foregroundStyle(Color.secondary))
+                TextField("text message", text: $viewModel.input, prompt: Text("Message").font(.custom("Nunito", size: 18)).foregroundStyle(Color.secondary))
+                    .onSubmit {
+                        viewModel.sendMessage(input: viewModel.input)
+                        viewModel.input = ""
+                    }
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(Color.gray.opacity(0.2)))
                     .padding([.leading, .top])

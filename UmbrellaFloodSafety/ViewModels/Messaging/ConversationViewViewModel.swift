@@ -15,20 +15,8 @@ class ConversationViewViewModel: ObservableObject {
     @Published var input: String = ""
     @Published var suggestions: String = ""
     @Published var isLoading: Bool = true
+    @Published var suggestionsFormatted: [String] = []
     private let openAIChatAPI = OpenAIAPI()
-    
-    private var fineTunedModelID: String {
-        if firebaseManager.isChild {
-            return "ft:gpt-3.5-turbo-0125:personal::9jH4IGCI"
-        } else {
-            print("model used: ft:gpt-3.5-turbo-0125:personal::9jdF6x9a")
-            return "ft:gpt-3.5-turbo-0125:personal::9jdF6x9a"
-        }
-    }
-    
-    var suggestionsFormatted: [String] {
-        return suggestions.components(separatedBy: ":")
-    }
     
     private var systemMessage: String {
         if firebaseManager.isChild {
@@ -73,13 +61,19 @@ class ConversationViewViewModel: ObservableObject {
         
         guard input != "" else { return}
         isLoading = true
-        let systemMessage = ChatMessage(role: "system", content: systemMessage)
-        let userMessage = ChatMessage(role: "user", content: input)
-        let messages = [systemMessage, userMessage]
-        openAIChatAPI.fetchResponse(messages: messages, model: fineTunedModelID) { result in
-            DispatchQueue.main.async {
-                self.suggestions = result ?? "No response"
-                self.isLoading = false
+        
+        openAIChatAPI.fetchResponse(with: input) { result in
+            switch result {
+            case .success(let data):
+                if let response = data["response"] as? [String: Any],
+                   let messageDict = response["message"] as? [String: Any],
+                   let content = messageDict["content"] as? String {
+                    print("Content: \(content)")
+                    self.suggestionsFormatted = content.components(separatedBy: ":")
+                    print("formatted suggestions: \(self.suggestionsFormatted)")
+                }
+            case .failure(let error):
+                print("Error calling openai through firebase funcs: \(error)")
             }
         }
     }

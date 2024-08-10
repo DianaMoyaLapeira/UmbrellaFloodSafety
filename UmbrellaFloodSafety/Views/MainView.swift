@@ -23,11 +23,13 @@ struct MainView: View {
     }
     
     var body: some View {
-        if firebaseManager.currentUserAvatar != "" {
+        if firebaseManager.isSignedIn {
             // signed in
             accountView
+                .transition(.opacity)
         } else {
             StartView()
+                .transition(.opacity)
         }
     }
     

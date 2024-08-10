@@ -8,21 +8,27 @@
 import SwiftUI
 
 struct LearnTile: View {
+    var title: String
+    var icon: String
+    var mainColor: Color
+    var secondaryColor: Color
+    var iconColor: Color
+    
     var body: some View {
         
         ZStack(alignment: .top) {
             RoundedRectangle(cornerRadius: 25)
-                .foregroundStyle(.mainBlue)
+                .foregroundStyle(mainColor)
             
             RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(.yellow)
+                .foregroundStyle(secondaryColor)
                 .padding(.top)
                 .frame(width: 320, height: 170)
             
-            Image(systemName: "exclamationmark.triangle")
+            Image(systemName: icon)
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(Color.red)
+                .foregroundStyle(iconColor)
                 .frame(width: 120)
                 .padding(.top, 35)
             
@@ -30,7 +36,7 @@ struct LearnTile: View {
                 Spacer()
                 
                 HStack {
-                    Text("Emergency Help")
+                    Text(title)
                         .foregroundStyle(.white)
                         .font(.custom("Nunito", size: 32))
                         .fontWeight(.black)
@@ -47,5 +53,5 @@ struct LearnTile: View {
 }
 
 #Preview {
-    LearnTile()
+    LearnTile(title: "Emergency Help", icon: "exclamationmark.triangle", mainColor: .mainBlue, secondaryColor: .accentYellow, iconColor: .red)
 }

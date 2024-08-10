@@ -21,6 +21,7 @@ class FirebaseManager: ObservableObject {
     @Published var currentUserName: String = ""
     @Published var currentUserAvatar: String = ""
     @Published var userGroups: [String: String] = [:] // Group Id to group name
+    @Published var emergencyPlans: [String] = [] // Emergency plan Ids
     @Published var groupMembers: [String: [String]] = [:] // Group Id to an @Published array of group members
     @Published var groupMembersLocations: [String: CLLocationCoordinate2D] = [:] // Username to user location
     @Published var groupMembersAvatars: [String: String] = [:] // Username to avatar string
@@ -44,7 +45,7 @@ class FirebaseManager: ObservableObject {
         setupAuthListener()
     }
     
-    func updateLocation(newLocation: CLLocation) {
+    func updateLocation(newLocation: CLLocation, completion: @escaping (Bool) -> Void) {
         
         let lastLoggedInUsername = UserDefaults.standard.string(forKey: "lastLoggedInUsername")
         
@@ -159,6 +160,12 @@ class FirebaseManager: ObservableObject {
                 self.setupConversationListener(for: conversations)
             } else {
                 print("no conversations")
+            }
+            
+            if let emergencyPlans = document.get("emergencyPlans") as? [String] {
+                EmergencyPlanFirebaseManager.shared.setUpPlanListeners(emergencyPlans: emergencyPlans)
+            } else {
+                print("No emergency plans")
             }
         }
     }

@@ -15,8 +15,6 @@ struct KidRegisterView: View {
     @Environment(\.dismiss) var dismiss
     @State var presentAvatar = true
     
-    // PresentAvatar does nothing in this context, it is just a placeholder for future use
-    
     var body: some View {
         ScrollView {
             VStack {
@@ -33,10 +31,23 @@ struct KidRegisterView: View {
                         .multilineTextAlignment(.center)
                     
                     
-                    Image(.children)
-                        .resizable()
-                        .scaledToFit()
-                        .padding()
+                    ZStack {
+                        Image(.children)
+                            .resizable()
+                            .scaledToFit()
+                            .padding()
+                        
+                        // Display error message if available
+                        
+                        if viewModel.errorMessage != "" {
+                                
+                            Text(viewModel.errorMessage)
+                                .font(.custom("Nunito", size: 18))
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 25).fill(.tertiary, style: FillStyle()))
+                                
+                        }
+                    }
                 }
                 
                 
@@ -116,6 +127,7 @@ struct KidRegisterView: View {
                         Text("Create account")
                             .font(.custom("Nunito", size: 18))
                             .foregroundStyle(.white)
+                            .bold()
                     }
                     .frame(width: 300, height: 60)
                 }

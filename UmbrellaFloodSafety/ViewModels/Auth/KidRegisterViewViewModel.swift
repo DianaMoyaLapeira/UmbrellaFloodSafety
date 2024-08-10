@@ -16,14 +16,17 @@ class KidRegisterViewViewModel: ObservableObject {
     @Published var username = ""
     @Published var name = ""
     @Published var password = ""
+    @Published var errorMessage = ""
     
     init() {}
     
     func register() {
+        // Make sure the username and password are valid
         guard validate() else {
             return
         }
         
+        // Create user in firebase auth with pretend email
         Auth.auth().createUser(withEmail: "\(username)@fakedomain.com", password: password) { [weak self] result, error in
             guard let userId = result?.user.uid else {
                 return
@@ -35,6 +38,7 @@ class KidRegisterViewViewModel: ObservableObject {
     
     private func insertUserRecord(id: String) {
         
+        // Create user in firestore
         
         let newUser = UserModel(id: id,
                            username: username,
@@ -50,28 +54,29 @@ class KidRegisterViewViewModel: ObservableObject {
         db.collection("users")
             .document(username.lowercased())
             .setData(newUser.encodeJSONToDictionary())
-        
-        let logoImageData = UIImage(resource: .umbrellaLogo).jpegData(compressionQuality: 0.5)
-        
-        guard logoImageData != nil else {
-            print("logo image data was nil")
-            return
-        }
+       
     }
     
     
     private func validate() -> Bool {
+        
+        // Make sure none of the fields are empty
+        
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty,
               !username.trimmingCharacters(in: .whitespaces).isEmpty,
               !password.trimmingCharacters(in: .whitespaces).isEmpty else {
+            errorMessage = "Please fill in all fields"
             print("Validate failed")
             return false
         }
         
         guard password.count >= 6 else {
+            errorMessage = "Password must be at least 6 characters long."
             print("Password invalid")
             return false
         }
+        
+       // add username validation later to make sure no users have duplicate usernames
         return true
     }
 }

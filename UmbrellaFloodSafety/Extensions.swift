@@ -72,6 +72,28 @@ extension Data {
     }
 }
 
+// Tool to format phone numbers in a text field for the contacts section
 
-
+extension String {
+    func formatPhoneNumber() -> String {
+        let normalNumber = components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        
+        let mask = "(XXX) XXX-XXXX"
+        
+        var result = ""
+        var startIndex = normalNumber.startIndex
+        var endIndex = normalNumber.endIndex
+        
+        for char in mask where startIndex < endIndex {
+            if char == "X" {
+                result.append(normalNumber[startIndex])
+                startIndex = normalNumber.index(after: startIndex)
+            } else {
+                result.append(char)
+            }
+        }
+        
+        return result
+    }
+}
 
