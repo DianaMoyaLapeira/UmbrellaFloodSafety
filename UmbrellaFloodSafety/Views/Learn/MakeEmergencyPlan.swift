@@ -10,7 +10,12 @@ import SwiftUI
 struct MakeEmergencyPlan: View {
     
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = MakeEmergencyPlanViewModel()
+    @StateObject var viewModel: MakeEmergencyPlanViewModel
+    @State var showAlert: Bool = false
+    
+    init(emergencyPlan: EmergencyPlanModel?) {
+        self._viewModel = StateObject(wrappedValue: MakeEmergencyPlanViewModel(emergencyPlan: emergencyPlan))
+    }
     
     var body: some View {
         
@@ -42,9 +47,22 @@ struct MakeEmergencyPlan: View {
                     .foregroundStyle(.gray)
                 )
                 .font(.custom("Nunito", size: 24))
-                .foregroundStyle(.mainBlue)
+                .foregroundStyle(.gray)
+                .bold()
                 .multilineTextAlignment(.leading)
             }
+            
+            Divider()
+            
+            NavigationLink(destination: EmergencyPlanUsersView(usersInPlan: $viewModel.usersInPlan)) {
+                Text("Add/Remove Users")
+                    .font(.custom("Nunito", size: 18))
+                    .foregroundStyle(.white)
+                    .bold()
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 25).fill(.mainBlue).frame(width: 360, height: 60))
+            }
+            .padding(.vertical)
             
             Divider()
             
@@ -62,15 +80,17 @@ struct MakeEmergencyPlan: View {
                 ForEach($viewModel.emergencyContacts) { $contact in
                     NavigationLink(destination: CreateEmergencyContact( emergencyContact: $contact)) {
                         EmergencyContactListView(emergencyContact: contact)
-                            .foregroundStyle(.primary)
                             .padding()
                         
-                        Divider()
-                        
                     }
+                    .foregroundStyle(.primary)
+                    
+                    Divider()
                 }
             }
-            .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(Color.mainBlue))
+            .frame(width: 358)
+            .padding(.bottom)
             
             UMButton(title: "Add New Contact", background: .mainBlue) {
                 viewModel.CreateEmergencyContact()
@@ -89,18 +109,22 @@ struct MakeEmergencyPlan: View {
                 Spacer()
             }
             
-            ForEach($viewModel.petEmergencyInfo) { $pet in
-                NavigationLink(destination: CreatePetEmergencyInfo( petEmergencyInfo: $pet)) {
-                    PetInfoListView(petEmergencyInfo: pet )
-                        .foregroundStyle(.primary)
-                        .padding()
-                        .overlay(RoundedRectangle(cornerRadius: 25)
-                            .stroke(lineWidth: 4)
-                            .fill(.mainBlue))
-                            .frame(width: 358)
-                            .padding(.bottom)
+            VStack {
+                ForEach($viewModel.petEmergencyInfo) { $pet in
+                    NavigationLink(destination: CreatePetEmergencyInfo( petEmergencyInfo: $pet)) {
+                        PetInfoListView(petEmergencyInfo: pet )
+                            .padding()
+                    }
+                    .foregroundStyle(.primary)
+                    
+                    Divider()
                 }
             }
+            .overlay(RoundedRectangle(cornerRadius: 25)
+                .stroke(lineWidth: 4)
+                .fill(.mainBlue))
+            .frame(width: 358)
+            .padding(.bottom)
             
             UMButton(title: "Add New Pet", background: .mainBlue) {
                 viewModel.CreatePetInfo()
@@ -121,7 +145,7 @@ struct MakeEmergencyPlan: View {
             .padding(.bottom)
             
             HStack {
-                Text("1. The floods most likely to affect our home are: (optional)")
+                Text("The floods most likely to affect our home are: ")
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
@@ -136,7 +160,7 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("2. What are the escape routes from our home? (optional)")
+                Text("What are the escape routes from our home?")
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
@@ -151,7 +175,7 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("3. If separated during an emergency, what is our meeting place near our home? (optional)")
+                Text("If separated during an emergency, what is our meeting place near our home?")
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
@@ -166,7 +190,7 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("4. If we cannot return home or are asked to evacuate, what is our meeting place outside of our neighborhood? (optional)")
+                Text("If we cannot return home or are asked to evacuate, what is our meeting place outside of our neighborhood?")
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
@@ -181,7 +205,7 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("What is our route to get there? (optional)")
+                Text("What is our route to get there?")
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
@@ -196,7 +220,7 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("What is an alternate route to get there? (optional)")
+                Text("What is an alternate route to get there?")
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
@@ -222,18 +246,21 @@ struct MakeEmergencyPlan: View {
                 Spacer()
             }
             
-            ForEach($viewModel.externalEmergencyContact) { $contact in
-                NavigationLink(destination: CreateEmergencyContact( emergencyContact: $contact)) {
-                    EmergencyContactListView(emergencyContact: contact)
-                        .foregroundStyle(.primary)
-                        .padding()
-                        .overlay(RoundedRectangle(cornerRadius: 25)
-                            .stroke(lineWidth: 4)
-                            .fill(.mainBlue))
-                            .frame(width: 358)
-                            .padding(.bottom)
+            VStack {
+                ForEach($viewModel.externalEmergencyContact) { $contact in
+                    NavigationLink(destination: CreateEmergencyContact( emergencyContact: $contact)) {
+                        EmergencyContactListView(emergencyContact: contact)
+                            .foregroundStyle(.primary)
+                            .padding()
+                        
+                        Divider()
+                        
+                    }
                 }
             }
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(Color.mainBlue))
+            .frame(width: 358)
+            .padding(.bottom)
             
             UMButton(title: "Add New Contact", background: .mainBlue) {
                 viewModel.CreateExternalEmergencyContact()
@@ -252,32 +279,50 @@ struct MakeEmergencyPlan: View {
                 Spacer()
             }
             
-            ForEach($viewModel.specialNeedsEvacuationPlan) { $plan in
-                NavigationLink(destination: SpecialNeedsEvacuationPlanView(specialNeedsEvacuationPlan: $plan)) {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Title")
-                                .font(.custom("Nunito", size: 24))
-                                .fontWeight(.black)
+            VStack {
+                ForEach($viewModel.specialNeedsEvacuationPlan) { $plan in
+                    NavigationLink(destination: SpecialNeedsEvacuationPlanView(specialNeedsEvacuationPlan: $plan)) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                if plan.name != "" {
+                                    Text(plan.name)
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
+                                } else {
+                                    Text("Click to Edit")
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
+                                }
+                                
+                                if plan.plan != "" {
+                                    Text(plan.plan)
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("Plan: None yet")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                }
+                            }
                             
-                            Text("Plan")
-                                .font(.custom("Nunito", size: 18))
-                                .multilineTextAlignment(.leading)
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
                         }
                         
-                        Spacer()
-                        
-                        Image(systemName: "chevron.right")
                     }
                     .foregroundStyle(.primary)
                     .padding()
-                    .overlay(RoundedRectangle(cornerRadius: 25)
-                        .stroke(lineWidth: 4)
-                        .fill(.mainBlue))
-                        .frame(width: 358)
-                        .padding(.bottom)
+                    
+                    Divider()
+                        .padding(.horizontal)
                 }
             }
+            .overlay(RoundedRectangle(cornerRadius: 25)
+                .stroke(lineWidth: 4)
+                .fill(.mainBlue))
+            .frame(width: 358)
+            .padding(.bottom)
             
             UMButton(title: "Add New Plan", background: .mainBlue) {
                 viewModel.CreateSpecialNeedsEvacuationPlan()
@@ -296,36 +341,58 @@ struct MakeEmergencyPlan: View {
                 Spacer()
             }
             
-            ForEach($viewModel.childEvacuationPlans) { $plan in
-                NavigationLink(destination: ChildEvacuationPlanView(childEvacuationPlanEx: $plan)) {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Title")
-                                .font(.custom("Nunito", size: 24))
-                                .fontWeight(.black)
+            VStack {
+                ForEach($viewModel.childEvacuationPlans) { $plan in
+                    NavigationLink(destination: ChildEvacuationPlanView(childEvacuationPlanEx: $plan)) {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                if plan.name != "" {
+                                    Text(plan.name)
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
+                                } else {
+                                    Text("Click to edit")
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
+                                }
+                                
+                                if plan.evacuationSite != "" {
+                                    Text("Evacuation site: \(plan.evacuationSite)")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("Evacuation site: None yet")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                }
+                                
+                                if plan.contactInfo != "" {
+                                    Text("Contact Info: \(plan.contactInfo)")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("Evacuation site: None yet")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                }
+                            }
                             
-                            Text("Evacuation site")
-                                .font(.custom("Nunito", size: 18))
-                                .multilineTextAlignment(.leading)
+                            Spacer()
                             
-                            Text("Contact info")
-                                .font(.custom("Nunito", size: 18))
-                                .multilineTextAlignment(.leading)
+                            Image(systemName: "chevron.right")
                         }
-                        
-                        Spacer()
-                        
-                        Image(systemName: "chevron.right")
+                        .padding()
                     }
                     .foregroundStyle(.primary)
-                    .padding()
-                    .overlay(RoundedRectangle(cornerRadius: 25)
-                        .stroke(lineWidth: 4)
-                        .fill(.mainBlue))
-                        .frame(width: 358)
-                        .padding(.bottom)
+                    
+                    Divider()
                 }
             }
+            .overlay(RoundedRectangle(cornerRadius: 25)
+                .stroke(lineWidth: 4)
+                .fill(.mainBlue))
+                .frame(width: 358)
+                .padding(.bottom)
             
             UMButton(title: "Add New Plan", background: .mainBlue) {
                 viewModel.CreateChildEvacuationPlan()
@@ -344,6 +411,7 @@ struct MakeEmergencyPlan: View {
                     
                     Text("What is an accessible, safe room where we can go, seal windows, vents and doors and listen to emergency broadcasts for instructions?")
                         .font(.custom("Nunito", size: 18))
+                        .bold()
                 }
                 
                 Spacer()
@@ -358,24 +426,30 @@ struct MakeEmergencyPlan: View {
             
         }
         .padding()
+        .alert("Leave without saving?", isPresented: $showAlert) {
+            Button("Leave", role: .destructive) {
+                dismiss()
+            }
+            Button("Cancel", role: .cancel) { }
+        }
         .navigationBarBackButtonHidden(true)
         .toolbar {
            ToolbarItem(placement: .topBarLeading) {
-               Button(action: {
-                   dismiss()
-               }) {
-                   Label {
-                        Text("Back")
-                   } icon: {
-                       Image(.backArrow)
-                                   }
+               Button {
+                   showAlert.toggle()
+               } label: {
+                   Text("Back")
+                       .font(.custom("Nunito", size: 18))
+                       .foregroundStyle(.mainBlue)
+                       .fontWeight(.bold)
                }
-               .padding()
+
            }
             
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     viewModel.uploadEmergencyPlanIntoDB()
+                    dismiss()
                 } label: {
                     Text("Done")
                         .font(.custom("Nunito", size: 18))
@@ -388,5 +462,5 @@ struct MakeEmergencyPlan: View {
 }
 
 #Preview {
-    MakeEmergencyPlan()
+    MakeEmergencyPlan(emergencyPlan: nil)
 }

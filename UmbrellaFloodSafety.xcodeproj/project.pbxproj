@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2DCC31482C67CA550031A173 /* EmergencyPlanUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */; };
+		2DCC314A2C67D3980031A173 /* AddUsersToPlanSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */; };
+		2DCC314C2C68308B0031A173 /* EmergencyPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */; };
+		2DCC314E2C686C9A0031A173 /* FloodDetectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314D2C686C9A0031A173 /* FloodDetectedView.swift */; };
+		2DCC31502C6AA9440031A173 /* TransitionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314F2C6AA9440031A173 /* TransitionTest.swift */; };
 		2DF32F5D2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF32F5C2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift */; };
 		2DF32F5F2C67C161002C7ECF /* EmergencyPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF32F5E2C67C161002C7ECF /* EmergencyPlanModel.swift */; };
 		8409CEC52C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */; };
@@ -116,7 +120,6 @@
 		84C2FF802C48AB0600E87224 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2FF7F2C48AB0600E87224 /* NotificationView.swift */; };
 		84C2FF822C48AB3200E87224 /* KidsEmergencyGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2FF812C48AB3200E87224 /* KidsEmergencyGuide.swift */; };
 		84C2FF842C48AB3800E87224 /* AdultEmergencyGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C2FF832C48AB3800E87224 /* AdultEmergencyGuide.swift */; };
-		84C7112B2C2D2C93000820C3 /* ProfileMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7112A2C2D2C93000820C3 /* ProfileMapMarker.swift */; };
 		84D814B82C40D2C00099B020 /* suggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D814B72C40D2C00099B020 /* suggestionView.swift */; };
 		84D814BC2C40D2F10099B020 /* CreateAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D814BB2C40D2F10099B020 /* CreateAvatar.swift */; };
 		84D814BE2C40FC200099B020 /* OpenAIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D814BD2C40FC200099B020 /* OpenAIAPI.swift */; };
@@ -139,6 +142,10 @@
 
 /* Begin PBXFileReference section */
 		2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanUsersView.swift; sourceTree = "<group>"; };
+		2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUsersToPlanSheet.swift; sourceTree = "<group>"; };
+		2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanView.swift; sourceTree = "<group>"; };
+		2DCC314D2C686C9A0031A173 /* FloodDetectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloodDetectedView.swift; sourceTree = "<group>"; };
+		2DCC314F2C6AA9440031A173 /* TransitionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionTest.swift; sourceTree = "<group>"; };
 		2DF32F5C2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyPlanFirebaseManager.swift; sourceTree = "<group>"; };
 		2DF32F5E2C67C161002C7ECF /* EmergencyPlanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyPlanModel.swift; sourceTree = "<group>"; };
 		8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialNeedsEvacuationPlanView.swift; sourceTree = "<group>"; };
@@ -243,7 +250,6 @@
 		84C2FF812C48AB3200E87224 /* KidsEmergencyGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidsEmergencyGuide.swift; sourceTree = "<group>"; };
 		84C2FF832C48AB3800E87224 /* AdultEmergencyGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultEmergencyGuide.swift; sourceTree = "<group>"; };
 		84C711292C2CCEE1000820C3 /* UmbrellaFloodSafety.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UmbrellaFloodSafety.entitlements; sourceTree = "<group>"; };
-		84C7112A2C2D2C93000820C3 /* ProfileMapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMapMarker.swift; sourceTree = "<group>"; };
 		84D814B72C40D2C00099B020 /* suggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = suggestionView.swift; sourceTree = "<group>"; };
 		84D814BB2C40D2F10099B020 /* CreateAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAvatar.swift; sourceTree = "<group>"; };
 		84D814BD2C40FC200099B020 /* OpenAIAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIAPI.swift; sourceTree = "<group>"; };
@@ -379,7 +385,6 @@
 				845F09BC2C2768CA00070E19 /* User.swift */,
 				84923A942C2F806B004EAECC /* ProfileWMarker.swift */,
 				84923A962C2F82BF004EAECC /* WarningColorManager.swift */,
-				84C7112A2C2D2C93000820C3 /* ProfileMapMarker.swift */,
 				84EF0D102C2B9CE80029A653 /* group.swift */,
 				846E49042C3CD3E80019C68A /* conversation.swift */,
 				845BAF262C277BCC0054AAAA /* UMButton.swift */,
@@ -427,9 +432,11 @@
 				84923AA92C326395004EAECC /* Messaging */,
 				84923AAA2C3263A2004EAECC /* Learn */,
 				84923AAB2C3263AD004EAECC /* ProfileUmbrellasView */,
-				844E4E6F2C4A3244007A22BA /* Notifications */,
 				84BEC9E42C48B8DB00119CCF /* FloodSafetyResources.swift */,
+				844E4E6F2C4A3244007A22BA /* Notifications */,
 				849876C82C4CB63500C57B52 /* TabController.swift */,
+				2DCC314F2C6AA9440031A173 /* TransitionTest.swift */,
+				2DCC314D2C686C9A0031A173 /* FloodDetectedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -518,6 +525,8 @@
 				8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */,
 				8409CEC62C643C7B002EEBDC /* ChildEvacuationPlanView.swift */,
 				2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */,
+				2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */,
+				2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -694,14 +703,17 @@
 				84C2FF822C48AB3200E87224 /* KidsEmergencyGuide.swift in Sources */,
 				844A80D82C2A9F11002A2D14 /* MessagingViewViewModel.swift in Sources */,
 				844A80DA2C2A9F17002A2D14 /* LearnView.swift in Sources */,
+				2DCC314A2C67D3980031A173 /* AddUsersToPlanSheet.swift in Sources */,
 				8475EA642C35AF5C00321D9D /* FirebaseManager.swift in Sources */,
 				84969DCE2C63224F00719A6C /* PetEmergencyInfo.swift in Sources */,
 				845BAF172C276D0D0054AAAA /* StartViewViewModel.swift in Sources */,
+				2DCC314C2C68308B0031A173 /* EmergencyPlanView.swift in Sources */,
 				846F3C252C2BD7D300DACB0C /* WeatherManager.swift in Sources */,
 				845BAF212C2775580054AAAA /* MainView.swift in Sources */,
 				841B7BDE2C33545000BC5787 /* UserListView.swift in Sources */,
 				845BAF232C2775630054AAAA /* MainViewViewModel.swift in Sources */,
 				84923A932C2F7DF6004EAECC /* MapViewSheet.swift in Sources */,
+				2DCC31502C6AA9440031A173 /* TransitionTest.swift in Sources */,
 				84EF0D0F2C2B965D0029A653 /* NewUmbrellaViewViewModel.swift in Sources */,
 				84923AB52C326A7D004EAECC /* OtpModifier.swift in Sources */,
 				84D814BC2C40D2F10099B020 /* CreateAvatar.swift in Sources */,
@@ -718,7 +730,6 @@
 				844A80DC2C2A9F20002A2D14 /* LearnViewViewModel.swift in Sources */,
 				845BAF1B2C276D200054AAAA /* KidRegisterViewViewModel.swift in Sources */,
 				840F28ED2C425C36001F02FF /* HairSelection.swift in Sources */,
-				84C7112B2C2D2C93000820C3 /* ProfileMapMarker.swift in Sources */,
 				84969DD02C6323F200719A6C /* childEvacuationPlan.swift in Sources */,
 				848B3B232C4A35C800B962FD /* NotificationViewViewModel.swift in Sources */,
 				848B3B202C4A353200B962FD /* Notification.swift in Sources */,
@@ -735,6 +746,7 @@
 				2DF32F5F2C67C161002C7ECF /* EmergencyPlanModel.swift in Sources */,
 				84FABB842C2F30FF00173E4D /* EditProfileView.swift in Sources */,
 				84BEC9E52C48B8DB00119CCF /* FloodSafetyResources.swift in Sources */,
+				2DCC314E2C686C9A0031A173 /* FloodDetectedView.swift in Sources */,
 				8433B8A12C4811AE002AEF51 /* Call911Button.swift in Sources */,
 				84ED81812C4F61D900F58201 /* SettingsViewModel.swift in Sources */,
 				8494D56E2C5EC3C30059B723 /* MakeEmergencyPlan.swift in Sources */,

@@ -10,8 +10,12 @@ import SwiftUI
 struct MessagingListItem: View {
     var participants: [String]
     var actualparticipants: [String] {
-        participants.filter {
-            $0 != FirebaseManager.shared.currentUserUsername
+        if participants.count > 1 {
+            participants.filter {
+                $0 != FirebaseManager.shared.currentUserUsername
+            }
+        } else {
+            participants
         }
     }
     var participantName: String {

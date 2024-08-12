@@ -19,7 +19,8 @@ struct EmergencyContactListView: View {
                 
                 if emergencyContact.name == "" {
                     Text("Click to edit")
-                        .font(.custom("Nunito", size: 18))
+                        .font(.custom("Nunito", size: 24))
+                        .fontWeight(.black)
                 } else {
                     Text(emergencyContact.name)
                         .font(.custom("Nunito", size: 24))

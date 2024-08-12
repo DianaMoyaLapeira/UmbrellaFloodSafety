@@ -36,7 +36,8 @@ const serverKeyPath = path.join(__dirname, "AuthKey_SN4RX6DW9J.p8");
 
 const privateKey = fs.readFileSync(serverKeyPath, "utf8");
 
-const openAIKey = functions.config().openai.apikey;
+// const openAIKey = functions.config().openai.apikey;
+const openAIKey = "dummykey";
 
 /**
  * Generates a JWT for auth with Apple WeatherKit API.
@@ -64,8 +65,6 @@ exports.callOpenAIAdult = functions.https
                   "The function must be called with a \"message\" argument.");
             }
 
-            console.log("made up by openAIKEY");
-
             const openai = new OpenAI({
               apiKey: openAIKey,
             });
@@ -80,9 +79,7 @@ exports.callOpenAIAdult = functions.https
               ],
               model: "ft:gpt-3.5-turbo-0125:personal::9jH4IGCI",
             });
-            console.log("choice object", completion.choices[0]);
-            console.log("Logs", completion.choices[0].logprobs);
-            console.log("Message", completion.choices[0].message.content);
+
             return {response: completion.choices[0]};
           } catch (error) {
             console.log(`oh no error ${error.message}`);
@@ -153,10 +150,7 @@ exports.sendMessageNotification = functions.firestore
         const participants = conversationData
             .participants;
 
-        const recipients = participants
-            .filter((participant) => participant !== senderId);
-
-        const userPromises = recipients.map((username) => admin.firestore()
+        const userPromises = participants.map((username) => admin.firestore()
             .collection("users")
             .doc(username).get());
         const userDocs = await Promise.all(userPromises);
@@ -188,7 +182,6 @@ exports.sendMessageNotification = functions.firestore
           };
           notification.payload = {conversationId};
           notification.topic = "com.dianamoya.UmbrellaFloodSafety";
-          console.log(notification.aps);
           return {notification, token};
         });
 
@@ -266,7 +259,8 @@ async function getWeatherAlerts(
     });
 
     if (response.ok) {
-      return await response.json();
+      const JSONresponse = await response.json();
+      return JSONresponse;
     } else {
       console.error(`Unexpected response code: ${response.status}`);
       return null;
@@ -278,56 +272,33 @@ async function getWeatherAlerts(
 }
 
 /**
- * Gets detailed information about a specific weather alert.
- * @param {string} language - The language for the data.
- * @param {string} id - The ID of the weather alert.
- * @return {Promise<Object|null>} The weather alert detail
- * or null if an error occurs.
- */
-async function getAlertDetail(language, id) {
-  const token = generateJWT();
-  const url = `https://weatherkit.apple.com/api/v1/weatherAlert/${language}/${id}`;
-
-  try {
-    const response = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (response.ok) {
-      return await response.json();
-    } else {
-      console.error(`Unexpected response code: ${response.status}`);
-      return null;
-    }
-  } catch (error) {
-    console.error("Error fetching alert detail:", error);
-    return null;
-  }
-}
-
-/**
- * Sends an Apple Push Notification (APN) with the given alert description.
+ * Sends an APN with the alert description.
  * @param {string} deviceToken - The APN device token.
  * @param {string} alertDescription - The alert description.
- * @param {string} username - The username of the recipient.
+ * @param {string} username - The username of the receiver.
  */
 async function sendAlertNotification(deviceToken, alertDescription, username) {
   const notification = new apn.Notification();
   notification.aps = {
-    title: "Umbrella Flood Safety",
-    subtitle: `Alert in ${username}'s location`,
-    body: `${alertDescription} in ${username}'s location`,
+    alert: {
+      title: "Flood Safety Warning",
+      subtitle: `${alertDescription} in ${username}'s Area`,
+      body: "Check up on them to make sure they're safe.",
+    },
+    sound: "default",
+    badge: 1,
   };
   notification.payload = {alertDescription};
   notification.topic = "com.dianamoya.UmbrellaFloodSafety";
 
   try {
-    const result = apnProvider.send(notification, deviceToken);
-    console.log(`Sent: ${result.sent.length}, error: ${result.error.length}`);
+    const sendPromise = apnProvider.send(notification, deviceToken);
+    const result = await sendPromise;
+    console.log(`success: ${result.sent.length} 
+      failed: ${result.failed.length}`);
   } catch (error) {
-    console.log(`Error sending APNs notif: ${error}`);
+    console.log(`Error sending flood alert notification to 
+      user ${username}: ${error}`);
   }
 }
 
@@ -360,6 +331,8 @@ async function checkFloodAlertsForUsers() {
       }
 
       const [latitude, longitude] = user.location;
+      console.log(`user ${user} latitude: ${latitude} 
+        longitude: ${longitude}`);
       const alerts = await getWeatherAlerts(
           latitude,
           longitude,
@@ -369,13 +342,11 @@ async function checkFloodAlertsForUsers() {
           language,
       );
 
-      if (alerts && alerts.weatherAlerts && alerts.weatherAlerts.detailsURL) {
-        const alertIds = getIdsFromURL(alerts.weatherAlerts.detailsURL);
+      if (alerts && alerts.weatherAlerts && alerts.weatherAlerts.alerts) {
+        const alertArray = alerts.weatherAlerts.alerts;
 
-        if (alertIds) {
-          const detail = await getAlertDetail(language, alertIds);
-
-          if (detail && detail.description.toLowerCase().includes("flood")) {
+        alertArray.forEach(async (alert) => {
+          if (alert.phenomenon.toLowerCase().includes("flood")) {
             const groupsSnapshot = await db.collection("groups")
                 .where("members", "array-contains", user.username).get();
 
@@ -389,33 +360,17 @@ async function checkFloodAlertsForUsers() {
 
                 if (memberDocData && memberDocData.deviceToken) {
                   await sendAlertNotification(
-                      memberDocData.deviceToken, detail.description, member,
+                      memberDocData.deviceToken, alert.description,
+                      user.username,
                   );
                 }
               }
             }
           }
-        }
+        });
       }
     }
   } catch (error) {
     console.error("Error in checkFloodAlertsForUsers:", error);
-  }
-}
-
-/**
- * Extracts IDs from a URL query string.
- * @param {string} url - The URL containing the IDs.
- * @return {string|null} The extracted IDs or null if not found.
- */
-function getIdsFromURL(url) {
-  try {
-    const parsedUrl = new URL(url);
-    const params = new URLSearchParams(parsedUrl.search);
-    const ids = params.get("ids");
-    return ids;
-  } catch (error) {
-    console.error("Error parsing URL", error);
-    return null;
   }
 }

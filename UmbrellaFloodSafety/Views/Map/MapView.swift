@@ -37,10 +37,6 @@ struct MapView: View {
     }
     @State var showNotificationSheet: Bool = false
     
-    init(username: String) {
-        
-    }
-    
     var body: some View {
         VStack {
             
@@ -120,5 +116,6 @@ struct MapView: View {
 
 
 #Preview {
-    MapView(username: "testadult")
+    MapView()
 }
+

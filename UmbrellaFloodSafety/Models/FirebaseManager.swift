@@ -29,7 +29,7 @@ class FirebaseManager: ObservableObject {
     @Published var messages: [String:[message]]=["":[]] // Conversation Id to an array of messages
     @Published var isChild: Bool = false
     @Published var usernameToName: [String: String] = [:] // Username to name
-    @Published var memberRiskLevels: [String: Int] = [:] // Username to risk level
+    @Published var memberRiskLevels: [String: Int] = [:] // Username to risk level (only for risks > 0)
     @Published var memberRiskColors: [String: Color] = [:] // Username to color
     @Published var blockedUsers: [String] = [] // Array of blocked users
     
@@ -368,6 +368,8 @@ class FirebaseManager: ObservableObject {
             
             self.groupMembersLocations[memberUsername] = coordinate
             
+            getRiskLevel(username: memberUsername, coordinate: coordinate)
+            
             if let avatar = document.get("avatar") as? String {
                 self.groupMembersAvatars[memberUsername] = avatar
             } else {
@@ -378,6 +380,15 @@ class FirebaseManager: ObservableObject {
         memberListeners.append(memberListener)
     }
     
+    private func getRiskLevel(username: String, coordinate: CLLocationCoordinate2D) {
+        Task {
+            let riskLevel = await weatherManager.getRiskLevel(coordinate: coordinate)
+            
+            if riskLevel > 0 {
+                self.memberRiskLevels[username] = riskLevel
+            }
+        }
+    }
     private func clearMemberListeners() {
         for listener in memberListeners {
             listener.remove()

@@ -27,6 +27,7 @@ struct EmergencyPlanUsersView: View {
             
             Divider()
             
+            
             ScrollView {
                 
                 VStack {
@@ -53,42 +54,7 @@ struct EmergencyPlanUsersView: View {
         }
         .padding()
         .sheet(isPresented: $isPresented, content: {
-            ScrollView {
-                HStack {
-                    Text("Add Members")
-                        .font(.custom("Nunito", size: 34))
-                        .foregroundStyle(.mainBlue)
-                        .fontWeight(.black)
-                    
-                    Spacer()
-                    
-                    Button {
-                        isPresented.toggle()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundStyle(.mainBlue)
-                            .frame(width: 34)
-                    }
-                }
-                
-                Divider()
-                
-                ForEach(firebaseManager.groupMembers.keys.sorted(), id: \.self) { group in
-                    
-                    HStack {
-                        Text(firebaseManager.userGroups[group] ?? "Umbrella \(group)")
-                            .font(.custom("Nunito", size: 24))
-                            .foregroundStyle(.mainBlue)
-                            .fontWeight(.black)
-                        
-                        Spacer()
-                    }
-                    
-                }
-            }
-            .padding()
+            AddUsersToPlanSheet(usersInPlan: $usersInPlan, isPresented: $isPresented)
         })
     }
 }

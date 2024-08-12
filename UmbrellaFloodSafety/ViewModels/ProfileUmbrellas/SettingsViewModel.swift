@@ -13,14 +13,16 @@ import CoreLocation
 class SettingsViewModel: ObservableObject {
     
     var firebaseManager = FirebaseManager.shared
+    var currentUsername = FirebaseManager.shared.currentUserUsername
     
     func deleteAccount() {
         let user = Auth.auth().currentUser
         let db = Firestore.firestore()
         
+        // delete groups
         for group in firebaseManager.userGroups.keys {
             db.collection("groups").document(group).updateData([
-                "members": FieldValue.arrayRemove([firebaseManager.currentUserUsername])
+                "members": FieldValue.arrayRemove([currentUsername])
             ]) { error in
                 if let error = error {
                     print("Error removing deleted user from group: \(error)")
@@ -30,6 +32,7 @@ class SettingsViewModel: ObservableObject {
             }
         }
         
+        // delete conversations
         for (conversation, conversationInfo) in firebaseManager.conversations {
             
             if conversationInfo.participants.count == 2 {
@@ -42,13 +45,25 @@ class SettingsViewModel: ObservableObject {
                 }
             } else {
                 db.collection("conversations").document(conversation).updateData([
-                    "members": FieldValue.arrayRemove([firebaseManager.currentUserUsername])
+                    "members": FieldValue.arrayRemove([currentUsername])
                 ]) { error in
                     if let error = error {
                         print("Error removing deleted user from conversation: \(error)")
                     } else {
                         print("Successfully removed deleted user from conversation")
                     }
+                }
+            }
+        }
+        
+        for emergencyPlan in EmergencyPlanFirebaseManager().emergencyPlans.keys {
+            db.collection("emergencyPlans").document(emergencyPlan).updateData([
+                "usersInPlan" : FieldValue.arrayRemove([currentUsername])
+            ]) { error in
+                if let error = error {
+                    print("An error occurred deleting user from emergency plan \(error)")
+                } else {
+                    print("Successfully removed deleted user from emergency plan")
                 }
             }
         }

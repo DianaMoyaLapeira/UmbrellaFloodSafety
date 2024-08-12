@@ -26,26 +26,20 @@ struct LearnView: View {
                         .padding()
                     
                     Spacer()
+                    
+                    Call911Button()
                 }
                 
                 Divider()
                 
                 ScrollView {
-                    HStack {
-                        Text("Emergency")
-                            .font(.custom("Nunito", size: 32))
-                            .foregroundStyle(Color.red)
-                            .fontWeight(.black)
-                            .padding()
-                        
-                        Spacer()
-                    }
                     
                     if firebaseManager.isChild {
                         NavigationLink {
                             KidsEmergencyGuide()
                         } label: {
                             LearnTile(title: "Emergency Help", icon: "exclamationmark.triangle", mainColor: .mainBlue, secondaryColor: .accentYellow, iconColor: .red)
+                                .padding(.vertical)
                         }
 
                     } else {
@@ -53,19 +47,8 @@ struct LearnView: View {
                             AdultEmergencyGuide()
                         } label: {
                             LearnTile(title: "Emergency Help", icon: "exclamationmark.triangle", mainColor: .mainBlue, secondaryColor: .accentYellow, iconColor: .red)
+                                .padding(.vertical)
                         }
-                    }
-                    
-                    Spacer()
-                    
-                    HStack {
-                        Text("Prepare")
-                            .font(.custom("Nunito", size: 34))
-                            .foregroundStyle(Color.mainBlue)
-                            .fontWeight(.black)
-                            .padding()
-                        
-                        Spacer()
                     }
                     
                     NavigationLink {

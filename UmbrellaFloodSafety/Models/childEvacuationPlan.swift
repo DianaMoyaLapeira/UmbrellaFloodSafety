@@ -12,6 +12,6 @@ struct childEvacuationPlan: Codable, Identifiable {
     var id: String
     var name: String
     var evacuationSite: String
-    var contactInfo: String?
+    var contactInfo: String = ""
     
 }

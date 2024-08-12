@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EmergencyPlans: View {
+    
+    @ObservedObject var emergencyPlanFirebaseManager = EmergencyPlanFirebaseManager.shared
     var body: some View {
         ScrollView {
   
@@ -22,29 +24,40 @@ struct EmergencyPlans: View {
             
             Divider()
             
-            HStack {
-                VStack {
-                    HStack {
-                        Text("Familia's Emergency Plan")
-                            .font(.custom("Nunito", size: 24))
-                            .fontWeight(.black)
-                            .foregroundStyle(.mainBlue)
-                        
-                        Spacer()
-                        
-                    }
+            VStack {
+                
+                ForEach(emergencyPlanFirebaseManager.emergencyPlans.keys.sorted(), id: \.self) { plan in
                     
-                    HStack {
-                        Text("Tap here to go to plan")
-                            .font(.custom("Nunito", size: 18))
-                        
-                        Spacer()
+                    NavigationLink(destination: EmergencyPlanView(emergencyPlan: emergencyPlanFirebaseManager.emergencyPlans[plan]!)) {
+                        HStack {
+                            VStack {
+                                HStack {
+                                    Text(emergencyPlanFirebaseManager.emergencyPlans[plan]?.title ?? "Emergency Plan")
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
+                                    
+                                    Spacer()
+                                    
+                                }
+                                
+                                HStack {
+                                    Text("Tap here to go to plan")
+                                        .font(.custom("Nunito", size: 18))
+                                    
+                                    Spacer()
+                                }
+                            }
+                            
+                            Image(systemName: "chevron.right")
+                            
+                            Spacer()
+                        }
                     }
+                    .foregroundStyle(.primary)
+                    .padding(.bottom)
+                    
+                    Divider()
                 }
-                
-                Image(systemName: "chevron.right")
-                
-                Spacer()
             }
             .padding()
             .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(.mainBlue))
@@ -53,7 +66,7 @@ struct EmergencyPlans: View {
             
             Divider()
             
-            NavigationLink(destination: MakeEmergencyPlan()) {
+            NavigationLink(destination: MakeEmergencyPlan(emergencyPlan: nil)) {
                 
                 HStack {
                     

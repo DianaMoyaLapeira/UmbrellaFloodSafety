@@ -12,6 +12,7 @@ struct MapMarker: View {
     
     var profileString: String
     @ObservedObject var firebaseManager = FirebaseManager.shared
+    var weatherManager = WeatherManager()
     var username: String
     var frameWidth: CGFloat
     var circleWidth: CGFloat
@@ -63,7 +64,7 @@ struct MapMarker: View {
     func getRiskColor() async -> Color {
         var riskLevel: Int = 0
 
-        riskLevel = await WeatherManager().getRiskLevel(coordinate: firebaseManager.groupMembersLocations[username] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+        riskLevel = await weatherManager.getRiskLevel(coordinate: firebaseManager.groupMembersLocations[username] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
         
         switch riskLevel {
         case 0: return .accentGreen
