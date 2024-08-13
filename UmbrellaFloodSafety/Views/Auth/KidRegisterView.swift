@@ -22,7 +22,7 @@ struct KidRegisterView: View {
                 Spacer()
                 
                 VStack(spacing: -60) {
-                    Text("Create Your \nAccount")
+                    Text(LocalizedStringKey("Create Your \nAccount"))
                         .font(.custom("Nunito", size: 40))
                         .scaledToFill()
                         .fontWeight(.black)
@@ -41,7 +41,7 @@ struct KidRegisterView: View {
                         
                         if viewModel.errorMessage != "" {
                                 
-                            Text(viewModel.errorMessage)
+                            Text(LocalizedStringKey(viewModel.errorMessage))
                                 .font(.custom("Nunito", size: 18))
                                 .padding()
                                 .background(RoundedRectangle(cornerRadius: 25).fill(.tertiary, style: FillStyle()))
@@ -51,7 +51,7 @@ struct KidRegisterView: View {
                 }
                 
                 
-                TextField("", text: $viewModel.name, prompt: Text("First Name")
+                TextField("", text: $viewModel.name, prompt: Text(LocalizedStringKey("First Name"))
                     .foregroundStyle(Color(.darkGray)))
                     .padding()
                     .background(Color.gray.opacity(0.1))
@@ -62,7 +62,7 @@ struct KidRegisterView: View {
                 
                 Spacer()
                 
-                TextField("", text: $viewModel.username, prompt: Text("Username")
+                TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Username"))
                     .foregroundStyle(Color(.darkGray)))
                     .padding()
                     .background(Color.gray.opacity(0.1))
@@ -76,7 +76,7 @@ struct KidRegisterView: View {
                 HStack {
                     ZStack {
                         if isSecure {
-                            SecureField("", text: $viewModel.password, prompt: Text("Password")
+                            SecureField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray))
                             )
                             .padding()
@@ -84,7 +84,7 @@ struct KidRegisterView: View {
                             .cornerRadius(8)
                             .font(.custom("Nunito", size: 18))
                         } else {
-                            TextField("", text: $viewModel.password, prompt: Text("Password")
+                            TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray)))
                             .padding()
                             .background(Color.gray.opacity(0.1))
@@ -124,7 +124,7 @@ struct KidRegisterView: View {
                         RoundedRectangle(cornerRadius: 25)
                             .foregroundStyle(.mainBlue)
                         
-                        Text("Create account")
+                        Text(LocalizedStringKey("Create Account"))
                             .font(.custom("Nunito", size: 18))
                             .foregroundStyle(.white)
                             .bold()
@@ -141,7 +141,7 @@ struct KidRegisterView: View {
                         dismiss()
                     }) {
                         Label {
-                             Text("Back")
+                             Text(LocalizedStringKey("Back"))
                         } icon: {
                             Image(.backArrow)
                                         }

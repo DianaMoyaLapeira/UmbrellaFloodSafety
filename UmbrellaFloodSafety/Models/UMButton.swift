@@ -20,7 +20,7 @@ struct UMButton: View {
             ZStack {
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
                     .foregroundColor(background)
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(.custom("Nunito", size: 18))
                     .bold()
                     .foregroundColor(.white)

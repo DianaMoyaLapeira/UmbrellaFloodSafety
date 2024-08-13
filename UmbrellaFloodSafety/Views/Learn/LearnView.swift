@@ -19,7 +19,7 @@ struct LearnView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Text("Learn")
+                    Text(LocalizedStringKey("Resources"))
                         .font(.custom("Nunito", size: 34))
                         .foregroundStyle(Color.mainBlue)
                         .fontWeight(.black)

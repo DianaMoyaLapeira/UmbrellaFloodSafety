@@ -23,6 +23,7 @@ struct EmergencyContactListView: View {
                         .fontWeight(.black)
                 } else {
                     Text(emergencyContact.name)
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Nunito", size: 24))
                         .fontWeight(.black)
                 }
@@ -32,6 +33,7 @@ struct EmergencyContactListView: View {
                         .font(.custom("Nunito", size: 18))
                 } else {
                     Text("Home Phone: \(emergencyContact.homePhoneNumber.formatPhoneNumber())")
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Nunito", size: 18))
                 }
                 
@@ -41,6 +43,7 @@ struct EmergencyContactListView: View {
                         .font(.custom("Nunito", size: 18))
                 } else {
                     Text("Cell Phone: \(emergencyContact.cellPhoneNumber.formatPhoneNumber())")
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Nunito", size: 18))
                 }
                 

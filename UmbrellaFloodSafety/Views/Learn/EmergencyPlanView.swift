@@ -12,6 +12,15 @@ struct EmergencyPlanView: View {
     @Environment(\.dismiss) var dismiss
     @State var emergencyPlan: EmergencyPlanModel
     @State var isPresented: Bool = false
+    var actualtimestamp: String {
+        guard emergencyPlan.dateUpdated != 0 else {
+            return ""
+        }
+        let dateFormatter = DateFormatter()
+        let date = Date(timeIntervalSince1970: emergencyPlan.dateUpdated)
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: date)
+    }
     
     var body: some View {
         
@@ -24,7 +33,17 @@ struct EmergencyPlanView: View {
                 
                 Spacer()
             }
-            .padding()
+            .padding([.top, .horizontal])
+            
+            HStack {
+                Text("Last updated \(actualtimestamp)")
+                    .font(.custom("Nunito", size: 18))
+                    .bold()
+                    .foregroundStyle(.gray)
+                
+                Spacer()
+            }
+            .padding([.bottom, .horizontal])
             
             Divider()
             

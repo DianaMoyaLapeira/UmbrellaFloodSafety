@@ -42,7 +42,7 @@ struct UserView: View {
                 .foregroundStyle(.secondary)
             
             HStack {
-                Text("Umbrellas In Common")
+                Text(LocalizedStringKey("Umbrellas In Common"))
                     .font(.custom("Nunito", size: 24))
                     .fontWeight(.black)
                     .foregroundStyle(.mainBlue)
@@ -68,7 +68,7 @@ struct UserView: View {
                     displayReport.toggle()
                 } label: {
                     HStack {
-                        Text("Report User")
+                        Text(LocalizedStringKey("Report User"))
                             .font(.custom("Nunito", size: 18))
                             .bold()
                     
@@ -86,7 +86,7 @@ struct UserView: View {
                     showAlert.toggle()
                 } label: {
                     HStack {
-                        Text("Block User")
+                        Text(LocalizedStringKey("Block User"))
                             .font(.custom("Nunito", size: 18))
                             .bold()
                     
@@ -105,11 +105,11 @@ struct UserView: View {
         .sheet(isPresented: $displayReport, content: {
             ReportView(isPresented: $displayReport, sender: FirebaseManager.shared.currentUserUsername, reported: username)
         })
-        .alert("Block User?", isPresented: $showAlert) {
-            Button("Block", role: .destructive) {
+        .alert(LocalizedStringKey("Block User?"), isPresented: $showAlert) {
+            Button(LocalizedStringKey("Block"), role: .destructive) {
                 viewModel.blockUser(blockedUser: username)
             }
-            Button("Cancel", role: .cancel) { }
+            Button(LocalizedStringKey("Cancel"), role: .cancel) { }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -118,7 +118,7 @@ struct UserView: View {
                        dismiss()
                    }) {
                     Label {
-                        Text("Back")
+                        Text(LocalizedStringKey("Back"))
                     } icon: {
                         Image(.backArrow)
                     }

@@ -20,7 +20,7 @@ struct MakeEmergencyPlan: View {
     var body: some View {
         
         HStack {
-            Text("Edit Emergency Plan")
+            Text(LocalizedStringKey("Edit Emergency Plan"))
                 .font(.custom("Nunito", size: 34))
                 .foregroundStyle(.mainBlue)
                 .fontWeight(.black)
@@ -34,14 +34,14 @@ struct MakeEmergencyPlan: View {
         ScrollView {
             
             HStack {
-                Text("Plan Title:")
+                Text(LocalizedStringKey("Plan Title:"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(.mainBlue)
                     .fontWeight(.black)
                 
                 Spacer()
                 
-                TextField("Plan Title", text: $viewModel.title, prompt: Text("Enter Title")
+                TextField(LocalizedStringKey("Plan Title"), text: $viewModel.title, prompt: Text(LocalizedStringKey("Enter Title"))
                     .font(.custom("Nunito", size: 24))
                     .bold()
                     .foregroundStyle(.gray)
@@ -55,7 +55,7 @@ struct MakeEmergencyPlan: View {
             Divider()
             
             NavigationLink(destination: EmergencyPlanUsersView(usersInPlan: $viewModel.usersInPlan)) {
-                Text("Add/Remove Users")
+                Text(LocalizedStringKey("Add or Remove Users"))
                     .font(.custom("Nunito", size: 18))
                     .foregroundStyle(.white)
                     .bold()
@@ -67,7 +67,7 @@ struct MakeEmergencyPlan: View {
             Divider()
             
             HStack {
-                Text("Family Member Contact Info")
+                Text(LocalizedStringKey("Family Member Contact Info"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(.mainBlue)
                     .fontWeight(.black)
@@ -101,7 +101,7 @@ struct MakeEmergencyPlan: View {
             Divider()
             
             HStack {
-                Text("Pet Info")
+                Text(LocalizedStringKey("Pet Info"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(.mainBlue)
                     .fontWeight(.black)
@@ -135,7 +135,7 @@ struct MakeEmergencyPlan: View {
             Divider()
             
             HStack {
-                Text("Plan of Action")
+                Text(LocalizedStringKey("Plan of Action"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(.mainBlue)
                     .fontWeight(.black)
@@ -145,14 +145,14 @@ struct MakeEmergencyPlan: View {
             .padding(.bottom)
             
             HStack {
-                Text("The floods most likely to affect our home are: ")
+                Text(LocalizedStringKey("The floods most likely to affect our home are: "))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
                 Spacer()
             }
             
-            TextField("Flash floods, coastal floods, etc.", text: $viewModel.mostLikelyDisasters, axis: .vertical)
+            TextField(LocalizedStringKey("Flash floods, coastal floods, etc."), text: $viewModel.mostLikelyDisasters, axis: .vertical)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()
@@ -160,14 +160,14 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("What are the escape routes from our home?")
+                Text(LocalizedStringKey("What are the escape routes from our home?"))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
                 Spacer()
             }
             
-            TextField("Escape route from home", text: $viewModel.escapeRouteFromHome, axis: .vertical)
+            TextField(LocalizedStringKey("Escape route from home"), text: $viewModel.escapeRouteFromHome, axis: .vertical)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()
@@ -175,14 +175,14 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("If separated during an emergency, what is our meeting place near our home?")
+                Text(LocalizedStringKey("If separated during an emergency, what is our meeting place near our home?"))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
                 Spacer()
             }
             
-            TextField("Meeting place near home", text: $viewModel.meetingNearHome, axis: .vertical)
+            TextField(LocalizedStringKey("Meeting place near home"), text: $viewModel.meetingNearHome, axis: .vertical)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()
@@ -190,14 +190,14 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("If we cannot return home or are asked to evacuate, what is our meeting place outside of our neighborhood?")
+                Text(LocalizedStringKey("If we cannot return home or are asked to evacuate, what is our meeting place outside of our neighborhood?"))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
                 Spacer()
             }
             
-            TextField("Meeting place outside neighborhood", text: $viewModel.meetingOutsideNeighborhood, axis: .vertical)
+            TextField(LocalizedStringKey("Meeting place outside neighborhood"), text: $viewModel.meetingOutsideNeighborhood, axis: .vertical)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()
@@ -205,14 +205,14 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("What is our route to get there?")
+                Text(LocalizedStringKey("What is our route to get there?"))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
                 Spacer()
             }
             
-            TextField("First choice route", text: $viewModel.firstChoiceRoute, axis: .vertical)
+            TextField(LocalizedStringKey("First choice route"), text: $viewModel.firstChoiceRoute, axis: .vertical)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()
@@ -220,14 +220,14 @@ struct MakeEmergencyPlan: View {
                     .fill(.quinary))
             
             HStack {
-                Text("What is an alternate route to get there?")
+                Text(LocalizedStringKey("What is an alternate route to get there?"))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                 
                 Spacer()
             }
             
-            TextField("Second choice route", text: $viewModel.secondChoiceRoute, axis: .vertical)
+            TextField(LocalizedStringKey("Second choice route"), text: $viewModel.secondChoiceRoute, axis: .vertical)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()
@@ -238,7 +238,7 @@ struct MakeEmergencyPlan: View {
                 .padding(.top)
             
             HStack {
-                Text("External Emergency Contacts")
+                Text(LocalizedStringKey("External Emergency Contacts"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(.mainBlue)
                     .fontWeight(.black)
@@ -271,7 +271,7 @@ struct MakeEmergencyPlan: View {
             Divider()
             
             HStack {
-                Text("Plans for Special Needs/Disabilities")
+                Text(LocalizedStringKey("Plans for Special Needs/Disabilities"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(.mainBlue)
                     .fontWeight(.black)
@@ -289,7 +289,7 @@ struct MakeEmergencyPlan: View {
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
                                 } else {
-                                    Text("Click to Edit")
+                                    Text(LocalizedStringKey("Click to Edit"))
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
                                 }
@@ -299,7 +299,7 @@ struct MakeEmergencyPlan: View {
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 } else {
-                                    Text("Plan: None yet")
+                                    Text(LocalizedStringKey("Plan: None yet"))
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 }
@@ -333,7 +333,7 @@ struct MakeEmergencyPlan: View {
             Divider()
             
             HStack {
-                Text("Evacuation Plan for Children")
+                Text(LocalizedStringKey("Evacuation Plan for Children"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(.mainBlue)
                     .fontWeight(.black)
@@ -351,27 +351,27 @@ struct MakeEmergencyPlan: View {
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
                                 } else {
-                                    Text("Click to edit")
+                                    Text(LocalizedStringKey("Click to edit"))
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
                                 }
                                 
                                 if plan.evacuationSite != "" {
-                                    Text("Evacuation site: \(plan.evacuationSite)")
+                                    Text("\(LocalizedStringKey("Evacuation site")): \(plan.evacuationSite)")
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 } else {
-                                    Text("Evacuation site: None yet")
+                                    Text(LocalizedStringKey("Evacuation site: None yet"))
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 }
                                 
                                 if plan.contactInfo != "" {
-                                    Text("Contact Info: \(plan.contactInfo)")
+                                    Text("\(LocalizedStringKey("Contact Info")): \(plan.contactInfo)")
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 } else {
-                                    Text("Evacuation site: None yet")
+                                    Text(LocalizedStringKey("Evacuation site: None yet"))
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 }
@@ -404,12 +404,12 @@ struct MakeEmergencyPlan: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Safe Room")
+                    Text(LocalizedStringKey("Safe Room"))
                         .font(.custom("Nunito", size: 24))
                         .foregroundStyle(.mainBlue)
                         .fontWeight(.black)
                     
-                    Text("What is an accessible, safe room where we can go, seal windows, vents and doors and listen to emergency broadcasts for instructions?")
+                    Text(LocalizedStringKey("What is an accessible, safe room where we can go, seal windows, vents and doors and listen to emergency broadcasts for instructions?"))
                         .font(.custom("Nunito", size: 18))
                         .bold()
                 }
@@ -417,7 +417,7 @@ struct MakeEmergencyPlan: View {
                 Spacer()
             }
             
-            TextField("Safe room", text: $viewModel.safeRoom, axis: .vertical)
+            TextField(LocalizedStringKey("Safe room"), text: $viewModel.safeRoom, axis: .vertical)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()
@@ -426,11 +426,11 @@ struct MakeEmergencyPlan: View {
             
         }
         .padding()
-        .alert("Leave without saving?", isPresented: $showAlert) {
-            Button("Leave", role: .destructive) {
+        .alert(LocalizedStringKey("Go back without saving?"), isPresented: $showAlert) {
+            Button(LocalizedStringKey("Back"), role: .destructive) {
                 dismiss()
             }
-            Button("Cancel", role: .cancel) { }
+            Button(LocalizedStringKey("Cancel"), role: .cancel) { }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -438,7 +438,7 @@ struct MakeEmergencyPlan: View {
                Button {
                    showAlert.toggle()
                } label: {
-                   Text("Back")
+                   Text(LocalizedStringKey("Back"))
                        .font(.custom("Nunito", size: 18))
                        .foregroundStyle(.mainBlue)
                        .fontWeight(.bold)
@@ -451,7 +451,7 @@ struct MakeEmergencyPlan: View {
                     viewModel.uploadEmergencyPlanIntoDB()
                     dismiss()
                 } label: {
-                    Text("Done")
+                    Text(LocalizedStringKey("Done"))
                         .font(.custom("Nunito", size: 18))
                         .foregroundStyle(.mainBlue)
                         .fontWeight(.black)

@@ -33,7 +33,7 @@ struct Call911Button: View {
                             .bold()
                     }
                 }
-                .frame(width: 150, height: 44)
+                .frame(width: 155, height: 44)
         }
         .padding(.trailing)
         .alert("Call 911?", isPresented: $showAlert) {

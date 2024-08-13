@@ -5,6 +5,7 @@
 //  Created by Diana Moya Lapeira on 11/7/24.
 //
 
+import SwiftUI
 import Foundation
 import FirebaseFirestore
 
@@ -69,7 +70,9 @@ class ConversationViewViewModel: ObservableObject {
                    let messageDict = response["message"] as? [String: Any],
                    let content = messageDict["content"] as? String {
                     print("Content: \(content)")
-                    self.suggestionsFormatted = content.components(separatedBy: ":")
+                    withAnimation {
+                        self.suggestionsFormatted = content.components(separatedBy: ":")
+                    }
                     print("formatted suggestions: \(self.suggestionsFormatted)")
                 }
             case .failure(let error):

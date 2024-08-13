@@ -17,7 +17,7 @@ struct CreateAvatar: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Create an Avatar")
+                Text(LocalizedStringKey("Create an Avatar"))
                     .font(.custom("Nunito", size: 32))
                     .fontWeight(.black)
                     .foregroundStyle(Color.mainBlue)
@@ -29,7 +29,7 @@ struct CreateAvatar: View {
                     
                     isPresented.toggle()
                 } label: {
-                    Text("Done")
+                    Text(LocalizedStringKey("Done"))
                         .font(.custom("Nunito", size: 18))
                         .fontWeight(.black)
                         .foregroundStyle(Color.mainBlue)
@@ -50,13 +50,13 @@ struct CreateAvatar: View {
                 } label: {
                     if selection == 0 {
                         VStack {
-                            Text("Skin")
+                            Text(LocalizedStringKey("Skin"))
                                 .font(.custom("Nunito", size: 24))
                                 .fontWeight(.black)
                         }
                     
                     } else {
-                        Text("Skin")
+                        Text(LocalizedStringKey("Skin"))
                             .font(.custom("Nunito", size: 24))
                             .foregroundStyle(.black)
                             .fontWeight(.bold)
@@ -70,13 +70,13 @@ struct CreateAvatar: View {
                 } label: {
                     if selection == 1 {
                         VStack {
-                            Text("Hair")
+                            Text(LocalizedStringKey("Hair"))
                                 .font(.custom("Nunito", size: 24))
                                 .fontWeight(.black)
                         }
                     
                     } else {
-                        Text("Hair")
+                        Text(LocalizedStringKey("Hair"))
                             .font(.custom("Nunito", size: 24))
                             .foregroundStyle(.black)
                             .fontWeight(.bold)
@@ -90,13 +90,13 @@ struct CreateAvatar: View {
                 } label: {
                     if selection == 2 {
                         VStack {
-                            Text("Shirt")
+                            Text(LocalizedStringKey("Shirt"))
                                 .font(.custom("Nunito", size: 24))
                                 .fontWeight(.black)
                         }
                     
                     } else {
-                        Text("Shirt")
+                        Text(LocalizedStringKey("Shirt"))
                             .font(.custom("Nunito", size: 24))
                             .foregroundStyle(.black)
                             .bold()
@@ -110,13 +110,13 @@ struct CreateAvatar: View {
                 } label: {
                     if selection == 3 {
                         VStack {
-                            Text("Accessories")
+                            Text(LocalizedStringKey("Accessories"))
                                 .font(.custom("Nunito", size: 24))
                                 .fontWeight(.black)
                         }
                     
                     } else {
-                        Text("Accessories")
+                        Text(LocalizedStringKey("Accessories"))
                             .font(.custom("Nunito", size: 24))
                             .foregroundStyle(.black)
                             .bold()
@@ -146,7 +146,7 @@ struct CreateAvatar: View {
                     dismiss()
                 }) {
                     Label {
-                         Text("Back")
+                         Text(LocalizedStringKey("Back"))
                     } icon: {
                         Image(.backArrow)
                                     }

@@ -36,7 +36,7 @@ struct LearnTile: View {
                 Spacer()
                 
                 HStack {
-                    Text(title)
+                    Text(LocalizedStringKey(title))
                         .foregroundStyle(.white)
                         .font(.custom("Nunito", size: 32))
                         .fontWeight(.black)

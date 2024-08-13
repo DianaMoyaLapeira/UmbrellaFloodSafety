@@ -25,7 +25,7 @@ struct SkinAvatarSelection: View {
         ScrollView {
             
             HStack {
-                Text("Skin Color")
+                Text(LocalizedStringKey("Skin Color"))
                     .font(.custom("Nunito", size: 24))
                     .fontWeight(.black)
                     .foregroundStyle(.mainBlue)
@@ -77,7 +77,7 @@ struct SkinAvatarSelection: View {
                 
                 HStack {
                     
-                    Text("Blush")
+                    Text(LocalizedStringKey("Blush"))
                         .font(.custom("Nunito", size: 24))
                         .fontWeight(.black)
                         .foregroundStyle(.mainBlue)
@@ -89,7 +89,7 @@ struct SkinAvatarSelection: View {
                         Button {
                             viewModel.blush = ""
                         } label: {
-                            Text("Remove")
+                            Text(LocalizedStringKey("Remove"))
                                 .font(.custom("Nunito", size: 18))
                                 .fontWeight(.bold)
                                 .foregroundStyle(.mainBlue)

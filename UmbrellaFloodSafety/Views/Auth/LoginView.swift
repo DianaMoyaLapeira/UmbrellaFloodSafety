@@ -18,7 +18,7 @@ struct LoginView: View {
             VStack {
                    Spacer()
                    
-                   Text("Welcome Back!")
+                   Text(LocalizedStringKey("Welcome Back!"))
                        .font(.custom("Nunito", size: 40))
                        .scaledToFill()
                        .fontWeight(.black)
@@ -39,10 +39,10 @@ struct LoginView: View {
                    
                 
                 if !viewModel.errorMessage.isEmpty {
-                    Text(viewModel.errorMessage)
+                    Text(LocalizedStringKey(viewModel.errorMessage))
                         .foregroundColor(Color.red)
                 }
-                TextField("", text: $viewModel.username, prompt: Text("Username")
+                TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Username"))
                     .foregroundStyle(Color(UIColor.darkGray)))
                     .autocorrectionDisabled()
                     .autocapitalization(.none)
@@ -58,7 +58,7 @@ struct LoginView: View {
                 HStack {
                     ZStack {
                         if isSecure {
-                            SecureField("", text: $viewModel.password, prompt: Text("Password")
+                            SecureField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray))
                             )
                             .padding()
@@ -66,7 +66,7 @@ struct LoginView: View {
                             .cornerRadius(8)
                             .font(.custom("Nunito", size: 18))
                         } else {
-                            TextField("", text: $viewModel.password, prompt: Text("Password")
+                            TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray)))
                             .padding()
                             .background(Color.gray.opacity(0.1))
@@ -96,7 +96,7 @@ struct LoginView: View {
                 NavigationLink(destination: RegisterFirstView()) {
                     UMButton(title: "Log In", background: .mainBlue) {
                         viewModel.login()
-                        print("Logged in")
+                        print(LocalizedStringKey("Logged In"))
                     }
                     .foregroundStyle(Color(.white))
                     .fontWeight(.bold)
@@ -115,7 +115,7 @@ struct LoginView: View {
                            dismiss()
                        }) {
                            Label {
-                                Text("Back")
+                                Text(LocalizedStringKey("Back"))
                            } icon: {
                                Image(.backArrow)
                                            }

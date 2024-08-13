@@ -50,7 +50,7 @@ struct MapViewSheet: View {
                         .scaledToFit()
                         .padding()
                     
-                    Text("No Umbrellas yet.\n Try adding some in the profile tab!")
+                    Text(LocalizedStringKey("No Umbrellas yet.\nTry adding some in the profile tab!"))
                         .multilineTextAlignment(.center)
                         .font(.custom("Nunito", size: 18))
                         .padding(.horizontal)
@@ -62,7 +62,7 @@ struct MapViewSheet: View {
                 Button {
                     showCircleExplanation.toggle()
                 } label: {
-                    Text("What do the green, yellow, or red circles mean?")
+                    Text(LocalizedStringKey("What do the green, yellow, red, or gray circles mean?"))
                         .font(.custom("Nunito", size: 18))
                         .multilineTextAlignment(.center)
                         .padding()

@@ -14,14 +14,24 @@ struct AccessoriesSelection: View {
     var body: some View {
         
         HStack {
-            Text("Glasses")
+            Text(LocalizedStringKey("Glasses"))
                 .font(.custom("Nunito", size: 24))
                 .fontWeight(.black)
                 .foregroundStyle(.mainBlue)
             
             Spacer()
+            
+            if viewModel.accessories != "" {
+                Button {
+                    viewModel.accessories = ""
+                } label: {
+                    Text(LocalizedStringKey("Remove"))
+                        .font(.custom("Nunito", size: 18))
+                        .fontWeight(.black)
+                }
+            }
         }
-        .padding([.leading, .top])
+        .padding([.horizontal, .top])
         
         HStack {
             

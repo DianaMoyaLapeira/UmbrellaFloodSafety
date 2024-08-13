@@ -17,7 +17,7 @@ struct MessagingView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Text("Messages")
+                    Text(LocalizedStringKey("Messages"))
                         .font(.custom("Nunito", size: 34))
                         .fontWeight(.black)
                         .foregroundStyle(Color.mainBlue)
@@ -55,7 +55,7 @@ struct MessagingView: View {
                         .scaledToFit()
                         .frame(width: 300)
                     
-                    Text("No messages yet.\n Try joining an Umbrella in the profile tab!")
+                    Text(LocalizedStringKey("No messages yet.\n Try joining an Umbrella in the profile tab!"))
                         .multilineTextAlignment(.center)
                         .font(.custom("Nunito", size: 18))
                         .bold()

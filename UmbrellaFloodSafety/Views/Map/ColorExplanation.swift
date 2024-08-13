@@ -20,7 +20,7 @@ struct ColorExplanation: View {
         
         ScrollView {
             HStack {
-                Text("Flood Status")
+                Text(LocalizedStringKey("Flood Status"))
                     .font(.custom("Nunito", size: 34))
                     .fontWeight(.black)
                     .foregroundStyle(.mainBlue)
@@ -40,7 +40,7 @@ struct ColorExplanation: View {
             
             HStack {
                 
-                Text("Flood Warning")
+                Text(LocalizedStringKey("Flood Warning"))
                     .font(.custom("Nunito", size: 24))
                     .bold()
                 
@@ -53,12 +53,12 @@ struct ColorExplanation: View {
                     .padding(.trailing)
             }
             
-            Text("A red circle stands for a flood warning. This means that flooding will happen or is happening in someone's area.")
+            Text(LocalizedStringKey("A red circle stands for a flood warning. This means that flooding will happen or is happening in someone's area."))
                 .font(.custom("Nunito", size: 18))
             
             HStack {
                 
-                Text("Flood Advisory or Watch")
+                Text(LocalizedStringKey("Flood Advisory or Watch"))
                     .font(.custom("Nunito", size: 24))
                     .bold()
                 
@@ -71,12 +71,12 @@ struct ColorExplanation: View {
                     .padding(.trailing)
             }
             
-            Text("A yellow circle stands for a flood advisory or watch in someone's area. A flood advisory means that a little flooding (not life-threatening) may happen. A flood watch means that flooding is more likely than normal.")
+            Text(LocalizedStringKey("A yellow circle stands for a flood advisory or watch in someone's area. A flood advisory means that a little flooding (not life-threatening) may happen. A flood watch means that flooding is more likely than normal."))
                 .font(.custom("Nunito", size: 18))
             
             HStack {
                 
-                Text("Everything good!")
+                Text(LocalizedStringKey("Everything good!"))
                     .font(.custom("Nunito", size: 24))
                     .bold()
                 
@@ -90,7 +90,7 @@ struct ColorExplanation: View {
             }
             
             HStack {
-                Text("A green circle stands for no current flood warnings. This means that the National Weather Service has not given flood warnings for someone's location.")
+                Text(LocalizedStringKey("A green circle stands for no current flood warnings. This means that the National Weather Service has not given flood warnings for someone's location."))
                     .multilineTextAlignment(.leading)
                     .font(.custom("Nunito", size: 18))
                 
@@ -99,7 +99,7 @@ struct ColorExplanation: View {
             
             HStack {
                 
-                Text("No Connection")
+                Text(LocalizedStringKey("No Connection"))
                     .font(.custom("Nunito", size: 24))
                     .bold()
                 
@@ -113,7 +113,7 @@ struct ColorExplanation: View {
             }
             
             HStack {
-                Text("A gray circle means that Umbrella is trying to get the weather for a location.")
+                Text(LocalizedStringKey("A gray circle means that Umbrella is trying to get the weather for a location."))
                     .multilineTextAlignment(.leading)
                     .font(.custom("Nunito", size: 18))
                 
@@ -123,7 +123,7 @@ struct ColorExplanation: View {
             Button {
                 showSources.toggle()
             } label: {
-                Text("Sources")
+                Text(LocalizedStringKey("Sources"))
                     .font(.custom("Nunito", size: 18))
             }
             .padding()
@@ -135,7 +135,7 @@ struct ColorExplanation: View {
         .sheet(isPresented: $showSources, content: {
             
             HStack {
-                Text("Sources")
+                Text(LocalizedStringKey("Sources"))
                     .font(.custom("Nunito", size: 34))
                     .fontWeight(.black)
                     .foregroundStyle(.mainBlue)

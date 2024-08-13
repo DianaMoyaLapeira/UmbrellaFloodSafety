@@ -14,7 +14,7 @@ struct RegisterFirstView: View {
            VStack {
                Spacer()
                
-               Text("Create Your \nAccount")
+               Text(LocalizedStringKey("Create Your \nAccount"))
                    .font(.custom("Nunito", size: 40))
                    .scaledToFill()
                    .fontWeight(.black)
@@ -33,7 +33,7 @@ struct RegisterFirstView: View {
                    ZStack {
                        RoundedRectangle(cornerRadius: 25)
                            .foregroundStyle(Color(.mainBlue))
-                       NavigationLink("I'm A Kid", destination: KidRegisterView())
+                       NavigationLink(LocalizedStringKey("I'm A Kid"), destination: KidRegisterView())
                            .foregroundStyle(Color(.white))
                            .fontWeight(.bold)
                            .font(.custom("Nunito", size: 18))
@@ -49,7 +49,7 @@ struct RegisterFirstView: View {
                    ZStack {
                        RoundedRectangle(cornerRadius: 25)
                            .stroke(Color(.mainBlue), lineWidth: 4)
-                       NavigationLink("I'm An Adult", destination: AdultRegisterView())
+                       NavigationLink(LocalizedStringKey("I'm An Adult"), destination: AdultRegisterView())
                            .foregroundStyle(Color(.mainBlue))
                            .fontWeight(.bold)
                            .font(.custom("Nunito", size: 18))
@@ -65,7 +65,7 @@ struct RegisterFirstView: View {
                        dismiss()
                    }) {
                        Label {
-                            Text("Back")
+                            Text(LocalizedStringKey("Back"))
                        } icon: {
                            Image(.backArrow)
                                        }

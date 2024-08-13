@@ -25,7 +25,7 @@ struct ReportView: View {
         VStack {
             
             HStack {
-                Text("Report A User")
+                Text(LocalizedStringKey("Report A User"))
                     .font(.custom("Nunito", size: 34))
                     .fontWeight(.black)
                     .foregroundStyle(.red)
@@ -50,14 +50,14 @@ struct ReportView: View {
                 .frame(width: 100)
             
             HStack {
-                Text("We are sorry that you've had a bad experience with user \(reported). \n\nPlease let us know why so we can take appropriate measures.")
+                Text("\(LocalizedStringKey("We are sorry that you've had a bad experience with user")) \(reported). \n\n\(LocalizedStringKey("Please let us know why so we can take appropriate measures."))")
                     .font(.custom("Nunito", size: 18))
                 
                 Spacer()
             }
             .padding(.vertical)
             
-            TextField("Reason for reporting", text: $reason, prompt: Text("Type reason for reporting here").font(.custom("Nunito", size: 18)).foregroundStyle(.black))
+            TextField(LocalizedStringKey("Reason for reporting"), text: $reason, prompt: Text(LocalizedStringKey("Type reason for reporting here")).font(.custom("Nunito", size: 18)).foregroundStyle(.black))
                 .multilineTextAlignment(.leading)
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 25).fill(.quinary))

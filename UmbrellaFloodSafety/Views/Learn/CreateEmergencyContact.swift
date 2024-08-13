@@ -27,7 +27,6 @@ struct CreateEmergencyContact: View {
                 Spacer()
                 
             }
-            .frame(height: 100)
             
             Divider()
                 

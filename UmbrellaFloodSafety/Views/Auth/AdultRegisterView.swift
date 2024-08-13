@@ -17,7 +17,7 @@ struct AdultRegisterView: View {
     var body: some View {
         VStack {
             
-            Text("Create Your \nAccount")
+            Text(LocalizedStringKey("Create Your \nAccount"))
                 .font(.custom("Nunito", size: 40))
                 .scaledToFill()
                 .fontWeight(.black)
@@ -36,14 +36,14 @@ struct AdultRegisterView: View {
                 
                 Spacer()
                 
-                Text("Thank you for choosing Umbrella!")
+                Text(LocalizedStringKey("Thank you for choosing Umbrella!"))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                     .foregroundStyle(Color.mainBlue)
                 
                 Spacer()
                 
-                TextField("", text: $viewModel.name, prompt: Text("First Name")
+                TextField("", text: $viewModel.name, prompt: Text(LocalizedStringKey("First Name"))
                     .foregroundStyle(Color(.darkGray)))
                 .padding()
                 .background(Color.gray.opacity(0.1))
@@ -53,7 +53,7 @@ struct AdultRegisterView: View {
                 .frame(width: 300)
                 .padding(.bottom)
                 
-                TextField("", text: $viewModel.username, prompt: Text("Username")
+                TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Password"))
                     .foregroundStyle(Color(.darkGray)))
                 .padding()
                 .background(Color.gray.opacity(0.1))
@@ -66,7 +66,7 @@ struct AdultRegisterView: View {
                 HStack {
                     ZStack {
                         if isSecure {
-                            SecureField("", text: $viewModel.password, prompt: Text("Password")
+                            SecureField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray))
                             )
                             .padding()
@@ -74,7 +74,7 @@ struct AdultRegisterView: View {
                             .cornerRadius(8)
                             .font(.custom("Nunito", size: 18))
                         } else {
-                            TextField("", text: $viewModel.password, prompt: Text("Password")
+                            TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray)))
                             .padding()
                             .background(Color.gray.opacity(0.1))
@@ -112,7 +112,7 @@ struct AdultRegisterView: View {
                         RoundedRectangle(cornerRadius: 25)
                             .foregroundStyle(.mainBlue)
                         
-                        Text("Create account")
+                        Text(LocalizedStringKey("Create Account"))
                             .font(.custom("Nunito", size: 18))
                             .foregroundStyle(.white)
                     }
@@ -129,7 +129,7 @@ struct AdultRegisterView: View {
                     dismiss()
                 }) {
                     Label {
-                         Text("Back")
+                         Text(LocalizedStringKey("Back"))
                     } icon: {
                         Image(.backArrow)
                                     }

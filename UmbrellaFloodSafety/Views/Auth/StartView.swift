@@ -22,7 +22,7 @@ struct StartView: View {
                         .fontWeight(.black)
                         .foregroundStyle(Color(.mainBlue))
                         .font(.custom("Nunito", size: 48))
-                    Text("Your flood safety companion")
+                    Text(LocalizedStringKey("Your flood safety companion"))
                         .fontWeight(.medium)
                         .foregroundStyle(Color(.mainBlue))
                         .font(.custom("Nunito", size: 22))
@@ -30,7 +30,7 @@ struct StartView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 25)
                             .foregroundStyle(Color(.mainBlue))
-                        NavigationLink("Get Started", destination: RegisterFirstView().transition(.blurReplace))
+                        NavigationLink(LocalizedStringKey("Get Started"), destination: RegisterFirstView().transition(.blurReplace))
                             .foregroundStyle(Color(.white))
                             .fontWeight(.bold)
                             .font(.custom("Nunito", size: 18))
@@ -42,7 +42,7 @@ struct StartView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 25)
                             .stroke(Color(.mainBlue), lineWidth: 4)
-                        NavigationLink("I Already Have An Account", destination: LoginView())
+                        NavigationLink(LocalizedStringKey("I Already Have an Account"), destination: LoginView())
                             .foregroundStyle(Color(.mainBlue))
                             .fontWeight(.bold)
                             .font(.custom("Nunito", size: 18))

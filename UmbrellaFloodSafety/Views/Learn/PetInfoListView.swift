@@ -31,6 +31,7 @@ struct PetInfoListView: View {
                         .font(.custom("Nunito", size: 18))
                 } else {
                     Text("Type: \(petEmergencyInfo.type)")
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Nunito", size: 18))
                 }
                 
@@ -39,14 +40,17 @@ struct PetInfoListView: View {
                         .font(.custom("Nunito", size: 18))
                 } else {
                     Text("Color: \(petEmergencyInfo.color)")
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Nunito", size: 18))
                 }
                 
                 if petEmergencyInfo.registrationNumber == "" {
                     Text("Registration #: None yet")
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Nunito", size: 18))
                 } else {
                     Text("Registration #: \(petEmergencyInfo.registrationNumber)")
+                        .multilineTextAlignment(.leading)
                         .font(.custom("Nunito", size: 18))
                 }
             }

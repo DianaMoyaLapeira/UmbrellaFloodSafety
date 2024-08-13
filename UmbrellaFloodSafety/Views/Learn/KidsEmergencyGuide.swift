@@ -14,7 +14,7 @@ struct KidsEmergencyGuide: View {
     
     var body: some View {
         HStack {
-            Text("What do I do in a Flood?")
+            Text(LocalizedStringKey("What do I do in a Flood?"))
                 .font(.custom("Nunito", size: 32))
                 .fontWeight(.black)
                 .foregroundStyle(.mainBlue)
@@ -24,7 +24,7 @@ struct KidsEmergencyGuide: View {
         .padding([.leading, .top])
         
         HStack {
-            Text("For kids")
+            Text(LocalizedStringKey("For kids"))
                 .font(.custom("Nunito", size: 24))
                 .bold()
                 .foregroundStyle(.mainBlue)
@@ -37,7 +37,7 @@ struct KidsEmergencyGuide: View {
             ScrollView {
                 
                 HStack {
-                    Text("1. Remember your emergency plan (if you have one)")
+                    Text(LocalizedStringKey("1. Remember your emergency plan (if you have one)"))
                         .font(.custom("Nunito", size: 24))
                         .bold()
                     
@@ -66,7 +66,7 @@ struct KidsEmergencyGuide: View {
                 }
                 
                 HStack {
-                    Text("2. Stay away from \nthe flood water")
+                    Text(LocalizedStringKey("2. Stay away from \nthe flood water"))
                         .font(.custom("Nunito", size: 24))
                         .bold()
                     
@@ -95,7 +95,7 @@ struct KidsEmergencyGuide: View {
                 }
                 
                 HStack {
-                    Text("3. Find a trusted \nadult")
+                    Text(LocalizedStringKey("3. Find a trusted \nadult"))
                         .font(.custom("Nunito", size: 24))
                         .bold()
                     
@@ -122,7 +122,7 @@ struct KidsEmergencyGuide: View {
                 .padding(.trailing, 30)
                 
                 HStack {
-                    Text("4. If you still feel unsafe or there are no adults, call 911")
+                    Text(LocalizedStringKey("4. If you still feel unsafe or there are no adults, call 911"))
                         .font(.custom("Nunito", size: 24))
                         .bold()
                     
@@ -157,7 +157,7 @@ struct KidsEmergencyGuide: View {
                 }
                 
                 HStack {
-                    Text("5. Call or text    trusted adults")
+                    Text(LocalizedStringKey("5. Call or text trusted adults"))
                         .font(.custom("Nunito", size: 24))
                         .bold()
                     
@@ -193,7 +193,7 @@ struct KidsEmergencyGuide: View {
                             Image(systemName: "message.fill")
                                 .foregroundStyle(.white)
                             
-                            Text("Text through Umbrella")
+                            Text(LocalizedStringKey("Text through Umbrella"))
                                 .font(.custom("Nunito", size: 18))
                                 .bold()
                                 .foregroundStyle(.white)
@@ -210,7 +210,7 @@ struct KidsEmergencyGuide: View {
                 Button {
                     isPresented.toggle()
                 } label: {
-                    Text("Sources")
+                    Text(LocalizedStringKey("Sources"))
                         .font(.custom("Nunito", size: 18))
                         .foregroundStyle(.mainBlue)
                 }
@@ -219,7 +219,7 @@ struct KidsEmergencyGuide: View {
             .sheet(isPresented: $isPresented, content: {
                 
                 HStack {
-                    Text("Flood Safety Sources")
+                    Text(LocalizedStringKey("Flood Safety Sources"))
                         .font(.custom("Nunito", size: 32))
                         .foregroundStyle(.mainBlue)
                         .bold()

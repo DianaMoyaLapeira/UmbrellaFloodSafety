@@ -54,12 +54,12 @@ struct EmergencyPlans: View {
                         }
                     }
                     .foregroundStyle(.primary)
-                    .padding(.bottom)
+                    .padding()
                     
                     Divider()
+                        .padding(.horizontal)
                 }
             }
-            .padding()
             .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(.mainBlue))
             .frame(width: 355)
             .padding(.vertical)

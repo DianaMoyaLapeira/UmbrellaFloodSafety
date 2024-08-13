@@ -27,7 +27,6 @@ struct MapView: View {
     @ObservedObject var viewModel = MapViewViewModel.shared
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @State private var selection = "Red"
-    let colors = ["Red", "Green", "Blue", "Black", "Tartan"]
     var locationArray: [memberLocationMap] {
         var array = [memberLocationMap]()
         for member in firebaseManager.groupMembers[viewModel.selection] ?? [] {
@@ -83,7 +82,7 @@ struct MapView: View {
                         Spacer()
                         
                         if viewModel.selection != "No Umbrellas yet" {
-                            Picker("Select an Umbrella", selection: $viewModel.selection) {
+                            Picker(LocalizedStringKey("Select an Umbrella"), selection: $viewModel.selection) {
                             ForEach(firebaseManager.userGroups.keys.sorted(), id: \.self) { groupId in
                                 if let groupName = firebaseManager.userGroups[groupId] {
                                     Text("\(groupName)").tag(groupId as String?)

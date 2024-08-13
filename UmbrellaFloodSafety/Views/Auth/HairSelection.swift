@@ -60,7 +60,7 @@ struct HairSelection: View {
         ScrollView {
             
             HStack {
-                Text("Hair Color")
+                Text(LocalizedStringKey("Hair Color"))
                     .font(.custom("Nunito", size: 24))
                     .foregroundStyle(Color.mainBlue)
                     .fontWeight(.black)
@@ -72,7 +72,7 @@ struct HairSelection: View {
                         viewModel.hairFront = ""
                         viewModel.hairBack = ""
                     } label: {
-                        Text("Remove")
+                        Text(LocalizedStringKey("Remove"))
                             .font(.custom("Nunito", size: 18))
                             .fontWeight(.black)
                     }
@@ -112,7 +112,7 @@ struct HairSelection: View {
             .padding([.leading, .trailing])
             
             HStack {
-                Text("Short Styles")
+                Text(LocalizedStringKey("Short Styles"))
                     .font(.custom("Nunito", size: 24))
                     .fontWeight(.black)
                     .foregroundStyle(.mainBlue)
@@ -152,7 +152,7 @@ struct HairSelection: View {
             }
             
             HStack {
-                Text("Longer Styles")
+                Text(LocalizedStringKey("Longer Styles"))
                     .font(.custom("Nunito", size: 24))
                     .fontWeight(.black)
                     .foregroundStyle(.mainBlue)
@@ -244,7 +244,7 @@ struct HairSelection: View {
             }
             
             HStack {
-                Text("Back")
+                Text(LocalizedStringKey("Back"))
                     .font(.custom("Nunito", size: 18))
                     .fontWeight(.bold)
                     .foregroundStyle(.mainBlue)
