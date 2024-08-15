@@ -11,6 +11,7 @@ struct ColorExplanation: View {
     
     @State var showSources = false
     @Binding var isPresented: Bool
+    @State private var opacity: Double = 0
     
     init(isPresented: Binding<Bool>) {
         self._isPresented = isPresented
@@ -130,6 +131,12 @@ struct ColorExplanation: View {
             
             Spacer()
         
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .padding()
         .sheet(isPresented: $showSources, content: {

@@ -12,6 +12,7 @@ struct UserView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = UserViewViewModel()
     var username: String
+    @State private var opacity: Double = 0
     @State var displayReport: Bool = false
     @State var showAlert: Bool = false
     @ObservedObject var firebaseManager = FirebaseManager.shared
@@ -55,6 +56,7 @@ struct UserView: View {
                 
                 if ((firebaseManager.groupMembers[groupId]?.contains(username)) != nil && (firebaseManager.groupMembers[groupId]?.contains(username)) != false) {
                     UmbrellaListView(groupId: groupId)
+                        .foregroundStyle(.primary)
                         .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
                         .padding([.horizontal, .bottom])
                 }
@@ -101,6 +103,12 @@ struct UserView: View {
                 
             }
             .padding()
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .sheet(isPresented: $displayReport, content: {
             ReportView(isPresented: $displayReport, sender: FirebaseManager.shared.currentUserUsername, reported: username)

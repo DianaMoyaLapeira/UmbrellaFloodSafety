@@ -9,8 +9,8 @@ import SwiftUI
 
 struct EmergencyContactListView: View {
     
+    let edit: Bool = false
     var emergencyContact: EmergencyContact = EmergencyContact(id: UUID().uuidString, name: "Click To Edit")
-    
     
     var body: some View {
         
@@ -60,7 +60,9 @@ struct EmergencyContactListView: View {
             
             Spacer()
             
-            Image(systemName: "chevron.right")
+            if edit {
+                Image(systemName: "chevron.right")
+            }
         }
     }
 }

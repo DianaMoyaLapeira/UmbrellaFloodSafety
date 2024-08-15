@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     @State private var path = NavigationPath()
+    @State private var opacity: Double = 0
     
     var body: some View {
         NavigationView {
@@ -49,6 +50,12 @@ struct StartView: View {
                     }
                     .frame(width: 300, height: 60)
                     Spacer()
+                }
+                .opacity(opacity)
+                .onAppear {
+                    withAnimation(.easeIn(duration: 0.4)) {
+                        opacity = 1
+                    }
                 }
             }
         }

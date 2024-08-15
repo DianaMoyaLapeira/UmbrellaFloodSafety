@@ -12,6 +12,7 @@ struct MakeEmergencyPlan: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: MakeEmergencyPlanViewModel
     @State var showAlert: Bool = false
+    @State private var opacity: Double = 0
     
     init(emergencyPlan: EmergencyPlanModel?) {
         self._viewModel = StateObject(wrappedValue: MakeEmergencyPlanViewModel(emergencyPlan: emergencyPlan))
@@ -79,7 +80,7 @@ struct MakeEmergencyPlan: View {
             VStack {
                 ForEach($viewModel.emergencyContacts) { $contact in
                     NavigationLink(destination: CreateEmergencyContact( emergencyContact: $contact)) {
-                        EmergencyContactListView(emergencyContact: contact)
+                        EmergencyContactListView(emergencyContact: contact, edit: true)
                             .padding()
                         
                     }
@@ -112,7 +113,7 @@ struct MakeEmergencyPlan: View {
             VStack {
                 ForEach($viewModel.petEmergencyInfo) { $pet in
                     NavigationLink(destination: CreatePetEmergencyInfo( petEmergencyInfo: $pet)) {
-                        PetInfoListView(petEmergencyInfo: pet )
+                        PetInfoListView(petEmergencyInfo: pet, edit: true)
                             .padding()
                     }
                     .foregroundStyle(.primary)
@@ -249,7 +250,7 @@ struct MakeEmergencyPlan: View {
             VStack {
                 ForEach($viewModel.externalEmergencyContact) { $contact in
                     NavigationLink(destination: CreateEmergencyContact( emergencyContact: $contact)) {
-                        EmergencyContactListView(emergencyContact: contact)
+                        EmergencyContactListView(emergencyContact: contact, edit: true)
                             .foregroundStyle(.primary)
                             .padding()
                         
@@ -427,6 +428,12 @@ struct MakeEmergencyPlan: View {
                 .background(RoundedRectangle(cornerRadius: 25)
                     .fill(.quinary))
             
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .padding()
         .alert(LocalizedStringKey("Go back without saving?"), isPresented: $showAlert) {

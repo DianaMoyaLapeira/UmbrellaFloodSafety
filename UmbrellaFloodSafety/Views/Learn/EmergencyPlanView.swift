@@ -16,13 +16,14 @@ struct EmergencyPlanView: View {
         emergencyPlanFirebase.emergencyPlans[emergencyPlanId] ?? EmergencyPlanModel(id: "", title: "Plan failed to load", dateUpdated: 0, emergencyContacts: [], petEmergencyInfo: [], mostLikelyDisasters: "", escapeRouteFromHome: "", meetingNearHome: "", meetingOutsideNeighborhood: "", firstChoiceRoute: "", secondChoiceRoute: "", externalEmergencyContact: [], childEvacuationPlans: [], specialNeedsEvacuationPlan: [], safeRoom: "", usersInPlan: [])
     }
     @State var isPresented: Bool = false
+    @State private var opacity: Double = 0
     var actualtimestamp: String {
         guard emergencyPlan.dateUpdated != 0 else {
             return ""
         }
         let dateFormatter = DateFormatter()
         let date = Date(timeIntervalSince1970: emergencyPlan.dateUpdated)
-        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+        dateFormatter.dateFormat = "eeee, mmm d, yyyy"
         return dateFormatter.string(from: date)
     }
     
@@ -338,45 +339,45 @@ struct EmergencyPlanView: View {
                 
                 VStack {
                     ForEach(emergencyPlan.childEvacuationPlans) { plan in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    if plan.name != "" {
-                                        Text(plan.name)
-                                            .font(.custom("Nunito", size: 24))
-                                            .fontWeight(.black)
-                                    } else {
-                                        Text("Click to edit")
-                                            .font(.custom("Nunito", size: 24))
-                                            .fontWeight(.black)
-                                    }
-                                    
-                                    if plan.evacuationSite != "" {
-                                        Text("Evacuation site: \(plan.evacuationSite)")
-                                            .font(.custom("Nunito", size: 18))
-                                            .multilineTextAlignment(.leading)
-                                    } else {
-                                        Text("Evacuation site: None yet")
-                                            .font(.custom("Nunito", size: 18))
-                                            .multilineTextAlignment(.leading)
-                                    }
-                                    
-                                    if plan.contactInfo != "" {
-                                        Text("Contact Info: \(plan.contactInfo)")
-                                            .font(.custom("Nunito", size: 18))
-                                            .multilineTextAlignment(.leading)
-                                    } else {
-                                        Text("Evacuation site: None yet")
-                                            .font(.custom("Nunito", size: 18))
-                                            .multilineTextAlignment(.leading)
-                                    }
+                        HStack {
+                            VStack(alignment: .leading) {
+                                if plan.name != "" {
+                                    Text(plan.name)
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
+                                } else {
+                                    Text("Click to edit")
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
                                 }
                                 
-                                Spacer()
+                                if plan.evacuationSite != "" {
+                                    Text("Evacuation site: \(plan.evacuationSite)")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("Evacuation site: None yet")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                }
                                 
-                                Image(systemName: "chevron.right")
+                                if plan.contactInfo != "" {
+                                    Text("Contact Info: \(plan.contactInfo)")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("Evacuation site: None yet")
+                                        .font(.custom("Nunito", size: 18))
+                                        .multilineTextAlignment(.leading)
+                                }
                             }
-                            .foregroundStyle(.primary)
-                            .padding()
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                        }
+                        .foregroundStyle(.primary)
+                        .padding()
                         
                         Divider()
                     }
@@ -384,11 +385,17 @@ struct EmergencyPlanView: View {
                 .overlay(RoundedRectangle(cornerRadius: 25)
                     .stroke(lineWidth: 4)
                     .fill(.mainBlue))
-                    .frame(width: 358)
-                    .padding(.bottom)
+                .frame(width: 358)
+                .padding(.bottom)
                 
             }
             .padding()
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .sheet(isPresented: $isPresented, content: {
             

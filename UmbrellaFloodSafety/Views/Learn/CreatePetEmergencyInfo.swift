@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CreatePetEmergencyInfo: View {
+    
     @Environment(\.dismiss) var dismiss
     @Binding var petEmergencyInfo: PetEmergencyInfo
+    @State private var opacity: Double = 0
     
     var body: some View {
     
@@ -108,9 +110,15 @@ struct CreatePetEmergencyInfo: View {
                 Spacer()
             }
         }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
+        }
         .padding()
         .navigationBarBackButtonHidden(true)
-       .toolbar {
+        .toolbar {
            ToolbarItem(placement: .topBarLeading) {
                Button(action: {
                    dismiss()

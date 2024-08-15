@@ -11,6 +11,7 @@ struct UmbrellaView: View {
     
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @Environment(\.dismiss) var dismiss
+    @State private var opacity: Double = 0
     let groupId: String
     
     init(groupId: String) {
@@ -83,6 +84,12 @@ struct UmbrellaView: View {
             
             Spacer()
             
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .padding()
         .navigationBarBackButtonHidden(true)

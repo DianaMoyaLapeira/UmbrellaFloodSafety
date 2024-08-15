@@ -12,9 +12,11 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = LoginViewViewModel()
     @State private var isSecure: Bool = true
+    @State private var opacity: Double = 0
     
     var body: some View {
         ScrollView {
+            
             VStack {
                    Spacer()
                    
@@ -108,21 +110,27 @@ struct LoginView: View {
                 Spacer()
                 
                }
+                .opacity(opacity)
+                .onAppear {
+                    withAnimation(.easeIn(duration: 0.4)) {
+                        opacity = 1
+                    }
+                }
                .navigationBarBackButtonHidden(true)
                .toolbar {
                    ToolbarItem(placement: .topBarLeading) {
-                       Button {
-                           dismiss()
-                       } label: {
-                           Image(systemName: "chevron.left")
-                               .resizable()
-                               .scaledToFit()
-                               .frame(width: 18)
-                       }
+                   Button {
+                       dismiss()
+                   } label: {
+                       Image(systemName: "chevron.left")
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 18)
                    }
-               }
+                }
             }
-       }
+        }
+    }
 }
 
 #Preview {

@@ -13,6 +13,7 @@ struct CreateAvatar: View {
     @State var selection = 0
     @Environment(\.dismiss) var dismiss
     @Binding var isPresented: Bool
+    @State private var opacity: Double = 0
     
     var body: some View {
         VStack {
@@ -140,6 +141,12 @@ struct CreateAvatar: View {
             }
             
             Spacer()
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {

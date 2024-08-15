@@ -11,6 +11,7 @@ struct EmergencyPlanUsersView: View {
     
     @Environment(\.dismiss) var dismiss
     @State var isPresented: Bool = false
+    @State private var opacity: Double = 0
     @Binding var usersInPlan: [String]
     @ObservedObject var firebaseManager = FirebaseManager.shared
     
@@ -50,6 +51,12 @@ struct EmergencyPlanUsersView: View {
                 }
                 .frame(height: 60)
                 .padding(.vertical)
+            }
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
             }
         }
         .padding()

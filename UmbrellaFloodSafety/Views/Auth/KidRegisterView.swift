@@ -14,6 +14,7 @@ struct KidRegisterView: View {
     @State private var isSecure: Bool = true
     @Environment(\.dismiss) var dismiss
     @State var presentAvatar = true
+    @State var opacity: Double = 0
     
     var body: some View {
         ScrollView {
@@ -32,7 +33,7 @@ struct KidRegisterView: View {
                     
                     
                     ZStack {
-                        Image(.children)
+                        Image(.propellerCap)
                             .resizable()
                             .scaledToFit()
                             .padding()
@@ -133,6 +134,12 @@ struct KidRegisterView: View {
                 }
                 
                 Spacer()
+            }
+            .opacity(opacity)
+            .onAppear {
+                withAnimation(.easeIn(duration: 0.4)) {
+                    opacity = 1
+                }
             }
             .navigationBarBackButtonHidden(true)
             .toolbar {

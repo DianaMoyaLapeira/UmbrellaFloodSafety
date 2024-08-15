@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RegisterFirstView: View {
+    
     @Environment(\.dismiss) var dismiss
+    @State private var opacity: Double = 0
     
     var body: some View {
            VStack {
@@ -59,6 +61,12 @@ struct RegisterFirstView: View {
                }
                
                Spacer()
+           }
+           .opacity(opacity)
+           .onAppear {
+               withAnimation(.easeIn(duration: 0.4)) {
+                   opacity = 1
+               }
            }
            .navigationBarBackButtonHidden(true)
            .toolbar {

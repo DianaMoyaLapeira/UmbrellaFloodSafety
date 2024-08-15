@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PetInfoListView: View {
     
+    let edit: Bool = false
     var petEmergencyInfo: PetEmergencyInfo = PetEmergencyInfo(id: UUID().uuidString)
     
     var body: some View {
@@ -57,7 +58,9 @@ struct PetInfoListView: View {
             
             Spacer()
             
-            Image(systemName: "chevron.right")
+            if edit {
+                Image(systemName: "chevron.right")
+            }
         }
     }
 }

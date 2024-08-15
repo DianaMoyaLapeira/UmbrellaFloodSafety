@@ -11,6 +11,7 @@ struct AdultEmergencyGuide: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var tabController: TabController
+    @State private var opacity: Double = 0
     @State var isPresented: Bool = false
     
     var body: some View {
@@ -368,6 +369,12 @@ struct AdultEmergencyGuide: View {
                 FloodSafetyResources()
                     .padding(.leading)
             })
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {

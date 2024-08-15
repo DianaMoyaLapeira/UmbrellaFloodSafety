@@ -10,7 +10,8 @@ import SwiftUI
 struct ConversationView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State private var scale: CGFloat = 1.0
+    @State private var sendTapped: Bool = false
+    @State private var opacity: Double = 0
     @StateObject var viewModel: ConversationViewViewModel
     @ObservedObject var firebaseManager = FirebaseManager.shared
     var conversationId: String = ""
@@ -173,15 +174,33 @@ struct ConversationView: View {
                     Image(systemName: "paperplane.fill")
                         .resizable()
                         .frame(width: 30, height: 30)
-                        .scaleEffect(scale)
+                        .scaleEffect(sendTapped ? 0.9 : 1)
+                        .animation(.spring, value: sendTapped)
                         .foregroundStyle(Color.mainBlue)
                         .padding([.leading, .top, .trailing])
                 }
+                .onTapGesture {
+                    withAnimation{
+                        sendTapped = true
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        withAnimation {
+                            sendTapped = false
+                        }
+                    }
+                }
+
             }
             .padding(.bottom)
         }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.3)) {
+                opacity = 1
+            }
+        }
         .navigationBarBackButtonHidden(true)
-       .toolbar {
+        .toolbar {
            ToolbarItem(placement: .topBarLeading) {
                Button {
                    dismiss()

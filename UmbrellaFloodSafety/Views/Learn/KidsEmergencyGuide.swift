@@ -12,6 +12,7 @@ struct KidsEmergencyGuide: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var tabController: TabController
     @State var isPresented = false
+    @State private var opacity: Double = 0
     
     var body: some View {
         
@@ -248,6 +249,12 @@ struct KidsEmergencyGuide: View {
             
             
             Spacer()
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {

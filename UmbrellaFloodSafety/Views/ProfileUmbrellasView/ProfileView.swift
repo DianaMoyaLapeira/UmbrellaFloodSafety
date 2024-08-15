@@ -120,6 +120,7 @@ struct ProfileView: View {
                                     NavigationLink(destination: UmbrellaView(groupId: groupId)) {
                                         UmbrellaListView(groupId: groupId)
                                     }
+                                    .foregroundStyle(.primary)
                                 }
                             }.overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
                                 .padding()

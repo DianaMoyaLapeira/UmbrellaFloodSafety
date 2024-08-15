@@ -14,6 +14,7 @@ struct JoinAnUmbrella: View {
     }
     
     @Environment(\.dismiss) var dismiss
+    @State private var opacity: Double = 0
     @State var viewModel: NewUmbrellaViewViewModel
     @FocusState private var pinFocusState: CharacterPin?
     @State var characterOne: String = ""
@@ -115,6 +116,12 @@ struct JoinAnUmbrella: View {
             
             Spacer()
             
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {

@@ -11,6 +11,8 @@ struct EmergencyPlans: View {
     
     @Environment(\.dismiss) var dismiss
     @ObservedObject var emergencyPlanFirebaseManager = EmergencyPlanFirebaseManager.shared
+    @State private var opacity: Double = 0
+    
     var body: some View {
         ScrollView {
   
@@ -88,6 +90,12 @@ struct EmergencyPlans: View {
                 
             }
             
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .padding()
         .navigationBarBackButtonHidden(true)

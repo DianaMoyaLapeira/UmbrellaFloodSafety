@@ -253,7 +253,6 @@ class FirebaseManager: ObservableObject {
                 }
                 
                 guard !(self.messages[conversationId]?.contains(where: { $0.id == messageId }) ?? false) else {
-                    print("message with id already exists in conversation")
                     continue
                 }
                 

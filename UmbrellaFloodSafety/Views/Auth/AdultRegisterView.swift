@@ -13,6 +13,7 @@ struct AdultRegisterView: View {
     @State private var isSecure: Bool = true
     @Environment(\.dismiss) var dismiss
     @State var isAvatarPresented = true
+    @State var opacity: Double = 0
     
     var body: some View {
         VStack {
@@ -26,20 +27,13 @@ struct AdultRegisterView: View {
                 .multilineTextAlignment(.center)
             
             Spacer()
-            Image(.umbrellaLogo)
+            Image(.briefcase)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 220)
             
             
             NavigationStack {
-                
-                Spacer()
-                
-                Text(LocalizedStringKey("Thank you for choosing Umbrella!"))
-                    .font(.custom("Nunito", size: 18))
-                    .fontWeight(.bold)
-                    .foregroundStyle(Color.mainBlue)
                 
                 Spacer()
                 
@@ -115,11 +109,18 @@ struct AdultRegisterView: View {
                         Text(LocalizedStringKey("Create Account"))
                             .font(.custom("Nunito", size: 18))
                             .foregroundStyle(.white)
+                            .bold()
                     }
                     .frame(width: 300, height: 60)
                 }
                 
                 Spacer()
+            }
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
             }
         }
         .navigationBarBackButtonHidden(true)

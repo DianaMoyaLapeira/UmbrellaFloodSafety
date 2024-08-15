@@ -10,6 +10,7 @@ import SwiftUI
 struct UnblockUsers: View {
     
     @Environment(\.dismiss) var dismiss
+    @State private var opacity: Double = 0
     var viewModel = SettingsViewModel()
     
     var body: some View {
@@ -51,6 +52,12 @@ struct UnblockUsers: View {
             }
             
             Spacer()
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
