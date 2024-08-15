@@ -28,7 +28,7 @@ struct EmergencyPlans: View {
                 
                 ForEach(emergencyPlanFirebaseManager.emergencyPlans.keys.sorted(), id: \.self) { plan in
                     
-                    NavigationLink(destination: EmergencyPlanView(emergencyPlan: emergencyPlanFirebaseManager.emergencyPlans[plan]!)) {
+                    NavigationLink(destination: EmergencyPlanView(emergencyPlanId: plan)) {
                         HStack {
                             VStack {
                                 HStack {

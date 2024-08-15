@@ -74,10 +74,7 @@ struct ChildEvacuationPlanView: View {
                     Spacer()
                 }
                 
-                TextField("Enter contact info", text: Binding(
-                    get: { childEvacuationPlanEx.contactInfo ?? "Enter contact info" },
-                    set: { newValue in childEvacuationPlanEx.contactInfo = newValue }
-                ))
+                TextField("Enter contact info", text: $childEvacuationPlanEx.contactInfo)
                 .foregroundStyle(.secondary)
                 .font(.custom("Nunito", size: 18))
                 .padding()

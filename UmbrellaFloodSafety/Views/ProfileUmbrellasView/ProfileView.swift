@@ -79,14 +79,11 @@ struct ProfileView: View {
                     
                     ZStack {
                         
-                        Circle ()
-                            .frame(width: 120)
-                            .foregroundStyle(.white)
-                        
                         if manager.currentUserAvatar != "" {
                             ProfilePictureView(profileString: manager.currentUserAvatar)
                                 .clipShape(Circle())
                                 .frame(width: 120, height: 130, alignment: .bottom)
+                                .background(Circle().fill(.mainBlue).opacity(0.1))
                         }
                        
                         Circle()

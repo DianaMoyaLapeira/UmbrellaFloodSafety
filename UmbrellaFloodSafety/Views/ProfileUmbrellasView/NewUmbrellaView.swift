@@ -23,7 +23,8 @@ struct NewUmbrellaView: View {
                 HStack {
                     Spacer()
                     
-                    Text("Create A New Group")
+                    Text("Create A New Umbrella")
+                        .multilineTextAlignment(.center)
                         .font(.custom("Nunito", size: 34))
                         .fontWeight(.black)
                         .foregroundStyle(Color(.mainBlue))
@@ -38,7 +39,7 @@ struct NewUmbrellaView: View {
                     .padding()
                     .frame(width: 300)
                 
-                TextField("Group Name", text: $viewModel.groupName, prompt: Text("Group Name")
+                TextField("Umbrella Name", text: $viewModel.groupName, prompt: Text("Umbrella Name")
                     .foregroundStyle(Color(.darkGray)))
                 .padding()
                 .background(Color.gray.opacity(0.1))
@@ -49,10 +50,13 @@ struct NewUmbrellaView: View {
                 
                 Spacer()
                 
-                UMButton(title: "Create Group", background: .mainBlue) {
+                UMButton(title: "Create Umbrella", background: .mainBlue) {
                     viewModel.registerGroup()
+                    dismiss()
                 }
                 .frame(width: 300, height: 60)
+                
+                Spacer()
                 
             }
             .navigationBarBackButtonHidden(true)

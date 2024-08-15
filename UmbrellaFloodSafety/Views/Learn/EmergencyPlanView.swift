@@ -10,7 +10,11 @@ import SwiftUI
 struct EmergencyPlanView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State var emergencyPlan: EmergencyPlanModel
+    let emergencyPlanId: String
+    @ObservedObject var emergencyPlanFirebase = EmergencyPlanFirebaseManager.shared
+    var emergencyPlan: EmergencyPlanModel {
+        emergencyPlanFirebase.emergencyPlans[emergencyPlanId] ?? EmergencyPlanModel(id: "", title: "Plan failed to load", dateUpdated: 0, emergencyContacts: [], petEmergencyInfo: [], mostLikelyDisasters: "", escapeRouteFromHome: "", meetingNearHome: "", meetingOutsideNeighborhood: "", firstChoiceRoute: "", secondChoiceRoute: "", externalEmergencyContact: [], childEvacuationPlans: [], specialNeedsEvacuationPlan: [], safeRoom: "", usersInPlan: [])
+    }
     @State var isPresented: Bool = false
     var actualtimestamp: String {
         guard emergencyPlan.dateUpdated != 0 else {
@@ -18,7 +22,7 @@ struct EmergencyPlanView: View {
         }
         let dateFormatter = DateFormatter()
         let date = Date(timeIntervalSince1970: emergencyPlan.dateUpdated)
-        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
         return dateFormatter.string(from: date)
     }
     
@@ -261,6 +265,7 @@ struct EmergencyPlanView: View {
                         Divider()
                     }
                 }
+                .foregroundStyle(.primary)
                 .overlay(RoundedRectangle(cornerRadius: 25)
                     .stroke(lineWidth: 4)
                     .fill(.mainBlue))
@@ -451,5 +456,5 @@ struct EmergencyPlanView: View {
 }
 
 #Preview {
-    EmergencyPlanView(emergencyPlan: EmergencyPlanModel(id: UUID().uuidString, title: "Plan title", dateUpdated: 1723333274, emergencyContacts: [], petEmergencyInfo: [], mostLikelyDisasters: "Most likely", escapeRouteFromHome: "escape route from home", meetingNearHome: "meeting near home", meetingOutsideNeighborhood: "meeting outside neighborhood", firstChoiceRoute: "first choice route", secondChoiceRoute: "second choice route", externalEmergencyContact: [], childEvacuationPlans: [], specialNeedsEvacuationPlan: [], safeRoom: "Safe room", usersInPlan: []))
+    EmergencyPlanView(emergencyPlanId: UUID().uuidString)
 }

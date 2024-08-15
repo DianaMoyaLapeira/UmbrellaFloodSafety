@@ -69,6 +69,8 @@ struct FloodDetectedView: View {
             }
             .frame(height: 60)
         }
+        .transition(.opacity)
+        .animation(.easeInOut, value: dismissedAlerts)
         .padding()
         .background(RoundedRectangle(cornerRadius: 25).fill(.white).foregroundStyle(.thickMaterial))
         .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).fill(.mainBlue))

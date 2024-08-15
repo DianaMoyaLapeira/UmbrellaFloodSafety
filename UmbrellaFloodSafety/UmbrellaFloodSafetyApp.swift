@@ -57,6 +57,19 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
         }
     }
     
+    func stopLocation() {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func startLocation() {
+        if locationManager.authorizationStatus != CLAuthorizationStatus.authorizedAlways {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startMonitoringSignificantLocationChanges()
+        } else {
+            locationManager.startMonitoringSignificantLocationChanges()
+        }
+    }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.hexString
         print(deviceTokenString)

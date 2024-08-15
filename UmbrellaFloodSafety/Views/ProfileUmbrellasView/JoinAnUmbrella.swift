@@ -55,7 +55,7 @@ struct JoinAnUmbrella: View {
                 
                 TextField("", text: $characterOne)
                     .modifier(OtpModifier(pin: $characterOne))
-                    .onChange(of:characterOne) {newVal in
+                    .onChange(of:characterOne) { oldVal, newVal in
                         if (newVal.count == 1) {
                             pinFocusState = .characterTwo
                         }
@@ -64,7 +64,7 @@ struct JoinAnUmbrella: View {
                 
                 TextField("", text: $characterTwo)
                     .modifier(OtpModifier(pin: $characterTwo))
-                    .onChange(of:characterTwo) {newVal in
+                    .onChange(of:characterTwo) { oldVal, newVal in
                         if (newVal.count == 1) {
                             pinFocusState = .characterThree
                         }
@@ -73,7 +73,7 @@ struct JoinAnUmbrella: View {
                 
                 TextField("", text: $characterThree)
                     .modifier(OtpModifier(pin: $characterThree))
-                    .onChange(of:characterThree) {newVal in
+                    .onChange(of:characterThree) { oldVal, newVal in
                         if (newVal.count == 1) {
                             pinFocusState = .characterFour
                         }
@@ -82,7 +82,7 @@ struct JoinAnUmbrella: View {
                 
                 TextField("", text: $characterFour)
                     .modifier(OtpModifier(pin: $characterFour))
-                    .onChange(of:characterFour) {newVal in
+                    .onChange(of:characterFour) { oldVal, newVal in
                         if (newVal.count == 1) {
                             pinFocusState = .characterFive
                         }
@@ -91,7 +91,7 @@ struct JoinAnUmbrella: View {
                 
                 TextField("", text: $characterFive)
                     .modifier(OtpModifier(pin: $characterFive))
-                    .onChange(of:characterFive) {newVal in
+                    .onChange(of:characterFive) { oldVal, newVal in
                         if (newVal.count == 1) {
                             pinFocusState = .characterSix
                         }
@@ -107,9 +107,13 @@ struct JoinAnUmbrella: View {
             UMButton(title: "Join Group", background: .mainBlue) {
                 
                 viewModel.joinGroup(GroupId: "\(characterOne)\(characterTwo)\(characterThree)\(characterFour)\(characterFive)\(characterSix)")
+                
+                dismiss()
             }
             .frame(height: 70)
             .padding()
+            
+            Spacer()
             
         }.navigationBarBackButtonHidden(true)
             .toolbar {

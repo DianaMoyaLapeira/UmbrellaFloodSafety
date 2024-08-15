@@ -38,13 +38,6 @@ struct MapViewSheet: View {
                     }
                 } else {
                     
-                    HStack {
-                        Call911Button()
-                        
-                        Spacer()
-                    }
-                    .padding(.leading)
-                    
                     Image(.mapEmptyState)
                         .resizable()
                         .scaledToFit()

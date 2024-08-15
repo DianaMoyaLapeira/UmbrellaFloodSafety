@@ -48,6 +48,7 @@ struct EditProfileView: View {
                     Spacer()
                     
                     ProfilePictureView(profileString: viewModel.firebaseManager.currentUserAvatar)
+                        .background(.mainBlue).opacity(0.1)
                         .clipShape(Circle())
                     
                     Spacer()
@@ -61,6 +62,7 @@ struct EditProfileView: View {
                         .font(.custom("Nunito", size: 24))
                         .bold()
                 }
+                .padding(.bottom)
                 
                 
                 VStack {

@@ -119,7 +119,7 @@ class MakeEmergencyPlanViewModel: ObservableObject {
         // child evacuation plan
         
         for childEvacuationPlan in childEvacuationPlans {
-            db.collection("emergencyPlans/\(documentId)/childEvacuationPlansReference")
+            db.collection("emergencyPlans/\(documentId)/childEvacuationPlans")
                 .document(childEvacuationPlan.id)
                 .setData(childEvacuationPlan.encodeJSONToDictionary())
         }

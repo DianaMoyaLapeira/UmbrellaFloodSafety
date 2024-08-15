@@ -7,8 +7,8 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-const {OpenAI} = require("openai");
-const functions = require("firebase-functions");
+const OpenAI = require("openai");
+const functions = require("firebase-functions/v1");
 const admin = require("firebase-admin");
 const apn = require("apn");
 const path = require("path");
@@ -36,8 +36,7 @@ const serverKeyPath = path.join(__dirname, "AuthKey_SN4RX6DW9J.p8");
 
 const privateKey = fs.readFileSync(serverKeyPath, "utf8");
 
-// const openAIKey = functions.config().openai.apikey;
-const openAIKey = "dummykey";
+const openAIKey = functions.config().openai.apikey;
 
 /**
  * Generates a JWT for auth with Apple WeatherKit API.
@@ -57,7 +56,7 @@ function generateJWT() {
 
 exports.callOpenAIAdult = functions.https
     .onCall(
-        async (data) => {
+        async (data, context) => {
           try {
             const userMessage = data.message;
             if (!userMessage) {
@@ -92,7 +91,7 @@ exports.callOpenAIAdult = functions.https
 
 exports.callOpenAIChild = functions.https
     .onCall(
-        async (data) => {
+        async (data, context) => {
           try {
             const userMessage = data.message;
             if (!userMessage) {

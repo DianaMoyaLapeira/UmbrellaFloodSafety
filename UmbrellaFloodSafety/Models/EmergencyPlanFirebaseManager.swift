@@ -21,14 +21,11 @@ class EmergencyPlanFirebaseManager: ObservableObject {
     
     func setUpPlanListeners(emergencyPlans: [String]) {
         // Clear plans so new listeners can be put in
-        planListeners.removeAll()
         
         let db = Firestore.firestore()
       
         for emergencyPlan in emergencyPlans {
             let emergencyPlanListener = db.collection("emergencyPlans").document(emergencyPlan).addSnapshotListener { documentSnapshot, error in
-                
-                var emergencyPlanTemplate = EmergencyPlanModel(id: "", title: "", dateUpdated: 0, emergencyContacts: [], petEmergencyInfo: [], mostLikelyDisasters: "", escapeRouteFromHome: "", meetingNearHome: "", meetingOutsideNeighborhood: "", firstChoiceRoute: "", secondChoiceRoute: "", externalEmergencyContact: [], childEvacuationPlans: [], specialNeedsEvacuationPlan: [], safeRoom: "", usersInPlan: [])
                 
                 if let error = error {
                     print(error.localizedDescription)
@@ -39,61 +36,62 @@ class EmergencyPlanFirebaseManager: ObservableObject {
                     return
                 }
                 
-                if let planId = document.get("id") as? String {
-                    emergencyPlanTemplate.id = planId
+                let emergencyPlanTemplate = EmergencyPlanModel(
+                    id: document.get("id") as? String ?? "",
+                    title: document.get("title") as? String ?? "",
+                    dateUpdated: document.get("dateUpdated") as? CGFloat ?? 0,
+                    emergencyContacts: [],
+                    petEmergencyInfo: [],
+                    mostLikelyDisasters: document.get("mostLikelyDisasters") as? String ?? "",
+                    escapeRouteFromHome: document.get("escapeRouteFromHome") as? String ?? "",
+                    meetingNearHome: document.get("meetingNearHome") as? String ?? "",
+                    meetingOutsideNeighborhood: document.get("meetingOutsideNeighborhood") as? String ?? "",
+                    firstChoiceRoute: document.get("firstChoiceRoute") as? String ?? "",
+                    secondChoiceRoute: document.get("secondChoiceRoute") as? String ?? "",
+                    externalEmergencyContact: [],
+                    childEvacuationPlans: [],
+                    specialNeedsEvacuationPlan: [],
+                    safeRoom: document.get("safeRoom") as? String ?? "",
+                    usersInPlan: document.get("usersInPlan") as? [String] ?? []
+                )
+                
+                DispatchQueue.main.async {
+                    self.emergencyPlans[emergencyPlan] = emergencyPlanTemplate
                 }
                 
-                if let planTitle = document.get("title") as? String {
-                    emergencyPlanTemplate.title = planTitle
+                self.fetchEmergencyContacts(planId: emergencyPlan, subcollection: "emergencyContacts") { contacts in
+                    DispatchQueue.main.async {
+                        print("contacts \(contacts)")
+                        self.emergencyPlans[emergencyPlan]?.emergencyContacts = contacts
+                    }
                 }
                 
-                if let planDateUpdated = document.get("dateUpdated") as? CGFloat {
-                    emergencyPlanTemplate.dateUpdated = planDateUpdated
+                self.fetchPetEmergencyInfo(planId: emergencyPlan) { petInfo in
+                    DispatchQueue.main.async {
+                        self.emergencyPlans[emergencyPlan]?.petEmergencyInfo = petInfo
+                    }
                 }
                 
-                emergencyPlanTemplate.emergencyContacts = self.fetchEmergencyContacts(emergencyPlan: emergencyPlan, subcollection: "emergencyContacts")
-                
-                emergencyPlanTemplate.petEmergencyInfo = self.fetchPetEmergencyInfo(emergencyPlan: emergencyPlan)
-                
-                if let planLikelyDisasters = document.get("mostLikelyDisasters") as? String {
-                    emergencyPlanTemplate.mostLikelyDisasters = planLikelyDisasters
+                self.fetchSpecialNeedsEvacuationPlan(planId: emergencyPlan) { plans in
+                    DispatchQueue.main.async {
+                        self.emergencyPlans[emergencyPlan]?.specialNeedsEvacuationPlan = plans
+                    }
                 }
                 
-                if let planEscapeFromHome = document.get("escapeRouteFromHome") as? String {
-                    emergencyPlanTemplate.escapeRouteFromHome = planEscapeFromHome
+                self.fetchChildEvacuationPlan(planId: emergencyPlan) { plan in
+                    DispatchQueue.main.async {
+                        print("child plan: \(plan)")
+                        self.emergencyPlans[emergencyPlan]?.childEvacuationPlans = plan
+                    }
                 }
                 
-                if let planMeetingNearHome = document.get("meetingNearHome") as? String {
-                    emergencyPlanTemplate.meetingNearHome = planMeetingNearHome
+                self.fetchEmergencyContacts(planId: emergencyPlan, subcollection: "externalEmergencyContacts") { contacts in
+                    DispatchQueue.main.async {
+                        print("external contacts \(contacts)")
+                        self.emergencyPlans[emergencyPlan]?.emergencyContacts = contacts
+                    }
                 }
                 
-                if let planMeetingOutsideNeighborhood = document.get("meetingOutsideNeighborhood") as? String {
-                    emergencyPlanTemplate.meetingOutsideNeighborhood = planMeetingOutsideNeighborhood
-                }
-                
-                if let planFirstChoiceRoute = document.get("firstChoiceRoute") as? String {
-                    emergencyPlanTemplate.firstChoiceRoute = planFirstChoiceRoute
-                }
-                
-                if let planSecondChoiceRoute = document.get("secondChoiceRoute") as? String {
-                    emergencyPlanTemplate.secondChoiceRoute = planSecondChoiceRoute
-                }
-                
-                emergencyPlanTemplate.externalEmergencyContact = self.fetchEmergencyContacts(emergencyPlan: emergencyPlan, subcollection: "externalEmergencyContacts")
-                
-                emergencyPlanTemplate.childEvacuationPlans = self.fetchChildEvacuationPlan(emergencyPlan: emergencyPlan)
-                
-                emergencyPlanTemplate.specialNeedsEvacuationPlan = self.fetchSpecialNeedsEvacuationPlan(emergencyPlan: emergencyPlan)
-                
-                if let planSafeRoom = document.get("safeRoom") as? String {
-                    emergencyPlanTemplate.safeRoom = planSafeRoom
-                }
-                
-                if let planUsers = document.get("usersInPlan") as? [String] {
-                    emergencyPlanTemplate.usersInPlan = planUsers
-                }
-                
-                self.emergencyPlans[emergencyPlanTemplate.id] = emergencyPlanTemplate
             }
     
             self.planListeners.append(emergencyPlanListener)
@@ -101,163 +99,130 @@ class EmergencyPlanFirebaseManager: ObservableObject {
         }
     }
     
-    func fetchEmergencyContacts(emergencyPlan: String, subcollection: String) -> [EmergencyContact] {
-        // fetch emergency contacts for this plan
-        
-        var emergencyContacts: [EmergencyContact] = []
+    func fetchEmergencyContacts(planId: String, subcollection: String, completion: @escaping (([EmergencyContact]) -> Void )) {
         
         let db = Firestore.firestore()
         
-        db.collection("emergencyPlans").document(emergencyPlan).collection(subcollection).getDocuments { documentsSnapshot, error in
-            
-            if let error = error {
-                print("An error occured fetching emergency contacts: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let documents = documentsSnapshot, !documents.isEmpty else {
-                print("An error occured fetching emergency contacts: \(String(describing: error?.localizedDescription))")
-                return
-            }
-            
-            
-            for contactDocument in documents.documents {
-                
-                var emergencyContactTemplate = EmergencyContact(id: "", name: "")
-                
-                let contactData = contactDocument.data()
-                
-                emergencyContactTemplate.id = contactData["id"] as? String ?? ""
-                
-                emergencyContactTemplate.name = contactData["name"] as? String ?? ""
-                
-                emergencyContactTemplate.homePhoneNumber = contactData["homePhoneNumber"] as? String ?? ""
-                
-                emergencyContactTemplate.cellPhoneNumber = contactData["cellPhoneNumber"] as? String ?? ""
-                
-                emergencyContactTemplate.email = contactData["email"] as? String ?? ""
-                
-                emergencyContacts.append(emergencyContactTemplate)
-            }
-            
-        }
-        
-        return emergencyContacts
-        
-    }
-    
-    func fetchPetEmergencyInfo(emergencyPlan: String) -> [PetEmergencyInfo] {
-        // fetch pet emergency info for this plan
-        
-        var petEmergencyInfo: [PetEmergencyInfo] = []
-        
-        let db = Firestore.firestore()
-        
-        db.collection("emergencyPlans").document(emergencyPlan).collection("petInfo").getDocuments { documentsSnapshot, error in
+        db.collection("emergencyPlans/\(planId)/\(subcollection)").getDocuments { documentSnapshot, error in
             
             if let error = error {
                 print("An error occured fetching pet emergency info: \(error)")
+                completion([])
                 return
             }
             
-            guard let documents = documentsSnapshot, !documents.isEmpty else {
-                print("An error occured fetching pet emergency info or no pet info is available: \(String(describing: error))")
-                return
-            }
+            var emergencyContacts: [EmergencyContact] = []
             
-            for petInfoDocument in documents.documents {
+            for document in documentSnapshot?.documents ?? [] {
                 
-                var petInfoTemplate = PetEmergencyInfo(id: "")
+                emergencyContacts.append(EmergencyContact(
+                    id: document.get("id") as? String ?? "",
+                    name: document.get("name") as? String ?? "",
+                    homePhoneNumber: document.get("homePhoneNumber") as? String ?? "",
+                    cellPhoneNumber: document.get("cellPhoneNumber") as? String ?? "",
+                    email: document.get("email") as? String ?? ""
+                ))
                 
-                let petData = petInfoDocument.data()
-                
-                petInfoTemplate.id = petData["id"] as? String ?? ""
-                
-                petInfoTemplate.name = petData["name"] as? String ?? ""
-                
-                petInfoTemplate.type = petData["type"] as? String ?? ""
-                
-                petInfoTemplate.registrationNumber = petData["registrationNumber"] as? String ?? ""
-                
-                petEmergencyInfo.append(petInfoTemplate)
             }
+            completion(emergencyContacts)
         }
         
-        return petEmergencyInfo
     }
     
-    func fetchChildEvacuationPlan(emergencyPlan: String) -> [childEvacuationPlan] {
+    func fetchPetEmergencyInfo(planId: String, completion: @escaping (([PetEmergencyInfo]) -> Void )) {
+        // fetch pet emergency info for this plan
+        
+        let db = Firestore.firestore()
+        
+        db.collection("emergencyPlans").document(planId).collection("petInfo").getDocuments { documentsSnapshot, error in
+            
+            if let error = error {
+                print("An error occured fetching pet emergency info: \(error)")
+                completion([])
+                return
+            }
+            
+            var petEmergencyInfo: [PetEmergencyInfo] = []
+            
+            for petInfoDocument in documentsSnapshot?.documents ?? []{
+                
+                petEmergencyInfo.append(PetEmergencyInfo(
+                    id: petInfoDocument.get("id") as? String ?? "",
+                    name: petInfoDocument.get("name") as? String ?? "",
+                    type: petInfoDocument.get("type") as? String ?? "",
+                    color: petInfoDocument.get("color") as? String ?? "",
+                    registrationNumber: petInfoDocument.get("registrationNumber") as? String ?? ""
+                ))
+            }
+            
+            completion(petEmergencyInfo)
+            
+        }
+    }
+    
+    func fetchChildEvacuationPlan(planId: String, completion: @escaping ([childEvacuationPlan]) -> Void ) {
         
         var childEvacuationPlans: [childEvacuationPlan] = []
         
         let db = Firestore.firestore()
         
-        db.collection("emergencyPlans").document(emergencyPlan).collection("childEvacuationsPlan").getDocuments { documentsSnapshot, error in
+        db.collection("emergencyPlans").document(planId).collection("childEvacuationPlans").getDocuments { documentsSnapshot, error in
             
             if let error = error {
                 print("An error occured when fetching child evacuation plans: \(error)")
+                completion([])
                 return
             }
             
             guard let documents = documentsSnapshot, !documents.isEmpty else {
                 print("An error occured or no documents when fetching child evacuation plans: \(String(describing: error))")
+                completion([])
                 return
             }
             
-            for childEvacuationDocument in documents.documents {
+            for document in documents.documents {
                 
-                var childEvacuationTemplate = childEvacuationPlan(id: "", name: "", evacuationSite: "")
-                
-                let childEvacuationData = childEvacuationDocument.data()
-                
-                childEvacuationTemplate.id = childEvacuationData["id"] as? String ?? ""
-                
-                childEvacuationTemplate.name = childEvacuationData["name"] as? String ?? ""
-                
-                childEvacuationTemplate.evacuationSite = childEvacuationData["evacuationSite"] as? String ?? ""
-                
-                childEvacuationTemplate.contactInfo = childEvacuationData["contactInfo"] as? String ?? ""
-                
-                childEvacuationPlans.append(childEvacuationTemplate)
+                childEvacuationPlans.append(childEvacuationPlan(id: document.get("id") as? String ?? "",
+                                                                name: document.get("name") as? String ?? "",
+                                                                evacuationSite: document.get("evacuationSite") as? String ?? "",
+                                                                contactInfo: document.get("contactInfo") as? String ?? ""
+                                                               ))
             }
         }
         
-        return childEvacuationPlans
+        completion(childEvacuationPlans)
     }
     
-    func fetchSpecialNeedsEvacuationPlan(emergencyPlan: String) -> [SpecialNeedsEvacuationPlan] {
+    func fetchSpecialNeedsEvacuationPlan(planId: String, completion: @escaping ([SpecialNeedsEvacuationPlan]) -> Void ) {
         
         var specialNeedsEvacuationPlans: [SpecialNeedsEvacuationPlan] = []
         
         let db = Firestore.firestore()
         
-        db.collection("emergencyPlans").document(emergencyPlan).collection("specialNeedsDisabilitiesEvacuationPlans").getDocuments { documentsSnapshot, error in
+        db.collection("emergencyPlans").document(planId).collection("specialNeedsDisabilitiesEvacuationPlans").getDocuments { documentsSnapshot, error in
             
             if let error = error {
                 print("An error occured when fetching special needs/disabilities plans: \(error)")
+                completion([])
+                return
             }
             
             guard let documents = documentsSnapshot, !documents.isEmpty else {
                 print("An error occured or no documents when fetching special needs/disabilities plans \(String(describing: error))")
+                completion([])
                 return
             }
             
             for evacuationPlanDocument in documents.documents {
                 
-                var specialNeedsEvacuationTemplate = SpecialNeedsEvacuationPlan(id: "", name: "", plan: "")
-                
-                let evacuationPlanData = evacuationPlanDocument.data()
-                
-                specialNeedsEvacuationTemplate.id = evacuationPlanData["id"] as? String ?? ""
-                
-                specialNeedsEvacuationTemplate.name = evacuationPlanData["name"] as? String ?? ""
-                
-                specialNeedsEvacuationTemplate.plan = evacuationPlanData["plan"] as? String ?? ""
-                
-                specialNeedsEvacuationPlans.append(specialNeedsEvacuationTemplate)
+                specialNeedsEvacuationPlans.append(SpecialNeedsEvacuationPlan(id: evacuationPlanDocument.get("id") as? String ?? "",
+                                                                              name: evacuationPlanDocument.get("name") as? String ?? "",
+                                                                              plan: evacuationPlanDocument.get("plan") as? String ?? ""
+                                                                             ))
             }
         }
-        
-        return specialNeedsEvacuationPlans
+        print("special needs evacuation plans \(specialNeedsEvacuationPlans)")
+        completion(specialNeedsEvacuationPlans)
+
     }
 }

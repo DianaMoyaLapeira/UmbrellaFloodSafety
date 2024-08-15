@@ -128,6 +128,9 @@
         }
       }
     },
+    "3. Get to high ground" : {
+
+    },
     "3. If separated during an emergency, what is our meeting place near our home? (optional)" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -138,6 +141,9 @@
           }
         }
       }
+    },
+    "3. Stay informed" : {
+
     },
     "4. If we cannot return home or are asked to evacuate, what is our meeting place outside of our neighborhood? (optional)" : {
       "extractionState" : "stale",
@@ -171,6 +177,12 @@
         }
       }
     },
+    "4. Obey evacuation orders" : {
+
+    },
+    "5. Call 911 if you feel unsafe" : {
+
+    },
     "5. Call or text    trusted adults" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -202,6 +214,12 @@
           }
         }
       }
+    },
+    "5. Electrical Safety" : {
+
+    },
+    "6. Check in on loved ones" : {
+
     },
     "A gray circle means that Umbrella is trying to get the weather for a location." : {
       "localizations" : {
@@ -307,6 +325,9 @@
           }
         }
       }
+    },
+    "Avoid rooms with submerged electrical outlets. Get away from any sparks, hissing, or cracking noises." : {
+
     },
     "Back" : {
       "extractionState" : "manual",
@@ -448,6 +469,9 @@
         }
       }
     },
+    "Check for updates through official weather broadcasts using the Internet, radio, television, etc." : {
+
+    },
     "Check up on them if you think they might be in danger." : {
       "localizations" : {
         "es" : {
@@ -561,6 +585,7 @@
       }
     },
     "Create A New Group" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -569,6 +594,9 @@
           }
         }
       }
+    },
+    "Create A New Umbrella" : {
+
     },
     "Create account" : {
       "extractionState" : "stale",
@@ -940,6 +968,9 @@
         }
       }
     },
+    "Evacuate immediately if ordered to do so. Lock doors and disconnect utilities/appliances if you have time." : {
+
+    },
     "Evacuation Plan for Children" : {
       "localizations" : {
         "es" : {
@@ -1091,6 +1122,9 @@
         }
       }
     },
+    "For Adults" : {
+
+    },
     "For kids" : {
       "localizations" : {
         "es" : {
@@ -1155,7 +1189,11 @@
         }
       }
     },
+    "Go to emergency plans on Umbrella" : {
+
+    },
     "Group Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -1503,6 +1541,9 @@
         }
       }
     },
+    "Make sure your loved ones are safe." : {
+
+    },
     "Meeting place near home" : {
       "localizations" : {
         "es" : {
@@ -1571,6 +1612,9 @@
         }
       }
     },
+    "Mouth" : {
+
+    },
     "My Emergency Plans" : {
       "localizations" : {
         "es" : {
@@ -1631,6 +1675,9 @@
           }
         }
       }
+    },
+    "National Weather Service Safety During Floods" : {
+
     },
     "Near" : {
       "extractionState" : "manual",
@@ -1957,6 +2004,9 @@
         }
       }
     },
+    "Red Cross Family Disaster Plan" : {
+
+    },
     "Registration # (optional)" : {
       "localizations" : {
         "es" : {
@@ -1986,6 +2036,9 @@
           }
         }
       }
+    },
+    "Remember: Turn around, don't drown!" : {
+
     },
     "Remove" : {
       "extractionState" : "manual",
@@ -2145,6 +2198,9 @@
         }
       }
     },
+    "Stay on high ground if you're already there." : {
+
+    },
     "Tap here to go to plan" : {
       "localizations" : {
         "es" : {
@@ -2277,6 +2333,9 @@
         }
       }
     },
+    "Umbrella Name" : {
+
+    },
     "Umbrellas In Common" : {
       "localizations" : {
         "es" : {
@@ -2309,6 +2368,7 @@
       }
     },
     "Unicef Flood Safety Information" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -2317,6 +2377,9 @@
           }
         }
       }
+    },
+    "UNICEF Flood Safety Information" : {
+
     },
     "Username" : {
       "extractionState" : "manual",
@@ -2465,6 +2528,9 @@
           }
         }
       }
+    },
+    "You can also report downed power lines or gas leaks through 911." : {
+
     },
     "You have no blocked users" : {
       "extractionState" : "manual",

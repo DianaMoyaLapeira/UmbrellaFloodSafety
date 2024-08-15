@@ -50,18 +50,26 @@ struct UmbrellaView: View {
             
             if firebaseManager.groupMembers[groupId]?.count != 0 {
                 
-                ForEach(firebaseManager.groupMembers[groupId] ?? [""], id: \.self) { member in
-                    
-                    if member != "" && member != firebaseManager.currentUserUsername {
-                        NavigationLink(destination: UserView(username: member)) {
-                            MessagingListItem(participants: [member], timestamp: 0, lastMessage: member)
+                VStack {
+                    ForEach(firebaseManager.groupMembers[groupId] ?? [""], id: \.self) { member in
+                        
+                        if member != "" && member != firebaseManager.currentUserUsername {
+                            NavigationLink(destination: UserView(username: member)) {
+                                MessagingListItem(participants: [member], timestamp: 0, lastMessage: member)
+                            }
+                        } else if member == firebaseManager.currentUserUsername {
+                            NavigationLink(destination: UserView(username: member)) {
+                                MessagingListItem(participants: [firebaseManager.currentUserUsername], timestamp: 0, lastMessage: member)
+                            }
                         }
-                    } else if member == firebaseManager.currentUserUsername {
-                        NavigationLink(destination: UserView(username: member)) {
-                            MessagingListItem(participants: [firebaseManager.currentUserUsername], timestamp: 0, lastMessage: member)
-                        }
+                        
+                        Divider()
                     }
                 }
+                .padding()
+                .overlay(RoundedRectangle(cornerRadius: 25)
+                    .stroke(lineWidth: 4)
+                    .fill(.mainBlue))
             } else {
                 Image(.umbrellaEmptyState)
                     .resizable()

@@ -351,27 +351,27 @@ struct MakeEmergencyPlan: View {
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
                                 } else {
-                                    Text(LocalizedStringKey("Click to edit"))
+                                    Text("Click to edit")
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
                                 }
                                 
                                 if plan.evacuationSite != "" {
-                                    Text("\(LocalizedStringKey("Evacuation site")): \(plan.evacuationSite)")
+                                    Text("Evacuation site: \(plan.evacuationSite)")
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 } else {
-                                    Text(LocalizedStringKey("Evacuation site: None yet"))
+                                    Text("Evacuation site: None yet")
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 }
                                 
                                 if plan.contactInfo != "" {
-                                    Text("\(LocalizedStringKey("Contact Info")): \(plan.contactInfo)")
+                                    Text("Contact Info: \(plan.contactInfo)")
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 } else {
-                                    Text(LocalizedStringKey("Evacuation site: None yet"))
+                                    Text("Evacuation site: None yet")
                                         .font(.custom("Nunito", size: 18))
                                         .multilineTextAlignment(.leading)
                                 }

@@ -9,9 +9,11 @@ import SwiftUI
 
 struct HairSelection: View {
     
-    let hairColors1 = ["blackHair", "darkBrownHair", "lightBrownHair", "darkGingerHair", "gingerHair"]
+    let hairColors1 = ["blackHair", "darkBrownHair", "lightBrownHair", "gingerHair", "redHair"]
     
-    let hairColors2 = ["darkBlonde", "lightBlonde"]
+    let hairColors2 = ["brightGingerHair","darkBlonde", "lightBlonde", "grayHair", "whiteHair"]
+    
+    let hairColors3 = ["pinkHair", "yellowHair", "greenHair", "blueHair", "purpleHair"]
     
     let shortStyles = ["short4", "short5", "short6", "short7", "short8",
                        "short1", "short2", "short3"]
@@ -90,6 +92,8 @@ struct HairSelection: View {
                             .foregroundStyle(Color(haircolor))
                     }
                 }
+                
+                Spacer()
             }
             .padding([.leading, .trailing])
             
@@ -97,8 +101,22 @@ struct HairSelection: View {
                 ForEach(hairColors2, id: \.self) { haircolor in
                     Button {
                         viewModel.hairColor = haircolor.replacingOccurrences(of: "Hair", with: "").lowercased()
-                        
-                        
+                    
+                    } label : {
+                        Circle()
+                            .frame(width: 65)
+                            .foregroundStyle(Color(haircolor))
+                    }
+                }
+                
+                Spacer()
+            }
+            .padding([.leading, .trailing])
+            
+            HStack {
+                ForEach(hairColors3, id: \.self) { haircolor in
+                    Button {
+                        viewModel.hairColor = haircolor.replacingOccurrences(of: "Hair", with: "").lowercased()
                         
                     } label : {
                         Circle()
@@ -127,6 +145,7 @@ struct HairSelection: View {
                         
                         Button {
                             
+                            viewModel.hairBack = ""
                             viewModel.hairFront = style
                             
                         } label: {

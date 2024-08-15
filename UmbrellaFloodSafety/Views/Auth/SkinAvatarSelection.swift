@@ -21,6 +21,10 @@ struct SkinAvatarSelection: View {
     
     let blushColors = ["blushColor1", "blushColor2", "blushColor3", "blushColor4", "blushColor5"]
     
+    let mouth1 = ["mouth1", "mouth2", "mouth3", "mouth4"]
+    
+    let mouth2 = ["mouth5"]
+    
     var body: some View {
         ScrollView {
             
@@ -111,6 +115,58 @@ struct SkinAvatarSelection: View {
                     }
                 }
 
+                HStack {
+                    
+                    Text(LocalizedStringKey("Mouth"))
+                        .font(.custom("Nunito", size: 24))
+                        .fontWeight(.black)
+                        .foregroundStyle(.mainBlue)
+                    
+                    Spacer()
+                        
+                }
+                
+                HStack {
+                    ForEach(mouth1, id: \.self) { mouth in
+                        
+                        Button {
+                            viewModel.mouth = mouth
+                        } label: {
+                            Image(mouth)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 70)
+                                .padding(.top, 7)
+                                .scaleEffect(4)
+                                .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
+                        }
+                        .foregroundStyle(.primary)
+                    }
+                    
+                    Spacer()
+                    
+                }
+              
+                HStack {
+                    ForEach(mouth2, id: \.self) { mouth in
+                        
+                        Button {
+                            viewModel.mouth = mouth
+                        } label: {
+                            Image(mouth)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 70)
+                                .padding(.top, 7)
+                                .scaleEffect(4)
+                                .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
+                        }
+                        .foregroundStyle(.primary)
+                    }
+                    
+                    Spacer()
+                    
+                }
             }
             
             Text(skinSelection)

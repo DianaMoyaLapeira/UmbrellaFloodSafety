@@ -23,6 +23,7 @@ struct memberLocationMap: Identifiable, Hashable {
 
 struct MapView: View {
     
+    @State private var cameraPosition: MapCameraPosition = .automatic
     @State private var showSheet: Bool = true
     @ObservedObject var viewModel = MapViewViewModel.shared
     @ObservedObject var firebaseManager = FirebaseManager.shared
@@ -34,6 +35,7 @@ struct MapView: View {
         }
         return array
     }
+    
     @State var showNotificationSheet: Bool = false
     
     var body: some View {
@@ -61,14 +63,19 @@ struct MapView: View {
             
             ZStack(alignment: .topLeading)
                 {
-                    Map() {
+                    Map(position: $cameraPosition) {
                         
                         ForEach(firebaseManager.groupMembers[viewModel.selection] ?? [], id: \.self) { member in
                             
                             if firebaseManager.groupMembersAvatars[member] != "" || firebaseManager.groupMembers[member] != nil {
+                                
                                 Annotation("", coordinate: firebaseManager.groupMembersLocations[member] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) {
                                     
-                                    MapMarker(profileString: firebaseManager.groupMembersAvatars[member] ?? "", username: member, frameWidth: 30, circleWidth: 100, lineWidth: 5, paddingPic: 5)
+                                    Button {
+                                        
+                                    } label: {
+                                        MapMarker(profileString: firebaseManager.groupMembersAvatars[member] ?? "", username: member, frameWidth: 30, circleWidth: 100, lineWidth: 5, paddingPic: 5)
+                                    }
                                 }
                             }
                         }

@@ -88,12 +88,13 @@ struct ConversationView: View {
             Divider()
             
             ScrollViewReader { proxy in
-                ScrollView() {
+                ScrollView {
                     
                     if messagessOrdered.count != 0 {
                         ForEach(messagessOrdered, id: \.self) { message in
                             TextMessageView(content: message.content, timestamp: message.timestamp, senderId: message.senderId)
                         }
+                        
                     } else {
                         Image(.conversationEmptyState)
                             .resizable()
@@ -111,7 +112,7 @@ struct ConversationView: View {
                         proxy.scrollTo(lastMessage, anchor: .bottom)
                     }
                 }
-                .onChange(of: firebaseManager.messages[viewModel.conversationId]) { oldValue, newValue in
+                .onChange(of: firebaseManager.messages[viewModel.conversationId]) {
                     if let lastMessage = messagessOrdered.last {
                         withAnimation {
                             proxy.scrollTo(lastMessage, anchor: .bottom)
@@ -128,6 +129,8 @@ struct ConversationView: View {
                     }
 
                 }
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut, value: viewModel.suggestionsFormatted)
             }
             
             VStack {
@@ -140,18 +143,16 @@ struct ConversationView: View {
                                     viewModel.sendMessage(input: suggestion)
                                 } label: {
                                     suggestionView(suggestion: suggestion)
-                                        .transition(.opacity)
                                 }
                             }
                         }
+                        .transition(.move(edge: .bottom))
+                        .animation(.easeOut(duration: 0.5), value: viewModel.suggestionsFormatted.count)
                         .scrollIndicators(.hidden)
                         .padding()
                     }
-                    .transition(.opacity)
                 }
             }
-            .transition(.opacity)
-            .animation(.easeInOut(duration: 1), value: viewModel.suggestionsFormatted.count)
             
             HStack {
                 TextField("text message", text: $viewModel.input, prompt: Text("Message").font(.custom("Nunito", size: 18)).foregroundStyle(Color.secondary))

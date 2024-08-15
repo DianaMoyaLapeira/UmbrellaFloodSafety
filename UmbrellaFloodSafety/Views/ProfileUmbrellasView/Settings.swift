@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct Settings: View {
     
@@ -14,9 +15,11 @@ struct Settings: View {
     @StateObject var viewModel = SettingsViewModel()
     @State var recoveryEmail = ""
     @Binding var isPresented: Bool
+    @State private var locationSharing: Bool
     
     init(isPresented: Binding<Bool>) {
         self._isPresented = isPresented
+        locationSharing = CLLocationManager.locationServicesEnabled()
     }
     
     var body: some View {
@@ -41,17 +44,33 @@ struct Settings: View {
                     
                 }
                 
+                HStack {
+                    Text("Location sharing")
+                        .font(.custom("Nunito", size: 18))
+                    
+                    Spacer()
+                    
+                    Toggle("", isOn: $locationSharing)
+                }
+                .onChange(of: locationSharing) {
+                    if locationSharing {
+                        viewModel.LocationOff()
+                    } else {
+                        viewModel.LocationOn()
+                    }
+                }
+                
                 NavigationLink {
                     UnblockUsers()
                 } label: {
                     Text("Unblock Users")
                         .font(.custom("Nunito", size: 18))
-                        .foregroundStyle(.black)
                     
                     Spacer()
                     
                     Image(systemName: "chevron.right")
                 }
+                .foregroundStyle(.primary)
                 .padding(.top)
                 
                 UMButton(title: "Set up Recovery Email", background: .mainBlue) {

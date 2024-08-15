@@ -82,7 +82,7 @@ extension String {
         
         var result = ""
         var startIndex = normalNumber.startIndex
-        var endIndex = normalNumber.endIndex
+        let endIndex = normalNumber.endIndex
         
         for char in mask where startIndex < endIndex {
             if char == "X" {
