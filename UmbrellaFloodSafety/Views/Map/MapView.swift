@@ -23,7 +23,7 @@ struct memberLocationMap: Identifiable, Hashable {
 
 struct MapView: View {
     
-    @State private var cameraPosition: MapCameraPosition = .automatic
+    @Binding var cameraPosition: MapCameraPosition
     @State private var showSheet: Bool = true
     @ObservedObject var viewModel = MapViewViewModel.shared
     @ObservedObject var firebaseManager = FirebaseManager.shared
@@ -39,29 +39,31 @@ struct MapView: View {
     @State var showNotificationSheet: Bool = false
     
     var body: some View {
-        VStack {
-            
-            Spacer()
-            HStack {
-                Text("Hello \(firebaseManager.currentUserName)!")
-                    .fontWeight(.black)
-                    .font(.custom("Nunito", size: 34))
-                    .foregroundStyle(Color(.mainBlue))
+        
+        GeometryReader { geo in
+            VStack {
+                
                 Spacer()
-
-                Button {
-                    showNotificationSheet.toggle()
-                } label: {
-                    Image(systemName: "bell")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(Color.mainBlue)
+                HStack {
+                    Text("Hello \(firebaseManager.currentUserName)!")
+                        .fontWeight(.black)
+                        .font(.custom("Nunito", size: 34))
+                        .foregroundStyle(Color(.mainBlue))
+                    Spacer()
+                    
+                    Button {
+                        showNotificationSheet.toggle()
+                    } label: {
+                        Image(systemName: "bell")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.mainBlue)
+                    }
                 }
-            }
-            .padding()
-            
-            
-            ZStack(alignment: .topLeading)
+                .padding()
+                
+                
+                ZStack(alignment: .topLeading)
                 {
                     Map(position: $cameraPosition) {
                         
@@ -69,10 +71,14 @@ struct MapView: View {
                             
                             if firebaseManager.groupMembersAvatars[member] != "" || firebaseManager.groupMembers[member] != nil {
                                 
-                                Annotation("", coordinate: firebaseManager.groupMembersLocations[member] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)) {
+                                let coordinate = firebaseManager.groupMembersLocations[member] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                                
+                                Annotation("", coordinate: coordinate) {
                                     
                                     Button {
-                                        
+                                        withAnimation {
+                                            cameraPosition = .item(MKMapItem(placemark: .init(coordinate: coordinate)))
+                                        }
                                     } label: {
                                         MapMarker(profileString: firebaseManager.groupMembersAvatars[member] ?? "", username: member, frameWidth: 30, circleWidth: 100, lineWidth: 5, paddingPic: 5)
                                     }
@@ -90,38 +96,48 @@ struct MapView: View {
                         
                         if viewModel.selection != "No Umbrellas yet" {
                             Picker(LocalizedStringKey("Select an Umbrella"), selection: $viewModel.selection) {
-                            ForEach(firebaseManager.userGroups.keys.sorted(), id: \.self) { groupId in
-                                if let groupName = firebaseManager.userGroups[groupId] {
-                                    Text("\(groupName)").tag(groupId as String?)
-                                        .font(.custom("Nunito", size: 18))
+                                ForEach(firebaseManager.userGroups.keys.sorted(), id: \.self) { groupId in
+                                    if let groupName = firebaseManager.userGroups[groupId] {
+                                        Text("\(groupName)").tag(groupId as String?)
+                                            .font(.custom("Nunito", size: 18))
+                                    }
                                 }
                             }
+                            .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.white))
+                            .pickerStyle(.menu)
+                            .padding()
                         }
-                        .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.white))
-                        .pickerStyle(.menu)
-                        .padding()
                     }
                 }
             }
+            .onAppear(perform: {
+                NotificationViewViewModel.shared.getRiskNotifications()
+            })
+            .onChange(of: firebaseManager.groupMembersLocations, {
+                NotificationViewViewModel.shared.getRiskNotifications()
+            })
+            .sheet(isPresented: $showNotificationSheet, content: {
+                NotificationView(isPresented: $showNotificationSheet)
+                    .frame(width: 400)
+                
+            })
+            .presentationDragIndicator(.visible)
         }
-        .onAppear(perform: {
-            NotificationViewViewModel.shared.getRiskNotifications()
-        })
-        .onChange(of: firebaseManager.groupMembersLocations, {
-            NotificationViewViewModel.shared.getRiskNotifications()
-        })
-        .sheet(isPresented: $showNotificationSheet, content: {
-            NotificationView(isPresented: $showNotificationSheet)
-                .frame(width: 400)
-            
-        })
-        .presentationDragIndicator(.visible)
     }
 }
 
 
 
 #Preview {
-    MapView()
+    struct MapViewViewContainer: View {
+        @State private var cameraPosition: MapCameraPosition = .automatic
+        
+        var body: some View {
+            MapView(cameraPosition: $cameraPosition)
+        }
+    }
+    
+    return MapViewViewContainer()
 }
+
 

@@ -44,15 +44,19 @@ struct EditProfileView: View {
                 .padding()
                 
                 
-                HStack {
-                    Spacer()
+                ZStack {
                     
                     ProfilePictureView(profileString: viewModel.firebaseManager.currentUserAvatar)
-                        .background(.mainBlue).opacity(0.1)
                         .clipShape(Circle())
+                        .frame(width: 240, height: 250, alignment: .bottom)
                     
-                    Spacer()
-                }.frame(height: 250)
+                    Circle()
+                        .stroke(lineWidth: 6)
+                        .frame(width: 250)
+                        .foregroundStyle(Color.mainBlue)
+          
+                }
+                .background(Circle().fill(.mainBlue).opacity(0.1))
                 
                 
                 Button {

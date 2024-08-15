@@ -438,7 +438,10 @@ struct EmergencyPlanView: View {
                Button {
                    dismiss()
                } label: {
-                   Image(.backArrow)
+                   Image(systemName: "chevron.left")
+                       .resizable()
+                       .scaledToFit()
+                       .frame(width: 18)
                }
 
            }

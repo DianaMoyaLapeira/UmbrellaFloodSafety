@@ -113,17 +113,18 @@ struct UserView: View {
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
-           ToolbarItem(placement: .topBarLeading) {
-                   Button(action: {
-                       dismiss()
-                   }) {
-                    Label {
-                        Text(LocalizedStringKey("Back"))
-                    } icon: {
-                        Image(.backArrow)
-                    }
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
                 }
-                .padding()
+            }
+            ToolbarItemGroup(placement: .principal) {
+                Image(.oneThirdProgress)
             }
         }
     }

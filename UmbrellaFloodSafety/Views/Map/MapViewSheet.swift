@@ -7,15 +7,15 @@
 
 import CoreLocation
 import SwiftUI
+import MapKit
 
 struct MapViewSheet: View {
+    
+    @Binding var cameraPosition: MapCameraPosition
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @StateObject var mapViewViewModel = MapViewViewModel.shared
     @State var showAlert = false
     @State var showCircleExplanation: Bool = false
-
-    init() {
-    }
 
     var body: some View {
         ScrollView {
@@ -34,7 +34,15 @@ struct MapViewSheet: View {
                     }
                     
                     ForEach(firebaseManager.groupMembers[mapViewViewModel.selection] ?? [], id: \.self) { member in
-                        UserListView(groupId: mapViewViewModel.selection, image: Image(.children), groupMember: member)
+                        
+                        Button {
+                            withAnimation {
+                                cameraPosition = .item(MKMapItem(placemark: .init(coordinate: firebaseManager.groupMembersLocations[member] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))))
+                            }
+                        } label: {
+                            UserListView(groupId: mapViewViewModel.selection, image: Image(.children), groupMember: member)
+                        }
+                        .foregroundStyle(.primary)
                     }
                 } else {
                     
@@ -73,5 +81,13 @@ struct MapViewSheet: View {
 }
 
 #Preview {
-    MapViewSheet()
+    struct mapViewSheetContainer: View {
+        @State private var cameraPosition: MapCameraPosition = .automatic
+        
+        var body: some View {
+            MapViewSheet(cameraPosition: $cameraPosition)
+        }
+    }
+    
+    return mapViewSheetContainer()
 }

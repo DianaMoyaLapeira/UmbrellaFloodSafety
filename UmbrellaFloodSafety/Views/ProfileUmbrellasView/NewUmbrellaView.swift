@@ -62,17 +62,16 @@ struct NewUmbrellaView: View {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
+                    Button {
                         dismiss()
-                    }) {
-                        Label {
-                             Text("Back")
-                        } icon: {
-                            Image(.backArrow)
-                                        }
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18)
                     }
-                    .padding()
                 }
+                
                 ToolbarItem(placement: .principal) {
                     Image(.halfProgress)
                 }

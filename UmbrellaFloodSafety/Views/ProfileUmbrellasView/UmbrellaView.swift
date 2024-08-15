@@ -66,7 +66,7 @@ struct UmbrellaView: View {
                         Divider()
                     }
                 }
-                .padding()
+                .padding(.horizontal)
                 .overlay(RoundedRectangle(cornerRadius: 25)
                     .stroke(lineWidth: 4)
                     .fill(.mainBlue))
@@ -88,16 +88,14 @@ struct UmbrellaView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
+                Button {
                     dismiss()
-                }) {
-                    Label {
-                         Text("Back")
-                    } icon: {
-                        Image(.backArrow)
-                                    }
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
                 }
-                .padding()
             }
         }
     }

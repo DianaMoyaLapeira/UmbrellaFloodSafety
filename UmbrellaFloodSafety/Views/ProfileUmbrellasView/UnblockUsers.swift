@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UnblockUsers: View {
     
+    @Environment(\.dismiss) var dismiss
     var viewModel = SettingsViewModel()
     
     var body: some View {
@@ -50,6 +51,20 @@ struct UnblockUsers: View {
             }
             
             Spacer()
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
+                }
+            }
+            
         }
         .padding()
     }

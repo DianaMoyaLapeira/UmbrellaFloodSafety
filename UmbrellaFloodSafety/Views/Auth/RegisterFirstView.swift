@@ -12,7 +12,6 @@ struct RegisterFirstView: View {
     
     var body: some View {
            VStack {
-               Spacer()
                
                Text(LocalizedStringKey("Create Your \nAccount"))
                    .font(.custom("Nunito", size: 40))
@@ -25,7 +24,7 @@ struct RegisterFirstView: View {
                Spacer()
                
                VStack (spacing: 0){
-                   Image(.children)
+                   Image(.propellerCap)
                        .resizable()
                        .scaledToFit()
                        .frame(height: 220)
@@ -41,8 +40,10 @@ struct RegisterFirstView: View {
                    .frame(width: 300, height: 60)
                }
                
+               Spacer()
+               
                VStack (spacing: 0) {
-                   Image(.adultWoman)
+                   Image(.briefcase)
                        .resizable()
                        .scaledToFit()
                        .frame(height: 220)
@@ -56,21 +57,20 @@ struct RegisterFirstView: View {
                    }
                    .frame(width: 300, height: 60)
                }
+               
                Spacer()
            }
            .navigationBarBackButtonHidden(true)
            .toolbar {
                ToolbarItem(placement: .topBarLeading) {
-                   Button(action: {
+                   Button {
                        dismiss()
-                   }) {
-                       Label {
-                            Text(LocalizedStringKey("Back"))
-                       } icon: {
-                           Image(.backArrow)
-                                       }
+                   } label: {
+                       Image(systemName: "chevron.left")
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 18)
                    }
-                   .padding()
                }
                ToolbarItemGroup(placement: .principal) {
                    Image(.oneThirdProgress)

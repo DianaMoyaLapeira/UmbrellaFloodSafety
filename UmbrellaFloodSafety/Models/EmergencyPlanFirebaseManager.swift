@@ -68,13 +68,8 @@ class EmergencyPlanFirebaseManager: ObservableObject {
                 
                 self.fetchPetEmergencyInfo(planId: emergencyPlan) { petInfo in
                     DispatchQueue.main.async {
+                        print("pet emergency \(petInfo)")
                         self.emergencyPlans[emergencyPlan]?.petEmergencyInfo = petInfo
-                    }
-                }
-                
-                self.fetchSpecialNeedsEvacuationPlan(planId: emergencyPlan) { plans in
-                    DispatchQueue.main.async {
-                        self.emergencyPlans[emergencyPlan]?.specialNeedsEvacuationPlan = plans
                     }
                 }
                 
@@ -87,8 +82,13 @@ class EmergencyPlanFirebaseManager: ObservableObject {
                 
                 self.fetchEmergencyContacts(planId: emergencyPlan, subcollection: "externalEmergencyContacts") { contacts in
                     DispatchQueue.main.async {
-                        print("external contacts \(contacts)")
-                        self.emergencyPlans[emergencyPlan]?.emergencyContacts = contacts
+                        self.emergencyPlans[emergencyPlan]?.externalEmergencyContact = contacts
+                    }
+                }
+                
+                self.fetchSpecialNeedsEvacuationPlan(planId: emergencyPlan) { plans in
+                    DispatchQueue.main.async {
+                        self.emergencyPlans[emergencyPlan]?.specialNeedsEvacuationPlan = plans
                     }
                 }
                 

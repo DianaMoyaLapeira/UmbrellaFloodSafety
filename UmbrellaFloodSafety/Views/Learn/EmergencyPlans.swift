@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmergencyPlans: View {
     
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var emergencyPlanFirebaseManager = EmergencyPlanFirebaseManager.shared
     var body: some View {
         ScrollView {
@@ -89,6 +90,19 @@ struct EmergencyPlans: View {
             
         }
         .padding()
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
+                }
+            }
+        }
     }
 }
 

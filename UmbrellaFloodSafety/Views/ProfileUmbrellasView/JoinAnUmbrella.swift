@@ -115,24 +115,20 @@ struct JoinAnUmbrella: View {
             
             Spacer()
             
-        }.navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Label {
-                             Text("Back")
-                        } icon: {
-                            Image(.backArrow)
-                                        }
-                    }
-                    .padding()
-                }
-                ToolbarItem(placement: .principal) {
-                    Image(.halfProgress)
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
                 }
             }
+        }
     }
 }
 

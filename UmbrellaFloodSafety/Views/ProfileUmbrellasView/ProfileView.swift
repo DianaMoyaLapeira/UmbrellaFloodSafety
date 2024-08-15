@@ -83,7 +83,6 @@ struct ProfileView: View {
                             ProfilePictureView(profileString: manager.currentUserAvatar)
                                 .clipShape(Circle())
                                 .frame(width: 120, height: 130, alignment: .bottom)
-                                .background(Circle().fill(.mainBlue).opacity(0.1))
                         }
                        
                         Circle()
@@ -91,6 +90,7 @@ struct ProfileView: View {
                             .frame(width: 130)
                             .foregroundStyle(Color.mainBlue)
                     }
+                    .background(Circle().fill(.mainBlue).opacity(0.1))
                     
                     Spacer()
                     
@@ -100,7 +100,7 @@ struct ProfileView: View {
                 Divider()
                 
                 HStack {
-                    Text("MyUmbrellas")
+                    Text("Umbrellas")
                         .font(.custom("Nunito", size: 34))
                         .foregroundStyle(Color(.mainBlue))
                         .fontWeight(.black)

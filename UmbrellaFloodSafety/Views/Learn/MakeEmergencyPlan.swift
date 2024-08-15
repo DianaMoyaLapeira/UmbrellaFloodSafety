@@ -257,7 +257,9 @@ struct MakeEmergencyPlan: View {
                         
                     }
                 }
+                .foregroundStyle(.primary)
             }
+            .foregroundStyle(.primary)
             .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(Color.mainBlue))
             .frame(width: 358)
             .padding(.bottom)
@@ -386,8 +388,9 @@ struct MakeEmergencyPlan: View {
                     .foregroundStyle(.primary)
                     
                     Divider()
-                }
+                }.foregroundStyle(.primary)
             }
+            .foregroundStyle(.primary)
             .overlay(RoundedRectangle(cornerRadius: 25)
                 .stroke(lineWidth: 4)
                 .fill(.mainBlue))

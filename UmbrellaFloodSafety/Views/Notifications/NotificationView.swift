@@ -54,6 +54,7 @@ struct NotificationView: View {
                         .font(.custom("Nunito", size: 18))
                         .multilineTextAlignment(.center)
                         .padding()
+                        .bold()
                 }
                 
             }

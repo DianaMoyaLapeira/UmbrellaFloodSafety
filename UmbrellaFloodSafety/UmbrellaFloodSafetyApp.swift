@@ -58,15 +58,24 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
     }
     
     func stopLocation() {
-        locationManager.stopUpdatingLocation()
+        
+        DispatchQueue.main.async {
+            self.locationManager.stopUpdatingLocation()
+        }
     }
     
     func startLocation() {
         if locationManager.authorizationStatus != CLAuthorizationStatus.authorizedAlways {
-            locationManager.requestAlwaysAuthorization()
-            locationManager.startMonitoringSignificantLocationChanges()
+            
+            DispatchQueue.main.async {
+                self.locationManager.requestAlwaysAuthorization()
+                self.locationManager.startMonitoringSignificantLocationChanges()
+            }
         } else {
-            locationManager.startMonitoringSignificantLocationChanges()
+            
+            DispatchQueue.main.async {
+                self.locationManager.startMonitoringSignificantLocationChanges()
+            }
         }
     }
     

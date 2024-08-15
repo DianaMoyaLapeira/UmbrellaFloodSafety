@@ -982,6 +982,7 @@
       }
     },
     "Evacuation site" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -1476,6 +1477,9 @@
           }
         }
       }
+    },
+    "Location sharing" : {
+
     },
     "Log In" : {
       "extractionState" : "manual",

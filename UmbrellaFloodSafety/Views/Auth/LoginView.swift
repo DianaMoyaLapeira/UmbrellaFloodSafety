@@ -111,16 +111,14 @@ struct LoginView: View {
                .navigationBarBackButtonHidden(true)
                .toolbar {
                    ToolbarItem(placement: .topBarLeading) {
-                       Button(action: {
+                       Button {
                            dismiss()
-                       }) {
-                           Label {
-                                Text(LocalizedStringKey("Back"))
-                           } icon: {
-                               Image(.backArrow)
-                                           }
+                       } label: {
+                           Image(systemName: "chevron.left")
+                               .resizable()
+                               .scaledToFit()
+                               .frame(width: 18)
                        }
-                       .padding()
                    }
                }
             }

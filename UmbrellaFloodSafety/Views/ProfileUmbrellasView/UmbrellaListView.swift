@@ -26,8 +26,8 @@ struct UmbrellaListView: View {
                         HStack {
                             Text("\( firebaseManager.userGroups[groupId] ?? "Umbrella has no name")")
                                 .font(.custom("Nunito", size: 24))
-                                .foregroundStyle(.black)
-                            .fontWeight(.bold)
+                                .foregroundStyle(.primary)
+                                .fontWeight(.black)
                             
                             Spacer()
                         }
@@ -35,7 +35,6 @@ struct UmbrellaListView: View {
                            
                             Text("Members: \(membersOfGroup)")
                                 .font(.custom("Nunito", size: 18))
-                                .foregroundStyle(Color(.darkGray))
                                 .multilineTextAlignment(.leading)
                             
                             Spacer()
@@ -45,7 +44,6 @@ struct UmbrellaListView: View {
                             
                             Text("Umbrella Code: \(groupId)")
                                 .font(.custom("Nunito", size: 18))
-                                .foregroundStyle(Color(.darkGray))
                             
                             Spacer()
                         }

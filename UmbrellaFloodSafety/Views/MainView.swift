@@ -7,17 +7,18 @@
 
 import SwiftUI
 import BottomSheet
+import _MapKit_SwiftUI
 
 struct MainView: View {
     
     @StateObject private var tabController = TabController()
     @State private var groupSelection = GroupSelection.shared
-    @State private var bottomSheetPosition: BottomSheetPosition = .relative(0.5)
+    @State var bottomSheetPosition: BottomSheetPosition = .relative(0.5)
     @StateObject private var viewModel = MainViewViewModel()
     @ObservedObject var firebaseManager = FirebaseManager.shared
-    @State private var isSheetPresented = true
     @StateObject var mapViewViewModel = MapViewViewModel.shared
     @State var dismissedAlerts: [String] = []
+    @State var cameraPosition: MapCameraPosition = .automatic
     
     init() {
     }
@@ -39,23 +40,20 @@ struct MainView: View {
     @ViewBuilder
     var accountView: some View {
        
+        Text("Bottom sheet position\(bottomSheetPosition)")
+        
         ZStack {
             TabView(selection: $tabController.activeTab) {
-                MapView()
+                MapView(cameraPosition: $cameraPosition)
                     .bottomSheet(bottomSheetPosition: self.$bottomSheetPosition, switchablePositions: [
-                            .relative(0.20),
-                            .relative(0.5),
-                            .relativeTop(0.80)
-                        ] ) {
-                            
-                            MapViewSheet()
+                        .relative(0.20),
+                        .relative(0.5),
+                        .relativeTop(0.80)]) {
+                        MapViewSheet(cameraPosition: $cameraPosition)
                         }
                         .customBackground(
                             Color.white.cornerRadius(20)
                         )
-                        .onAppear {
-                            //
-                        }
                     .tabItem {
                         Label("", systemImage: "map")
                     }

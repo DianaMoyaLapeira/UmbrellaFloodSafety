@@ -91,8 +91,10 @@ struct ConversationView: View {
                 ScrollView {
                     
                     if messagessOrdered.count != 0 {
-                        ForEach(messagessOrdered, id: \.self) { message in
-                            TextMessageView(content: message.content, timestamp: message.timestamp, senderId: message.senderId)
+                        LazyVStack {
+                            ForEach(messagessOrdered, id: \.self) { message in
+                                TextMessageView(content: message.content, timestamp: message.timestamp, senderId: message.senderId)
+                            }
                         }
                         
                     } else {
@@ -181,16 +183,14 @@ struct ConversationView: View {
         .navigationBarBackButtonHidden(true)
        .toolbar {
            ToolbarItem(placement: .topBarLeading) {
-               Button(action: {
+               Button {
                    dismiss()
-               }) {
-                   Label {
-                        Text("Back")
-                   } icon: {
-                       Image(.backArrow)
-                                   }
+               } label: {
+                   Image(systemName: "chevron.left")
+                       .resizable()
+                       .scaledToFit()
+                       .frame(width: 18)
                }
-               .padding()
            }
        }
     }

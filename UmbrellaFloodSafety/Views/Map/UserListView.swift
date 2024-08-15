@@ -45,6 +45,7 @@ struct UserListView: View {
                     
                     HStack {
                         Text("\(viewModel.address)")
+                            .multilineTextAlignment(.leading)
                             .font(.custom("Nunito", size: 18))
                         
                         Spacer()
