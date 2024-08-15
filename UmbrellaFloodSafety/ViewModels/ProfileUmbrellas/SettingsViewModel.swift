@@ -85,22 +85,6 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
-    func LocationOff() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
-        appDelegate?.locationManager.stopUpdatingLocation()
-        
-        print("Location status: \(CLLocationManager.locationServicesEnabled())")
-    }
-    
-    func LocationOn() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        
-        appDelegate?.locationManager.startUpdatingLocation()
-        
-        print("Location status: \(CLLocationManager.locationServicesEnabled())")
-    }
-    
     func inputEmail(email: String) {
         let db = Firestore.firestore()
         

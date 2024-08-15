@@ -12,6 +12,7 @@
 		2DCC314C2C68308B0031A173 /* EmergencyPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */; };
 		2DCC314E2C686C9A0031A173 /* FloodDetectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314D2C686C9A0031A173 /* FloodDetectedView.swift */; };
 		2DCC31502C6AA9440031A173 /* TransitionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314F2C6AA9440031A173 /* TransitionTest.swift */; };
+		2DE745CD2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE745CC2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift */; };
 		2DF32F5D2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF32F5C2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift */; };
 		2DF32F5F2C67C161002C7ECF /* EmergencyPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF32F5E2C67C161002C7ECF /* EmergencyPlanModel.swift */; };
 		8409CEC52C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */; };
@@ -146,6 +147,7 @@
 		2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanView.swift; sourceTree = "<group>"; };
 		2DCC314D2C686C9A0031A173 /* FloodDetectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloodDetectedView.swift; sourceTree = "<group>"; };
 		2DCC314F2C6AA9440031A173 /* TransitionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionTest.swift; sourceTree = "<group>"; };
+		2DE745CC2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanViewViewModel.swift; sourceTree = "<group>"; };
 		2DF32F5C2C67C047002C7ECF /* EmergencyPlanFirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyPlanFirebaseManager.swift; sourceTree = "<group>"; };
 		2DF32F5E2C67C161002C7ECF /* EmergencyPlanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmergencyPlanModel.swift; sourceTree = "<group>"; };
 		8409CEC42C64342D002EEBDC /* SpecialNeedsEvacuationPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialNeedsEvacuationPlanView.swift; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 			children = (
 				844A80DB2C2A9F20002A2D14 /* LearnViewViewModel.swift */,
 				8494D56F2C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift */,
+				2DE745CC2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				846E49052C3CD3E80019C68A /* conversation.swift in Sources */,
 				844A80DC2C2A9F20002A2D14 /* LearnViewViewModel.swift in Sources */,
 				845BAF1B2C276D200054AAAA /* KidRegisterViewViewModel.swift in Sources */,
+				2DE745CD2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift in Sources */,
 				840F28ED2C425C36001F02FF /* HairSelection.swift in Sources */,
 				84969DD02C6323F200719A6C /* childEvacuationPlan.swift in Sources */,
 				848B3B232C4A35C800B962FD /* NotificationViewViewModel.swift in Sources */,
@@ -928,7 +932,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 20240815;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
@@ -965,7 +969,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 20240815;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;

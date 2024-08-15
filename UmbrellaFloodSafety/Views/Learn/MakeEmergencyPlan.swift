@@ -12,6 +12,7 @@ struct MakeEmergencyPlan: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: MakeEmergencyPlanViewModel
     @State var showAlert: Bool = false
+    @State var showDeleteAlert: Bool = false
     @State private var opacity: Double = 0
     
     init(emergencyPlan: EmergencyPlanModel?) {
@@ -79,8 +80,8 @@ struct MakeEmergencyPlan: View {
             
             VStack {
                 ForEach($viewModel.emergencyContacts) { $contact in
-                    NavigationLink(destination: CreateEmergencyContact( emergencyContact: $contact)) {
-                        EmergencyContactListView(emergencyContact: contact, edit: true)
+                    NavigationLink(destination: CreateEmergencyContact(emergencyContact: $contact, type: "emergencyContacts")) {
+                        EmergencyContactListView(edit: true, emergencyContact: contact)
                             .padding()
                         
                     }
@@ -113,7 +114,7 @@ struct MakeEmergencyPlan: View {
             VStack {
                 ForEach($viewModel.petEmergencyInfo) { $pet in
                     NavigationLink(destination: CreatePetEmergencyInfo( petEmergencyInfo: $pet)) {
-                        PetInfoListView(petEmergencyInfo: pet, edit: true)
+                        PetInfoListView(edit: true, petEmergencyInfo: pet)
                             .padding()
                     }
                     .foregroundStyle(.primary)
@@ -249,8 +250,8 @@ struct MakeEmergencyPlan: View {
             
             VStack {
                 ForEach($viewModel.externalEmergencyContact) { $contact in
-                    NavigationLink(destination: CreateEmergencyContact( emergencyContact: $contact)) {
-                        EmergencyContactListView(emergencyContact: contact, edit: true)
+                    NavigationLink(destination: CreateEmergencyContact(emergencyContact: $contact, type: "externalEmergencyContacts")) {
+                        EmergencyContactListView(edit: true, emergencyContact: contact)
                             .foregroundStyle(.primary)
                             .padding()
                         
@@ -427,6 +428,15 @@ struct MakeEmergencyPlan: View {
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 25)
                     .fill(.quinary))
+                .padding(.bottom)
+            
+            Divider()
+            
+            UMButton(title: "Delete Plan", background: .red) {
+                showDeleteAlert = true
+            }
+            .frame(height: 60)
+            .padding(.vertical)
             
         }
         .opacity(opacity)
@@ -438,6 +448,13 @@ struct MakeEmergencyPlan: View {
         .padding()
         .alert(LocalizedStringKey("Go back without saving?"), isPresented: $showAlert) {
             Button(LocalizedStringKey("Back"), role: .destructive) {
+                dismiss()
+            }
+            Button(LocalizedStringKey("Cancel"), role: .cancel) { }
+        }
+        .alert(LocalizedStringKey("Delete plan?"), isPresented: $showDeleteAlert) {
+            Button(LocalizedStringKey("Delete"), role: .destructive) {
+                viewModel.deleteEmergencyPlan()
                 dismiss()
             }
             Button(LocalizedStringKey("Cancel"), role: .cancel) { }

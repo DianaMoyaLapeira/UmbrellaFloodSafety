@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PetInfoListView: View {
     
-    let edit: Bool = false
+    var edit: Bool = false
     var petEmergencyInfo: PetEmergencyInfo = PetEmergencyInfo(id: UUID().uuidString)
     
     var body: some View {

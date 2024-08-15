@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EmergencyContactListView: View {
     
-    let edit: Bool = false
+    var edit: Bool = false
     var emergencyContact: EmergencyContact = EmergencyContact(id: UUID().uuidString, name: "Click To Edit")
     
     var body: some View {

@@ -44,22 +44,6 @@ struct Settings: View {
                     
                 }
                 
-                HStack {
-                    Text("Location sharing")
-                        .font(.custom("Nunito", size: 18))
-                    
-                    Spacer()
-                    
-                    Toggle("", isOn: $locationSharing)
-                }
-                .onChange(of: locationSharing) {
-                    if locationSharing {
-                        viewModel.LocationOff()
-                    } else {
-                        viewModel.LocationOn()
-                    }
-                }
-                
                 NavigationLink {
                     UnblockUsers()
                 } label: {

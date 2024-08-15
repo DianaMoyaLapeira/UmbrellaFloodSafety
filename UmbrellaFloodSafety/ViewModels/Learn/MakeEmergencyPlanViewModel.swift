@@ -199,6 +199,7 @@ class MakeEmergencyPlanViewModel: ObservableObject {
             .delete { error in
                 print("Error deleting emergency contact from plan")
             }
+        
     }
     
     func deletePetInfo(petInfo: PetEmergencyInfo) {

@@ -11,6 +11,7 @@ struct FloodDetectedView: View {
     
     var currentUsername = FirebaseManager.shared.currentUserName
     var usernameToName = FirebaseManager.shared.usernameToName
+    @State var opacity: Double = 0
     @State var floodType: String
     @Environment(\.dismiss) var dismiss
     @Binding var dismissedAlerts: [String]
@@ -44,9 +45,7 @@ struct FloodDetectedView: View {
             if EmergencyPlanFirebaseManager.shared.emergencyPlans.count != 0 {
                 UMButton(title: "Emergency Help", background: .mainBlue) {
                     activeTab = .learn
-                    withAnimation {
-                        dismissedAlerts.append(member)
-                    }
+                    dismissedAlerts.append(member)
                 }
                 .frame(height: 60)
                 .padding(.bottom, 4)
@@ -62,19 +61,33 @@ struct FloodDetectedView: View {
             .frame(height: 60)
             .padding(.bottom, 4)
         
-            UMButtonStoke(title: "I'm Safe", background: .mainBlue) {
-                withAnimation {
+            if member == currentUsername {
+                UMButtonStoke(title: "I'm Safe", background: .mainBlue) {
                     dismissedAlerts.append(member)
                 }
+                .frame(height: 60)
+            } else {
+                UMButtonStoke(title: "Ok", background: .mainBlue) {
+                    dismissedAlerts.append(member)
+                }
+                .frame(height: 60)
             }
-            .frame(height: 60)
         }
-        .transition(.opacity)
-        .animation(.easeInOut, value: dismissedAlerts)
         .padding()
         .background(RoundedRectangle(cornerRadius: 25).fill(.white).foregroundStyle(.thickMaterial))
         .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).fill(.mainBlue))
         .padding()
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.4)) {
+                opacity = 1
+            }
+        }
+        .onDisappear {
+            withAnimation(.easeOut(duration: 0.4)) {
+                opacity = 0
+            }
+        }
     }
 }
 

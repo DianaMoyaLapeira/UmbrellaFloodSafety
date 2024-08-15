@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmergencyPlanView: View {
     
+    @StateObject var viewModel = EmergencyPlanViewViewModel()
     @Environment(\.dismiss) var dismiss
     let emergencyPlanId: String
     @ObservedObject var emergencyPlanFirebase = EmergencyPlanFirebaseManager.shared
@@ -17,13 +18,14 @@ struct EmergencyPlanView: View {
     }
     @State var isPresented: Bool = false
     @State private var opacity: Double = 0
+    
     var actualtimestamp: String {
         guard emergencyPlan.dateUpdated != 0 else {
             return ""
         }
         let dateFormatter = DateFormatter()
         let date = Date(timeIntervalSince1970: emergencyPlan.dateUpdated)
-        dateFormatter.dateFormat = "eeee, mmm d, yyyy"
+        dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
         return dateFormatter.string(from: date)
     }
     
@@ -387,6 +389,15 @@ struct EmergencyPlanView: View {
                     .fill(.mainBlue))
                 .frame(width: 358)
                 .padding(.bottom)
+                
+                Divider()
+                
+                UMButton(title: "Leave Plan", background: .red) {
+                    viewModel.exitPlan(planId: emergencyPlanId)
+                    dismiss()
+                }
+                .frame(height: 60)
+                .padding(.vertical)
                 
             }
             .padding()

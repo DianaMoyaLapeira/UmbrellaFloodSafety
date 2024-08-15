@@ -27,7 +27,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
         locationManager.startMonitoringSignificantLocationChanges()
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            print("Notification permission granted: \(granted)")
             
             guard granted else { return }
             
@@ -54,28 +53,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
         FirebaseManager.shared.updateLocation(newLocation: newLocation) { success in
             UIApplication.shared.endBackgroundTask(backgroundTask)
             backgroundTask = .invalid
-        }
-    }
-    
-    func stopLocation() {
-        
-        DispatchQueue.main.async {
-            self.locationManager.stopUpdatingLocation()
-        }
-    }
-    
-    func startLocation() {
-        if locationManager.authorizationStatus != CLAuthorizationStatus.authorizedAlways {
-            
-            DispatchQueue.main.async {
-                self.locationManager.requestAlwaysAuthorization()
-                self.locationManager.startMonitoringSignificantLocationChanges()
-            }
-        } else {
-            
-            DispatchQueue.main.async {
-                self.locationManager.startMonitoringSignificantLocationChanges()
-            }
         }
     }
     

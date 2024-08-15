@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct CreateEmergencyContact: View {
-    
+
     @Environment(\.dismiss) var dismiss
     @Binding var emergencyContact: EmergencyContact
-    @State private var opacity: Double = 0
+    @State private var showAlert: Bool = false
+    @State var type: String
     
     var body: some View {
     
@@ -127,12 +128,6 @@ struct CreateEmergencyContact: View {
                 Spacer()
             }
         }
-        .opacity(opacity)
-        .onAppear {
-            withAnimation(.easeIn(duration: 0.4)) {
-                opacity = 1
-            }
-        }
         .padding()
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -155,9 +150,10 @@ struct CreateEmergencyContact: View {
 #Preview {
     struct CreateEmergencyContactViewContainer: View {
         @State private var exampleContact = EmergencyContact(id: UUID().uuidString, name: "Name", homePhoneNumber: "nil", cellPhoneNumber: "000000000", email: "email@domain.com")
+        @StateObject private var viewModel = MakeEmergencyPlanViewModel(emergencyPlan: nil)
         
         var body: some View {
-            CreateEmergencyContact(emergencyContact: $exampleContact)
+            CreateEmergencyContact(emergencyContact: $exampleContact, type: "type")
         }
     }
     

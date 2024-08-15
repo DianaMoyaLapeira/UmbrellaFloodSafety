@@ -179,16 +179,6 @@ struct ConversationView: View {
                         .foregroundStyle(Color.mainBlue)
                         .padding([.leading, .top, .trailing])
                 }
-                .onTapGesture {
-                    withAnimation{
-                        sendTapped = true
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        withAnimation {
-                            sendTapped = false
-                        }
-                    }
-                }
 
             }
             .padding(.bottom)

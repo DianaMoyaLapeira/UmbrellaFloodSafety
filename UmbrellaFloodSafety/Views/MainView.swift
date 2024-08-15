@@ -19,6 +19,7 @@ struct MainView: View {
     @StateObject var mapViewViewModel = MapViewViewModel.shared
     @State var dismissedAlerts: [String] = []
     @State var cameraPosition: MapCameraPosition = .automatic
+    let lastLoggedInUsername = UserDefaults.standard.string(forKey: "lastLoggedInUsername")
     
     init() {
     }
@@ -26,7 +27,7 @@ struct MainView: View {
     var body: some View {
         
         ZStack {
-            if firebaseManager.isSignedIn {
+            if lastLoggedInUsername != "" && lastLoggedInUsername != nil {
                 // signed in
                 accountView
             } else {
@@ -83,9 +84,9 @@ struct MainView: View {
                 
                 var floodType: String {
                     if firebaseManager.memberRiskLevels[member] == 1 {
-                        return "flood warning/advisory"
+                        return "flood watch/advisory"
                     } else {
-                        return "flood watch"
+                        return "flood warning"
                     }
                 }
                 

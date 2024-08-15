@@ -48,7 +48,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "%lld"
           }
         }
       }
@@ -129,7 +129,14 @@
       }
     },
     "3. Get to high ground" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Muévete a terreno más alto"
+          }
+        }
+      }
     },
     "3. If separated during an emergency, what is our meeting place near our home? (optional)" : {
       "extractionState" : "stale",
@@ -143,7 +150,14 @@
       }
     },
     "3. Stay informed" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Mantente informado"
+          }
+        }
+      }
     },
     "4. If we cannot return home or are asked to evacuate, what is our meeting place outside of our neighborhood? (optional)" : {
       "extractionState" : "stale",
@@ -178,10 +192,24 @@
       }
     },
     "4. Obey evacuation orders" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Obedezca las órdenes de evacuación"
+          }
+        }
+      }
     },
     "5. Call 911 if you feel unsafe" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Llama al 911 si se siente en peligro"
+          }
+        }
+      }
     },
     "5. Call or text    trusted adults" : {
       "extractionState" : "stale",
@@ -216,10 +244,24 @@
       }
     },
     "5. Electrical Safety" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Seguridad eléctrica"
+          }
+        }
+      }
     },
     "6. Check in on loved ones" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Comuníquese con seres queridos o amigos"
+          }
+        }
+      }
     },
     "A gray circle means that Umbrella is trying to get the weather for a location." : {
       "localizations" : {
@@ -327,7 +369,14 @@
       }
     },
     "Avoid rooms with submerged electrical outlets. Get away from any sparks, hissing, or cracking noises." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evite habitaciones con enchufes sumergidos. Aléjese de chispas, silbidos o crujidos."
+          }
+        }
+      }
     },
     "Back" : {
       "extractionState" : "manual",
@@ -470,7 +519,14 @@
       }
     },
     "Check for updates through official weather broadcasts using the Internet, radio, television, etc." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busque actualizaciones a través de transmisiones meteorológicas oficials usando el Internet, radio, televisión, etc. "
+          }
+        }
+      }
     },
     "Check up on them if you think they might be in danger." : {
       "localizations" : {
@@ -596,7 +652,14 @@
       }
     },
     "Create A New Umbrella" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear una Umbrella"
+          }
+        }
+      }
     },
     "Create account" : {
       "extractionState" : "stale",
@@ -673,6 +736,9 @@
         }
       }
     },
+    "Delete" : {
+
+    },
     "Delete Account" : {
       "localizations" : {
         "es" : {
@@ -692,6 +758,9 @@
           }
         }
       }
+    },
+    "Delete plan?" : {
+
     },
     "Done" : {
       "extractionState" : "manual",
@@ -969,7 +1038,14 @@
       }
     },
     "Evacuate immediately if ordered to do so. Lock doors and disconnect utilities/appliances if you have time." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evacue inmediatamente si se le ordena hacerlo. Cierre las puertas y desconecte los servicios públicos/electrodomésticos si tiene tiempo."
+          }
+        }
+      }
     },
     "Evacuation Plan for Children" : {
       "localizations" : {
@@ -1124,7 +1200,14 @@
       }
     },
     "For Adults" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para adultos"
+          }
+        }
+      }
     },
     "For kids" : {
       "localizations" : {
@@ -1191,7 +1274,14 @@
       }
     },
     "Go to emergency plans on Umbrella" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ir a planes de emergencia en Umbrella"
+          }
+        }
+      }
     },
     "Group Name" : {
       "extractionState" : "stale",
@@ -1479,7 +1569,15 @@
       }
     },
     "Location sharing" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir ubicación"
+          }
+        }
+      }
     },
     "Log In" : {
       "extractionState" : "manual",
@@ -1546,7 +1644,14 @@
       }
     },
     "Make sure your loved ones are safe." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asegúrese de que sus seres queridos estén a salvo."
+          }
+        }
+      }
     },
     "Meeting place near home" : {
       "localizations" : {
@@ -1617,7 +1722,14 @@
       }
     },
     "Mouth" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boca"
+          }
+        }
+      }
     },
     "My Emergency Plans" : {
       "localizations" : {
@@ -1681,7 +1793,14 @@
       }
     },
     "National Weather Service Safety During Floods" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguridad del Servicio Meteorológico Nacional durante las inundaciones"
+          }
+        }
+      }
     },
     "Near" : {
       "extractionState" : "manual",
@@ -2009,7 +2128,14 @@
       }
     },
     "Red Cross Family Disaster Plan" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan Familiar de Desastres de la Cruz Roja de los Estados Unidos "
+          }
+        }
+      }
     },
     "Registration # (optional)" : {
       "localizations" : {
@@ -2042,7 +2168,14 @@
       }
     },
     "Remember: Turn around, don't drown!" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recuerda: Dese la vuelta, no se ahogue!"
+          }
+        }
+      }
     },
     "Remove" : {
       "extractionState" : "manual",
@@ -2203,7 +2336,14 @@
       }
     },
     "Stay on high ground if you're already there." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantente en terreno alto si ya está ahí. "
+          }
+        }
+      }
     },
     "Tap here to go to plan" : {
       "localizations" : {
@@ -2338,10 +2478,24 @@
       }
     },
     "Umbrella Name" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre de Umbrella"
+          }
+        }
+      }
     },
     "Umbrellas" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umbrellas"
+          }
+        }
+      }
     },
     "Umbrellas In Common" : {
       "localizations" : {
@@ -2386,7 +2540,14 @@
       }
     },
     "UNICEF Flood Safety Information" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información de UNICEF sobre seguridad contra inundaciones"
+          }
+        }
+      }
     },
     "Username" : {
       "extractionState" : "manual",
@@ -2537,7 +2698,14 @@
       }
     },
     "You can also report downed power lines or gas leaks through 911." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "También puede informar líneas eléctricas caídas o fugas de gas a través del 911."
+          }
+        }
+      }
     },
     "You have no blocked users" : {
       "extractionState" : "manual",
