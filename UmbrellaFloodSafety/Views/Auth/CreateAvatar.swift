@@ -27,8 +27,9 @@ struct CreateAvatar: View {
                 
                 Button {
                     viewModel.uploadAvatarIntoDB()
+                    dismiss()
                     
-                    isPresented.toggle()
+                    isPresented = false
                 } label: {
                     Text(LocalizedStringKey("Done"))
                         .font(.custom("Nunito", size: 18))

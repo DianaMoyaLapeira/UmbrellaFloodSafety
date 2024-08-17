@@ -27,46 +27,57 @@ struct EmergencyPlans: View {
             
             Divider()
             
-            VStack {
-                
-                ForEach(emergencyPlanFirebaseManager.emergencyPlans.keys.sorted(), id: \.self) { plan in
-                    
-                    NavigationLink(destination: EmergencyPlanView(emergencyPlanId: plan)) {
-                        HStack {
-                            VStack {
-                                HStack {
-                                    Text(emergencyPlanFirebaseManager.emergencyPlans[plan]?.title ?? "Emergency Plan")
-                                        .font(.custom("Nunito", size: 24))
-                                        .fontWeight(.black)
+            if emergencyPlanFirebaseManager.emergencyPlans.count != 0 {
+                VStack {
+                    ForEach(emergencyPlanFirebaseManager.emergencyPlans.keys.sorted(), id: \.self) { plan in
+                        
+                        NavigationLink(destination: EmergencyPlanView(emergencyPlanId: plan)) {
+                            HStack {
+                                VStack {
+                                    HStack {
+                                        Text(emergencyPlanFirebaseManager.emergencyPlans[plan]?.title ?? "Emergency Plan")
+                                            .font(.custom("Nunito", size: 24))
+                                            .fontWeight(.black)
+                                        
+                                        Spacer()
+                                        
+                                    }
                                     
-                                    Spacer()
-                                    
+                                    HStack {
+                                        Text("Tap here to go to plan")
+                                            .font(.custom("Nunito", size: 18))
+                                        
+                                        Spacer()
+                                    }
                                 }
                                 
-                                HStack {
-                                    Text("Tap here to go to plan")
-                                        .font(.custom("Nunito", size: 18))
-                                    
-                                    Spacer()
-                                }
+                                Image(systemName: "chevron.right")
+                                
+                                Spacer()
                             }
-                            
-                            Image(systemName: "chevron.right")
-                            
-                            Spacer()
                         }
+                        .foregroundStyle(.primary)
+                        .padding()
+                        
+                        Divider()
+                            .padding(.horizontal)
                     }
-                    .foregroundStyle(.primary)
-                    .padding()
-                    
-                    Divider()
-                        .padding(.horizontal)
                 }
+                .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(.mainBlue))
+                .frame(width: 355)
+                .padding(.vertical)
+            } else {
+                Image(.umbrellaEmptyState)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                    .padding(.vertical)
+                
+                Text("No emergency plans yet. Try adding some below!")
+                    .multilineTextAlignment(.center)
+                    .font(.custom("Nunito", size: 18))
+                    .bold()
             }
-            .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).foregroundStyle(.mainBlue))
-            .frame(width: 355)
-            .padding(.vertical)
-            
             Divider()
             
             NavigationLink(destination: MakeEmergencyPlan(emergencyPlan: nil)) {

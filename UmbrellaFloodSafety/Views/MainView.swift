@@ -27,7 +27,7 @@ struct MainView: View {
     var body: some View {
         
         ZStack {
-            if lastLoggedInUsername != "" && lastLoggedInUsername != nil {
+            if firebaseManager.isSignedIn {
                 // signed in
                 accountView
             } else {

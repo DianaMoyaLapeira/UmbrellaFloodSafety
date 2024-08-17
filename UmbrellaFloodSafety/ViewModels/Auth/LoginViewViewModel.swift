@@ -22,6 +22,10 @@ class LoginViewViewModel: ObservableObject {
         
         // Try log in
         Auth.auth().signIn(withEmail: "\(username)@fakedomain.com", password: password)
+        
+        UserDefaults.standard.set(username, forKey: "lastLoggedInUsername")
+        
+        print(UserDefaults.standard.string(forKey: "lastLoggedInUsername"))
     }
     
     private func validate() -> Bool {

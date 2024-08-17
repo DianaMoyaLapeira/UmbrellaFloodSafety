@@ -1869,6 +1869,9 @@
         }
       }
     },
+    "No emergency plans yet. Try adding some below!" : {
+
+    },
     "No members yet. Add members on their device using the Umbrella Code!" : {
       "localizations" : {
         "es" : {
@@ -2581,6 +2584,9 @@
           }
         }
       }
+    },
+    "We are sorry that you've had a bad experience with user%@. \n\nPlease let us know why so we can take appropriate measures." : {
+
     },
     "Welcome Back!" : {
       "extractionState" : "manual",

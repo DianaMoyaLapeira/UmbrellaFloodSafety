@@ -24,7 +24,7 @@ struct MapViewSheet: View {
                 if mapViewViewModel.selection != "No Umbrellas yet" {
                     
                     HStack {
-                        Text("\(firebaseManager.userGroups[mapViewViewModel.selection] ?? "MyUmbrella")")
+                        Text("\(firebaseManager.userGroups[mapViewViewModel.selection] ?? "Umbrella")")
                             .font(.custom("Nunito", size: 34))
                             .fontWeight(.black)
                             .foregroundStyle(Color.mainBlue)
@@ -49,6 +49,7 @@ struct MapViewSheet: View {
                     Image(.mapEmptyState)
                         .resizable()
                         .scaledToFit()
+                        .frame(height: 150)
                         .padding()
                     
                     Text(LocalizedStringKey("No Umbrellas yet.\nTry adding some in the profile tab!"))

@@ -16,105 +16,107 @@ struct AdultRegisterView: View {
     @State var opacity: Double = 0
     
     var body: some View {
-        VStack {
-            
-            Text(LocalizedStringKey("Create Your \nAccount"))
-                .font(.custom("Nunito", size: 40))
-                .scaledToFill()
-                .fontWeight(.black)
-                .foregroundStyle(Color(.mainBlue))
-                .padding(.top)
-                .multilineTextAlignment(.center)
-            
-            Spacer()
-            Image(.briefcase)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 220)
-            
-            
-            NavigationStack {
+        ScrollView {
+            VStack {
+                
+                Text(LocalizedStringKey("Create Your \nAccount"))
+                    .font(.custom("Nunito", size: 40))
+                    .scaledToFill()
+                    .fontWeight(.black)
+                    .foregroundStyle(Color(.mainBlue))
+                    .padding(.top)
+                    .multilineTextAlignment(.center)
                 
                 Spacer()
+                Image(.briefcase)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 220)
                 
-                TextField("", text: $viewModel.name, prompt: Text(LocalizedStringKey("First Name"))
-                    .foregroundStyle(Color(.darkGray)))
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(8)
-                .foregroundColor(.black)
-                .font(.custom("Nunito", size: 18))
-                .frame(width: 300)
-                .padding(.bottom)
                 
-                TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Password"))
-                    .foregroundStyle(Color(.darkGray)))
-                .padding()
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(8)
-                .foregroundColor(.black)
-                .font(.custom("Nunito", size: 18))
-                .frame(width: 300)
-                .padding(.bottom)
-                
-                HStack {
-                    ZStack {
-                        if isSecure {
-                            SecureField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
-                                .foregroundStyle(Color(.darkGray))
-                            )
-                            .padding()
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(8)
-                            .font(.custom("Nunito", size: 18))
-                        } else {
-                            TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
-                                .foregroundStyle(Color(.darkGray)))
-                            .padding()
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(8)
-                            .foregroundColor(.black)
-                            .font(.custom("Nunito", size: 18))
-                        }
-                        HStack {
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                isSecure.toggle()
-                            }) {
-                                Image(systemName: isSecure ? "eye.slash" : "eye")
-                                    .foregroundColor(Color(.darkGray))
-                                    .alignmentGuide(.trailing) { d in d[.leading] }
+                NavigationStack {
+                    
+                    Spacer()
+                    
+                    TextField("", text: $viewModel.name, prompt: Text(LocalizedStringKey("First Name"))
+                        .foregroundStyle(Color(.darkGray)))
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                    .foregroundColor(.black)
+                    .font(.custom("Nunito", size: 18))
+                    .frame(width: 300)
+                    .padding(.bottom)
+                    
+                    TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Username"))
+                        .foregroundStyle(Color(.darkGray)))
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                    .foregroundColor(.black)
+                    .font(.custom("Nunito", size: 18))
+                    .frame(width: 300)
+                    .padding(.bottom)
+                    
+                    HStack {
+                        ZStack {
+                            if isSecure {
+                                SecureField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
+                                    .foregroundStyle(Color(.darkGray))
+                                )
+                                .padding()
+                                .background(Color.gray.opacity(0.1))
+                                .cornerRadius(8)
+                                .font(.custom("Nunito", size: 18))
+                            } else {
+                                TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
+                                    .foregroundStyle(Color(.darkGray)))
+                                .padding()
+                                .background(Color.gray.opacity(0.1))
+                                .cornerRadius(8)
+                                .foregroundColor(.black)
+                                .font(.custom("Nunito", size: 18))
                             }
-                            .alignmentGuide(.trailing) { d in d[.leading] }
-                            .padding(.trailing, 18)
+                            HStack {
+                                
+                                Spacer()
+                                
+                                Button(action: {
+                                    isSecure.toggle()
+                                }) {
+                                    Image(systemName: isSecure ? "eye.slash" : "eye")
+                                        .foregroundColor(Color(.darkGray))
+                                        .alignmentGuide(.trailing) { d in d[.leading] }
+                                }
+                                .alignmentGuide(.trailing) { d in d[.leading] }
+                                .padding(.trailing, 18)
+                            }
                         }
                     }
-                }
-                .padding(.bottom)
-                .frame(width: 300)
-                
-                NavigationLink(destination: CreateAvatar(isPresented: $isAvatarPresented)
-                    .onAppear {
-                        viewModel.register()
+                    .padding(.bottom)
+                    .frame(width: 300)
+                    
+                    NavigationLink(destination: CreateAvatar(isPresented: $isAvatarPresented)
+                        .onAppear {
+                            viewModel.register()
+                        }
+                                   
+                    ) {
+                        ZStack {
+                            
+                            RoundedRectangle(cornerRadius: 25)
+                                .foregroundStyle(.mainBlue)
+                            
+                            Text(LocalizedStringKey("Create Account"))
+                                .font(.custom("Nunito", size: 18))
+                                .foregroundStyle(.white)
+                                .bold()
+                        }
+                        .frame(width: 300, height: 60)
                     }
-                
-                ) {
-                    ZStack {
-                        
-                        RoundedRectangle(cornerRadius: 25)
-                            .foregroundStyle(.mainBlue)
-                        
-                        Text(LocalizedStringKey("Create Account"))
-                            .font(.custom("Nunito", size: 18))
-                            .foregroundStyle(.white)
-                            .bold()
-                    }
-                    .frame(width: 300, height: 60)
+                    
+                    Spacer()
                 }
-                
-                Spacer()
             }
         }
         .opacity(opacity)

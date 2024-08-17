@@ -28,7 +28,7 @@ struct KidRegisterView: View {
                         .scaledToFill()
                         .fontWeight(.black)
                         .foregroundStyle(Color(.mainBlue))
-                        .padding(.top)
+                        .padding(.vertical)
                         .multilineTextAlignment(.center)
                     
                     
@@ -36,6 +36,7 @@ struct KidRegisterView: View {
                         Image(.propellerCap)
                             .resizable()
                             .scaledToFit()
+                            .frame(width: 220)
                             .padding()
                         
                         // Display error message if available

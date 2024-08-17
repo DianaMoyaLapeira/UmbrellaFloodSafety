@@ -100,6 +100,7 @@ class FirebaseManager: ObservableObject {
     
     
     var isSignedIn: Bool {
+        print(Auth.auth().currentUser)
         return Auth.auth().currentUser != nil
     }
     

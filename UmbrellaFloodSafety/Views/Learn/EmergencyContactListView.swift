@@ -15,6 +15,7 @@ struct EmergencyContactListView: View {
     var body: some View {
         
         HStack {
+            
             VStack (alignment: .leading) {
                 
                 if emergencyContact.name == "" {

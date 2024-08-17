@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UmbrellaView: View {
     
+    @StateObject var viewModel = UmbrellaViewViewModel()
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @Environment(\.dismiss) var dismiss
     @State private var opacity: Double = 0
@@ -81,6 +82,12 @@ struct UmbrellaView: View {
                     .font(.custom("Nunito", size: 18))
                     .multilineTextAlignment(.center)
             }
+            
+            UMButton(title: "Leave Umbrella", background: .red) {
+                viewModel.leaveUmbrella(umbrellaId: groupId)
+            }
+            .frame(height: 60)
+            .padding(.vertical)
             
             Spacer()
             

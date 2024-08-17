@@ -34,6 +34,7 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
                 application.registerForRemoteNotifications()
            }
         }
+        UNUserNotificationCenter.current().setBadgeCount(0)
         
         // Remember to request to always authorization by going into settings
         return true
@@ -58,7 +59,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.hexString
-        print(deviceTokenString)
         
         FirebaseManager.shared.updateDeviceToken(DeviceToken: deviceTokenString)
     }

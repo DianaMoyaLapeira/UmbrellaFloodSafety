@@ -81,9 +81,22 @@ struct MakeEmergencyPlan: View {
             VStack {
                 ForEach($viewModel.emergencyContacts) { $contact in
                     NavigationLink(destination: CreateEmergencyContact(emergencyContact: $contact, type: "emergencyContacts")) {
-                        EmergencyContactListView(edit: true, emergencyContact: contact)
-                            .padding()
+                        HStack {
+                            Button {
+                                viewModel.deleteEmergencyContact(contact: contact, type: "emergencyContacts")
+                            } label: {
+                                Image(systemName: "trash.square.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                    .foregroundStyle(.red)
+                            }
+                            .padding([.leading, .bottom], 15)
+                            .padding(.trailing, 2)
                         
+                            EmergencyContactListView(edit: true, emergencyContact: contact)
+                                .padding()
+                        }
                     }
                     .foregroundStyle(.primary)
                     
@@ -114,8 +127,24 @@ struct MakeEmergencyPlan: View {
             VStack {
                 ForEach($viewModel.petEmergencyInfo) { $pet in
                     NavigationLink(destination: CreatePetEmergencyInfo( petEmergencyInfo: $pet)) {
-                        PetInfoListView(edit: true, petEmergencyInfo: pet)
-                            .padding()
+                        
+                        HStack {
+                            
+                            Button {
+                                viewModel.deletePetInfo(petInfo: pet)
+                            } label: {
+                                Image(systemName: "trash.square.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                    .foregroundStyle(.red)
+                            }
+                            .padding([.leading, .bottom], 15)
+                            .padding(.trailing, 2)
+                            
+                            PetInfoListView(edit: true, petEmergencyInfo: pet)
+                                .padding()
+                        }
                     }
                     .foregroundStyle(.primary)
                     
@@ -251,13 +280,26 @@ struct MakeEmergencyPlan: View {
             VStack {
                 ForEach($viewModel.externalEmergencyContact) { $contact in
                     NavigationLink(destination: CreateEmergencyContact(emergencyContact: $contact, type: "externalEmergencyContacts")) {
-                        EmergencyContactListView(edit: true, emergencyContact: contact)
-                            .foregroundStyle(.primary)
-                            .padding()
+                        HStack {
+                            Button {
+                                viewModel.deleteEmergencyContact(contact: contact, type: "externalEmergencyContacts")
+                            } label: {
+                                Image(systemName: "trash.square.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                    .foregroundStyle(.red)
+                            }
+                            .padding([.leading, .bottom], 15)
+                            .padding(.trailing, 2)
                         
-                        Divider()
-                        
+                            EmergencyContactListView(edit: true, emergencyContact: contact)
+                                .foregroundStyle(.primary)
+                                .padding()
+                        }
                     }
+                    
+                    Divider()
                 }
                 .foregroundStyle(.primary)
             }
@@ -287,11 +329,25 @@ struct MakeEmergencyPlan: View {
                 ForEach($viewModel.specialNeedsEvacuationPlan) { $plan in
                     NavigationLink(destination: SpecialNeedsEvacuationPlanView(specialNeedsEvacuationPlan: $plan)) {
                         HStack {
+                            
+                            Button {
+                                viewModel.deleteDisabilityPlan(disabilityPlan: plan)
+                            } label: {
+                                Image(systemName: "trash.square.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                    .foregroundStyle(.red)
+                            }
+                            .padding([.leading, .bottom], 5)
+                            .padding(.trailing, 5)
+                            
                             VStack(alignment: .leading) {
                                 if plan.name != "" {
                                     Text(plan.name)
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
+                                        .multilineTextAlignment(.leading)
                                 } else {
                                     Text(LocalizedStringKey("Click to Edit"))
                                         .font(.custom("Nunito", size: 24))
@@ -349,11 +405,25 @@ struct MakeEmergencyPlan: View {
                 ForEach($viewModel.childEvacuationPlans) { $plan in
                     NavigationLink(destination: ChildEvacuationPlanView(childEvacuationPlanEx: $plan)) {
                         HStack {
+                            
+                            Button {
+                                viewModel.deleteChildPlan(childPlan: plan)
+                            } label: {
+                                Image(systemName: "trash.square.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50)
+                                    .foregroundStyle(.red)
+                            }
+                            .padding([.leading, .bottom], 5)
+                            .padding(.trailing, 5)
+                            
                             VStack(alignment: .leading) {
                                 if plan.name != "" {
                                     Text(plan.name)
                                         .font(.custom("Nunito", size: 24))
                                         .fontWeight(.black)
+                                        .multilineTextAlignment(.leading)
                                 } else {
                                     Text("Click to edit")
                                         .font(.custom("Nunito", size: 24))

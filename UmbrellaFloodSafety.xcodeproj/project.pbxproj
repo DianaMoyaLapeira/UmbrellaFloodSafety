@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DA960E92C6ECCDB00688E6F /* UmbrellaViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */; };
 		2DCC31482C67CA550031A173 /* EmergencyPlanUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */; };
 		2DCC314A2C67D3980031A173 /* AddUsersToPlanSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */; };
 		2DCC314C2C68308B0031A173 /* EmergencyPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */; };
@@ -142,6 +143,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaViewViewModel.swift; sourceTree = "<group>"; };
 		2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanUsersView.swift; sourceTree = "<group>"; };
 		2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUsersToPlanSheet.swift; sourceTree = "<group>"; };
 		2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanView.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				84FABB852C2F312A00173E4D /* EditProfileViewViewModel.swift */,
 				84EF0D0E2C2B965D0029A653 /* NewUmbrellaViewViewModel.swift */,
 				84ED81802C4F61D900F58201 /* SettingsViewModel.swift */,
+				2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */,
 			);
 			path = ProfileUmbrellas;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				845F09BD2C2768CA00070E19 /* User.swift in Sources */,
 				84923A972C2F82BF004EAECC /* WarningColorManager.swift in Sources */,
 				2DCC31482C67CA550031A173 /* EmergencyPlanUsersView.swift in Sources */,
+				2DA960E92C6ECCDB00688E6F /* UmbrellaViewViewModel.swift in Sources */,
 				844A80D42C2A9EEF002A2D14 /* MapViewViewModel.swift in Sources */,
 				84923AB12C3264A7004EAECC /* JoinAnUmbrella.swift in Sources */,
 				844A80E42C2AA3F8002A2D14 /* LoginViewViewModel.swift in Sources */,
@@ -932,7 +936,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240815;
+				CURRENT_PROJECT_VERSION = 2024081502;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
@@ -969,7 +973,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240815;
+				CURRENT_PROJECT_VERSION = 2024081502;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;

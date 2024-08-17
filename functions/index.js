@@ -26,7 +26,7 @@ const apnProvider = new apn.Provider({
     keyId: "AS9W7F6M4U",
     teamId: "N8YGT32D5B",
   },
-  production: false,
+  production: true,
 });
 
 const teamId = "N8YGT32D5B";

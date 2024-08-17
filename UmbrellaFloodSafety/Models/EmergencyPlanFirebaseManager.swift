@@ -188,9 +188,9 @@ class EmergencyPlanFirebaseManager: ObservableObject {
                                                                 contactInfo: document.get("contactInfo") as? String ?? ""
                                                                ))
             }
+            
+            completion(childEvacuationPlans)
         }
-        
-        completion(childEvacuationPlans)
     }
     
     func fetchSpecialNeedsEvacuationPlan(planId: String, completion: @escaping ([SpecialNeedsEvacuationPlan]) -> Void ) {
@@ -220,9 +220,8 @@ class EmergencyPlanFirebaseManager: ObservableObject {
                                                                               plan: evacuationPlanDocument.get("plan") as? String ?? ""
                                                                              ))
             }
+            completion(specialNeedsEvacuationPlans)
         }
-        print("special needs evacuation plans \(specialNeedsEvacuationPlans)")
-        completion(specialNeedsEvacuationPlans)
 
     }
 }

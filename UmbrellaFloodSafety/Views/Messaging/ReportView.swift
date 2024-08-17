@@ -50,7 +50,7 @@ struct ReportView: View {
                 .frame(width: 100)
             
             HStack {
-                Text("\(LocalizedStringKey("We are sorry that you've had a bad experience with user")) \(reported). \n\n\(LocalizedStringKey("Please let us know why so we can take appropriate measures."))")
+                Text("We are sorry that you've had a bad experience with user\(reported). \n\nPlease let us know why so we can take appropriate measures.")
                     .font(.custom("Nunito", size: 18))
                 
                 Spacer()

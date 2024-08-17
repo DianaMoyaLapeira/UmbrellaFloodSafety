@@ -314,7 +314,6 @@ struct EmergencyPlanView: View {
                                 
                                 Spacer()
                                 
-                                Image(systemName: "chevron.right")
                             }
                             .foregroundStyle(.primary)
                             
@@ -375,8 +374,7 @@ struct EmergencyPlanView: View {
                             }
                             
                             Spacer()
-                            
-                            Image(systemName: "chevron.right")
+                           
                         }
                         .foregroundStyle(.primary)
                         .padding()

@@ -131,9 +131,6 @@ struct UserView: View {
                         .frame(width: 18)
                 }
             }
-            ToolbarItemGroup(placement: .principal) {
-                Image(.oneThirdProgress)
-            }
         }
     }
 }

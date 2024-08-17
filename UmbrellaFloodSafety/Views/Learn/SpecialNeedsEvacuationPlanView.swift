@@ -11,7 +11,6 @@ struct SpecialNeedsEvacuationPlanView: View {
     
     @Environment(\.dismiss) var dismiss
     @Binding var specialNeedsEvacuationPlan: SpecialNeedsEvacuationPlan
-    @State private var opacity: Double = 0
     
     var body: some View {
         VStack {
@@ -71,12 +70,6 @@ struct SpecialNeedsEvacuationPlanView: View {
                 .frame(height: 60)
                 .padding(.vertical)
                 Spacer()
-            }
-        }
-        .opacity(opacity)
-        .onAppear {
-            withAnimation(.easeIn(duration: 0.4)) {
-                opacity = 1
             }
         }
         .padding()

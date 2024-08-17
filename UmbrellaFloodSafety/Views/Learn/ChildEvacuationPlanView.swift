@@ -11,7 +11,6 @@ struct ChildEvacuationPlanView: View {
     
     @Environment(\.dismiss) var dismiss
     @Binding var childEvacuationPlanEx: childEvacuationPlan
-    @State private var opacity: Double = 0
     
     var body: some View {
         VStack {
@@ -90,12 +89,6 @@ struct ChildEvacuationPlanView: View {
                 Spacer()
             }
             
-        }
-        .opacity(opacity)
-        .onAppear {
-            withAnimation(.easeIn(duration: 0.4)) {
-                opacity = 1
-            }
         }
         .padding()
         .navigationBarBackButtonHidden(true)
