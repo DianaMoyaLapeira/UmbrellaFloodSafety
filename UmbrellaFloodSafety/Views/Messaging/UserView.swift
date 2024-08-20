@@ -56,53 +56,55 @@ struct UserView: View {
                 
                 if ((firebaseManager.groupMembers[groupId]?.contains(username)) != nil && (firebaseManager.groupMembers[groupId]?.contains(username)) != false) {
                     UmbrellaListView(groupId: groupId)
-                        .foregroundStyle(.primary)
-                        .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
                         .padding([.horizontal, .bottom])
                 }
             }
+            .foregroundStyle(.primary)
+            .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
             
             Spacer()
             
-            HStack {
-                
-                Button {
-                    displayReport.toggle()
-                } label: {
-                    HStack {
-                        Text(LocalizedStringKey("Report User"))
-                            .font(.custom("Nunito", size: 18))
-                            .bold()
+            if username != firebaseManager.currentUserUsername {
+                HStack {
                     
-                        Spacer()
-                        
-                        Image(systemName: "exclamationmark.bubble.fill")
+                    Button {
+                        displayReport.toggle()
+                    } label: {
+                        HStack {
+                            Text(LocalizedStringKey("Report User"))
+                                .font(.custom("Nunito", size: 18))
+                                .bold()
+                            
+                            Spacer()
+                            
+                            Image(systemName: "exclamationmark.bubble.fill")
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 25).fill(.red))
                     }
-                    .foregroundStyle(.white)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 25).fill(.red))
-                }
-                
-                
-                Button {
-                    showAlert.toggle()
-                } label: {
-                    HStack {
-                        Text(LocalizedStringKey("Block User"))
-                            .font(.custom("Nunito", size: 18))
-                            .bold()
                     
-                        Spacer()
-                        
-                        Image(systemName: "hand.raised.slash.fill")
+                    
+                    Button {
+                        showAlert.toggle()
+                    } label: {
+                        HStack {
+                            Text(LocalizedStringKey("Block User"))
+                                .font(.custom("Nunito", size: 18))
+                                .bold()
+                            
+                            Spacer()
+                            
+                            Image(systemName: "hand.raised.slash.fill")
+                        }
+                        .foregroundStyle(.white)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 25).fill(.red))
                     }
-                    .foregroundStyle(.white)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 25).fill(.red))
+                    
                 }
-                
+                .padding()
             }
-            .padding()
         }
         .opacity(opacity)
         .onAppear {

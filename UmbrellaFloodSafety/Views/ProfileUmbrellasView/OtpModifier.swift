@@ -20,8 +20,6 @@ struct OtpModifier: ViewModifier {
         }
     }
     
-    
-    //MARK -> BODY
     func body(content: Content) -> some View {
         content
             .multilineTextAlignment(.center)
@@ -30,6 +28,7 @@ struct OtpModifier: ViewModifier {
             .frame(width: 35, height: 45)
             .font(.custom("Nunito", size: 18))
             .foregroundStyle(Color.mainBlue)
+            .bold()
             .background(Color.white.cornerRadius(5))
             .background(
                 RoundedRectangle(cornerRadius: 5)

@@ -22,7 +22,7 @@ struct KidRegisterView: View {
                 
                 Spacer()
                 
-                VStack(spacing: -60) {
+                VStack() {
                     Text(LocalizedStringKey("Create Your \nAccount"))
                         .font(.custom("Nunito", size: 40))
                         .scaledToFill()
@@ -57,21 +57,23 @@ struct KidRegisterView: View {
                     .foregroundStyle(Color(.darkGray)))
                     .padding()
                     .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
+                    .cornerRadius(25)
                     .foregroundColor(.black)
                     .font(.custom("Nunito", size: 18))
-                    .frame(width: 300)
+                    .padding(.horizontal)
                 
                 Spacer()
                 
+                // make first letter not have to be capitalized
+                // show errors also
                 TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Username"))
                     .foregroundStyle(Color(.darkGray)))
                     .padding()
                     .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
+                    .cornerRadius(25)
                     .foregroundColor(.black)
                     .font(.custom("Nunito", size: 18))
-                    .frame(width: 300)
+                    .padding(.horizontal)
                 
                 Spacer()
                 
@@ -83,14 +85,14 @@ struct KidRegisterView: View {
                             )
                             .padding()
                             .background(Color.gray.opacity(0.1))
-                            .cornerRadius(8)
+                            .cornerRadius(25)
                             .font(.custom("Nunito", size: 18))
                         } else {
                             TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray)))
                             .padding()
                             .background(Color.gray.opacity(0.1))
-                            .cornerRadius(8)
+                            .cornerRadius(25)
                             .foregroundColor(.black)
                             .font(.custom("Nunito", size: 18))
                         }
@@ -111,7 +113,7 @@ struct KidRegisterView: View {
                     }
                 }
                 .padding(.bottom)
-                .frame(width: 300)
+                .padding(.horizontal)
                 
                 Spacer()
                 
@@ -131,7 +133,8 @@ struct KidRegisterView: View {
                             .foregroundStyle(.white)
                             .bold()
                     }
-                    .frame(width: 300, height: 60)
+                    .frame(height: 60)
+                    .padding(.horizontal)
                 }
                 
                 Spacer()

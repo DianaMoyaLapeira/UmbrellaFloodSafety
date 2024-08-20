@@ -59,6 +59,7 @@ struct StartView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -24,7 +24,6 @@ struct memberLocationMap: Identifiable, Hashable {
 struct MapView: View {
     
     @Binding var cameraPosition: MapCameraPosition
-    @State private var showSheet: Bool = true
     @ObservedObject var viewModel = MapViewViewModel.shared
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @State private var selection = "Red"
@@ -36,30 +35,31 @@ struct MapView: View {
         return array
     }
     
-    @State var showNotificationSheet: Bool = false
+    @Binding var showNotificationSheet: Bool
     
     var body: some View {
         
         VStack {
             
-            Spacer()
-            HStack {
-                Text("Hello \(firebaseManager.currentUserName)!")
-                    .fontWeight(.black)
-                    .font(.custom("Nunito", size: 34))
-                    .foregroundStyle(Color(.mainBlue))
-                Spacer()
-                
-                Button {
-                    showNotificationSheet.toggle()
-                } label: {
-                    Image(systemName: "bell")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundStyle(Color.mainBlue)
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                HStack {
+                    Text("Hello \(firebaseManager.currentUserName)!")
+                        .fontWeight(.black)
+                        .font(.custom("Nunito", size: 34))
+                        .foregroundStyle(Color(.mainBlue))
+                    Spacer()
+                    
+                    Button {
+                        showNotificationSheet.toggle()
+                    } label: {
+                        Image(systemName: "bell")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundStyle(Color.mainBlue)
+                    }
                 }
+                .padding()
             }
-            .padding()
             
             
             ZStack(alignment: .topLeading)
@@ -117,7 +117,6 @@ struct MapView: View {
         })
         .sheet(isPresented: $showNotificationSheet, content: {
             NotificationView(isPresented: $showNotificationSheet)
-                .frame(width: 400)
             
         })
         .presentationDragIndicator(.visible)
@@ -129,9 +128,10 @@ struct MapView: View {
 #Preview {
     struct MapViewViewContainer: View {
         @State private var cameraPosition: MapCameraPosition = .automatic
+        @State private var showNotification: Bool = false
         
         var body: some View {
-            MapView(cameraPosition: $cameraPosition)
+            MapView(cameraPosition: $cameraPosition, showNotificationSheet: $showNotification)
         }
     }
     

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EmergencyPlanUsersView: View {
     
+    @State var edit = true
     @Environment(\.dismiss) var dismiss
     @State var isPresented: Bool = false
     @State private var opacity: Double = 0
@@ -45,7 +46,7 @@ struct EmergencyPlanUsersView: View {
                     .stroke(lineWidth: 4)
                     .fill(.mainBlue))
                 .padding(2)
-                
+               
                 UMButton(title: "Add Members From Umbrellas", background: .mainBlue) {
                     isPresented.toggle()
                 }
@@ -63,6 +64,20 @@ struct EmergencyPlanUsersView: View {
         .sheet(isPresented: $isPresented, content: {
             AddUsersToPlanSheet(usersInPlan: $usersInPlan, isPresented: $isPresented)
         })
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
+                }
+                
+            }
+        }
     }
 }
 

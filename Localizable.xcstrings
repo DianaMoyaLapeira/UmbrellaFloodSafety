@@ -737,7 +737,14 @@
       }
     },
     "Delete" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        }
+      }
     },
     "Delete Account" : {
       "localizations" : {
@@ -760,7 +767,14 @@
       }
     },
     "Delete plan?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar plan?"
+          }
+        }
+      }
     },
     "Done" : {
       "extractionState" : "manual",
@@ -1333,6 +1347,9 @@
         }
       }
     },
+    "Hello %@" : {
+
+    },
     "Hello %@!" : {
       "localizations" : {
         "es" : {
@@ -1870,7 +1887,14 @@
       }
     },
     "No emergency plans yet. Try adding some below!" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay planes de emergencia. ¡Intenta agregar algunos!"
+          }
+        }
+      }
     },
     "No members yet. Add members on their device using the Umbrella Code!" : {
       "localizations" : {
@@ -1977,6 +2001,7 @@
       }
     },
     "People In Plan" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -2586,7 +2611,14 @@
       }
     },
     "We are sorry that you've had a bad experience with user%@. \n\nPlease let us know why so we can take appropriate measures." : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lamentamos que hayas tenido una mala experiencia con el usuario%@. \n\nPor favor, háganos saber por qué para que podamos tomar las medidas adecuadas."
+          }
+        }
+      }
     },
     "Welcome Back!" : {
       "extractionState" : "manual",

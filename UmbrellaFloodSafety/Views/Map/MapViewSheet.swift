@@ -25,6 +25,7 @@ struct MapViewSheet: View {
                     
                     HStack {
                         Text("\(firebaseManager.userGroups[mapViewViewModel.selection] ?? "Umbrella")")
+                            .multilineTextAlignment(.leading)
                             .font(.custom("Nunito", size: 34))
                             .fontWeight(.black)
                             .foregroundStyle(Color.mainBlue)

@@ -87,7 +87,7 @@ class CreateAvatarViewViewModel: ObservableObject {
         
         db.collection("users")
             .document(firebaseManager.currentUserUsername)
-            .updateData(["avatar": avatarString])
+            .updateData(["avatar": avatarString.replacingOccurrences(of: "no", with: "")])
         
     }
 }

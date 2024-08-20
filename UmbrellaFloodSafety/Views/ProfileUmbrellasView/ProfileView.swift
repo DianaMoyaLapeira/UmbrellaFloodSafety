@@ -22,7 +22,6 @@ struct ProfileView: View {
     
     var body: some View {
         
-        
         NavigationStack {
                 
                 HStack {
@@ -125,21 +124,28 @@ struct ProfileView: View {
                             }.overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
                                 .padding()
                         } else {
-                            VStack {
-                                Image(.mapEmptyState)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 350, height: 100)
-                                    .padding(.top)
+                            HStack {
                                 
-                                Text("No Umbrellas Yet")
-                                    .foregroundStyle(.mainBlue)
-                                    .font(.custom("Nunito", size: 18))
-                                    .bold()
-                                    .padding(.bottom)
+                                Spacer()
+                                
+                                VStack {
+                                    Image(.mapEmptyState)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .padding(.top)
+                                        .frame(height: 100)
+                                    
+                                    Text("No Umbrellas Yet")
+                                        .foregroundStyle(.mainBlue)
+                                        .font(.custom("Nunito", size: 18))
+                                        .bold()
+                                        .padding(.bottom)
+                                }
+                                
+                                Spacer()
                             }
                             .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
-                                .padding()
+                            .padding([.horizontal, .top])
                         }
                            
                         ZStack {

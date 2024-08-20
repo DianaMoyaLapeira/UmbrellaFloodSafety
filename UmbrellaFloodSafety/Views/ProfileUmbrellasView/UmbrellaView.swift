@@ -85,6 +85,7 @@ struct UmbrellaView: View {
             
             UMButton(title: "Leave Umbrella", background: .red) {
                 viewModel.leaveUmbrella(umbrellaId: groupId)
+                dismiss()
             }
             .frame(height: 60)
             .padding(.vertical)

@@ -50,10 +50,10 @@ struct LoginView: View {
                     .autocapitalization(.none)
                     .padding()
                     .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
+                    .cornerRadius(25)
                     .foregroundColor(.black)
                     .font(.custom("Nunito", size: 18))
-                    .frame(width: 300)
+                    .padding(.horizontal)
                 
                 Spacer()
                 
@@ -65,14 +65,14 @@ struct LoginView: View {
                             )
                             .padding()
                             .background(Color.gray.opacity(0.1))
-                            .cornerRadius(8)
+                            .cornerRadius(25)
                             .font(.custom("Nunito", size: 18))
                         } else {
                             TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
                                 .foregroundStyle(Color(.darkGray)))
                             .padding()
                             .background(Color.gray.opacity(0.1))
-                            .cornerRadius(8)
+                            .cornerRadius(25)
                             .foregroundColor(.black)
                             .font(.custom("Nunito", size: 18))
                         }
@@ -92,8 +92,7 @@ struct LoginView: View {
                         }
                     }
                 }
-                .padding([.top, .bottom])
-                .frame(width: 300)
+                .padding()
                 
                 NavigationLink(destination: RegisterFirstView()) {
                     UMButton(title: "Log In", background: .mainBlue) {
@@ -104,8 +103,8 @@ struct LoginView: View {
                     .fontWeight(.bold)
                     .font(.custom("Nunito", size: 18))
                 }
-                .frame(width: 300, height: 60)
-                .padding(.top)
+                .frame(height: 60)
+                .padding([.top, .horizontal])
                 
                 Spacer()
                 

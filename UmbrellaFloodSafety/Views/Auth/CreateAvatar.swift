@@ -40,7 +40,7 @@ struct CreateAvatar: View {
             .padding([.leading, .trailing])
             
             ProfilePictureView(profileString: viewModel.avatarString)
-                .frame(width: 400, height: 310)
+                .frame(width: 1000, height: 310)
                 .background(Rectangle().foregroundStyle(.mainBlue).opacity(0.1))
                 
             

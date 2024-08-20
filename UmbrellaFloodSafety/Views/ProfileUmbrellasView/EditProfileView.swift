@@ -83,7 +83,7 @@ struct EditProfileView: View {
                         .foregroundStyle(Color(.darkGray)))
                         .padding()
                         .background(Color.gray.opacity(0.1))
-                        .cornerRadius(8)
+                        .cornerRadius(25)
                         .foregroundColor(.black)
                         .font(.custom("Nunito", size: 18))
                 }
@@ -108,14 +108,14 @@ struct EditProfileView: View {
                                 )
                                 .padding()
                                 .background(Color.gray.opacity(0.1))
-                                .cornerRadius(8)
+                                .cornerRadius(25)
                                 .font(.custom("Nunito", size: 18))
                             } else {
                                 TextField("", text: $viewModel.password, prompt: Text("Edit Password")
                                     .foregroundStyle(Color(.darkGray)))
                                 .padding()
                                 .background(Color.gray.opacity(0.1))
-                                .cornerRadius(8)
+                                .cornerRadius(25)
                                 .foregroundColor(.black)
                                 .font(.custom("Nunito", size: 18))
                             }

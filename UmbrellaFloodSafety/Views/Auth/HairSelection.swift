@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HairSelection: View {
     
+    // these are split apart to enable a previous set up just in case 
+    
     let hairColors1 = ["blackHair", "darkBrownHair", "lightBrownHair", "gingerHair", "redHair"]
     
     let hairColors2 = ["brightGingerHair","darkBlonde", "lightBlonde", "grayHair", "whiteHair"]
@@ -82,50 +84,15 @@ struct HairSelection: View {
             }
             .padding(.horizontal)
             
-            HStack {
-                ForEach(hairColors1, id: \.self) { haircolor in
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 10)]) {
+                ForEach(hairColors1 + hairColors2 + hairColors3, id: \.self) { haircolor in
                     Button {
                         viewModel.hairColor = haircolor.replacingOccurrences(of: "Hair", with: "").lowercased()
                     } label : {
                         Circle()
-                            .frame(width: 65)
                             .foregroundStyle(Color(haircolor))
                     }
                 }
-                
-                Spacer()
-            }
-            .padding([.leading, .trailing])
-            
-            HStack {
-                ForEach(hairColors2, id: \.self) { haircolor in
-                    Button {
-                        viewModel.hairColor = haircolor.replacingOccurrences(of: "Hair", with: "").lowercased()
-                    
-                    } label : {
-                        Circle()
-                            .frame(width: 65)
-                            .foregroundStyle(Color(haircolor))
-                    }
-                }
-                
-                Spacer()
-            }
-            .padding([.leading, .trailing])
-            
-            HStack {
-                ForEach(hairColors3, id: \.self) { haircolor in
-                    Button {
-                        viewModel.hairColor = haircolor.replacingOccurrences(of: "Hair", with: "").lowercased()
-                        
-                    } label : {
-                        Circle()
-                            .frame(width: 65)
-                            .foregroundStyle(Color(haircolor))
-                    }
-                }
-                
-                Spacer()
             }
             .padding([.leading, .trailing])
             

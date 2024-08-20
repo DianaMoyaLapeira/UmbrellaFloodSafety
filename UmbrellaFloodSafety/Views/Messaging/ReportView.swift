@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ReportView: View {
     
-    @Binding var isPresented: Bool
-    @StateObject var viewModel = UserViewViewModel()
-    let sender: String
-    let reported: String
-    @State var reason: String = ""
+    @Binding private var isPresented: Bool
+    @StateObject private var viewModel = UserViewViewModel()
+    private let sender: String
+    private let reported: String
+    @State private var reason: String = ""
+    @State private var opacity: Double = 0.0
     
     init(isPresented: Binding<Bool>, sender: String, reported: String) {
         self._isPresented = isPresented
@@ -71,6 +72,12 @@ struct ReportView: View {
             .frame(height: 60)
             
             Spacer()
+        }
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.4)) {
+                opacity = 1
+            }
         }
         .padding()
     }

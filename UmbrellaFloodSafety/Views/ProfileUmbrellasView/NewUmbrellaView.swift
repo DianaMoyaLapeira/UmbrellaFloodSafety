@@ -44,10 +44,10 @@ struct NewUmbrellaView: View {
                 .foregroundStyle(Color(.darkGray)))
             .padding()
             .background(Color.gray.opacity(0.1))
-            .cornerRadius(8)
+            .cornerRadius(25)
             .foregroundColor(.black)
             .font(.custom("Nunito", size: 18))
-            .frame(width: 300, height: 60)
+            .frame(height: 60)
             
             Spacer()
             
@@ -55,11 +55,12 @@ struct NewUmbrellaView: View {
                 viewModel.registerGroup()
                 dismiss()
             }
-            .frame(width: 300, height: 60)
+            .frame(height: 60)
             
             Spacer()
             
         }
+        .padding(.horizontal)
         .opacity(opacity)
         .onAppear {
             withAnimation(.easeIn(duration: 0.4)) {

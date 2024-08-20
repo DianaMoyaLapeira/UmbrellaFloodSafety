@@ -19,126 +19,138 @@ struct AdultRegisterView: View {
         ScrollView {
             VStack {
                 
-                Text(LocalizedStringKey("Create Your \nAccount"))
-                    .font(.custom("Nunito", size: 40))
-                    .scaledToFill()
-                    .fontWeight(.black)
-                    .foregroundStyle(Color(.mainBlue))
-                    .padding(.top)
-                    .multilineTextAlignment(.center)
+                Spacer()
+                
+                VStack() {
+                    Text(LocalizedStringKey("Create Your \nAccount"))
+                        .font(.custom("Nunito", size: 40))
+                        .scaledToFill()
+                        .fontWeight(.black)
+                        .foregroundStyle(Color(.mainBlue))
+                        .padding(.vertical)
+                        .multilineTextAlignment(.center)
+                    
+                    
+                    ZStack {
+                        Image(.briefcase)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 250)
+                            .padding()
+                        
+                        // Display error message if available
+                        
+                    }
+                }
+                
+                
+                TextField("", text: $viewModel.name, prompt: Text(LocalizedStringKey("First Name"))
+                    .foregroundStyle(Color(.darkGray)))
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(25)
+                .foregroundColor(.black)
+                .font(.custom("Nunito", size: 18))
+                .padding(.horizontal)
                 
                 Spacer()
-                Image(.briefcase)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 220)
                 
+                // make first letter not have to be capitalized
+                // show errors also
+                TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Username"))
+                    .foregroundStyle(Color(.darkGray)))
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(25)
+                .foregroundColor(.black)
+                .font(.custom("Nunito", size: 18))
+                .padding(.horizontal)
                 
-                NavigationStack {
-                    
-                    Spacer()
-                    
-                    TextField("", text: $viewModel.name, prompt: Text(LocalizedStringKey("First Name"))
-                        .foregroundStyle(Color(.darkGray)))
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                    .foregroundColor(.black)
-                    .font(.custom("Nunito", size: 18))
-                    .frame(width: 300)
-                    .padding(.bottom)
-                    
-                    TextField("", text: $viewModel.username, prompt: Text(LocalizedStringKey("Username"))
-                        .foregroundStyle(Color(.darkGray)))
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                    .foregroundColor(.black)
-                    .font(.custom("Nunito", size: 18))
-                    .frame(width: 300)
-                    .padding(.bottom)
-                    
-                    HStack {
-                        ZStack {
-                            if isSecure {
-                                SecureField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
-                                    .foregroundStyle(Color(.darkGray))
-                                )
-                                .padding()
-                                .background(Color.gray.opacity(0.1))
-                                .cornerRadius(8)
-                                .font(.custom("Nunito", size: 18))
-                            } else {
-                                TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
-                                    .foregroundStyle(Color(.darkGray)))
-                                .padding()
-                                .background(Color.gray.opacity(0.1))
-                                .cornerRadius(8)
-                                .foregroundColor(.black)
-                                .font(.custom("Nunito", size: 18))
+                Spacer()
+                
+                HStack {
+                    ZStack {
+                        if isSecure {
+                            SecureField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
+                                .foregroundStyle(Color(.darkGray))
+                            )
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(25)
+                            .font(.custom("Nunito", size: 18))
+                        } else {
+                            TextField("", text: $viewModel.password, prompt: Text(LocalizedStringKey("Password"))
+                                .foregroundStyle(Color(.darkGray)))
+                            .padding()
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(25)
+                            .foregroundColor(.black)
+                            .font(.custom("Nunito", size: 18))
+                        }
+                        HStack {
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                isSecure.toggle()
+                            }) {
+                                Image(systemName: isSecure ? "eye.slash" : "eye")
+                                    .foregroundColor(Color(.darkGray))
+                                    .alignmentGuide(.trailing) { d in d[.leading] }
                             }
-                            HStack {
-                                
-                                Spacer()
-                                
-                                Button(action: {
-                                    isSecure.toggle()
-                                }) {
-                                    Image(systemName: isSecure ? "eye.slash" : "eye")
-                                        .foregroundColor(Color(.darkGray))
-                                        .alignmentGuide(.trailing) { d in d[.leading] }
-                                }
-                                .alignmentGuide(.trailing) { d in d[.leading] }
-                                .padding(.trailing, 18)
-                            }
+                            .alignmentGuide(.trailing) { d in d[.leading] }
+                            .padding(.trailing, 18)
                         }
                     }
-                    .padding(.bottom)
-                    .frame(width: 300)
-                    
-                    NavigationLink(destination: CreateAvatar(isPresented: $isAvatarPresented)
-                        .onAppear {
-                            viewModel.register()
-                        }
-                                   
-                    ) {
-                        ZStack {
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .foregroundStyle(.mainBlue)
-                            
-                            Text(LocalizedStringKey("Create Account"))
-                                .font(.custom("Nunito", size: 18))
-                                .foregroundStyle(.white)
-                                .bold()
-                        }
-                        .frame(width: 300, height: 60)
+                }
+                .padding(.bottom)
+                .padding(.horizontal)
+                
+                Spacer()
+                
+                NavigationLink(destination: CreateAvatar(isPresented: $isAvatarPresented)
+                    .onAppear {
+                        viewModel.register()
                     }
-                    
-                    Spacer()
+                               
+                ) {
+                    ZStack {
+                        
+                        RoundedRectangle(cornerRadius: 25)
+                            .foregroundStyle(.mainBlue)
+                        
+                        Text(LocalizedStringKey("Create Account"))
+                            .font(.custom("Nunito", size: 18))
+                            .foregroundStyle(.white)
+                            .bold()
+                    }
+                    .frame(height: 60)
+                    .padding(.horizontal)
+                }
+                
+                Spacer()
+            }
+            .opacity(opacity)
+            .onAppear {
+                withAnimation(.easeIn(duration: 0.4)) {
+                    opacity = 1
                 }
             }
-        }
-        .opacity(opacity)
-        .onAppear {
-            withAnimation(.easeIn(duration: 0.4)) {
-                opacity = 1
-            }
-        }
-        .navigationBarBackButtonHidden(true)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 19)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18)
+                    }
                 }
-            }
-            ToolbarItemGroup(placement: .principal) {
-                Image(.twoThirdsProgress)
+                ToolbarItemGroup(placement: .principal) {
+                    Image(.twoThirdsProgress)
+                }
             }
         }
     }

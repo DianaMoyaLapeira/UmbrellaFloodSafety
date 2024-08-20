@@ -100,7 +100,6 @@ class FirebaseManager: ObservableObject {
     
     
     var isSignedIn: Bool {
-        print(Auth.auth().currentUser)
         return Auth.auth().currentUser != nil
     }
     
@@ -140,6 +139,8 @@ class FirebaseManager: ObservableObject {
             }
             
             if let avatar = document.data()?["avatar"] as? String {
+                
+                UserDefaults.standard.set(avatar, forKey: "avatar")
                 self.currentUserAvatar = avatar
             }
             
@@ -419,6 +420,7 @@ class FirebaseManager: ObservableObject {
     
     
     private func clearData() {
+        userListener?.remove()
         currentUserName = ""
         userGroups.removeAll()
         groupMembers.removeAll()
@@ -432,6 +434,7 @@ class FirebaseManager: ObservableObject {
         clearConversationListeners()
         clearMessageListeners()
         UserDefaults.standard.removeObject(forKey: "lastLoggedInUsername")
+        UserDefaults.standard.removeObject(forKey: "avatar")
     }
     
     deinit {
@@ -439,10 +442,19 @@ class FirebaseManager: ObservableObject {
             Auth.auth().removeStateDidChangeListener(authListener)
         }
         userListener?.remove()
+        currentUserName = ""
+        userGroups.removeAll()
+        groupMembers.removeAll()
+        groupMembersLocations.removeAll()
+        messages.removeAll()
+        conversations.removeAll()
+        currentUserAvatar = ""
+        groupMembersAvatars.removeAll()
         clearGroupListeners()
         clearMemberListeners()
-        clearMessageListeners()
         clearConversationListeners()
+        clearMessageListeners()
         UserDefaults.standard.removeObject(forKey: "lastLoggedInUsername")
+        UserDefaults.standard.removeObject(forKey: "avatar")
     }
 }

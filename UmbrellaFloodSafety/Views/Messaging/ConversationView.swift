@@ -98,10 +98,29 @@ struct ConversationView: View {
                             }
                         }
                         
+                        if viewModel.suggestionsFormatted.count != 0 {
+                            ScrollView(.horizontal) {
+                                HStack {
+                                    ForEach(viewModel.suggestionsFormatted, id: \.self) { suggestion in
+                                        
+                                        Button {
+                                            viewModel.sendMessage(input: suggestion)
+                                        } label: {
+                                            suggestionView(suggestion: suggestion)
+                                        }
+                                    }
+                                }
+                                .scrollIndicators(.hidden)
+                                .transition(.move(edge: .bottom))
+                                .animation(.easeOut(duration: 0.5), value: viewModel.suggestionsFormatted.count)
+                            }
+                        }
+                        
                     } else {
                         Image(.conversationEmptyState)
                             .resizable()
                             .scaledToFit()
+                            .frame(height: 170)
                             .padding()
                         
                         Text("No messages yet. Try sending some!")
@@ -109,21 +128,47 @@ struct ConversationView: View {
                             .bold()
                             .foregroundStyle(.black)
                     }
+                    
+                    HStack {
+                        TextField("text message", text: $viewModel.input, prompt: Text("Message").font(.custom("Nunito", size: 18)).foregroundStyle(Color.secondary))
+                            .scrollDismissesKeyboard(.immediately)
+                            .onSubmit {
+                                viewModel.sendMessage(input: viewModel.input)
+                                viewModel.input = ""
+                            }
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(Color.gray.opacity(0.2)))
+                            .padding([.leading, .top, .bottom])
+                        
+                        Button {
+                            viewModel.sendMessage(input: viewModel.input)
+                            
+                        } label: {
+                            Image(systemName: "paperplane.fill")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .scaleEffect(sendTapped ? 0.9 : 1)
+                                .animation(.spring, value: sendTapped)
+                                .foregroundStyle(Color.mainBlue)
+                                .padding([.leading, .top, .trailing])
+                        }
+
+                    }
+                    .padding(.bottom)
+                    .id(888)
                 }
                 .onAppear {
-                    if let lastMessage = messagessOrdered.last {
-                        proxy.scrollTo(lastMessage, anchor: .bottom)
-                    }
+                    proxy.scrollTo(888, anchor: .bottom)
+                    
+                    UIScrollView.appearance().keyboardDismissMode = .interactive
                 }
                 .onChange(of: firebaseManager.messages[viewModel.conversationId]) {
-                    if let lastMessage = messagessOrdered.last {
-                        withAnimation {
-                            proxy.scrollTo(lastMessage, anchor: .bottom)
-                        }
-                    }
-                    if messagessOrdered.last?.senderId != firebaseManager.currentUserUsername && messagessOrdered.last?.senderId != nil && messagessOrdered.last?.senderId != ""{
+                    if messagessOrdered.last?.senderId != firebaseManager.currentUserUsername && messagessOrdered.last?.senderId != nil && messagessOrdered.last?.senderId != "" {
                         viewModel.getSuggestions(input: messagessOrdered.last?.content ?? "")
-                        
+                    }
+                    
+                    withAnimation {
+                        proxy.scrollTo(888, anchor: .bottom)
                     }
                 }
                 .onAppear {
@@ -135,57 +180,10 @@ struct ConversationView: View {
                 .transition(.move(edge: .bottom))
                 .animation(.easeOut, value: viewModel.suggestionsFormatted)
             }
-            
-            VStack {
-                if viewModel.suggestionsFormatted.count != 0 {
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(viewModel.suggestionsFormatted, id: \.self) { suggestion in
-                                
-                                Button {
-                                    viewModel.sendMessage(input: suggestion)
-                                } label: {
-                                    suggestionView(suggestion: suggestion)
-                                }
-                            }
-                        }
-                        .transition(.move(edge: .bottom))
-                        .animation(.easeOut(duration: 0.5), value: viewModel.suggestionsFormatted.count)
-                        .scrollIndicators(.hidden)
-                        .padding()
-                    }
-                }
-            }
-            
-            HStack {
-                TextField("text message", text: $viewModel.input, prompt: Text("Message").font(.custom("Nunito", size: 18)).foregroundStyle(Color.secondary))
-                    .onSubmit {
-                        viewModel.sendMessage(input: viewModel.input)
-                        viewModel.input = ""
-                    }
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(Color.gray.opacity(0.2)))
-                    .padding([.leading, .top])
-                
-                Button {
-                    viewModel.sendMessage(input: viewModel.input)
-                    
-                } label: {
-                    Image(systemName: "paperplane.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .scaleEffect(sendTapped ? 0.9 : 1)
-                        .animation(.spring, value: sendTapped)
-                        .foregroundStyle(Color.mainBlue)
-                        .padding([.leading, .top, .trailing])
-                }
-
-            }
-            .padding(.bottom)
         }
         .opacity(opacity)
         .onAppear {
-            withAnimation(.easeIn(duration: 0.3)) {
+            withAnimation(.easeOut(duration: 0.4)) {
                 opacity = 1
             }
         }

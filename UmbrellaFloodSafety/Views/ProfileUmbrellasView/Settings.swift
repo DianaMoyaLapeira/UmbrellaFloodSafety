@@ -79,6 +79,7 @@ struct Settings: View {
             .alert("Delete Account?", isPresented: $showAlert) {
                 Button("Delete Account", role: .destructive) {
                     viewModel.deleteAccount()
+                    isPresented = false
                 }
                 Button("Cancel", role: .cancel) { }
             }

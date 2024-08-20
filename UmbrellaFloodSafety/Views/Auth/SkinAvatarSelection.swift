@@ -37,139 +37,83 @@ struct SkinAvatarSelection: View {
                 Spacer()
             }
             
-            Grid {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 10)]) {
                 
-                GridRow {
-                    ForEach(skinColors1, id: \.self) { skinColor in
-                        
-                        Button {
-                            viewModel.skin = skinColor.replacingOccurrences(of: "Color", with: "")
-                        } label: {
-                            Circle()
-                                .frame(width: 65)
-                                .foregroundStyle(Color(skinColor))
-                        }
+                ForEach(skinColors1 + skinColors2 + skinColors3, id: \.self) { skinColor in
+                    Button {
+                        viewModel.skin = skinColor.replacingOccurrences(of: "Color", with: "")
+                    } label: {
+                        Circle()
+                            .foregroundColor(Color(skinColor))
                     }
-                }
-                
-                GridRow {
-                    ForEach(skinColors2, id: \.self) { skinColor in
-                        
-                        Button {
-                            viewModel.skin = skinColor.replacingOccurrences(of: "Color", with: "")
-                        } label: {
-                            Circle()
-                                .frame(width: 65)
-                                .foregroundStyle(Color(skinColor))
-                        }
-                    }
-                }
-                
-                GridRow {
-                    ForEach(skinColors3, id: \.self) { skinColor in
-                        
-                        Button {
-                            viewModel.skin = skinColor.replacingOccurrences(of: "Color", with: "")
-                        } label: {
-                            Circle()
-                                .frame(width: 65)
-                                .foregroundStyle(Color(skinColor))
-                        }
-                    }
-                }
-                
-                
-                HStack {
-                    
-                    Text(LocalizedStringKey("Blush"))
-                        .font(.custom("Nunito", size: 24))
-                        .fontWeight(.black)
-                        .foregroundStyle(.mainBlue)
-                    
-                    Spacer()
-                    
-                    if viewModel.blush != "" {
-                        
-                        Button {
-                            viewModel.blush = ""
-                        } label: {
-                            Text(LocalizedStringKey("Remove"))
-                                .font(.custom("Nunito", size: 18))
-                                .fontWeight(.bold)
-                                .foregroundStyle(.mainBlue)
-                        }
-                    }
-                        
-                }
-                
-                GridRow {
-                    ForEach(blushColors, id: \.self) { blushColor in
-                        
-                        Button {
-                            viewModel.blush = blushColor.replacingOccurrences(of: "Color", with: "")
-                        } label: {
-                            Circle()
-                                .frame(width: 65)
-                                .foregroundStyle(Color(blushColor))
-                        }
-                    }
-                }
-
-                HStack {
-                    
-                    Text(LocalizedStringKey("Mouth"))
-                        .font(.custom("Nunito", size: 24))
-                        .fontWeight(.black)
-                        .foregroundStyle(.mainBlue)
-                    
-                    Spacer()
-                        
-                }
-                
-                HStack {
-                    ForEach(mouth1, id: \.self) { mouth in
-                        
-                        Button {
-                            viewModel.mouth = mouth
-                        } label: {
-                            Image(mouth)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 70)
-                                .padding(.top, 7)
-                                .scaleEffect(4)
-                                .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
-                        }
-                        .foregroundStyle(.primary)
-                    }
-                    
-                    Spacer()
-                    
-                }
-              
-                HStack {
-                    ForEach(mouth2, id: \.self) { mouth in
-                        
-                        Button {
-                            viewModel.mouth = mouth
-                        } label: {
-                            Image(mouth)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 80, height: 70)
-                                .padding(.top, 7)
-                                .scaleEffect(4)
-                                .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
-                        }
-                        .foregroundStyle(.primary)
-                    }
-                    
-                    Spacer()
-                    
                 }
             }
             
-            Text(skinSelection)
+            HStack {
+                
+                Text(LocalizedStringKey("Blush"))
+                    .font(.custom("Nunito", size: 24))
+                    .fontWeight(.black)
+                    .foregroundStyle(.mainBlue)
+                
+                Spacer()
+                
+                if viewModel.blush != "" {
+                    
+                    Button {
+                        viewModel.blush = ""
+                    } label: {
+                        Text(LocalizedStringKey("Remove"))
+                            .font(.custom("Nunito", size: 18))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.mainBlue)
+                    }
+                }
+                    
+            }
+            
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 10)]) {
+                ForEach(blushColors, id: \.self) { blushColor in
+                    
+                    Button {
+                        viewModel.blush = blushColor.replacingOccurrences(of: "Color", with: "")
+                    } label: {
+                        Circle()
+                            .foregroundStyle(Color(blushColor))
+                    }
+                }
+            }
+
+            HStack {
+                
+                Text(LocalizedStringKey("Mouth"))
+                    .font(.custom("Nunito", size: 24))
+                    .fontWeight(.black)
+                    .foregroundStyle(.mainBlue)
+                
+                Spacer()
+                    
+            }
+            
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 20)]) {
+                ForEach(mouth1 + mouth2, id: \.self) { mouth in
+                    
+                    Button {
+                        viewModel.mouth = mouth
+                    } label: {
+                        Image(mouth)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 80, height: 70)
+                            .padding(.top, 7)
+                            .scaleEffect(4)
+                            .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
+                    }
+                    .foregroundStyle(.primary)
+                }
+                
+            }
+            .padding(.leading, 5)
         }
         .padding([.leading, .trailing])
     }

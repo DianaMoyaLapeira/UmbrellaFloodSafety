@@ -16,6 +16,10 @@ class SettingsViewModel: ObservableObject {
     var currentUsername = FirebaseManager.shared.currentUserUsername
     
     func deleteAccount() {
+        
+        UserDefaults.standard.removeObject(forKey: "avatar")
+        UserDefaults.standard.removeObject(forKey: "lastLoggedInUsername")
+      
         let user = Auth.auth().currentUser
         let db = Firestore.firestore()
         

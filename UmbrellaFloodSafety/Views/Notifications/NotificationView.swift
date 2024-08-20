@@ -62,7 +62,6 @@ struct NotificationView: View {
                 viewModel.getRiskNotifications()
             }
         }
-        .frame(width: 390)
         .padding([.horizontal, .top])
     }
 }

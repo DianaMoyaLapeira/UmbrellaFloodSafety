@@ -15,7 +15,6 @@ import CoreLocation
 @Observable
 class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, UNUserNotificationCenterDelegate {
  
-    var location: CLLocation = CLLocation(latitude: 37.3346, longitude: 122.0090)
     let locationManager = CLLocationManager()
     
     func application(_ application: UIApplication,
@@ -43,17 +42,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let newLocation = locations.last else { return }
         
-        var backgroundTask: UIBackgroundTaskIdentifier = .invalid
-        backgroundTask = UIApplication.shared.beginBackgroundTask(withName: "LocationUpdate") {
-            UIApplication.shared.endBackgroundTask(backgroundTask)
-            backgroundTask = .invalid
-        }
-    
-        print("New Location for updating: \(newLocation)")
         // Call Firebase manager function and end task when location updates
-        FirebaseManager.shared.updateLocation(newLocation: newLocation) { success in
-            UIApplication.shared.endBackgroundTask(backgroundTask)
-            backgroundTask = .invalid
+        FirebaseManager.shared.updateLocation(newLocation: newLocation) { error in
+            if error {
+                print("an error occurred \(error)")
+            }
         }
     }
     

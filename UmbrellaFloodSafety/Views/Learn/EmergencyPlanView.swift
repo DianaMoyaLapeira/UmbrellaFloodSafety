@@ -60,7 +60,7 @@ struct EmergencyPlanView: View {
                     isPresented.toggle()
                 }
                 .frame(height: 60)
-                .padding(.bottom)
+                .padding([.bottom, .horizontal])
                 
                 Divider()
                 
@@ -408,45 +408,40 @@ struct EmergencyPlanView: View {
         }
         .sheet(isPresented: $isPresented, content: {
             
-            HStack {
-                Text("People In Plan")
-                    .font(.custom("Nunito", size: 34))
-                    .foregroundStyle(.mainBlue)
-                    .fontWeight(.black)
-                
-                Spacer()
-                
-                Button {
-                    isPresented.toggle()
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 34)
+            VStack {
+                HStack {
+                    Text("Who's in This Plan?")
+                        .font(.custom("Nunito", size: 34))
+                        .foregroundStyle(.mainBlue)
+                        .fontWeight(.black)
+                    
+                    Spacer()
                 }
-            }
-            .padding()
-            
-            Divider()
                 
-            Spacer()
-            
-            ScrollView {
-                VStack {
-                    ForEach(emergencyPlan.usersInPlan, id: \.self) { member in
-                        
-                        NavigationLink(destination: UserView(username: member)) {
-                            MessagingListItem(participants: [member], timestamp: 0, lastMessage: member)
+                Divider()
+                
+                
+                ScrollView {
+                    
+                    VStack {
+                        ForEach(emergencyPlan.usersInPlan, id: \.self) { member in
+                            NavigationLink(destination: UserView(username: member)) {
+                                MessagingListItem(participants: [member], timestamp: 0, lastMessage: member)
+                            }
+                            
+                            Divider()
                         }
-                        
-                        Divider()
+                        .padding(.horizontal)
                     }
+                    .overlay(RoundedRectangle(cornerRadius: 25)
+                        .stroke(lineWidth: 4)
+                        .fill(.mainBlue))
+                    .padding(2)
+                   
                 }
-                .padding(.horizontal)
-                .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 4).fill(.mainBlue))
-                .padding(2)
             }
             .padding()
+            
         })
         .navigationBarBackButtonHidden(true)
         .toolbar {

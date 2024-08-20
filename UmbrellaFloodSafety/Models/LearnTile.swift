@@ -22,8 +22,8 @@ struct LearnTile: View {
             
             RoundedRectangle(cornerRadius: 20)
                 .foregroundStyle(secondaryColor)
-                .padding(.top)
-                .frame(width: 320, height: 170)
+                .padding([.top, .horizontal])
+                .frame(height: 170)
             
             Image(systemName: icon)
                 .resizable()
@@ -47,7 +47,7 @@ struct LearnTile: View {
                 .padding(.horizontal)
             }
         }
-        .frame(width: 350, height: 250)
+        .frame(height: 250)
             
     }
 }

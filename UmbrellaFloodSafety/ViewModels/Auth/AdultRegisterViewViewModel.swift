@@ -40,7 +40,7 @@ class AdultRegisterViewViewModel: ObservableObject {
                             isChild: false,
                             umbrellas: [],
                             conversationsIds: [],
-                            avatar: "skin11,shirt1,black,mouth1,,")
+                            avatar: "skin11,shirt1,black,mouth1,,no")
         let db = Firestore.firestore()
         
         db.collection("users")

@@ -10,6 +10,8 @@ import SwiftUI
 struct ShirtSelection: View {
     
     @ObservedObject var viewModel = CreateAvatarViewViewModel.shared
+    @State private var opacity: Double = 0
+    @State private var scale: Bool = false
     
     let shirt1 = ["shirt1", "shirt2", "shirt3"]
     
@@ -20,59 +22,35 @@ struct ShirtSelection: View {
     var body: some View {
         
         ScrollView {
-            Grid {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: 30)]) {
                 
-                GridRow {
-                    ForEach(shirt1, id: \.self) { shirt in
-                        
-                        Button {
-                            viewModel.shirt = shirt
-                        } label: {
-                            Image(shirt)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 100, alignment: .bottom)
-                                .padding(.horizontal, -40)
-                                .padding(.bottom)
+                ForEach(shirt1 + shirt2 + shirt3, id: \.self) { shirt in
+                    Button {
+                        viewModel.shirt = shirt
+                    } label: {
+                        Image(shirt)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(alignment: .bottom)
+                            .padding(.horizontal, -40)
+                            .padding(.bottom)
+                            .scaleEffect(scale ? 1.2 : 1.0)
+                    }
+                    .onTapGesture {
+                        withAnimation(.bouncy) {
+                            scale.toggle()
                         }
                     }
-                }.background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
-                
-                GridRow {
-                    ForEach(shirt2, id: \.self) { shirt in
-                        
-                        Button {
-                            viewModel.shirt = shirt
-                        } label: {
-                            Image(shirt)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 100, alignment: .bottom)
-                                .padding(.horizontal, -40)
-                                .padding(.bottom)
-                        }
-                    }
-                }.background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
-                
-                GridRow {
-                    ForEach(shirt3, id: \.self) { shirt in
-                        
-                        Button {
-                            viewModel.shirt = shirt
-                        } label: {
-                            Image(shirt)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 100, alignment: .bottom)
-                                .padding(.horizontal, -40)
-                                .padding(.bottom)
-                        }
-                    }
-                }.background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
+                    .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
+                }
             }
         }
-        
-        Spacer()
+        .opacity(opacity)
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.4)) {
+                opacity = 1
+            }
+        }
     }
 }
 

@@ -47,7 +47,7 @@ class KidRegisterViewViewModel: ObservableObject {
                            isChild: true,
                            umbrellas: [],
                             conversationsIds: [],
-                            avatar: "skin11,shirt1,black,mouth1,,")
+                            avatar: "skin11,shirt1,black,mouth1,,no")
         
         let db = Firestore.firestore()
         
