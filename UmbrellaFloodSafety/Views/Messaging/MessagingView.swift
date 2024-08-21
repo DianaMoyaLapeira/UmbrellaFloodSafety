@@ -11,7 +11,6 @@ struct MessagingView: View {
     @ObservedObject var viewModel = MessagingViewViewModel.shared
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @State var showNotificationSheet: Bool = false
-    @State private var opacity: Double = 0
     
     var body: some View {
         
@@ -64,12 +63,6 @@ struct MessagingView: View {
                 
                 
                 Spacer()
-            }
-            .opacity(opacity)
-            .onAppear {
-                withAnimation(.easeOut(duration: 0.4)) {
-                    opacity = 1
-                }
             }
             .sheet(isPresented: $showNotificationSheet, content: {
                 NotificationView(isPresented: $showNotificationSheet)

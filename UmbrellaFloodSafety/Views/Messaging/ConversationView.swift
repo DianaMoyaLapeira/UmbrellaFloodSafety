@@ -10,10 +10,9 @@ import SwiftUI
 struct ConversationView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State private var sendTapped: Bool = false
-    @State private var opacity: Double = 0
     @StateObject var viewModel: ConversationViewViewModel
     @ObservedObject var firebaseManager = FirebaseManager.shared
+    @FocusState private var keyboardFocus: Bool
     var conversationId: String = ""
     var username: [String] = []
     var name: String {
@@ -36,54 +35,68 @@ struct ConversationView: View {
     
     var body: some View {
         VStack {
-            NavigationLink {
-                UserView(username: username[0])
-            } label: {
-                HStack {
-                    MapMarker(profileString: firebaseManager.groupMembersAvatars[username[0]] ?? "", username: username[0], frameWidth: 20, circleWidth: 60, lineWidth: 4, paddingPic: 5)
-                    
-                    if name != "" {
-                        VStack {
+            
+            HStack {
+                
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24)
+                }
+                .padding(.leading)
+                
+                NavigationLink {
+                    UserView(username: username[0])
+                } label: {
+                    HStack {
+                        MapMarker(profileString: firebaseManager.groupMembersAvatars[username[0]] ?? "", username: username[0], frameWidth: 20, circleWidth: 60, lineWidth: 4, paddingPic: 5)
+                        
+                        if name != "" {
+                            VStack {
+                                HStack {
+                                    Text("\(name)")
+                                        .font(.custom("Nunito", size: 24))
+                                        .fontWeight(.black)
+                                        .foregroundStyle(Color.mainBlue)
+                                    
+                                    Spacer()
+                                }
+                                
+                                HStack {
+                                    Text("\(username.joined(separator: ", "))")
+                                        .font(.custom("Nunito", size: 18))
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(Color.secondary)
+                                    
+                                    Spacer()
+                                }
+                            }
+                            .padding(.leading, 3)
+                        } else {
                             HStack {
-                                Text("\(name)")
+                                Text("\(username.joined(separator: ", "))")
                                     .font(.custom("Nunito", size: 24))
-                                    .fontWeight(.black)
+                                    .fontWeight(.bold)
                                     .foregroundStyle(Color.mainBlue)
                                 
                                 Spacer()
                             }
-                            
-                            HStack {
-                                Text("\(username.joined(separator: ", "))")
-                                    .font(.custom("Nunito", size: 18))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(Color.secondary)
-                                
-                                Spacer()
-                            }
+                            .padding(.leading, 3)
                         }
-                        .padding(.leading, 3)
-                    } else {
-                        HStack {
-                            Text("\(username.joined(separator: ", "))")
-                                .font(.custom("Nunito", size: 24))
-                                .fontWeight(.bold)
-                                .foregroundStyle(Color.mainBlue)
-                            
-                            Spacer()
-                        }
-                        .padding(.leading, 3)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                        
                     }
-                    
-                    Spacer()
-                    
-                    Image(systemName: "chevron.right")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20)
-
+                    .padding()
                 }
-                .padding()
             }
             
             Divider()
@@ -92,35 +105,13 @@ struct ConversationView: View {
                 ScrollView {
                     
                     if messagessOrdered.count != 0 {
-                        LazyVStack {
-                            ForEach(messagessOrdered, id: \.self) { message in
-                                TextMessageView(content: message.content, timestamp: message.timestamp, senderId: message.senderId)
-                            }
+                        ForEach(messagessOrdered, id: \.self) { message in
+                            TextMessageView(content: message.content, timestamp: message.timestamp, senderId: message.senderId)
                         }
-                        
-                        if viewModel.suggestionsFormatted.count != 0 {
-                            ScrollView(.horizontal) {
-                                HStack {
-                                    ForEach(viewModel.suggestionsFormatted, id: \.self) { suggestion in
-                                        
-                                        Button {
-                                            viewModel.sendMessage(input: suggestion)
-                                        } label: {
-                                            suggestionView(suggestion: suggestion)
-                                        }
-                                    }
-                                }
-                                .scrollIndicators(.hidden)
-                                .transition(.move(edge: .bottom))
-                                .animation(.easeOut(duration: 0.5), value: viewModel.suggestionsFormatted.count)
-                            }
-                        }
-                        
                     } else {
                         Image(.conversationEmptyState)
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 170)
                             .padding()
                         
                         Text("No messages yet. Try sending some!")
@@ -128,47 +119,21 @@ struct ConversationView: View {
                             .bold()
                             .foregroundStyle(.black)
                     }
-                    
-                    HStack {
-                        TextField("text message", text: $viewModel.input, prompt: Text("Message").font(.custom("Nunito", size: 18)).foregroundStyle(Color.secondary))
-                            .scrollDismissesKeyboard(.immediately)
-                            .onSubmit {
-                                viewModel.sendMessage(input: viewModel.input)
-                                viewModel.input = ""
-                            }
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(Color.gray.opacity(0.2)))
-                            .padding([.leading, .top, .bottom])
-                        
-                        Button {
-                            viewModel.sendMessage(input: viewModel.input)
-                            
-                        } label: {
-                            Image(systemName: "paperplane.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .scaleEffect(sendTapped ? 0.9 : 1)
-                                .animation(.spring, value: sendTapped)
-                                .foregroundStyle(Color.mainBlue)
-                                .padding([.leading, .top, .trailing])
-                        }
-
-                    }
-                    .padding(.bottom)
-                    .id(888)
                 }
                 .onAppear {
-                    proxy.scrollTo(888, anchor: .bottom)
-                    
-                    UIScrollView.appearance().keyboardDismissMode = .interactive
-                }
-                .onChange(of: firebaseManager.messages[viewModel.conversationId]) {
-                    if messagessOrdered.last?.senderId != firebaseManager.currentUserUsername && messagessOrdered.last?.senderId != nil && messagessOrdered.last?.senderId != "" {
-                        viewModel.getSuggestions(input: messagessOrdered.last?.content ?? "")
+                    if let lastMessage = messagessOrdered.last {
+                        proxy.scrollTo(lastMessage, anchor: .bottom)
                     }
-                    
-                    withAnimation {
-                        proxy.scrollTo(888, anchor: .bottom)
+                }
+                .onChange(of: firebaseManager.messages[viewModel.conversationId]) { oldValue, newValue in
+                    if let lastMessage = messagessOrdered.last {
+                        withAnimation {
+                            proxy.scrollTo(lastMessage, anchor: .bottom)
+                        }
+                    }
+                    if messagessOrdered.last?.senderId != firebaseManager.currentUserUsername && messagessOrdered.last?.senderId != nil && messagessOrdered.last?.senderId != ""{
+                        viewModel.getSuggestions(input: messagessOrdered.last?.content ?? "")
+                        
                     }
                 }
                 .onAppear {
@@ -177,29 +142,57 @@ struct ConversationView: View {
                     }
 
                 }
-                .transition(.move(edge: .bottom))
-                .animation(.easeOut, value: viewModel.suggestionsFormatted)
+                .onTapGesture {
+                    keyboardFocus = false
+                }
             }
-        }
-        .opacity(opacity)
-        .onAppear {
-            withAnimation(.easeOut(duration: 0.4)) {
-                opacity = 1
+            
+            
+            if viewModel.suggestionsFormatted.count != 0 {
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(viewModel.suggestionsFormatted, id: \.self) { suggestion in
+                            
+                            Button {
+                                viewModel.sendMessage(input: suggestion)
+                            } label: {
+                                suggestionView(suggestion: suggestion)
+                                    .transition(.opacity)
+                                
+                            }
+                        }
+                    }
+                    .scrollIndicators(.hidden)
+                    .padding()
+                }
+                .transition(.opacity)
             }
+            
+            HStack {
+                TextField("text message", text: $viewModel.input, prompt: Text("Message").font(.custom("Nunito", size: 18)).foregroundStyle(Color.secondary))
+                    .onSubmit {
+                        viewModel.sendMessage(input: viewModel.input)
+                        viewModel.input = ""
+                    }
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(Color.gray.opacity(0.2)))
+                    .padding([.leading, .top])
+                    .focused($keyboardFocus)
+                
+                Button {
+                    viewModel.sendMessage(input: viewModel.input)
+                    
+                } label: {
+                    Image(systemName: "paperplane.fill")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundStyle(Color.mainBlue)
+                        .padding([.leading, .top, .trailing])
+                }
+            }
+            .padding(.bottom)
         }
         .navigationBarBackButtonHidden(true)
-        .toolbar {
-           ToolbarItem(placement: .topBarLeading) {
-               Button {
-                   dismiss()
-               } label: {
-                   Image(systemName: "chevron.left")
-                       .resizable()
-                       .scaledToFit()
-                       .frame(width: 18)
-               }
-           }
-       }
     }
 }
 

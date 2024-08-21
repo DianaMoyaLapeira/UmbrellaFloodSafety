@@ -10,7 +10,6 @@ import SwiftUI
 struct LearnView: View {
     @StateObject private var viewModel: LearnViewViewModel
     @ObservedObject private var firebaseManager = FirebaseManager.shared
-    @State private var opacity: Double = 0
     
     init(username: String) {
         self._viewModel = StateObject(wrappedValue: LearnViewViewModel(username: username))
@@ -58,12 +57,6 @@ struct LearnView: View {
                         LearnTile(title: "Emergency Plans", icon: "person.badge.shield.checkmark", mainColor: .mainBlue, secondaryColor: .white.opacity(0.95), iconColor: .accentGreen)
                             .padding(.horizontal)
                     }
-                }
-            }
-            .opacity(opacity)
-            .onAppear {
-                withAnimation(.easeOut(duration: 0.4)) {
-                    opacity = 1
                 }
             }
         }

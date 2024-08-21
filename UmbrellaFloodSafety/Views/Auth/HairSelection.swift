@@ -84,7 +84,7 @@ struct HairSelection: View {
             }
             .padding(.horizontal)
             
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 10)]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65), spacing: 15)]) {
                 ForEach(hairColors1 + hairColors2 + hairColors3, id: \.self) { haircolor in
                     Button {
                         viewModel.hairColor = haircolor.replacingOccurrences(of: "Hair", with: "").lowercased()

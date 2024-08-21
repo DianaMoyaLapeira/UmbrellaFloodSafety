@@ -48,10 +48,11 @@ struct MessagingListItem: View {
     @ObservedObject var firebaseManager = FirebaseManager.shared
     
     var body: some View {
+        if let profileString = firebaseManager.groupMembersAvatars[firstParticipant] {
             VStack {
                 HStack {
                     
-                    MapMarker(profileString: firebaseManager.groupMembersAvatars[firstParticipant] ?? "", username: firstParticipant, frameWidth: 25, circleWidth: 70, lineWidth: 4, paddingPic: 5)
+                    MapMarker(profileString: profileString, username: firstParticipant, frameWidth: 25, circleWidth: 70, lineWidth: 4, paddingPic: 5)
                     
                     VStack {
                         Spacer()
@@ -92,6 +93,7 @@ struct MessagingListItem: View {
                     
                     Spacer()
                 }.frame(height: 100)
+            }
         }
     }
 }

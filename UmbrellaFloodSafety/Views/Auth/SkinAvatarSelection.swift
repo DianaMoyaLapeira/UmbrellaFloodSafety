@@ -37,7 +37,7 @@ struct SkinAvatarSelection: View {
                 Spacer()
             }
             
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 10)]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65), spacing: 15)]) {
                 
                 ForEach(skinColors1 + skinColors2 + skinColors3, id: \.self) { skinColor in
                     Button {
@@ -72,7 +72,7 @@ struct SkinAvatarSelection: View {
                     
             }
             
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 10)]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65), spacing: 15)]) {
                 ForEach(blushColors, id: \.self) { blushColor in
                     
                     Button {
@@ -95,7 +95,7 @@ struct SkinAvatarSelection: View {
                     
             }
             
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40), spacing: 20)]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65), spacing: 20)]) {
                 ForEach(mouth1 + mouth2, id: \.self) { mouth in
                     
                     Button {
