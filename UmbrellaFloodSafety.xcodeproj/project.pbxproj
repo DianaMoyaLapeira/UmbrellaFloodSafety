@@ -932,7 +932,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240817;
+				CURRENT_PROJECT_VERSION = 20240822;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
@@ -945,8 +945,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -973,7 +972,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240817;
+				CURRENT_PROJECT_VERSION = 20240822;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
@@ -986,8 +985,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (

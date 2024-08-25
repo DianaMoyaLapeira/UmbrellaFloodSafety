@@ -26,7 +26,6 @@ struct MapView: View {
     @Binding var cameraPosition: MapCameraPosition
     @ObservedObject var viewModel = MapViewViewModel.shared
     @ObservedObject var firebaseManager = FirebaseManager.shared
-    @State private var selection = "Red"
     var locationArray: [memberLocationMap] {
         var array = [memberLocationMap]()
         for member in firebaseManager.groupMembers[viewModel.selection] ?? [] {
@@ -41,7 +40,7 @@ struct MapView: View {
         
         VStack {
             
-            if UIDevice.current.userInterfaceIdiom == .phone {
+            if UIDevice.current.userInterfaceIdiom == .phone && (UIDevice.current.orientation != .landscapeLeft || UIDevice.current.orientation != .landscapeRight) {
                 HStack {
                     Text("Hello \(firebaseManager.currentUserName)!")
                         .fontWeight(.black)

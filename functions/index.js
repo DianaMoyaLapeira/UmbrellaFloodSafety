@@ -76,7 +76,7 @@ exports.callOpenAIAdult = functions.https
         during flood emergencies and in day-to-day conversation.`},
                 {role: "user", content: userMessage},
               ],
-              model: "ft:gpt-3.5-turbo-0125:personal::9jH4IGCI",
+              model: "ft:gpt-4o-mini-2024-07-18:personal:adult:9zrVPh0c",
             });
 
             return {response: completion.choices[0]};
@@ -111,7 +111,7 @@ exports.callOpenAIChild = functions.https
           during flood emergencies and in day-to-day conversation.`},
                 {role: "user", content: userMessage},
               ],
-              model: "ft:gpt-3.5-turbo-0125:personal::9jdF6x9a",
+              model: "ft:gpt-4o-mini-2024-07-18:personal:child:9zriOoRe",
             });
 
             return {response: completion.choices[0]};

@@ -56,11 +56,12 @@ struct UserView: View {
                 
                 if ((firebaseManager.groupMembers[groupId]?.contains(username)) != nil && (firebaseManager.groupMembers[groupId]?.contains(username)) != false) {
                     UmbrellaListView(groupId: groupId)
-                        .padding([.horizontal, .bottom])
+                        .padding([.horizontal])
                 }
             }
             .foregroundStyle(.primary)
             .overlay(RoundedRectangle(cornerRadius: 25).stroke(lineWidth: 6).foregroundStyle(Color.mainBlue))
+            .padding()
             
             Spacer()
             

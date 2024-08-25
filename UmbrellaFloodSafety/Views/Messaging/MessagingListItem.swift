@@ -41,8 +41,16 @@ struct MessagingListItem: View {
         }
         let dateFormatter = DateFormatter()
         let date = Date(timeIntervalSince1970: timestamp)
-        dateFormatter.dateFormat = "h:mm a"
-        return dateFormatter.string(from: date)
+        
+        if date.twentyfourhourcheck(date: date) {
+            dateFormatter.dateFormat = "h:mm a"
+            return dateFormatter.string(from: date)
+        } else if date.fortyeighthourcheck(date: date) {
+            return "Yesterday"
+        } else {
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: date)
+        }
     }
     var lastMessage: String
     @ObservedObject var firebaseManager = FirebaseManager.shared

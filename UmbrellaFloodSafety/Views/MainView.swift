@@ -45,7 +45,7 @@ struct MainView: View {
         ZStack {
             TabView(selection: $tabController.activeTab) {
                 
-                if UIDevice.current.userInterfaceIdiom == .pad {
+                if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation == .landscapeRight || UIDevice.current.orientation == .landscapeLeft {
                     HStack {
                         NavigationSplitView {
                             MapViewSheet(cameraPosition: $cameraPosition)

@@ -97,3 +97,29 @@ extension String {
     }
 }
 
+// find if date is within 24, 48, or more hours
+
+extension Date {
+    func twentyfourhourcheck(date: Date) -> Bool {
+        let now = Date()
+        let calendar = Calendar.current
+        
+        if let dayAgo = calendar.date(byAdding: .day, value: -1, to: now) {
+            return date >= dayAgo && date <= now
+        }
+        
+        return false
+    }
+    
+    func fortyeighthourcheck(date: Date) -> Bool {
+        let now = Date()
+        let calendar = Calendar.current
+        
+        if let twoDaysAgo = calendar.date(byAdding: .day, value: -2, to: now) {
+            return date >= twoDaysAgo && date <= now
+        }
+        
+        return false
+    }
+}
+

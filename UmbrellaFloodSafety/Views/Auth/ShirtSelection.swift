@@ -22,7 +22,7 @@ struct ShirtSelection: View {
     var body: some View {
         
         ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 65), spacing: 30)]) {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: 10)]) {
                 
                 ForEach(shirt1 + shirt2 + shirt3, id: \.self) { shirt in
                     Button {
@@ -32,7 +32,7 @@ struct ShirtSelection: View {
                             .resizable()
                             .scaledToFit()
                             .frame(alignment: .bottom)
-                            .padding(.horizontal, -40)
+                            .padding(.horizontal, -20)
                             .padding(.bottom)
                     }
                     .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
