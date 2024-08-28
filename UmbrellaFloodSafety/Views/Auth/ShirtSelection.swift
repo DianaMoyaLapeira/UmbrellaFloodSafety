@@ -31,9 +31,9 @@ struct ShirtSelection: View {
                         Image(shirt)
                             .resizable()
                             .scaledToFit()
-                            .frame(alignment: .bottom)
-                            .padding(.horizontal, -20)
-                            .padding(.bottom)
+                            .padding(.horizontal, -10)
+                            .padding(.bottom, 20)
+                            .padding(.top, -60)
                     }
                     .background(RoundedRectangle(cornerRadius: 25).foregroundStyle(.quinary))
                 }

@@ -39,7 +39,7 @@ class ProfileViewViewModel: ObservableObject {
         do {
             try Auth.auth().signOut()
             UserDefaults.standard.removeObject(forKey: "lastLoggedInUsername")
-            print(UserDefaults.standard.string(forKey: "lastLoggedInUsername"))
+            UserDefaults.standard.removeObject(forKey: "avatar")
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError)")
         }
