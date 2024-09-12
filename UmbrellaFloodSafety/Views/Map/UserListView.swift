@@ -9,12 +9,10 @@ import SwiftUI
 import CoreLocation
 
 struct UserListView: View {
-    
-    let image: Image
+  
     var groupMember: String = ""
     @ObservedObject var viewModel: UserListViewViewModel
-    init(groupId: String, image: Image, groupMember: String) {
-        self.image = image
+    init(groupId: String, groupMember: String) {
         self.groupMember = groupMember
         self._viewModel = ObservedObject(wrappedValue: UserListViewViewModel(groupId: groupId, username: groupMember))
     }
@@ -26,7 +24,12 @@ struct UserListView: View {
             HStack {
                 
                 if FirebaseManager.shared.groupMembersAvatars[groupMember] != "" || FirebaseManager.shared.groupMembersAvatars[groupMember] != nil {
-                    MapMarker(profileString: FirebaseManager.shared.groupMembersAvatars[groupMember] ?? "", username: groupMember, frameWidth: 25, circleWidth: 80, lineWidth: 4, paddingPic: 8, riskColor: .skinColor8)
+                    MapMarker(profileString: FirebaseManager.shared.groupMembersAvatars[groupMember] ?? "", username: groupMember, frameWidth: 25, circleWidth: 80, lineWidth: 4, paddingPic: 8, riskColor: .secondary)
+                        .frame(width: 80, height: 80)
+                    .padding([.leading, .trailing])
+                } else {
+                    // backup blank character
+                    MapMarker(profileString: "skin11,shirt1,black,mouth1,,", username: groupMember, frameWidth: 25, circleWidth: 80, lineWidth: 4, paddingPic: 8, riskColor: .secondary)
                         .frame(width: 80, height: 80)
                     .padding([.leading, .trailing])
                 }
@@ -37,14 +40,15 @@ struct UserListView: View {
                         Text("\(viewModel.name)")
                             .font(.custom("Nunito", size: 24))
                             .fontWeight(.bold)
-                            .foregroundStyle(Color.mainBlue)
+                            .foregroundStyle(.primary)
                         
                         Spacer()
                     
                     }
                     
                     HStack {
-                        Text("\(viewModel.address)")
+                        Text("Near \(viewModel.address)")
+                            .foregroundStyle(.primary)
                             .multilineTextAlignment(.leading)
                             .font(.custom("Nunito", size: 18))
                         
@@ -61,5 +65,5 @@ struct UserListView: View {
 }
 
 #Preview {
-    UserListView(groupId: "588217", image: Image(.children), groupMember: "testadult")
+    UserListView(groupId: "588217", groupMember: "testadult")
 }

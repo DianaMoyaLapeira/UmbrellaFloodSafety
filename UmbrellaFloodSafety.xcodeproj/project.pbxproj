@@ -51,13 +51,10 @@
 		843A1A3E2C27C51100F305C1 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 843A1A292C27C51100F305C1 /* README.txt */; };
 		84445D892C3641EC00A5EB6C /* LearnTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84445D882C3641EC00A5EB6C /* LearnTile.swift */; };
 		84445D8B2C3644A600A5EB6C /* MessagingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84445D8A2C3644A600A5EB6C /* MessagingListItem.swift */; };
-		84445D8F2C36678C00A5EB6C /* MessagingListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84445D8E2C36678C00A5EB6C /* MessagingListItemViewModel.swift */; };
 		844A80D22C2A9EE4002A2D14 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80D12C2A9EE4002A2D14 /* MapView.swift */; };
 		844A80D42C2A9EEF002A2D14 /* MapViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80D32C2A9EEF002A2D14 /* MapViewViewModel.swift */; };
 		844A80D62C2A9F09002A2D14 /* MessagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80D52C2A9F09002A2D14 /* MessagingView.swift */; };
-		844A80D82C2A9F11002A2D14 /* MessagingViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80D72C2A9F11002A2D14 /* MessagingViewViewModel.swift */; };
 		844A80DA2C2A9F17002A2D14 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80D92C2A9F17002A2D14 /* LearnView.swift */; };
-		844A80DC2C2A9F20002A2D14 /* LearnViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80DB2C2A9F20002A2D14 /* LearnViewViewModel.swift */; };
 		844A80DE2C2A9F2B002A2D14 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80DD2C2A9F2B002A2D14 /* ProfileView.swift */; };
 		844A80E02C2A9F34002A2D14 /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80DF2C2A9F34002A2D14 /* ProfileViewViewModel.swift */; };
 		844A80E22C2AA3EE002A2D14 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844A80E12C2AA3EE002A2D14 /* LoginView.swift */; };
@@ -66,8 +63,6 @@
 		845BAF0F2C276CD30054AAAA /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF0E2C276CD30054AAAA /* StartView.swift */; };
 		845BAF132C276CF00054AAAA /* RegisterFirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF122C276CF00054AAAA /* RegisterFirstView.swift */; };
 		845BAF152C276CFA0054AAAA /* KidRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF142C276CFA0054AAAA /* KidRegisterView.swift */; };
-		845BAF172C276D0D0054AAAA /* StartViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF162C276D0D0054AAAA /* StartViewViewModel.swift */; };
-		845BAF192C276D150054AAAA /* RegisterFirstViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF182C276D150054AAAA /* RegisterFirstViewViewModel.swift */; };
 		845BAF1B2C276D200054AAAA /* KidRegisterViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF1A2C276D200054AAAA /* KidRegisterViewViewModel.swift */; };
 		845BAF1D2C276D780054AAAA /* AdultRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF1C2C276D780054AAAA /* AdultRegisterView.swift */; };
 		845BAF1F2C276D880054AAAA /* AdultRegisterViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BAF1E2C276D880054AAAA /* AdultRegisterViewViewModel.swift */; };
@@ -138,7 +133,6 @@
 		84FABB842C2F30FF00173E4D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FABB832C2F30FF00173E4D /* EditProfileView.swift */; };
 		84FABB862C2F312A00173E4D /* EditProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FABB852C2F312A00173E4D /* EditProfileViewViewModel.swift */; };
 		84FABB882C2F323100173E4D /* UmbrellaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FABB872C2F323100173E4D /* UmbrellaListView.swift */; };
-		84FABB8C2C2F332200173E4D /* UmbrellaListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FABB8B2C2F332200173E4D /* UmbrellaListViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,13 +180,10 @@
 		843A1A3F2C27C6F000F305C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84445D882C3641EC00A5EB6C /* LearnTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnTile.swift; sourceTree = "<group>"; };
 		84445D8A2C3644A600A5EB6C /* MessagingListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingListItem.swift; sourceTree = "<group>"; };
-		84445D8E2C36678C00A5EB6C /* MessagingListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingListItemViewModel.swift; sourceTree = "<group>"; };
 		844A80D12C2A9EE4002A2D14 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		844A80D32C2A9EEF002A2D14 /* MapViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewModel.swift; sourceTree = "<group>"; };
 		844A80D52C2A9F09002A2D14 /* MessagingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingView.swift; sourceTree = "<group>"; };
-		844A80D72C2A9F11002A2D14 /* MessagingViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingViewViewModel.swift; sourceTree = "<group>"; };
 		844A80D92C2A9F17002A2D14 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
-		844A80DB2C2A9F20002A2D14 /* LearnViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewViewModel.swift; sourceTree = "<group>"; };
 		844A80DD2C2A9F2B002A2D14 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		844A80DF2C2A9F34002A2D14 /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 		844A80E12C2AA3EE002A2D14 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -201,8 +192,6 @@
 		845BAF0E2C276CD30054AAAA /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		845BAF122C276CF00054AAAA /* RegisterFirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFirstView.swift; sourceTree = "<group>"; };
 		845BAF142C276CFA0054AAAA /* KidRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidRegisterView.swift; sourceTree = "<group>"; };
-		845BAF162C276D0D0054AAAA /* StartViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewViewModel.swift; sourceTree = "<group>"; };
-		845BAF182C276D150054AAAA /* RegisterFirstViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFirstViewViewModel.swift; sourceTree = "<group>"; };
 		845BAF1A2C276D200054AAAA /* KidRegisterViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KidRegisterViewViewModel.swift; sourceTree = "<group>"; };
 		845BAF1C2C276D780054AAAA /* AdultRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultRegisterView.swift; sourceTree = "<group>"; };
 		845BAF1E2C276D880054AAAA /* AdultRegisterViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdultRegisterViewViewModel.swift; sourceTree = "<group>"; };
@@ -260,7 +249,7 @@
 		84ED817E2C4F5D2D00F58201 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		84ED81802C4F61D900F58201 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		84ED81822C4F6A9F00F58201 /* UnblockUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnblockUsers.swift; sourceTree = "<group>"; };
-		84ED81842C4F718100F58201 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		84ED81842C4F718100F58201 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = Resources/Localizable.xcstrings; sourceTree = "<group>"; };
 		84EF0D0A2C2B93DC0029A653 /* UMButtonStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UMButtonStroke.swift; sourceTree = "<group>"; };
 		84EF0D0C2C2B96210029A653 /* NewUmbrellaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUmbrellaView.swift; sourceTree = "<group>"; };
 		84EF0D0E2C2B965D0029A653 /* NewUmbrellaViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUmbrellaViewViewModel.swift; sourceTree = "<group>"; };
@@ -269,7 +258,6 @@
 		84FABB832C2F30FF00173E4D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		84FABB852C2F312A00173E4D /* EditProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewViewModel.swift; sourceTree = "<group>"; };
 		84FABB872C2F323100173E4D /* UmbrellaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaListView.swift; sourceTree = "<group>"; };
-		84FABB8B2C2F332200173E4D /* UmbrellaListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaListViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -427,13 +415,13 @@
 		845F09BB2C27688900070E19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84BEC9E42C48B8DB00119CCF /* FloodSafetyResources.swift */,
 				845BAF202C2775580054AAAA /* MainView.swift */,
 				84923AA52C32631F004EAECC /* Auth */,
 				84923AA82C32638C004EAECC /* Map */,
 				84923AA92C326395004EAECC /* Messaging */,
 				84923AAA2C3263A2004EAECC /* Learn */,
 				84923AAB2C3263AD004EAECC /* ProfileUmbrellasView */,
-				84BEC9E42C48B8DB00119CCF /* FloodSafetyResources.swift */,
 				844E4E6F2C4A3244007A22BA /* Notifications */,
 				849876C82C4CB63500C57B52 /* TabController.swift */,
 				2DCC314F2C6AA9440031A173 /* TransitionTest.swift */,
@@ -477,9 +465,7 @@
 		84923AA62C32634E004EAECC /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				845BAF162C276D0D0054AAAA /* StartViewViewModel.swift */,
 				844A80E32C2AA3F8002A2D14 /* LoginViewViewModel.swift */,
-				845BAF182C276D150054AAAA /* RegisterFirstViewViewModel.swift */,
 				845BAF1A2C276D200054AAAA /* KidRegisterViewViewModel.swift */,
 				845BAF1E2C276D880054AAAA /* AdultRegisterViewViewModel.swift */,
 				84ED76BF2C424B1A00F47875 /* CreateAvatarViewViewModel.swift */,
@@ -561,8 +547,6 @@
 		84923AAD2C3263D1004EAECC /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
-				844A80D72C2A9F11002A2D14 /* MessagingViewViewModel.swift */,
-				84445D8E2C36678C00A5EB6C /* MessagingListItemViewModel.swift */,
 				840C96D92C3FA1A000EFAFA7 /* ConversationViewViewModel.swift */,
 				849876D62C4F204200C57B52 /* UserViewViewModel.swift */,
 			);
@@ -573,7 +557,6 @@
 			isa = PBXGroup;
 			children = (
 				844A80DF2C2A9F34002A2D14 /* ProfileViewViewModel.swift */,
-				84FABB8B2C2F332200173E4D /* UmbrellaListViewViewModel.swift */,
 				84FABB852C2F312A00173E4D /* EditProfileViewViewModel.swift */,
 				84EF0D0E2C2B965D0029A653 /* NewUmbrellaViewViewModel.swift */,
 				84ED81802C4F61D900F58201 /* SettingsViewModel.swift */,
@@ -585,7 +568,6 @@
 		84923AAF2C326401004EAECC /* Learn */ = {
 			isa = PBXGroup;
 			children = (
-				844A80DB2C2A9F20002A2D14 /* LearnViewViewModel.swift */,
 				8494D56F2C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift */,
 				2DE745CC2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift */,
 			);
@@ -700,16 +682,13 @@
 			files = (
 				84ED76C02C424B1A00F47875 /* CreateAvatarViewViewModel.swift in Sources */,
 				84B297E42C3B9AF3008E5F00 /* MapMarker.swift in Sources */,
-				84445D8F2C36678C00A5EB6C /* MessagingListItemViewModel.swift in Sources */,
 				84EF0D0B2C2B93DC0029A653 /* UMButtonStroke.swift in Sources */,
 				849876D72C4F204200C57B52 /* UserViewViewModel.swift in Sources */,
 				84C2FF822C48AB3200E87224 /* KidsEmergencyGuide.swift in Sources */,
-				844A80D82C2A9F11002A2D14 /* MessagingViewViewModel.swift in Sources */,
 				844A80DA2C2A9F17002A2D14 /* LearnView.swift in Sources */,
 				2DCC314A2C67D3980031A173 /* AddUsersToPlanSheet.swift in Sources */,
 				8475EA642C35AF5C00321D9D /* FirebaseManager.swift in Sources */,
 				84969DCE2C63224F00719A6C /* PetEmergencyInfo.swift in Sources */,
-				845BAF172C276D0D0054AAAA /* StartViewViewModel.swift in Sources */,
 				2DCC314C2C68308B0031A173 /* EmergencyPlanView.swift in Sources */,
 				846F3C252C2BD7D300DACB0C /* WeatherManager.swift in Sources */,
 				845BAF212C2775580054AAAA /* MainView.swift in Sources */,
@@ -730,7 +709,6 @@
 				84923A952C2F806B004EAECC /* ProfileWMarker.swift in Sources */,
 				84FABB862C2F312A00173E4D /* EditProfileViewViewModel.swift in Sources */,
 				846E49052C3CD3E80019C68A /* conversation.swift in Sources */,
-				844A80DC2C2A9F20002A2D14 /* LearnViewViewModel.swift in Sources */,
 				845BAF1B2C276D200054AAAA /* KidRegisterViewViewModel.swift in Sources */,
 				2DE745CD2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift in Sources */,
 				840F28ED2C425C36001F02FF /* HairSelection.swift in Sources */,
@@ -740,7 +718,6 @@
 				84969DD42C63256800719A6C /* FamilyResponsibilities.swift in Sources */,
 				84969DDA2C6333E500719A6C /* EmergencyContactListView.swift in Sources */,
 				845BAF0F2C276CD30054AAAA /* StartView.swift in Sources */,
-				845BAF192C276D150054AAAA /* RegisterFirstViewViewModel.swift in Sources */,
 				849876C92C4CB63500C57B52 /* TabController.swift in Sources */,
 				84EF0D112C2B9CE80029A653 /* group.swift in Sources */,
 				84C2FF842C48AB3800E87224 /* AdultEmergencyGuide.swift in Sources */,
@@ -788,7 +765,6 @@
 				840F28F32C4356F3001F02FF /* LearnTileStroke.swift in Sources */,
 				84D814BE2C40FC200099B020 /* OpenAIAPI.swift in Sources */,
 				840F28F12C4326EC001F02FF /* AccessoriesSelection.swift in Sources */,
-				84FABB8C2C2F332200173E4D /* UmbrellaListViewViewModel.swift in Sources */,
 				849876DB2C4F30CF00C57B52 /* ReportView.swift in Sources */,
 				84EF0D0D2C2B96210029A653 /* NewUmbrellaView.swift in Sources */,
 				84969DD22C6324AD00719A6C /* SpecialNeedsEvacuationPlan.swift in Sources */,

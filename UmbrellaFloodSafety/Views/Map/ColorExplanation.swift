@@ -54,7 +54,7 @@ struct ColorExplanation: View {
                     .padding(.trailing)
             }
             
-            Text(LocalizedStringKey("A red circle stands for a flood warning. This means that flooding will happen or is happening in someone's area."))
+            Text(LocalizedStringKey("A red circle stands for a flood warning. This means that flooding is possible and that conditions are favorable for it to happen, but it does not mean that it will happen."))
                 .font(.custom("Nunito", size: 18))
             
             HStack {

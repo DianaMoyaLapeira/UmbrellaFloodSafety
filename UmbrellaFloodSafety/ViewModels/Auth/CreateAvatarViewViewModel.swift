@@ -27,6 +27,8 @@ class CreateAvatarViewViewModel: ObservableObject {
         self.skin = StartingComponents[0]
         self.shirt = StartingComponents[1]
         
+        // handle hair (back and front) from string
+        
         if StartingComponents[2].contains(";") {
             let hairComponents = StartingComponents[2].components(separatedBy: ";")
             

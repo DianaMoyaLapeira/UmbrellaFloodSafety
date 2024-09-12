@@ -36,6 +36,7 @@ class MapViewViewModel: ObservableObject {
     
     private let db = Firestore.firestore()
     
+    // get current user groups and keep it updated with Combine
     private func setupSubscriptions() {
             firebaseManager.$userGroups
                 .sink { [weak self] userGroups in

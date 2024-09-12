@@ -41,9 +41,9 @@ struct MapViewSheet: View {
                                 cameraPosition = .item(MKMapItem(placemark: .init(coordinate: firebaseManager.groupMembersLocations[member] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))))
                             }
                         } label: {
-                            UserListView(groupId: mapViewViewModel.selection, image: Image(.children), groupMember: member)
+                            UserListView(groupId: mapViewViewModel.selection, groupMember: member)
                         }
-                        .foregroundStyle(.primary)
+            
                     }
                 } else {
                     

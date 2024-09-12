@@ -50,23 +50,26 @@ struct FloodDetectedView: View {
                 .frame(height: 60)
                 .padding(.bottom, 4)
             }
-            
-            UMButton(title: "Messages", background: .mainBlue) {
-                activeTab = .messages
-                
-                withAnimation {
-                    dismissedAlerts.append(member)
-                }
-            }
-            .frame(height: 60)
-            .padding(.bottom, 4)
         
-            if member == currentUsername {
-                UMButtonStoke(title: "I'm Safe", background: .mainBlue) {
-                    dismissedAlerts.append(member)
+            if member != currentUsername {
+                HStack {
+                    Call911Button()
+                    UMButton(title: "I'm Safe", background: .mainBlue) {
+                        dismissedAlerts.append(member)
+                    }
+                    .frame(height: 40)
+                }
+            } else {
+                UMButton(title: "Messages", background: .mainBlue) {
+                    activeTab = .messages
+                    
+                    withAnimation {
+                        dismissedAlerts.append(member)
+                    }
                 }
                 .frame(height: 60)
-            } else {
+                .padding(.bottom, 4)
+                
                 UMButtonStoke(title: "Ok", background: .mainBlue) {
                     dismissedAlerts.append(member)
                 }
@@ -79,13 +82,15 @@ struct FloodDetectedView: View {
         .padding()
         .opacity(opacity)
         .onAppear {
-            withAnimation(.easeIn(duration: 0.4)) {
+            withAnimation(.easeIn(duration: 0.2)) {
                 opacity = 1
             }
         }
-        .onDisappear {
-            withAnimation(.easeOut(duration: 0.4)) {
-                opacity = 0
+        .onChange(of: dismissedAlerts) { oldVal, newVal in
+            if !oldVal.contains(member) && newVal.contains(member) {
+                withAnimation(.easeIn(duration: 0.2)) {
+                    opacity = 0
+                }
             }
         }
     }

@@ -8,12 +8,17 @@
 import Foundation
 import FirebaseFirestore
 
+
+// Handle user to user interactions and safety
+
 class UserViewViewModel: ObservableObject {
     
     var firebaseManager = FirebaseManager.shared
     
     func blockUser(blockedUser: String) {
         let db = Firestore.firestore()
+        
+        // remove blocked user from all connections to the current user and make sure they can't connect in the future by putting them in the "blocked users" section 
         
         db.collection("users").document(firebaseManager.currentUserUsername).updateData([
             "blockedUsers": FieldValue.arrayUnion([blockedUser])

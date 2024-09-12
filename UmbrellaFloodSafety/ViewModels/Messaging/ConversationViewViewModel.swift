@@ -19,14 +19,6 @@ class ConversationViewViewModel: ObservableObject {
     @Published var suggestionsFormatted: [String] = []
     private let openAIChatAPI = OpenAIAPI()
     
-    private var systemMessage: String {
-        if firebaseManager.isChild {
-            return "You are a helpful assistant providing short and helpful reply suggestions to children replying to adults during flood emergencies and in day-to-day conversation."
-        } else {
-            return "You are a helpful assistant providing short and helpful reply suggestions to adults replying to children during flood emergencies and helping prepare for potential flood emergencies."
-        }
-    }
-    
     init(conversationId: String) {
         self.conversationId = conversationId
     }
@@ -58,6 +50,7 @@ class ConversationViewViewModel: ObservableObject {
             .updateData(["lastMessageTimestamp": Date().timeIntervalSince1970])
     }
     
+    // handle openAI by using Swift script that sends it to Firebase Functions and then get response back with animation
     func getSuggestions(input: String) {
         
         guard input != "" else { return}

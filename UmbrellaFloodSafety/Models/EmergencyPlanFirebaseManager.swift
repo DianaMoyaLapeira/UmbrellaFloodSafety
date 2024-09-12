@@ -4,11 +4,13 @@
 //
 //  Created by Diana Moya Lapeira on 8/8/24.
 //
-// Note to whoever is reading this: I'm making this as I have a fever. It may not be as optimized as hoped for. Not feeling great
+// Note to whoever is reading this: I'm making this as I have a fever. It may not be as optimized as hoped for.
 
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+
+// Handle emergency plans, get them on screen, and listen for any updates
 
 class EmergencyPlanFirebaseManager: ObservableObject {
     
@@ -54,6 +56,8 @@ class EmergencyPlanFirebaseManager: ObservableObject {
                     safeRoom: document.get("safeRoom") as? String ?? "",
                     usersInPlan: document.get("usersInPlan") as? [String] ?? []
                 )
+                
+                // Use completion handlers to update the main thread and UI whenever a new aspect of the emergency plan becomes available from Firebase
                 
                 DispatchQueue.main.async {
                     self.emergencyPlans[emergencyPlan] = emergencyPlanTemplate

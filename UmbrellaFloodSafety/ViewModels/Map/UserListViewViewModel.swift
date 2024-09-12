@@ -61,7 +61,9 @@ class UserListViewViewModel: ObservableObject {
             }
                 
             if let placemark = placemarks?.first {
-                var address = "Near "
+                var address = ""
+                
+                // make sure the address makes gramatical sense based on what information is available
                 
                 if placemark.subThoroughfare != nil {
                     address.append("\(placemark.subThoroughfare ?? ""), ")
