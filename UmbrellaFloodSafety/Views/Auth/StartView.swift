@@ -27,6 +27,7 @@ struct StartView: View {
                         .fontWeight(.medium)
                         .foregroundStyle(Color(.mainBlue))
                         .font(.custom("Nunito", size: 22))
+                        .multilineTextAlignment(.center)
                     Spacer()
                     ZStack {
                         RoundedRectangle(cornerRadius: 25)
