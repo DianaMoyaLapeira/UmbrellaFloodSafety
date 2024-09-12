@@ -168,7 +168,7 @@ struct ProfileView: View {
                                 .font(.custom("Nunito", size: 18))
                         }
                         .frame(height: 70)
-                        .padding()
+                        .padding(.horizontal)
                         
                         UMButtonStoke(title: "Log Out", background: .mainBlue) {
                             viewModel.signOut()

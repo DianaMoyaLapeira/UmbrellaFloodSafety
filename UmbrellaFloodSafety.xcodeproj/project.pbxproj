@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D69228D2C93AD1F0038293E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */; };
 		2DA960E92C6ECCDB00688E6F /* UmbrellaViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */; };
+		2DAB60D62C93AB490035DE42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB60D52C93AB490035DE42 /* SplashScreen.swift */; };
 		2DCC31482C67CA550031A173 /* EmergencyPlanUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */; };
 		2DCC314A2C67D3980031A173 /* AddUsersToPlanSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */; };
 		2DCC314C2C68308B0031A173 /* EmergencyPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */; };
@@ -136,7 +138,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaViewViewModel.swift; sourceTree = "<group>"; };
+		2DAB60D52C93AB490035DE42 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanUsersView.swift; sourceTree = "<group>"; };
 		2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUsersToPlanSheet.swift; sourceTree = "<group>"; };
 		2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanView.swift; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 				849876C82C4CB63500C57B52 /* TabController.swift */,
 				2DCC314F2C6AA9440031A173 /* TransitionTest.swift */,
 				2DCC314D2C686C9A0031A173 /* FloodDetectedView.swift */,
+				2DAB60D52C93AB490035DE42 /* SplashScreen.swift */,
+				2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				843A1A2E2C27C51100F305C1 /* Nunito-BoldItalic.ttf in Resources */,
 				843A1A3E2C27C51100F305C1 /* README.txt in Resources */,
 				843A1A372C27C51100F305C1 /* Nunito-MediumItalic.ttf in Resources */,
+				2D69228D2C93AD1F0038293E /* LaunchScreen.storyboard in Resources */,
 				843A1A352C27C51100F305C1 /* Nunito-LightItalic.ttf in Resources */,
 				845F09A52C2766E100070E19 /* Assets.xcassets in Resources */,
 				843A1A2B2C27C51100F305C1 /* Nunito-Black.ttf in Resources */,
@@ -704,6 +711,7 @@
 				84ED817F2C4F5D2D00F58201 /* Settings.swift in Sources */,
 				844A80E02C2A9F34002A2D14 /* ProfileViewViewModel.swift in Sources */,
 				84969DDC2C64277F00719A6C /* PetInfoListView.swift in Sources */,
+				2DAB60D62C93AB490035DE42 /* SplashScreen.swift in Sources */,
 				8494D5722C631AF60059B723 /* EmergencyContact.swift in Sources */,
 				840C96DA2C3FA1A000EFAFA7 /* ConversationViewViewModel.swift in Sources */,
 				84923A952C2F806B004EAECC /* ProfileWMarker.swift in Sources */,
@@ -919,7 +927,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide real-time flood alerts and make sure you're safe during emergencies.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -959,7 +967,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide real-time flood alerts and make sure you're safe during emergencies.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;

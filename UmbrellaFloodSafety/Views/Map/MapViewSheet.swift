@@ -42,6 +42,7 @@ struct MapViewSheet: View {
                             }
                         } label: {
                             UserListView(groupId: mapViewViewModel.selection, groupMember: member)
+                                .foregroundStyle(.primary)
                         }
             
                     }

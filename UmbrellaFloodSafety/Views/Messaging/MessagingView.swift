@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessagingView: View {
-    @ObservedObject var viewModel = MessagingViewViewModel.shared
+    
     @ObservedObject var firebaseManager = FirebaseManager.shared
     @State var showNotificationSheet: Bool = false
     

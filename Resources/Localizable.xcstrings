@@ -284,7 +284,18 @@
         }
       }
     },
+    "A red circle stands for a flood warning. This means that flooding is possible and that conditions are favorable for it to happen, but it does not mean that it will happen." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un círculo rojo representa una advertencia de inundación. Esto significa que las inundaciones son posibles y que las condiciones son favorables para que ocurran, pero no significa que vayan a suceder."
+          }
+        }
+      }
+    },
     "A red circle stands for a flood warning. This means that flooding will happen or is happening in someone's area." : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -1349,14 +1360,21 @@
       }
     },
     "Hello %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hola %@"
+          }
+        }
+      }
     },
     "Hello %@!" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hello %@"
+            "value" : "Hola %@!"
           }
         }
       }
@@ -1833,6 +1851,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cerca de"
+          }
+        }
+      }
+    },
+    "Near %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca de %@"
           }
         }
       }

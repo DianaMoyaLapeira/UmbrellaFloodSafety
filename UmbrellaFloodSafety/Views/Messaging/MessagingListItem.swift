@@ -92,6 +92,7 @@ struct MessagingListItem: View {
                             Text("\(lastMessage)") // Last message
                                 .font(.custom("Nunito", size: 18))
                                 .foregroundStyle(Color(UIColor.darkGray))
+                                .multilineTextAlignment(.leading)
                             Spacer()
                         }
                         

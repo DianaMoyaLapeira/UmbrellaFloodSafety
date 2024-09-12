@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct LearnView: View {
-    @StateObject private var viewModel: LearnViewViewModel
+   
     @ObservedObject private var firebaseManager = FirebaseManager.shared
     
-    init(username: String) {
-        self._viewModel = StateObject(wrappedValue: LearnViewViewModel(username: username))
-    }
     
     var body: some View {
         NavigationStack {
@@ -64,5 +61,5 @@ struct LearnView: View {
 }
 
 #Preview {
-    LearnView(username: "vZAFWKrRyFh0oNfXBr3adVTUNQD3")
+    LearnView()
 }

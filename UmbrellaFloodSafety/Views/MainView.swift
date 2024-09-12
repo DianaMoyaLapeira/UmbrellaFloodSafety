@@ -99,7 +99,7 @@ struct MainView: View {
                     }
                     .tag(Tab.messages)
                 
-                LearnView(username: viewModel.currentUserUsername)
+                LearnView()
                     .tabItem {
                         Label("", systemImage: "book")
                     }

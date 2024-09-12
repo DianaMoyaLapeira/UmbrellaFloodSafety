@@ -41,6 +41,7 @@ struct LearnTile: View {
                         .font(.custom("Nunito", size: 32))
                         .fontWeight(.black)
                         .padding(.top, -65)
+                        .padding()
                     
                     Spacer()
                 }
