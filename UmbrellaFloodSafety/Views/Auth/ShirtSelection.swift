@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ShirtSelection: View {
     
-    @ObservedObject var viewModel = CreateAvatarViewViewModel.shared
+    @StateObject var viewModel = CreateAvatarViewViewModel.shared
     @State private var opacity: Double = 0
     @State private var scale: Bool = false
     

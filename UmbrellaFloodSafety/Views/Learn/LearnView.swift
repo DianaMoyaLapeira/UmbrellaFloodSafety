@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LearnView: View {
    
-    @ObservedObject private var firebaseManager = FirebaseManager.shared
+    @StateObject private var firebaseManager = FirebaseManager.shared
     
     
     var body: some View {
@@ -54,6 +54,14 @@ struct LearnView: View {
                         LearnTile(title: "Emergency Plans", icon: "person.badge.shield.checkmark", mainColor: .mainBlue, secondaryColor: .white.opacity(0.95), iconColor: .accentGreen)
                             .padding(.horizontal)
                     }
+                    
+                    NavigationLink {
+                        BreathingView()
+                    } label: {
+                        LearnTile(title: "Breathing", icon: "wind", mainColor: .mainBlue, secondaryColor: .white, iconColor: .skyBlue)
+                            .padding(.horizontal)
+                    }
+                    .padding(.vertical)
                 }
             }
         }

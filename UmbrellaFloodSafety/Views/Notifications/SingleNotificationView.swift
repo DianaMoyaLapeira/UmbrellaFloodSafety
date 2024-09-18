@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SingleNotificationView: View {
     
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     var title: String
     var username: String
     var content: String

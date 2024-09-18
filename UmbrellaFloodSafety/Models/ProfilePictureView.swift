@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ProfilePictureView: View {
-
+    
+    
     init(profileString: String) {
+        
         self.profilestring = profileString
+        
     }
     
-    var profilestring: String
+    
+    let profilestring: String
     
     var hair: [String] {
         if profilearray[2].contains(";") {
@@ -39,16 +44,23 @@ struct ProfilePictureView: View {
                         .resizable()
                         .scaledToFit()
                 }
-                
+                // skin
                 Image(profilearray[0])
                     .resizable()
                     .scaledToFit()
                 
+                //eyes
+                Image("openEyes")
+                    .resizable()
+                    .scaledToFit()
+                
+                // blush
                 Image(profilearray[4])
                     .resizable()
                     .scaledToFit()
                     .opacity(0.5)
                 
+                // mouth
                 Image(profilearray[3])
                     .resizable()
                     .scaledToFit()
@@ -81,5 +93,5 @@ struct ProfilePictureView: View {
 }
 
 #Preview {
-    ProfilePictureView(profileString: "")
+    ProfilePictureView(profileString: "skin3,shirt2,gingerback2;gingerfront2,mouth5,blush3,")
 }

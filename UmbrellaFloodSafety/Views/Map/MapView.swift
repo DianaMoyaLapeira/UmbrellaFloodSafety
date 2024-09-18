@@ -24,8 +24,8 @@ struct memberLocationMap: Identifiable, Hashable {
 struct MapView: View {
     
     @Binding var cameraPosition: MapCameraPosition
-    @ObservedObject var viewModel = MapViewViewModel.shared
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var viewModel = MapViewViewModel.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     var locationArray: [memberLocationMap] {
         var array = [memberLocationMap]()
         for member in firebaseManager.groupMembers[viewModel.selection] ?? [] {

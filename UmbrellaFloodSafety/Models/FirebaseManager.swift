@@ -30,7 +30,6 @@ class FirebaseManager: ObservableObject {
     @Published var isChild: Bool = false
     @Published var usernameToName: [String: String] = [:] // Username to name
     @Published var memberRiskLevels: [String: Int] = [:] // Username to risk level (only for risks > 0)
-    @Published var memberRiskColors: [String: Color] = [:] // Username to color
     @Published var blockedUsers: [String] = [] // Array of blocked users
     
     private let weatherManager = WeatherManager()
@@ -51,6 +50,10 @@ class FirebaseManager: ObservableObject {
         
         guard lastLoggedInUsername != nil && lastLoggedInUsername != "" else {
             print("no userdefaultlastloggedin")
+            return
+        }
+        
+        guard newLocation != CLLocation(latitude: 0, longitude: 0) else {
             return
         }
                                 
@@ -91,6 +94,13 @@ class FirebaseManager: ObservableObject {
             guard let self = self else {return}
             if let user = user {
                 self.setupUserListener(for: (user.email?.replacingOccurrences(of: "@fakedomain.com", with: ""))!)
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    let location = appDelegate.locationManager.location
+                    
+                    self.updateLocation(newLocation: location ?? CLLocation(latitude: 0, longitude: 0)) { error in
+                        print("Failed to update location from auth listener")
+                    }
+                }
             } else {
                 self.clearData()
             }

@@ -12,7 +12,7 @@ import MapKit
 struct MapViewSheet: View {
     
     @Binding var cameraPosition: MapCameraPosition
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     @StateObject var mapViewViewModel = MapViewViewModel.shared
     @State var showAlert = false
     @State var showCircleExplanation: Bool = false
@@ -42,8 +42,8 @@ struct MapViewSheet: View {
                             }
                         } label: {
                             UserListView(groupId: mapViewViewModel.selection, groupMember: member)
-                                .foregroundStyle(.primary)
                         }
+                        .buttonStyle(.plain)
             
                     }
                 } else {

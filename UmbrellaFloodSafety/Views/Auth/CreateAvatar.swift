@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateAvatar: View {
     
-    @ObservedObject var viewModel = CreateAvatarViewViewModel.shared
+    @StateObject var viewModel = CreateAvatarViewViewModel.shared
     @State var selection = 0
     @Environment(\.dismiss) var dismiss
     @Binding var isPresented: Bool

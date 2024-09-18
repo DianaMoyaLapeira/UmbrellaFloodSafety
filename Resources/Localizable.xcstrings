@@ -453,6 +453,9 @@
         }
       }
     },
+    "Breathing Exercises" : {
+
+    },
     "Call" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1772,7 +1775,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mis planes de emergencia"
+            "value" : "Planes de emergencia"
           }
         }
       }
@@ -2391,6 +2394,9 @@
           }
         }
       }
+    },
+    "Stay calm and stay safe" : {
+
     },
     "Stay on high ground if you're already there." : {
       "localizations" : {

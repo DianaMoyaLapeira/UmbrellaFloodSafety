@@ -48,6 +48,8 @@ class ConversationViewViewModel: ObservableObject {
         Firestore.firestore().collection("conversations")
             .document(conversationId)
             .updateData(["lastMessageTimestamp": Date().timeIntervalSince1970])
+        
+        self.input = ""
     }
     
     // handle openAI by using Swift script that sends it to Firebase Functions and then get response back with animation

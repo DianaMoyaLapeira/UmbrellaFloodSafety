@@ -15,7 +15,7 @@ struct MainView: View {
     @State var showNotificationSheet: Bool = false
     @State var bottomSheetPosition: BottomSheetPosition = .relative(0.5)
     @StateObject private var viewModel = MainViewViewModel()
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     @StateObject var mapViewViewModel = MapViewViewModel.shared
     @State var dismissedAlerts: [String] = []
     @State var cameraPosition: MapCameraPosition = .automatic

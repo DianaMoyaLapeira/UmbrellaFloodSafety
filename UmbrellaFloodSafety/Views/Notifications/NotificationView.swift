@@ -9,8 +9,8 @@ import SwiftUI
 
 struct NotificationView: View {
     
-    @ObservedObject var viewModel = NotificationViewViewModel.shared
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var viewModel = NotificationViewViewModel.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     @Binding var isShown: Bool
     
     init(isPresented: Binding<Bool>) {

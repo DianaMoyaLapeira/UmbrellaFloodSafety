@@ -11,7 +11,7 @@ import CoreLocation
 struct MapMarker: View {
     
     var profileString: String
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     var weatherManager = WeatherManager()
     var username: String
     var frameWidth: CGFloat
@@ -44,6 +44,7 @@ struct MapMarker: View {
                     Circle()
                         .frame(width: frameWidth)
                         .foregroundStyle(riskColor)
+                        .opacity(1)
                         .overlay(Circle().stroke(lineWidth: lineWidth).foregroundStyle(Color.mainBlue))
                         .padding([.top, .leading])
                         .onAppear {

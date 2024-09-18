@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SkinAvatarSelection: View {
     
-    @ObservedObject var viewModel = CreateAvatarViewViewModel.shared
+    @StateObject var viewModel = CreateAvatarViewViewModel.shared
     
     @State var skinSelection: String = ""
     

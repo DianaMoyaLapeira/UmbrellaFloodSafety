@@ -10,7 +10,7 @@ import SwiftUI
 struct UmbrellaView: View {
     
     @StateObject var viewModel = UmbrellaViewViewModel()
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     @Environment(\.dismiss) var dismiss
     @State private var opacity: Double = 0
     let groupId: String

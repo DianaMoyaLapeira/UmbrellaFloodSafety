@@ -11,7 +11,7 @@ struct AddUsersToPlanSheet: View {
     
     @Binding var usersInPlan: [String]
     @Binding var isPresented: Bool
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     
     var body: some View {
         ScrollView {

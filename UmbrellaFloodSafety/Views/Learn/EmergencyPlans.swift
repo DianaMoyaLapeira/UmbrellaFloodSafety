@@ -10,7 +10,7 @@ import SwiftUI
 struct EmergencyPlans: View {
     
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var emergencyPlanFirebaseManager = EmergencyPlanFirebaseManager.shared
+    @StateObject var emergencyPlanFirebaseManager = EmergencyPlanFirebaseManager.shared
     @State private var opacity: Double = 0
     
     var body: some View {

@@ -14,7 +14,7 @@ struct EmergencyPlanUsersView: View {
     @State var isPresented: Bool = false
     @State private var opacity: Double = 0
     @Binding var usersInPlan: [String]
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     
     var body: some View {
         VStack {

@@ -12,7 +12,7 @@ struct EmergencyPlanView: View {
     @StateObject var viewModel = EmergencyPlanViewViewModel()
     @Environment(\.dismiss) var dismiss
     let emergencyPlanId: String
-    @ObservedObject var emergencyPlanFirebase = EmergencyPlanFirebaseManager.shared
+    @StateObject var emergencyPlanFirebase = EmergencyPlanFirebaseManager.shared
     var emergencyPlan: EmergencyPlanModel {
         emergencyPlanFirebase.emergencyPlans[emergencyPlanId] ?? EmergencyPlanModel(id: "", title: "Plan failed to load", dateUpdated: 0, emergencyContacts: [], petEmergencyInfo: [], mostLikelyDisasters: "", escapeRouteFromHome: "", meetingNearHome: "", meetingOutsideNeighborhood: "", firstChoiceRoute: "", secondChoiceRoute: "", externalEmergencyContact: [], childEvacuationPlans: [], specialNeedsEvacuationPlan: [], safeRoom: "", usersInPlan: [])
     }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2457572C9627B000027946 /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2457562C9627B000027946 /* BreathingView.swift */; };
+		2D2457592C962EC400027946 /* BreathingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2457582C962EC400027946 /* BreathingViewModel.swift */; };
+		2D24575B2C97A70000027946 /* BreathingAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D24575A2C97A70000027946 /* BreathingAvatarView.swift */; };
 		2D69228D2C93AD1F0038293E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */; };
 		2DA960E92C6ECCDB00688E6F /* UmbrellaViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */; };
 		2DAB60D62C93AB490035DE42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB60D52C93AB490035DE42 /* SplashScreen.swift */; };
@@ -138,6 +141,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D2457562C9627B000027946 /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
+		2D2457582C962EC400027946 /* BreathingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingViewModel.swift; sourceTree = "<group>"; };
+		2D24575A2C97A70000027946 /* BreathingAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingAvatarView.swift; sourceTree = "<group>"; };
 		2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaViewViewModel.swift; sourceTree = "<group>"; };
 		2DAB60D52C93AB490035DE42 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -520,6 +526,8 @@
 				2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */,
 				2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */,
 				2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */,
+				2D2457562C9627B000027946 /* BreathingView.swift */,
+				2D24575A2C97A70000027946 /* BreathingAvatarView.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -576,6 +584,7 @@
 			children = (
 				8494D56F2C631AAE0059B723 /* MakeEmergencyPlanViewModel.swift */,
 				2DE745CC2C6E9BAC00035D1A /* EmergencyPlanViewViewModel.swift */,
+				2D2457582C962EC400027946 /* BreathingViewModel.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -694,6 +703,7 @@
 				84C2FF822C48AB3200E87224 /* KidsEmergencyGuide.swift in Sources */,
 				844A80DA2C2A9F17002A2D14 /* LearnView.swift in Sources */,
 				2DCC314A2C67D3980031A173 /* AddUsersToPlanSheet.swift in Sources */,
+				2D2457592C962EC400027946 /* BreathingViewModel.swift in Sources */,
 				8475EA642C35AF5C00321D9D /* FirebaseManager.swift in Sources */,
 				84969DCE2C63224F00719A6C /* PetEmergencyInfo.swift in Sources */,
 				2DCC314C2C68308B0031A173 /* EmergencyPlanView.swift in Sources */,
@@ -715,6 +725,7 @@
 				8494D5722C631AF60059B723 /* EmergencyContact.swift in Sources */,
 				840C96DA2C3FA1A000EFAFA7 /* ConversationViewViewModel.swift in Sources */,
 				84923A952C2F806B004EAECC /* ProfileWMarker.swift in Sources */,
+				2D24575B2C97A70000027946 /* BreathingAvatarView.swift in Sources */,
 				84FABB862C2F312A00173E4D /* EditProfileViewViewModel.swift in Sources */,
 				846E49052C3CD3E80019C68A /* conversation.swift in Sources */,
 				845BAF1B2C276D200054AAAA /* KidRegisterViewViewModel.swift in Sources */,
@@ -756,6 +767,7 @@
 				845F09BD2C2768CA00070E19 /* User.swift in Sources */,
 				84923A972C2F82BF004EAECC /* WarningColorManager.swift in Sources */,
 				2DCC31482C67CA550031A173 /* EmergencyPlanUsersView.swift in Sources */,
+				2D2457572C9627B000027946 /* BreathingView.swift in Sources */,
 				2DA960E92C6ECCDB00688E6F /* UmbrellaViewViewModel.swift in Sources */,
 				844A80D42C2A9EEF002A2D14 /* MapViewViewModel.swift in Sources */,
 				84923AB12C3264A7004EAECC /* JoinAnUmbrella.swift in Sources */,
@@ -916,13 +928,14 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240822;
+				CURRENT_PROJECT_VERSION = 20240912;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UmbrellaFloodSafety/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Umbrella;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide real-time flood alerts and make sure you're safe during emergencies.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide real-time flood alerts and make sure you're safe during emergencies.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -956,13 +969,14 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240822;
+				CURRENT_PROJECT_VERSION = 20240912;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UmbrellaFloodSafety/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Umbrella;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.weather";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide real-time flood alerts and make sure you're safe during emergencies.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide real-time flood alerts and make sure you're safe during emergencies.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

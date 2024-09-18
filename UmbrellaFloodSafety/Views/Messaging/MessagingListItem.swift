@@ -53,7 +53,7 @@ struct MessagingListItem: View {
         }
     }
     var lastMessage: String
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     
     var body: some View {
         if let profileString = firebaseManager.groupMembersAvatars[firstParticipant] {

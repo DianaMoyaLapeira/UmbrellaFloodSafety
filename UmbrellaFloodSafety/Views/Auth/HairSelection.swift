@@ -58,7 +58,7 @@ struct HairSelection: View {
         return arrayBackHair
     }
     
-    @ObservedObject var viewModel = CreateAvatarViewViewModel.shared
+    @StateObject var viewModel = CreateAvatarViewViewModel.shared
     
     var body: some View {
         ScrollView {

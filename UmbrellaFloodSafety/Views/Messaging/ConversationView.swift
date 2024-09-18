@@ -11,7 +11,7 @@ struct ConversationView: View {
     
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ConversationViewViewModel
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     @FocusState private var keyboardFocus: Bool
     var conversationId: String = ""
     var username: [String] = []

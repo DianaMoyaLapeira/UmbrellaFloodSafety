@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @ObservedObject var manager = FirebaseManager.shared
+    @StateObject var manager = FirebaseManager.shared
     @State private var isSheetPresented = false
     @StateObject var viewModel: ProfileViewViewModel
     @Environment(\.presentationMode) var presentationMode

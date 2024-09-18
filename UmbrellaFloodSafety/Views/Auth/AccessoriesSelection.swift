@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccessoriesSelection: View {
     
-    @ObservedObject var viewModel = CreateAvatarViewViewModel.shared
+    @StateObject var viewModel = CreateAvatarViewViewModel.shared
     
     var body: some View {
         

@@ -147,7 +147,8 @@ exports.sendMessageNotification = functions.firestore
         const conversationData = conversationDoc
             .data();
         const participants = conversationData
-            .participants;
+            .participants
+            .filter((username) => username !== senderId);
 
         const userPromises = participants.map((username) => admin.firestore()
             .collection("users")

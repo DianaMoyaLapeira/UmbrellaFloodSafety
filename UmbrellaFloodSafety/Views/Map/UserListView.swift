@@ -11,10 +11,10 @@ import CoreLocation
 struct UserListView: View {
   
     var groupMember: String = ""
-    @ObservedObject var viewModel: UserListViewViewModel
+    @StateObject var viewModel: UserListViewViewModel
     init(groupId: String, groupMember: String) {
         self.groupMember = groupMember
-        self._viewModel = ObservedObject(wrappedValue: UserListViewViewModel(groupId: groupId, username: groupMember))
+        self._viewModel = StateObject(wrappedValue: UserListViewViewModel(groupId: groupId, username: groupMember))
     }
     
     var body: some View {
@@ -29,7 +29,7 @@ struct UserListView: View {
                     .padding([.leading, .trailing])
                 } else {
                     // backup blank character
-                    MapMarker(profileString: "skin11,shirt1,black,mouth1,,", username: groupMember, frameWidth: 25, circleWidth: 80, lineWidth: 4, paddingPic: 8, riskColor: .secondary)
+                    MapMarker(profileString: "skin11,shirt1,black,mouth1,,", username: groupMember, frameWidth: 25, circleWidth: 80, lineWidth: 4, paddingPic: 8, riskColor: .gray)
                         .frame(width: 80, height: 80)
                     .padding([.leading, .trailing])
                 }
@@ -40,7 +40,7 @@ struct UserListView: View {
                         Text("\(viewModel.name)")
                             .font(.custom("Nunito", size: 24))
                             .fontWeight(.bold)
-                            .foregroundStyle(.primary)
+                            .foregroundStyle(.mainBlue)
                         
                         Spacer()
                     

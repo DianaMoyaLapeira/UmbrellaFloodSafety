@@ -20,32 +20,27 @@ struct LearnTile: View {
             RoundedRectangle(cornerRadius: 25)
                 .foregroundStyle(mainColor)
             
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(secondaryColor)
-                .padding([.top, .horizontal])
-                .frame(height: 170)
-            
-            Image(systemName: icon)
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(iconColor)
-                .frame(width: 120)
-                .padding(.top, 35)
-            
-            VStack {
-                Spacer()
-                
-                HStack {
-                    Text(LocalizedStringKey(title))
-                        .foregroundStyle(.white)
-                        .font(.custom("Nunito", size: 32))
-                        .fontWeight(.black)
-                        .padding(.top, -65)
-                        .padding()
+            VStack(alignment: .leading) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundStyle(secondaryColor)
+                        .padding([.top, .horizontal])
+                        .frame(height: 170)
                     
-                    Spacer()
+                    Image(systemName: icon)
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(iconColor)
+                        .frame(width: 120)
+                        .padding(.top)
                 }
-                .padding(.horizontal)
+                
+                Text(LocalizedStringKey(title))
+                    .multilineTextAlignment(.leading)
+                    .foregroundStyle(.white)
+                    .font(.custom("Nunito", size: 32))
+                    .fontWeight(.black)
+                    .padding(.horizontal)
             }
         }
         .frame(height: 250)
@@ -54,5 +49,5 @@ struct LearnTile: View {
 }
 
 #Preview {
-    LearnTile(title: "Emergency Help", icon: "exclamationmark.triangle", mainColor: .mainBlue, secondaryColor: .accentYellow, iconColor: .red)
+    LearnTile(title: "Planes de emergencia", icon: "exclamationmark.triangle", mainColor: .mainBlue, secondaryColor: .accentYellow, iconColor: .red)
 }

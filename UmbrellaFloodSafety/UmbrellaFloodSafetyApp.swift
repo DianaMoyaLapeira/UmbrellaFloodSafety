@@ -35,6 +35,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, CLLocationManagerDelegate, U
         }
         UNUserNotificationCenter.current().setBadgeCount(0)
         
+        if (locationManager.location != nil) {
+            FirebaseManager.shared.updateLocation(newLocation: locationManager.location ?? CLLocation(latitude: 0, longitude: 0)) { error in
+                if error {
+                    print("An error occured updating location", error)
+                }
+            }
+        }
         // Remember to request to always authorization by going into settings
         return true
     }

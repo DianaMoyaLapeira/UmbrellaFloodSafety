@@ -15,7 +15,7 @@ struct UserView: View {
     @State private var opacity: Double = 0
     @State var displayReport: Bool = false
     @State var showAlert: Bool = false
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     
     var body: some View {
         

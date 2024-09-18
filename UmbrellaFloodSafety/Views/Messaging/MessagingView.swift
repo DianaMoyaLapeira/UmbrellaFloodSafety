@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MessagingView: View {
     
-    @ObservedObject var firebaseManager = FirebaseManager.shared
+    @StateObject var firebaseManager = FirebaseManager.shared
     @State var showNotificationSheet: Bool = false
     
     var body: some View {

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "umbrella": "umbrellafloodsafety"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
