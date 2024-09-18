@@ -35,19 +35,19 @@ struct BreathingView: View {
                 }
                 .padding([.horizontal, .bottom])
             }
-            .padding(.top)
             
             Spacer()
             
             BreathingAvatarView(viewModel: viewModel, profileString: "skin3,shirt2,gingerback2;gingerfront2,mouth5,blush3,")
                 .mask(Circle())
-                .frame(height: 450)
+                .frame(height: 400)
                 .shadow(color: .white, radius: 10)
                 .background(
                     Rectangle()
                         .foregroundStyle(EllipticalGradient(gradient: viewModel.gradientColors ? Gradient(colors: [.clear, .clear]) : Gradient(colors: [.mainBlue, .mainBlue, .clear])))
                 )
                 
+            Spacer()
             
             Button {
                 withAnimation(.easeInOut(duration: 0.3)) {
@@ -76,7 +76,7 @@ struct BreathingView: View {
                         Circle()
                             .foregroundStyle(.mainBlue)
                             .padding(5)
-                            .shadow(radius: 10)
+                            .shadow(color: .white, radius: 10)
                         
                         Image(systemName: "play.fill")
                             .resizable()
@@ -89,16 +89,14 @@ struct BreathingView: View {
                 }
             }
             
-            Spacer()
-            
             Text(viewModel.stage)
                 .font(.custom("Nunito", size: 18, relativeTo: .body))
                 .bold()
-                .padding(.bottom)
             
             Spacer()
+            
         }
-        .padding(.vertical, 15)
+        .padding(.bottom)
     }
 }
 

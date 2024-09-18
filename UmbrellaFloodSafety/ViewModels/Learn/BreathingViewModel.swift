@@ -53,21 +53,21 @@ class BreathingViewModel: ObservableObject {
             self.breath()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 11.6) {
             self.breath()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 12.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 23) {
             self.breath()
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 34.5) {
             if self.openMouth == false {
                 withAnimation(.easeIn(duration: 0.2)) {
                     self.mouthScale = 0.0
                 }
                 
-                //open mouth
+                // close mouuth
                 
                 self.openMouth.toggle()
                 withAnimation(.easeOut(duration: 0.5)) {
@@ -94,6 +94,12 @@ class BreathingViewModel: ObservableObject {
     
     private func breath() {
         
+        guard playing else {
+            withAnimation(.easeIn(duration: 0.2)) {
+                self.stage = "Click the play button to begin"
+            }
+            return
+        }
         // breathe in
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.playHaptic(for: .breatheIn)
@@ -120,14 +126,14 @@ class BreathingViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 8) {
             self.playHaptic(for: .breatheOut)
             withAnimation(.easeIn(duration: 0.2)) {
-                self.stage = "Breathe out..."
+                self.stage = "Slowly breathe out..."
             }
             self.breatheOut()
             
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.breatheOut()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.5) {
+            self.breatheOutNoGradient()
         }
         
     }
@@ -148,6 +154,21 @@ class BreathingViewModel: ObservableObject {
             }
         }
     }
+    private func breatheOutNoGradient() {
+        
+        withAnimation(.easeIn(duration: 0.2)) {
+            mouthScale = 0.0
+        }
+        
+        //open mouth
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.openMouth.toggle()
+            withAnimation(.easeOut(duration: 0.5)) {
+                self.mouthScale = 1
+            }
+        }
+    }
     
     private func playHaptic(for type: hapticType) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
@@ -160,7 +181,7 @@ class BreathingViewModel: ObservableObject {
         case .breatheIn:
             let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
             let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.3)
-            let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 3)
+            let event = CHHapticEvent(eventType: .hapticContinuous, parameters: [intensity, sharpness], relativeTime: 0, duration: 2.5)
             events.append(event)
         case .holdBreath:
             let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.3)

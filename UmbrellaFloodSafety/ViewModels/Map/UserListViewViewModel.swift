@@ -48,8 +48,7 @@ class UserListViewViewModel: ObservableObject {
     func lookUpAddress(location: CLLocationCoordinate2D) {
         
         let location = CLLocation(latitude: location.latitude, longitude: location.longitude)
-        print("Look up address function called")
-        
+  
         geocoder.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
             
             if let error = error {

@@ -10,6 +10,7 @@ import CoreLocation
 
 struct UserListView: View {
   
+    @StateObject var firebaseManager = FirebaseManager.shared
     var groupMember: String = ""
     @StateObject var viewModel: UserListViewViewModel
     init(groupId: String, groupMember: String) {

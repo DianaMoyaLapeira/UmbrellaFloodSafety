@@ -454,7 +454,14 @@
       }
     },
     "Breathing Exercises" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respiración"
+          }
+        }
+      }
     },
     "Call" : {
       "extractionState" : "manual",
@@ -2396,7 +2403,14 @@
       }
     },
     "Stay calm and stay safe" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantén la calma y mantente a salvo"
+          }
+        }
+      }
     },
     "Stay on high ground if you're already there." : {
       "localizations" : {

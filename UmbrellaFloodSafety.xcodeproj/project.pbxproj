@@ -10,6 +10,7 @@
 		2D2457572C9627B000027946 /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2457562C9627B000027946 /* BreathingView.swift */; };
 		2D2457592C962EC400027946 /* BreathingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2457582C962EC400027946 /* BreathingViewModel.swift */; };
 		2D24575B2C97A70000027946 /* BreathingAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D24575A2C97A70000027946 /* BreathingAvatarView.swift */; };
+		2D2457612C9A637D00027946 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2457602C9A637D00027946 /* AppDelegate.swift */; };
 		2D69228D2C93AD1F0038293E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */; };
 		2DA960E92C6ECCDB00688E6F /* UmbrellaViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */; };
 		2DAB60D62C93AB490035DE42 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB60D52C93AB490035DE42 /* SplashScreen.swift */; };
@@ -144,6 +145,7 @@
 		2D2457562C9627B000027946 /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
 		2D2457582C962EC400027946 /* BreathingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingViewModel.swift; sourceTree = "<group>"; };
 		2D24575A2C97A70000027946 /* BreathingAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingAvatarView.swift; sourceTree = "<group>"; };
+		2D2457602C9A637D00027946 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaViewViewModel.swift; sourceTree = "<group>"; };
 		2DAB60D52C93AB490035DE42 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				8438F31A2C2E22BF00F0EB3E /* GoogleService-Info.plist */,
 				843A1A2A2C27C51100F305C1 /* Nunito */,
 				845F09A02C2766DF00070E19 /* UmbrellaFloodSafetyApp.swift */,
+				2D2457602C9A637D00027946 /* AppDelegate.swift */,
 				845BAF242C2776D90054AAAA /* Extensions.swift */,
 				84D814BD2C40FC200099B020 /* OpenAIAPI.swift */,
 				845F09A42C2766E100070E19 /* Assets.xcassets */,
@@ -784,6 +787,7 @@
 				846E490B2C3CEEF40019C68A /* TextMessageView.swift in Sources */,
 				840F28F32C4356F3001F02FF /* LearnTileStroke.swift in Sources */,
 				84D814BE2C40FC200099B020 /* OpenAIAPI.swift in Sources */,
+				2D2457612C9A637D00027946 /* AppDelegate.swift in Sources */,
 				840F28F12C4326EC001F02FF /* AccessoriesSelection.swift in Sources */,
 				849876DB2C4F30CF00C57B52 /* ReportView.swift in Sources */,
 				84EF0D0D2C2B96210029A653 /* NewUmbrellaView.swift in Sources */,
@@ -928,7 +932,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240912;
+				CURRENT_PROJECT_VERSION = 20240918;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
@@ -969,7 +973,7 @@
 				CODE_SIGN_ENTITLEMENTS = UmbrellaFloodSafety/UmbrellaFloodSafety.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20240912;
+				CURRENT_PROJECT_VERSION = 20240918;
 				DEVELOPMENT_ASSET_PATHS = "\"UmbrellaFloodSafety/Preview Content\"";
 				DEVELOPMENT_TEAM = N8YGT32D5B;
 				ENABLE_PREVIEWS = YES;
