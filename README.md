@@ -1,5 +1,5 @@
 # Umbrella Flood Safety - Flood Safety Companion IOS App 
-Umbrella Flood Safety was created to enhance flood safety awareness, prepardness, and effectiveness of responses to flood emergencies. The app was inspired by the impact of recent devastating floods in the Miami-Dade and Costa Rica regions. [Click here for TestFlight link](https://testflight.apple.com/join/XPUrxa6d)
+Umbrella Flood Safety was created to enhance flood safety awareness, prepardness, and effectiveness of responses to flood emergencies. The app was inspired by the impact of recent devastating floods in the Miami-Dade and Costa Rica regions. 
 
 ## Features
 - **Real-Time Flood Alerts/Location Sharing**: Users receive push notifications when a flood detected near their location or near an "Umbrella" (flood safety group) member's location. Location updates from each device ensure that the map represents each user's location. 
