@@ -25,13 +25,13 @@ struct LearnTile: View {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundStyle(secondaryColor)
                         .padding([.top, .horizontal])
-                        .frame(height: 170)
+                        .frame(height: 130)
                     
                     Image(systemName: icon)
                         .resizable()
                         .scaledToFit()
                         .foregroundStyle(iconColor)
-                        .frame(width: 120)
+                        .frame(width: 90)
                         .padding(.top)
                 }
                 
@@ -40,10 +40,10 @@ struct LearnTile: View {
                     .foregroundStyle(.white)
                     .font(.custom("Nunito", size: 32))
                     .fontWeight(.black)
-                    .padding(.horizontal)
+                    .padding([.bottom, .horizontal])
             }
         }
-        .frame(height: 250)
+        .frame(height: 190)
             
     }
 }

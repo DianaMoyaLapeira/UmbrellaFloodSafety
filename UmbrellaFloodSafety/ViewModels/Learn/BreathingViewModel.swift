@@ -62,7 +62,7 @@ class BreathingViewModel: ObservableObject {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 34.5) {
-            if self.openMouth == false {
+            if self.openMouth == true {
                 withAnimation(.easeIn(duration: 0.2)) {
                     self.mouthScale = 0.0
                 }

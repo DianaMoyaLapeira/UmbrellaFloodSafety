@@ -38,7 +38,7 @@ struct BreathingView: View {
             
             Spacer()
             
-            BreathingAvatarView(viewModel: viewModel, profileString: "skin3,shirt2,gingerback2;gingerfront2,mouth5,blush3,")
+            BreathingAvatarView(viewModel: viewModel, profileString: FirebaseManager.shared.currentUserAvatar)
                 .mask(Circle())
                 .frame(height: 400)
                 .shadow(color: .white, radius: 10)

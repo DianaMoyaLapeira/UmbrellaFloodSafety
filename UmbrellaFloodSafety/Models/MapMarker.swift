@@ -64,8 +64,10 @@ struct MapMarker: View {
     
     func getRiskColor() async -> Color {
         var riskLevel: Int = 0
-
+        
         riskLevel = await weatherManager.getRiskLevel(coordinate: firebaseManager.groupMembersLocations[username] ?? CLLocationCoordinate2D(latitude: 0, longitude: 0))
+        
+        print("risk level for \(self.username) )\(riskLevel)")
         
         switch riskLevel {
         case 0: return .accentGreen

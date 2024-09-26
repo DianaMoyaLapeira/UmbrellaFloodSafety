@@ -88,12 +88,22 @@ struct MessagingListItem: View {
                                 .padding(.trailing)
                         }
                         
-                        HStack {
-                            Text("\(lastMessage)") // Last message
-                                .font(.custom("Nunito", size: 18))
-                                .foregroundStyle(Color(UIColor.darkGray))
-                                .multilineTextAlignment(.leading)
-                            Spacer()
+                        if lastMessage == "No messages yet" {
+                            HStack {
+                                Text("No messages yet") // for translation
+                                    .font(.custom("Nunito", size: 18))
+                                    .foregroundStyle(Color(UIColor.darkGray))
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
+                        } else {
+                            HStack {
+                                Text("\(lastMessage)") // Last message
+                                    .font(.custom("Nunito", size: 18))
+                                    .foregroundStyle(Color(UIColor.darkGray))
+                                    .multilineTextAlignment(.leading)
+                                Spacer()
+                            }
                         }
                         
                         Spacer()

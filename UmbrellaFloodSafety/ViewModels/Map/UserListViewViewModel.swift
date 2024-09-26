@@ -22,12 +22,10 @@ class UserListViewViewModel: ObservableObject {
         self.username = username
         self.groupId = groupId
         getName()
-        getLocation(username: username)
     }
     
     func getLocation(username: String) {
         self.userLocation = firebaseManager.groupMembersLocations[username] ?? CLLocationCoordinate2D(latitude: 9.940158, longitude: -84.144093)
-        print(self.userLocation)
         lookUpAddress(location: self.userLocation)
     }
     
@@ -41,6 +39,8 @@ class UserListViewViewModel: ObservableObject {
             if let document = document {
                 let name = document.data()?["name"] as? String
                 self.name = name ?? "No username"
+               
+                self.getLocation(username: self.username)
             }
         }
     }
@@ -61,8 +61,6 @@ class UserListViewViewModel: ObservableObject {
                 
             if let placemark = placemarks?.first {
                 var address = ""
-                
-                // make sure the address makes gramatical sense based on what information is available
                 
                 if placemark.subThoroughfare != nil {
                     address.append("\(placemark.subThoroughfare ?? ""), ")
@@ -87,6 +85,7 @@ class UserListViewViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self?.address = address
                 }
+                
             } else {
                 DispatchQueue.main.async {
                     self?.address = "No address found."

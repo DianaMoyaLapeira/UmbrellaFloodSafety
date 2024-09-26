@@ -453,6 +453,17 @@
         }
       }
     },
+    "Breathing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respiración"
+          }
+        }
+      }
+    },
     "Breathing Exercises" : {
       "localizations" : {
         "es" : {
@@ -575,7 +586,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Haga clic para editar"
+            "value" : "Haz clic para editar"
           }
         }
       }
@@ -1390,6 +1401,7 @@
       }
     },
     "Hello, World!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -1941,6 +1953,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aún no hay miembros. ¡Agregue miembros a su dispositivo usando el código Umbrella!"
+          }
+        }
+      }
+    },
+    "No messages yet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay mensajes todavía"
           }
         }
       }

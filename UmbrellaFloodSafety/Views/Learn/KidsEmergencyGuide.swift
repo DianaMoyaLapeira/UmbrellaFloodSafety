@@ -37,7 +37,6 @@ struct KidsEmergencyGuide: View {
             }
             .padding(.leading)
             
-            NavigationStack {
                 ScrollView {
                     
                     HStack {
@@ -67,6 +66,23 @@ struct KidsEmergencyGuide: View {
                         
                         Spacer()
                         
+                    }
+                    
+                    if !EmergencyPlanFirebaseManager.shared.emergencyPlans.isEmpty {
+                        NavigationLink(destination: EmergencyPlans()) {
+                            HStack {
+                                
+                                Text(LocalizedStringKey("Go to emergency plans on Umbrella"))
+                                    .font(.custom("Nunito", size: 18))
+                                    .bold()
+                                    .foregroundStyle(.white)
+                            }
+                            .padding(.horizontal, 15)
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 30).foregroundStyle(.mainBlue))
+                           
+                            Spacer()
+                        }
                     }
                     
                     HStack {
@@ -245,7 +261,6 @@ struct KidsEmergencyGuide: View {
                     FloodSafetyResources()
                         .padding(.leading)
                 })
-            }
             
             
             Spacer()

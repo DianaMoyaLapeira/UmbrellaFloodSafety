@@ -51,7 +51,7 @@ struct FloodDetectedView: View {
                 .padding(.bottom, 4)
             }
         
-            if member != currentUsername {
+            if member == currentUsername {
                 HStack {
                     Call911Button()
                     UMButton(title: "I'm Safe", background: .mainBlue) {
@@ -71,7 +71,9 @@ struct FloodDetectedView: View {
                 .padding(.bottom, 4)
                 
                 UMButtonStoke(title: "Ok", background: .mainBlue) {
-                    dismissedAlerts.append(member)
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        dismissedAlerts.append(member)
+                    }
                 }
                 .frame(height: 60)
             }
