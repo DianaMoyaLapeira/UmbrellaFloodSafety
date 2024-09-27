@@ -148,7 +148,7 @@
 		2D69228C2C93AD1F0038293E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DA960E82C6ECCDB00688E6F /* UmbrellaViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaViewViewModel.swift; sourceTree = "<group>"; };
 		2DAB60D52C93AB490035DE42 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		2DC6821E2CA395BA0065282A /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherManager.swift; path = ../../../../../Downloads/WeatherManager.swift; sourceTree = "<group>"; };
+		2DC6821E2CA395BA0065282A /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherManager.swift; path = ../WeatherManager.swift; sourceTree = "<group>"; };
 		2DCC31472C67CA550031A173 /* EmergencyPlanUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanUsersView.swift; sourceTree = "<group>"; };
 		2DCC31492C67D3980031A173 /* AddUsersToPlanSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUsersToPlanSheet.swift; sourceTree = "<group>"; };
 		2DCC314B2C68308B0031A173 /* EmergencyPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyPlanView.swift; sourceTree = "<group>"; };
